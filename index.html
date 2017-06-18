@@ -248,6 +248,190 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/数据结构（一）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="三金Sir">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://avatar.csdn.net/0/C/7/1_yangxin1113.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Fighting！">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Fighting！" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/15/数据结构（一）/" itemprop="url">
+                  数据结构（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T23:17:40+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="什么是数据结构"><a href="#什么是数据结构" class="headerlink" title="什么是数据结构"></a>什么是数据结构</h4><ul>
+<li>数据结构是数据对象、存在于该对象的实例以及组成实例的数据元素之间的关系，并且这种关系可以通过定义相关的函数来给出</li>
+<li>数据结构是抽象数据类型ADT的物理实现</li>
+<li>一个数据结构是由数据元素依据某种逻辑联系起来的，对数据元素之间逻辑关系的描述称为数据的逻辑结构。由于数据必须在计算机内存储，数据的存储结构是其在计算机内的表示，既数据的实现形式</li>
+</ul>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>数据（Data）：数据是信息的载体，其能够被计算机识别、存储和加工处理，是计算机程序加工的“原材料”。</li>
+<li>数据元素：数据元素是数据的基本单位，其也称之为元素，结点、顶点、记录等。</li>
+<li>数据项：一个元素可以由若干个数据项组成，数据项是具有独立含义的最小标识单位。数据项也可称之为字段、域、属性</li>
+<li>数据结构：是指数据间的相互关系，也就是数据的组织形式。</li>
+</ul>
+<p>####数据结构的内容</p>
+<ul>
+<li>数据的逻辑结构</li>
+<li>数据的存储结构</li>
+<li>数据的运算（检索、插入、删除、更新、排序等） </li>
+</ul>
+<h4 id="数据结构分类"><a href="#数据结构分类" class="headerlink" title="数据结构分类"></a>数据结构分类</h4><ul>
+<li>按逻辑结构分类<ol>
+<li>线性结构<ul>
+<li>线性结构是非空集</li>
+<li>线性结构有且仅有一个开始结点和一个终端结点</li>
+<li>线性结构所有结点最多只有一个直接前驱结点和一个直接后继结点 </li>
+<li>线性表、栈、队列和串等</li>
+</ul>
+</li>
+<li>非线性结构<ul>
+<li>非线性结构是非空集</li>
+<li>非线性结构的一个结点可能有多个直接前驱结点和多个直接后继结点</li>
+<li>数组、广义表、树结构和图结构等</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>按存储结构分类<ol>
+<li>顺序存储结构<ul>
+<li>在一块连续的存储区域一个接着一个的存放数据</li>
+<li>线性存储方式主要用于线性逻辑结构的数据存放</li>
+</ul>
+</li>
+<li>链式存储结构<ul>
+<li>不要求逻辑上相邻的结点物理位置上相邻，结点间的逻辑关系由附加的引用字段表示。一个结点的引用字段往往指向下一个结点的存放位置。</li>
+<li>也称链式存储结构</li>
+</ul>
+</li>
+<li>索引存储结构<ul>
+<li>采用附加的索引表的方式来存储结点信息</li>
+</ul>
+</li>
+<li>散列存储方式<ul>
+<li>根据结点的关键字 直接计算出该结点的存储地址的一种存储方式</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="常用数据结构"><a href="#常用数据结构" class="headerlink" title="常用数据结构"></a>常用数据结构</h4><ol>
+<li>数组<br>数组是一种聚合数据类型，是将具有相同类型的若干变量有序的组织在一起的计集合。</li>
+<li>栈<br>栈是一种特殊的线性表，其只能在一个表的固定端进行数据节点的插入和删除操作。</li>
+<li>队列<br>队列和栈类似也是一种特殊的线性表。和栈不同的是，队列只允许在表的一端进行插入操作，在表的另一端进行删除操作。</li>
+<li>链表<br>链表是一种数据元素按照链式存储结构进行存储的数据结构。</li>
+<li>树<br>树是典型的非线性结构，其中包括了n个结点的有穷集合。</li>
+<li>图<br>图是另一种非线性结构</li>
+<li>堆<br>堆是一种特殊的树形结构，我们一般讨论的是堆都是二叉树。</li>
+<li>散列表<br>散列表源自于散列函数，结构中存在关键字和T相等的记录。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/什么是算法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1715,163 +1899,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/18/Subline3下的两款Markdown插件/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="三金Sir">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://avatar.csdn.net/0/C/7/1_yangxin1113.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Fighting！">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Fighting！" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/18/Subline3下的两款Markdown插件/" itemprop="url">
-                  Subline3下的两款Markdown插件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-18T22:38:01+08:00">
-                2017-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/辅助工具/" itemprop="url" rel="index">
-                    <span itemprop="name">辅助工具</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="MarkdownEditing"><a href="#MarkdownEditing" class="headerlink" title="MarkdownEditing"></a>MarkdownEditing</h3><h4 id="MarkdownEditing是Markdown写作者必备的插件，它可以不仅可以高亮显示Markdown语法还支持很多编程语言的语法高亮显示。"><a href="#MarkdownEditing是Markdown写作者必备的插件，它可以不仅可以高亮显示Markdown语法还支持很多编程语言的语法高亮显示。" class="headerlink" title="MarkdownEditing是Markdown写作者必备的插件，它可以不仅可以高亮显示Markdown语法还支持很多编程语言的语法高亮显示。"></a>MarkdownEditing是Markdown写作者必备的插件，它可以不仅可以高亮显示Markdown语法还支持很多编程语言的语法高亮显示。</h4><ol>
-<li>安装插件<br>安装插件之前，我们需要首先安装一个Sublime 中最不可缺少的插件 Package Control, 以后我们安装和管理插件都需要这个插件的帮助。</li>
-<li><p>安装”Package Control”<br>使用快捷键 “ ctrl + `” 打开Sublime的控制台 ,或者选择 View &gt; Show Console<br>在控制台的命令行输入框，把下面一段代码粘贴进去，回车 就可以完成Pacakge Control 的安装了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = &apos;eb2297e1a458f27d836c04bb0cbaf282&apos; + &apos;d0e7a3098092775ccb37ca9d6b2e4b7d&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装MarkdownEditing<br>Package Control 安装成功后我们就可以使用它方便的管理插件了，首先使用快捷键 ‘command + shift + p ‘ 进入到Sublime 命令面板，输入 “package install” 从列表中选择 “install Package” 然后回车。这时候Sublime开始请求远程插件仓库的索引，所以第一次使用可能会有一些小的延时。<br><img src="http://upload-images.jianshu.io/upload_images/222358-bee1d25963b27ea7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text" title="Optional title"><br>看到列表的更新之后输入 “markdown ed” 关键字，选择“MarkdownEditing” 回车。 插件安装完毕后需要重新启动Sublime插件才能生效。下面是我使用sublime编辑代码片断的显示效<br><img src="http://upload-images.jianshu.io/upload_images/222358-d8421f8682fdd2a4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Alt text" title="Optional title"></p>
-</li>
-</ol>
-<p>输入 “mdi + tab” 会自动插入下面的图片标记<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![Alt text](/path/to/img.jpg &quot;Optional title&quot;)</div></pre></td></tr></table></figure></p>
-<p>输入 “mdl + tab” 会自动生成下面的链接标记<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[](link)</div></pre></td></tr></table></figure></p>
-<h3 id="Markdown-Preview-插件"><a href="#Markdown-Preview-插件" class="headerlink" title="Markdown Preview 插件"></a>Markdown Preview 插件</h3><h4 id="Mardown-Preview不仅支持在浏览器中预览markdown文件，还可以导出html代码。"><a href="#Mardown-Preview不仅支持在浏览器中预览markdown文件，还可以导出html代码。" class="headerlink" title="Mardown Preview不仅支持在浏览器中预览markdown文件，还可以导出html代码。"></a>Mardown Preview不仅支持在浏览器中预览markdown文件，还可以导出html代码。</h4><ol>
-<li>安装<br>通过按组合键Ctrl+Shift+P或是点击Preference-&gt;Package Control调出命令面板，然后再输入 install，选择 Package Control: install package。<br><img src="http://img.blog.csdn.net/20160424184816763" alt="Alt text" title="Optional title"><br>在插件安装面板输入markdown找到Markdown Preview并点击安装即可。<br><img src="http://img.blog.csdn.net/20160424211042612" alt="Alt text" title="Optional title"></li>
-<li>使用<br>通过按组合键Ctrl+Shift+P或是点击Preference-&gt;Package Control调出命令面板，输入mdp，下图中红框圈出的就是在浏览器中预览markdown文件。<br><img src="http://img.blog.csdn.net/20160424211409258" alt="Alt text" title="Optional title"><br>选中后，你将见到两个选项：GitHub和Mardown。GitHub选项意味着使用GitHub的在线API来解析.md文件。它的解析速度取决于你的联网速度。据称有每天60次访问的限制。[2]但能免费获得GFM格式的语法支持和EMOJI表情的支持。<br>另外一个常用功能是图中第五个，Export HTML in Sublime Text，即导出html文件到sublime text。</li>
-<li>快捷键设置<br>Sublime Text支持自定义快捷键，markdown preview默认没有快捷键，我们可以自己为preview in browser设置快捷键。方法是在Preferences -&gt; Key Bindings User打开的文件的中括号中添加以下代码(可在Key Bindings Default找到格式)：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; &quot;keys&quot;: [&quot;alt+m&quot;], &quot;command&quot;: &quot;markdown_preview&quot;, &quot;args&quot;: &#123;&quot;target&quot;: &quot;browser&quot;, &quot;parser&quot;:&quot;markdown&quot;&#125;  &#125;</div></pre></td></tr></table></figure>
-<h6 id="这里："><a href="#这里：" class="headerlink" title="这里："></a>这里：</h6><p>“alt+m”可设置为自己喜欢的按键。<br>“parser”:”markdown”也可设置为”parser”:”github”，改为使用Github在线API解析markdown。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1919,7 +1946,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
