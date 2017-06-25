@@ -1,0 +1,947 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="基础数据类型基本数据类型分为原始类型和包装类型，Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类型(wrapper class)，int的包装类就是Integer，从Java 5开始引入了自动装箱/拆箱机制，使得二者可以相互转换。
+
+
+
+8种原始类型
+容量
+对应包装类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试基础（一）">
+<meta property="og:url" content="http://yoursite.com/2017/06/22/面试基础（一）/index.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="基础数据类型基本数据类型分为原始类型和包装类型，Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类型(wrapper class)，int的包装类就是Integer，从Java 5开始引入了自动装箱/拆箱机制，使得二者可以相互转换。
+
+
+
+8种原始类型
+容量
+对应包装类型">
+<meta property="og:updated_time" content="2017-06-25T13:04:39.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试基础（一）">
+<meta name="twitter:description" content="基础数据类型基本数据类型分为原始类型和包装类型，Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类型(wrapper class)，int的包装类就是Integer，从Java 5开始引入了自动装箱/拆箱机制，使得二者可以相互转换。
+
+
+
+8种原始类型
+容量
+对应包装类型">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/22/面试基础（一）/"/>
+
+
+
+
+
+  <title> 面试基础（一） | Fighting！ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Fighting！</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">潜行者的沉默</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/22/面试基础（一）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="三金Sir">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://avatar.csdn.net/0/C/7/1_yangxin1113.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Fighting！">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Fighting！" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面试基础（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T22:25:37+08:00">
+                2017-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h4><p>基本数据类型分为原始类型和包装类型，Java是一个近乎纯洁的面向对象编程语言，但是为了编程的方便还是引入了基本数据类型，但是为了能够将这些基本数据类型当成对象操作，Java为每一个基本数据类型都引入了对应的包装类型(wrapper class)，int的包装类就是Integer，从Java 5开始引入了自动装箱/拆箱机制，使得二者可以相互转换。</p>
+<table>
+<thead>
+<tr>
+<th>8种原始类型</th>
+<th>容量</th>
+<th>对应包装类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte(字节)</td>
+<td>8 位</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>shot(短整型)</td>
+<td>16位</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int(整型)</td>
+<td>32 位</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long(长整型)</td>
+<td>64 位</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float(浮点型)</td>
+<td>32 位</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double(双精度)</td>
+<td>64 位</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char(字符型)</td>
+<td>16 位</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean(布尔型)</td>
+<td>1 位</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+<p>注意几点：</p>
+<p><strong>1、各数据类型按容量大小（表数范围大小）由小到大排列为：</strong></p>
+<p>byte &lt;—— short, char  &lt;——int &lt;——long &lt;——float &lt;——double</p>
+<p><strong>2、基本类型之间的转换原则：</strong></p>
+<p>1）运算时，容量小的类型自动转换为容量大的类型；</p>
+<p>2）容量大的类型转换为容量小的类型时，要加强制转换符，且精度可能丢失；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">如：float f = 1.2f;</div><div class="line">int ff = (int) f;</div><div class="line">System.out.println(ff);  1</div><div class="line">```            </div><div class="line"></div><div class="line">3）short，char之间不会互相转换（需要强制转换），byte、short、char并且三者在计算时首先转换为int类型；</div><div class="line"></div><div class="line">4）实数常量默认为double类型， 整数常量默认为int类型；</div><div class="line"></div><div class="line">**3、包装类及String类都是定定义为public final class的，因此这几个都不能被继承；　　**</div><div class="line"></div><div class="line">**4、原始类型是可以通过==直接判断是否相等的，而包装类型是类，通过==判断值是否相等是不对的，必须通过equals()函数**</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">**下面的程序中，temp的最终值是什么？  **</div></pre></td></tr></table></figure>
+<p>long temp=(int)3.9;   3</p>
+<p>temp%=2;   1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">A .0</div><div class="line"></div><div class="line">B .1</div><div class="line"></div><div class="line">C .2</div><div class="line"></div><div class="line">D .3</div><div class="line"></div><div class="line">E .4</div><div class="line"></div><div class="line"></div><div class="line">**short s1 = 1; s1 = s1 + 1;有什么错（错误）? short s1 = 1; s1 += 1;有什么错（正确）?**</div><div class="line"></div><div class="line"></div><div class="line">**下面哪个不是JAVA关键字 **</div><div class="line"></div><div class="line">A  integer</div><div class="line"></div><div class="line">B  double</div><div class="line"></div><div class="line">C  float</div><div class="line"></div><div class="line">D  default</div><div class="line"></div><div class="line"></div><div class="line">###2.1.2 历年考题</div><div class="line"></div><div class="line">**下面哪些不是java的简单数据类型?** AC</div><div class="line"></div><div class="line">A. short  B. Boolean  C. Double  D. float</div><div class="line"></div><div class="line"></div><div class="line">**0.6332的数据类型是（）**  A</div><div class="line"></div><div class="line">A float     B double     C Float      D Double</div><div class="line"></div><div class="line"></div><div class="line">**float f=3.4;是否正确?**  错</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">**下面哪些类可以被继承**</div><div class="line"></div><div class="line">下面哪些类可以被继承？  ABDE</div><div class="line">Java.lang.Thread、java.lang.Number、java.lang.Double、java.lang.Math、 java.lang.ClassLoader</div><div class="line">A、Thread    B、Number    C、Double    D、Math    E、ClassLoader</div><div class="line"></div><div class="line"></div><div class="line">**String 是最基本的数据类型吗?**不是</div><div class="line"></div><div class="line"></div><div class="line">**int和Integer有什么区别?** 原始类型和封装类型，java5后自动拆箱和封箱机制</div><div class="line"></div><div class="line"></div><div class="line">**5、请写出下面程序的运行结果：**</div></pre></td></tr></table></figure></p>
+<p>class AutoUnboxingTest {<br>    public static void main(String[] args) {<br>        Integer a = new Integer(3);<br>        Integer b = 3; // 将3自动装箱成Integer类型<br>        int c = 3;<br>        System.out.println(a == b); // false 两个引用没有引用同一对象<br>        System.out.println(a == c); // true a自动拆箱成int类型再和c比较<br>        System.out.println(b == c); // true b自动装箱然后自动拆箱成int类型再和c比较</p>
+<pre><code>}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">## 2.2 String、StringBuilder、StringBuffer</div><div class="line"></div><div class="line">### 2.2.1 String</div><div class="line"></div><div class="line">字符串常量，不可更改，因为其内部定义的是一个final类型的数组来保存值的，如下：</div></pre></td></tr></table></figure></p>
+<p>private final char value[];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">所以，当我们每次去“更改”String变量的值的时候（包括重新赋值或者使用String内部的一些方法），其实是重新新建了一个String对象（new String）来保存新的值，然后让我们的变量指向新的对象。因此，当我们需要频繁改变字符串的时候，使用String会带来较大的开销。</div><div class="line"></div><div class="line">定义String的方法有两种：</div><div class="line"></div><div class="line">（1）String str = &quot;abc&quot;;</div><div class="line">（2）String str2 = new String(&quot;def&quot;);</div><div class="line"></div><div class="line">第一种方式创建的String对象“abc”是存放在字符串常量池中，创建过程是，首先在字符串常量池中查找有没有&quot;abc&quot;对象，如果有则将str直接指向它，如果没有就在字符串常量池中创建出来“abc”，然后在将str指向它。当有另一个String变量被赋值为abc时，直接将字符串常量池中的地址给它。如下：</div></pre></td></tr></table></figure></p>
+<p>String a = “abc”;<br>String b = “abc”;<br>System.out.println(a == b);    //打印 true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">也就是说通过第一种方式创建的字符串在字符串常量池中，是可共享的。同时，也是不可更改的，体现在：</div></pre></td></tr></table></figure></p>
+<p>String a = “abc”;<br>String b = “abc”;<br>b = b + “def”;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">此时，字符串常量池中存在了两个对象“abc”和“abcdef”。</div><div class="line"></div><div class="line">第二种创建方式其实分为两步：</div></pre></td></tr></table></figure></p>
+<p>String s = “def”;<br>String str2 = new String(s);<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">第一步就是上面的第一种情况；第二步在堆内存中new出一个String对象，将str2指向该堆内存地址，新new出的String对象内容，是在字符串常量池中找到的或创建出“def”对象，相当于此时存在两份“def”对象拷贝，一份存在字符串常量池中，一份被堆内存的String对象私有化管理着。所以使用String str2 = new String(&quot;def&quot;);这种方式创建对象，实际上创建了两个对象。</div><div class="line"></div><div class="line">###2.2.2 StringBuffer(JDK 1.0) 和StringBuilder(JDK1.5)</div><div class="line"></div><div class="line">StringBuffer和StringBuilder在功能上基本完全相同，它们都继承自AbstractStringBuilder，使用方法也都一样;可以对StringBuffer和StringBuilder对象进行改变，每次改变还是再原来的对象上发生的，不会重新new出新的StringBuffer或StringBuilder对象来。所以，当我们需要频繁修改字符串内容的时候，使用StringBuffer和StringBuilder是很好地选择。</div><div class="line"></div><div class="line">StringBuffer和StringBuilder的最主要区别就是线程安全方面，由于在StringBuffer内大部分方法都添加了synchronized同步，所以StringBuffer是线程安全的，而StringBuilder不是线程安全的。因此，当我们处于多线程的环境下时，我们需要使用StringBuffer，如果我们的程序是线程安全的使用StringBuilder在性能上就会更优一点。</div><div class="line"></div><div class="line"></div><div class="line">历年面试题：</div><div class="line"></div><div class="line">**String与StringBuffer的区别：**</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">## 2.3 关键字</div><div class="line"></div><div class="line">### 2.3.1 switch</div><div class="line"></div><div class="line">**1、switch中的参数类型**</div><div class="line"></div><div class="line">在jdk1.7 之前switch 只能支持 byte、short、char、int或者其对应的封装类以及 Enum 类型。</div><div class="line">在jdk1.7 及1.7以后，switch也支持了String类型，如下：</div></pre></td></tr></table></figure></p>
+<p>String str = “abc”;<br>switch (str) {<br>case “abc”:<br>    System.out.println(“—–abc—–”);<br>    break;<br>case “aaa”:<br>    System.out.println(“—–aaa—–”);<br>    break;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">枚举类型</div></pre></td></tr></table></figure></p>
+<p>enum ColorEnum {<br>    RED,<br>    GREEN,<br>    BLUE<br>}</p>
+<p>public static void main(String[] args) {<br>    ColorEnum color = ColorEnum.BLUE;<br>    switch (color) {<br>        case RED:<br>            System.out.println(“红色”);<br>            break;<br>        case GREEN:<br>            System.out.println(“绿色”);<br>            break;<br>        case BLUE:<br>            System.out.println(“蓝色”);<br>            break;<br>    }<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**历年试题：**</div><div class="line"></div><div class="line">**swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上?**</div><div class="line"></div><div class="line"></div><div class="line">### 2.3.2 break,continue,goto</div><div class="line"></div><div class="line">break的作用是跳出当前循环块（for、while、do while）或程序块（switch）。在循环块中的作用是跳出当前正在循环的循环体。在程序块中的作用是中断和下一个case条件的比较。</div><div class="line"> </div><div class="line">continue用于结束循环体中其后语句的执行，并跳回循环程序块的开头执行下一次循环，而不是离开循环体。</div><div class="line"></div><div class="line">goto:goto是java中的保留字，现在没有在java中使用。 </div><div class="line"></div><div class="line"></div><div class="line">**break,continue与标签**</div><div class="line"></div><div class="line">“标签”是后面跟一个冒号的标识符，就象下面这样：```label1:</div></pre></td></tr></table></figure></p>
+<p>对 Java 来说，唯一用到标签的地方是在循环语句之前。进一步说，它实际需要紧靠在循环语句的前方——在<br>标签和循环之间置入任何语句都是不明智的。而在循环之前设置标签的唯一理由是：我们希望在其中嵌套另<br>一个循环或者一个开关。这是由于 break 和 continue 关键字通常只中断当前循环，但若随同标签使用，它们<br>就会中断到存在标签的地方。如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">label1:</div><div class="line">外部循环&#123;</div><div class="line">  内部循环 &#123;</div><div class="line">    //...</div><div class="line">    break; //1</div><div class="line">    //...</div><div class="line">    continue; //2</div><div class="line">    //...</div><div class="line">    continue label1; //3</div><div class="line">    //...</div><div class="line">    break label1; //4</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在条件 1 中，break 中断内部循环，并在外部循环结束。</p>
+<p>在条件 2 中，continue 移回内部循环的起始处。</p>
+<p>在条件 3 中，continue label1 却同时中断内部循环以及外部循环，并移至 label1 处。随后，它实际是继续<br>循环，但却从外部循环开始。</p>
+<p>在条件 4 中，break label1 也会中断所有循环，并回到 label1 处，但并不重<br>新进入循环。也就是说，它实际是完全中止了两个循环。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    outerCycle:</div><div class="line">    for(int i = 0; i &lt; 10; i++)&#123;</div><div class="line">        for(int j = 0; j &lt; 10; j++)&#123;</div><div class="line">            if(j == 5)&#123;</div><div class="line">                continue outerCycle;</div><div class="line">            &#125;</div><div class="line">            System.out.print(&quot;(&quot;+i+&quot;,&quot;+j+&quot;) &quot;);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>给外层循起始处加了标签（也就是说给外层循环起了个名字）“outerCycle”，在内层循环使用“continue outerCycle”时，就相当于在outerCycle这个循环中直接使用continue语句。</p>
+<p>(0,0) (0,1) (0,2) (0,3) (0,4) (1,0) (1,1) (1,2) (1,3) (1,4) (2,0) (2,1) (2,2) (2,3) (2,4) (3,0) (3,1) (3,2) (3,3) (3,4) (4,0) (4,1) (4,2) (4,3) (4,4) (5,0) (5,1) (5,2) (5,3) (5,4) (6,0) (6,1) (6,2) (6,3) (6,4) (7,0) (7,1) (7,2) (7,3) (7,4) (8,0) (8,1) (8,2) (8,3) (8,4) (9,0) (9,1) (9,2) (9,3) (9,4)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    outerCycle:</div><div class="line">    for(int i = 0; i &lt; 10; i++)&#123;</div><div class="line">        for(int j = 0; j &lt; 10; j++)&#123;</div><div class="line">            if(j == 5)&#123;</div><div class="line">                break outerCycle;</div><div class="line">            &#125;</div><div class="line">            System.out.print(&quot;(&quot;+i+&quot;,&quot;+j+&quot;) &quot;);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果</p>
+<p>(0,0) (0,1) (0,2) (0,3) (0,4)</p>
+<p><strong>历年试题：</strong></p>
+<p>请写出下面程序的运行结果 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">public static void main(String[] args) &#123;</div><div class="line">    int i = 0;</div><div class="line">    outer:</div><div class="line">    // 第一个标签</div><div class="line">    for (; true; ) &#123;</div><div class="line">        inner:</div><div class="line">        //第二个标签</div><div class="line">        for (; i &lt; 10; i++) &#123;</div><div class="line">            prt(&quot;i = &quot; + i);</div><div class="line">            if (i == 2) &#123;</div><div class="line">                prt(&quot;continue&quot;);</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            if (i == 3) &#123;</div><div class="line">                prt(&quot;break&quot;);</div><div class="line">                i++; // 注意</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">            if (i == 7) &#123;</div><div class="line">                prt(&quot;continue outer&quot;);</div><div class="line">                i++; //注意</div><div class="line">                continue outer;</div><div class="line">            &#125;</div><div class="line">            if (i == 8) &#123;</div><div class="line">                prt(&quot;break outer&quot;);</div><div class="line">                break outer;</div><div class="line">            &#125;</div><div class="line">            for (int k = 0; k &lt; 5; k++) &#123;</div><div class="line">                if (k == 3) &#123;</div><div class="line">                    prt(&quot;continue inner&quot;);</div><div class="line">                    continue inner;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">static void prt(String s) &#123;</div><div class="line">    System.out.println(s);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是输出结果：<br>i = 0<br>continue inner<br>i = 1<br>continue inner<br>i = 2<br>continue<br>i = 3<br>break<br>i = 4<br>continue inner<br>i = 5<br>continue inner<br>i = 6<br>continue inner<br>i = 7<br>continue outer<br>i = 8<br>break outer</p>
+<p><strong>需要匹配后通过break关键字跳出程序块，不然继续向下执行</strong></p>
+<p>下面的方法，当输入为2的时候返回值是多少?（）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public static int getValue(int i) &#123;</div><div class="line">    int result = 0;</div><div class="line">    switch (i) &#123;</div><div class="line">    case 1:</div><div class="line">        result = result + i;</div><div class="line">    case 2:</div><div class="line">        result = result + i * 2;</div><div class="line">    case 3:</div><div class="line">        result = result + i * 3;</div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>A0                    B2                    C4                     D10</p>
+<p><strong>break语句的描述中，正确的是( )</strong></p>
+<p>A、只中断最内层的循环 </p>
+<p>B、只中断最外层的循环 </p>
+<p>C、借助于标号，可以实现任何外层循环中断</p>
+<p>D、只中断某一层的循环</p>
+<p>##2.4 值传递和引用传递</p>
+<p>首先要说明的是java中是没有指针的，java中只存在值传递，只存在值传递！！！  然而我们经常看到对于对象（数组，类，接口）的传递似乎有点像引用传递，可以改变对象中某个属性的值。但是不要被这个假象所蒙蔽，实际上这个传入函数的值是对象引用的拷贝，即传递的是引用的地址值，所以还是按值传递。</p>
+<p>需要注意的是当传递的是数组名或对象实例的话，其实传递的都是地址拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class Test3 &#123;</div><div class="line">    public static void change(int a)&#123;</div><div class="line">        a=50;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        int a=10;</div><div class="line">        System.out.println(a);  //10</div><div class="line">        change(a);</div><div class="line">        System.out.println(a);  //10</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class Test3 &#123;</div><div class="line">    public static void change(int []a)&#123;</div><div class="line">        a[0]=50;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        int []a=&#123;10,20&#125;;</div><div class="line">        System.out.println(a[0]);  //10</div><div class="line">        change(a);</div><div class="line">        System.out.println(a[0]);  //50</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Emp &#123;</div><div class="line">    public int age;</div><div class="line">&#125;</div><div class="line">public class Test &#123;</div><div class="line">    public static void change(Emp emp)</div><div class="line">    &#123;</div><div class="line">        emp.age = 50;</div><div class="line">        emp = new Emp();//再创建一个对象</div><div class="line">        emp.age=1000;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Emp emp = new Emp();</div><div class="line">        emp.age = 100;</div><div class="line">        System.out.println(emp.age);  //100</div><div class="line">        change(emp);</div><div class="line">        System.out.println(emp.age);  //50</div><div class="line">        System.out.println(emp.age);  //50</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>历史考题</strong></p>
+<p>指出下列程序运行的结果 （）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class Example &#123;</div><div class="line"></div><div class="line">    String str = new String(&quot;good&quot;);</div><div class="line"></div><div class="line">    char[] ch = &#123; &apos;a&apos;, &apos;b&apos;, &apos;c&apos; &#125;;</div><div class="line"></div><div class="line">    public static void main(String args[]) &#123;</div><div class="line"></div><div class="line">        Example ex = new Example();</div><div class="line"></div><div class="line">        ex.change(ex.str, ex.ch);</div><div class="line"></div><div class="line">        System.out.print(ex.str + &quot; and &quot;);  //good and gbc</div><div class="line"></div><div class="line">        System.out.print(ex.ch);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void change(String str, char ch[]) &#123;</div><div class="line"></div><div class="line">        str = &quot;test ok&quot;;</div><div class="line"></div><div class="line">        ch[0] = &apos;g&apos;;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>A、 good and abc</p>
+<p>B、 good and gbc</p>
+<p>C、 test ok and abc</p>
+<p>D、 test ok and gbc </p>
+<p>##2.5 数组</p>
+<p><strong>声明数组的两种方式：</strong></p>
+<p>int a[];<br>int []a;</p>
+<p>通过上边的定义，我们只是得到了一个数组的引用。这时已经为引用分配了存储空间，但是还没有给数组对象本身分配任何空间。想要给数组对象分配存储空间，必须使用初始化表达式。</p>
+<p><strong>初始化数组的方式：</strong></p>
+<p>int a[] = new int[8]; //分配空间，赋值默认值<br>int a[] = {0,1,2,3};<br>int a[] = new int[]{0,1,2,3};</p>
+<p><strong>默认初始化</strong></p>
+<p>如果我们利用int a[] = new int[6]，为数组元素分配了空间，但没有初始化，Java会为他们分配默认值。如下表所示：</p>
+<p>基本类型    默认值<br>boolean false<br>char       ‘/u0000’(null)<br>byte       (byte)0<br>short      (short)0<br>int         0<br>long       0L<br>float      0.0f<br>double     0.0d</p>
+<p><strong>7.下面哪些语句能够正确地生成5个空字符串？</strong></p>
+<p>A.String   a[]=new   String[5]；for(int   i=0;i&lt;5;a[i++]=””);     </p>
+<p>B.String   a[]={“”，””，””，””，””}；     </p>
+<p>C.String   a[5]；     </p>
+<p>D.String[5] a；     </p>
+<p>E.String   []a=new   String[5];for(int   i=0;i&lt;5;a[i++]=null);</p>
+<p><strong>5.下面哪个语句正确地声明一个整型的二维数组？ </strong></p>
+<p>A. int   a[][] =   new   int[][]；     </p>
+<p>B. int   a[10][10]   =   new   int[][]；     </p>
+<p>C. int   a[][]   =   new   int[10][10]；     </p>
+<p>D. int   [][]a   =   new   int[10][10]；     </p>
+<p>E. int   []a[]   =   new   int[10][10]；</p>
+<p><strong>27.哪个语句创建了一个数组实例？ </strong></p>
+<p>A. int[] ia = new int [15]; </p>
+<p>B. float fa = new float [20]; </p>
+<p>C. char[] ca = “Some String”; </p>
+<p>D. int ia [][] = {4, 5, 6} {1, 2, 3};</p>
+<p><strong>数组有没有length()这个方法? String有没有length()这个方法？</strong><br>没有，有</p>
+<p><strong>请问下面程序在初始化后，a[0]和b[0]的值是多少？</strong></p>
+<p>String []a = new String[10];  //null<br>int []b = new int[10];  //0</p>
+<p><strong>下面程序的运行结果是：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int index=1; </div><div class="line">int foo[]=new int[3]; </div><div class="line">int bar=foo[index]; </div><div class="line">int baz=bar+index;</div></pre></td></tr></table></figure>
+<p>A. baz has a value of 0<br>B. baz has value of 1<br>C. baz has value of 2<br>D. an exception is thrown<br>E. the code will not compile </p>
+<p><strong>下面代码的运行结果为：（）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import java.io.*;</div><div class="line"></div><div class="line">import java.util.*;</div><div class="line">public class foo&#123;</div><div class="line"></div><div class="line">    public static void main (String[] args)&#123;</div><div class="line"></div><div class="line">        String s;</div><div class="line"></div><div class="line">        System.out.println(&quot;s=&quot; + s);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>A 代码得到编译，并输出“s=”</p>
+<p>B 代码得到编译，并输出“s=null”</p>
+<p>C 由于String s没有初始化，代码不能编译通过</p>
+<p>D 代码得到编译，但捕获到 NullPointException异常</p>
+<p>##2.6  构造函数相关</p>
+<p><strong>1、如果一个类中没有写任何的构造方法，JVM会生成一个默认的无参构造方法。</strong></p>
+<p><strong>2、如果一个基类中写了有参构造函数，没有定义无参构造函数，基类是不会默认生成无参构造函数的。而且子类的构造函数中，如果没有显示通过super.调用基类构造函数，那么默认是调用父类的无参构造方法（即默认为super()，一般这句话省略了）。</strong></p>
+<p>下面哪三个描述是正确的？  B、C、E</p>
+<p>A. 默认构造器初始化方法变量</p>
+<p>B. 默认构造器有和它所在类相同的访问修饰词.</p>
+<p>C. 默认构造器调用其父类的无参构造器.</p>
+<p>D. 如果一个类没有无参构造器,编译器会它创建一个默认构造器.</p>
+<p>E. 只有当一个类没有任何构造器时，编译器会为它创建一个默认构造器</p>
+<p>以下子类B的情形哪一个是可以通过编译的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public class A &#123;  </div><div class="line">    public A(String s)&#123;  &#125;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line"></div><div class="line">public class B extends A &#123;   </div><div class="line">    String name = &quot;llyB&quot;;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">  </div><div class="line">public class B extends A &#123;    </div><div class="line">    String name = &quot;llyB&quot;;  </div><div class="line">    public B(String s)&#123;&#125;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line">  </div><div class="line">public class B extends A &#123;    </div><div class="line">    String name = &quot;llyB&quot;;  </div><div class="line">    public B(String s)&#123;  </div><div class="line">        super(s);  </div><div class="line">    &#125;  </div><div class="line">&#125;   能</div></pre></td></tr></table></figure>
+<p>所以，只要记住，在子类的构造方法中，只要里面没有显示的通过super去调用父类相应的构造方法，默认都是调用super()，即无参构造方法，因此要确保父类有相应的构造方法。</p>
+<p><strong>3、Java创建对象的几种方式：</strong></p>
+<p>(1) 用new语句创建对象，这是最常见的创建对象的方法。<br>(2) 运用反射手段,调用java.lang.Class或者java.lang.reflect.Constructor类的newInstance()实例方法。<br>(3) 调用对象的clone()方法。<br>(4) 运用反序列化手段，调用java.io.ObjectInputStream对象的 readObject()方法。</p>
+<p>(1)和(2)都会明确的显式的调用构造函数 ；(3)是在内存上对已有对象的影印，所以不会调用构造函数 ；(4)是从文件中还原类的对象，也不会调用构造函数。</p>
+<p>历年考题：不通过构造函数也能创建对象吗（A）</p>
+<p>A 是     B 否</p>
+<p>下列说法正确的有（c）</p>
+<p>A． class中的constructor不可省略</p>
+<p>B． constructor必须与class同名，但方法不能与class同名</p>
+<p>C． constructor在一个对象被new时执行</p>
+<p>D．一个class只能定义一个constructor</p>
+<p><strong>4、构造函数调用顺序</strong></p>
+<p>在Java中，子类的构造过程中必须调用其父类的构造函数，是因为有继承关系存在时，子类要把父类的内容继承下来。但如果父类有多个构造函数时，该如何选择调用呢？</p>
+<p>第一个规则：子类的构造过程中，必须调用其父类的构造方法。一个类，如果我们不写构造方法，那么编译器会帮我们加上一个默认的构造方法（就是没有参数的构造方法），但是如果你自己写了构造方法，那么编译器就不会给你添加了，所以有时候当你new一个子类对象的时候，肯定调用了子类的构造方法，但是如果在子类构造方法中我们并没有显示的调用基类的构造方法，如：super();  这样就会调用父类没有参数的构造方法。    </p>
+<p>第二个规则：如果子类的构造方法中既没有显示的调用基类构造方法，而基类中又没有无参的构造方法，则编译出错，所以，通常我们需要显示的：super(参数列表)，来调用父类有参数的构造函数，此时无参的构造函数就不会被调用。</p>
+<p>总之，一句话：子类没有显示调用父类构造函数，不管子类构造函数是否带参数都默认调用父类无参的构造函数，若父类没有则编译出错。</p>
+<p>历年考题：下面是People和Child类的定义和构造方法，每个构造方法都输出编号。在执行new Child(“mike”)的时候都有哪些构造方法被顺序调用？请选择输出结果 ( )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class People &#123;</div><div class="line">    String name;</div><div class="line"></div><div class="line">    public People() &#123;</div><div class="line">        System.out.print(1);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public People(String name) &#123;</div><div class="line">        System.out.print(2);</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Child extends People &#123;</div><div class="line">    People father;</div><div class="line"></div><div class="line">    public Child(String name) &#123;</div><div class="line">        System.out.print(3);</div><div class="line">        this.name = name;</div><div class="line">        father = new People(name + &quot;:F&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public Child() &#123;</div><div class="line">        System.out.print(4);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>A312              B 32               C 432              D 132</p>
+<p><strong>5、override与Overloading</strong></p>
+<p>Override（重写）:<br>    在子类中定义与父类具有完全相同的名称和参数的方法，通过子类创建的实例对象调用这个方法时，将调用子类中的定义方法，这相当于把父类中定义的那个完全相同的方法给覆盖了，是子类与父类之间多态性的一种体现。特点如下：<br>  （1）子类方法的访问权限只能比父类的更大，不能更小（可以相同）；<br>  （2）如果父类的方法是private类型，那么，子类则不存在覆盖的限制，相当于子类中增加了一个全新的方法；</p>
+<p>Overload（重载）:<br>  同一个类中可以有多个名称相同的方法，但方法的参数个数和参数类型或者参数顺序不同；<br>    关于重载函数返回类型能否不一样，需分情况：<br>（1）如果几个Overloaded的方法的参数列表不一样（个数或类型），它们的返回者类型当然也可以不一样；<br>（2）两个方法的参数列表完全一样，则不能通过让其返回类型的不同来实现重载。<br>（3）不同的参数顺序也是可以实现重载的；<br>（4）构造器Constructor不能被继承，因此不能重写Overriding，但可以被重载。  </p>
+<h3 id="2-7-静态代码块执行顺序"><a href="#2-7-静态代码块执行顺序" class="headerlink" title="2.7 静态代码块执行顺序"></a>2.7 静态代码块执行顺序</h3><p>执行顺序：1.静态代码块 –&gt; 2.普通代码块 –&gt; 3.构造方法</p>
+<p>需要明白的是，1是类级别的，2和3是实例级别的，所以在父子类关系中，上述的执行顺序为：</p>
+<p>父类静态代码块–&gt;子类静态代码块–&gt;父类普通代码块–&gt;父类构造方法–&gt;子类代码块–&gt;子类构造方法；</p>
+<p>也就是上到下（父类到子类）先走完 类级别的（静态的）–&gt; 再依次走完父类的所有实例级别代码 –&gt; 再走子类所有实例级别代码</p>
+<p>历史题目：</p>
+<p>如下代码的输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class HelloB extends HelloA &#123;</div><div class="line">     public HelloB() &#123;</div><div class="line">         System.out.println(&quot;-----------HelloB 构造方法------------&quot;);</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     &#123;</div><div class="line">         System.out.println(&quot;I’m B class&quot;);</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     static&#123;</div><div class="line">         System.out.println(&quot;static B&quot;);</div><div class="line">     &#125;</div><div class="line">     public static void main(String[] args)&#123;</div><div class="line">         new HelloB();</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class HelloA&#123;</div><div class="line">     public HelloA()&#123;</div><div class="line">         System.out.println(&quot;-----------HelloA 构造方法------------&quot;);</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     &#123;</div><div class="line">         System.out.println(&quot;I’m A class&quot;);</div><div class="line">     &#125;</div><div class="line"></div><div class="line">     static&#123;</div><div class="line">         System.out.println(&quot;static A&quot;);</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果：<br>static A<br>static B<br>I’m A class<br>———–HelloA 构造方法————<br>I’m B class<br>———–HelloB 构造方法————</p>
+<p><strong>下面程序的运行结果是什么（）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">class HelloA &#123;</div><div class="line"></div><div class="line">    public HelloA() &#123;</div><div class="line">        System.out.println(&quot;HelloA&quot;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    &#123; System.out.println(&quot;I&apos;m A class&quot;); &#125;</div><div class="line">    </div><div class="line">    static &#123; System.out.println(&quot;static A&quot;); &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">public class HelloB extends HelloA &#123;</div><div class="line">    public HelloB() &#123;</div><div class="line">        System.out.println(&quot;HelloB&quot;);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    &#123; System.out.println(&quot;I&apos;m B class&quot;); &#125;</div><div class="line">    </div><div class="line">    static &#123; System.out.println(&quot;static B&quot;); &#125;</div><div class="line">    </div><div class="line">    public static void main(String[] args) &#123; </div><div class="line">　　　　 new HelloB(); </div><div class="line">　　 &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">static A</div><div class="line">static B</div><div class="line">I&apos;m A class</div><div class="line">HelloA</div><div class="line">I&apos;m B class</div><div class="line">HelloB</div></pre></td></tr></table></figure>
+<h3 id="2-8-面向对象"><a href="#2-8-面向对象" class="headerlink" title="2.8 面向对象"></a>2.8 面向对象</h3><p>1、Java面向对象的基本思想之一是封装细节并且公开接口。Java语言采用访问控制修饰符来控制类及类的方法和变量的访问权限，从而向使用者暴露接口，但隐藏实现细节。访问控制分为四种级别：</p>
+<p>（1）public： 用public修饰的类、类属变量及方法，包内及包外的任何类（包括子类和普通类）均可以访问；</p>
+<p>（2）protected： 用protected修饰的类、类属变量及方法，包内的任何类及包外那些继承了该类的子类才能访问（此处稍后解释），protected重点突出继承；</p>
+<p>（3）default： 如果一个类、类属变量及方法没有用任何修饰符（即没有用public、protected及private中任何一种修饰），则其访问权限为default（默认访问权限）。默认访问权限的类、类属变量及方法，包内的任何类（包括继承了此类的子类）都可以访问它，而对于包外的任何类都不能访问它（包括包外继承了此类的子类）。default重点突出包；</p>
+<p>（4）private： 用private修饰的类、类属变量及方法，只有本类可以访问，而包内包外的任何类均不能访问它。　</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>当前类</th>
+<th>同 包</th>
+<th>子 类</th>
+<th>其他包</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>default</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>private</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p>2、final修饰的类不能被继承，没有子类。</p>
+<p>3、abstract修饰的类不能被实例化，必须被子类继承。类只要有一个抽象方法就必定是抽象类，但抽象类不一定要有抽象方法。声明方式必须是：<figure class="highlight plain"><figcaption><span>void C();``` 不能带我实现体大括号。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">历史题目：</div><div class="line"></div><div class="line">**1、如下代码：**</div></pre></td></tr></table></figure></p>
+<p>class A {</p>
+<p>A() { }</p>
+<p>}</p>
+<p>class B extends A {</p>
+<p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">哪两个说明是正确的？   </div><div class="line"></div><div class="line">A. B类的构造器应该是 public.</div><div class="line"></div><div class="line">B. B类的构造器应该是没有参数</div><div class="line"></div><div class="line">C. B类的构造器应该调用this().</div><div class="line"></div><div class="line">D. B类的构造器应该调用super().</div><div class="line"></div><div class="line">**是否可以继承String类?**</div><div class="line"></div><div class="line">String类是final类故不可以继承。</div><div class="line"></div><div class="line">**以public修饰的类如：public class Car&#123;…&#125; 则Car( )  **</div><div class="line"></div><div class="line">A、可被其它程序包中的类使用 B、仅能被本程序包中的类使用</div><div class="line"></div><div class="line">C、不能被任意其它类使用 D、不能被其它类继承</div><div class="line"></div><div class="line">### 2.9 equals与==的区别</div><div class="line"></div><div class="line">**（1）==是一个运算符，它比较的是值**</div><div class="line">    </div><div class="line">对于基本数据类型，直接比较其数据值是否相等。如果是不同的基本数据类型之间进行比较，则遵循基本数据类型间运算的转换原则。如下：</div><div class="line">  </div><div class="line">```        </div><div class="line">if(12 == 12.0)&#123;  </div><div class="line">    System.out.println(&quot;-----12 == 12.0-------&quot;);  </div><div class="line">&#125; </div><div class="line">``` </div><div class="line"></div><div class="line">此时打印了-----12 == 12.0-------，因为低一级的int类型的12自动转换为高一级的float类型</div><div class="line"></div><div class="line">对于引用类型，==比较的还是值，只不过此时比较的是两个对象变量的内存地址。所以，用==来比较对象，实际上是判断这两个对象是否是同一个new出来的对象，或者是否是一个对象赋值给另一个对象的情况。如：</div></pre></td></tr></table></figure></p>
+<p>String s1 = new String(“abc”);<br>String s2 = s1;//将s1对的内存地址赋给了s2，此时s1==s2返回true；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**（2）equals**</div><div class="line"></div><div class="line">equals方法是属于Object类的一个方法，其实现源码如下：</div></pre></td></tr></table></figure></p>
+<p>public boolean equals(Object obj) {<br>    return (this == obj);<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">可以看到，其实equals方法里面用的还是==运算符，所以对于那些没有重写过Object类的equals方法来说，==和equals方法是等价的！</div><div class="line"></div><div class="line">然而，很多类都自己去重写了equals方法，比如String类、所有基本数据类型的包装类等</div><div class="line">String类的equals源码如下：</div></pre></td></tr></table></figure></p>
+<p>public boolean equals(Object anObject) {<br>    if (this == anObject) {<br>        return true;<br>    }<br>    if (anObject instanceof String) {<br>        String anotherString = (String) anObject;<br>        int n = value.length;<br>        if (n == anotherString.value.length) {<br>            char v1[] = value;<br>            char v2[] = anotherString.value;<br>            int i = 0;<br>            while (n– != 0) {<br>                if (v1[i] != v2[i])<br>                        return false;<br>                i++;<br>            }<br>            return true;<br>        }<br>    }<br>    return false;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">首先判断是否是同一个new出来的对象，即判断内存地址是否相同；如果不同则判断对象中的内容是否相同。</div><div class="line"></div><div class="line">Integer类的equals方法如下：</div><div class="line"></div><div class="line">```   </div><div class="line">public boolean equals(Object obj) &#123;  </div><div class="line">    if (obj instanceof Integer) &#123;  </div><div class="line">        return value == ((Integer)obj).intValue();  </div><div class="line">    &#125;  </div><div class="line">    return false;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>直接转成判断值是否相等了。</p>
+<p>因此，对于String类和所有基本数据类型的包装类来说，equals方法就是判断其内容是否相等。对于其他类来说，要具体看其是否重写了equals方法及具体业务实现。</p>
+<p>另：对于基本数据类型来说，使用equals方法，需要用该基本类型对应的包装类，因为equals是针对对象来使用的！</p>
+<p><strong>下面程序的运行结果是（）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String str1 = &quot;hello&quot;;</div><div class="line">String str2 = &quot;he&quot; + new String(&quot;llo&quot;);</div><div class="line">System.err.println(str1 == str2);</div></pre></td></tr></table></figure>
+<p>##其它基础</p>
+<p><strong>&amp;和&amp;&amp;的区别</strong></p>
+<p>&amp;是位运算符，表示按位与运算，&amp;&amp;是逻辑运算符，表示逻辑与（and）。</p>
+<p><strong>下面的语句会产生什么样的输出? </strong></p>
+<p>System.out.println(4&amp;7);</p>
+<p>A.4</p>
+<p>B.5</p>
+<p>C.6</p>
+<p>D.7</p>
+<p>E.0</p>
+<p><strong>5、try、catch、finally执行顺序问题</strong></p>
+<p><strong>14. 如下代码：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">public class Foo &#123;</div><div class="line"></div><div class="line">public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">try &#123;</div><div class="line"></div><div class="line">return;</div><div class="line"></div><div class="line">&#125; finally &#123;</div><div class="line"></div><div class="line">System.out.println( &quot;Finally&quot; );</div><div class="line"></div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果是什么?   A</p>
+<p>A. Finally</p>
+<p>B.编译失败</p>
+<p>C. 代码正常运行但没有任何输出.</p>
+<p>D. 运行时抛出异常</p>
+<p>下面函数将返回？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">publicstaticintfunc ()&#123;</div><div class="line">    try&#123;</div><div class="line">        return 1;</div><div class="line">    &#125;catch(Exception e)&#123;</div><div class="line">        return 2;</div><div class="line">    &#125;finally&#123;</div><div class="line">        return 3;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>A、1    B、2    C、3     D、编译错误</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/18/数据结构之线性表/" rel="next" title="数据结构之线性表">
+                <i class="fa fa-chevron-left"></i> 数据结构之线性表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://avatar.csdn.net/0/C/7/1_yangxin1113.jpg"
+               alt="三金Sir" />
+          <p class="site-author-name" itemprop="name">三金Sir</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础数据类型"><span class="nav-number">1.</span> <span class="nav-text">基础数据类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7-静态代码块执行顺序"><span class="nav-number"></span> <span class="nav-text">2.7 静态代码块执行顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8-面向对象"><span class="nav-number"></span> <span class="nav-text">2.8 面向对象</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">三金Sir</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="数据结构," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,34 +84,34 @@
 
 
 
-<meta name="description" content="什么是数据结构
-数据结构是数据对象、存在于该对象的实例以及组成实例的数据元素之间的关系，并且这种关系可以通过定义相关的函数来给出
-数据结构是抽象数据类型ADT的物理实现
-一个数据结构是由数据元素依据某种逻辑联系起来的，对数据元素之间逻辑关系的描述称为数据的逻辑结构。由于数据必须在计算机内存储，数据的存储结构是其在计算机内的表示，既数据的实现形式
+<meta name="description" content="什么是线性表线性表就是由n（n&amp;gt;0）个数据元素a1,a2….组成的有限序列
 
-基本概念
-数据（Data）：数据是信息的载体，其能">
+数据元素的个数为n，表长度，当n=0时为空表
+一个线性表为非空表，既n&amp;gt;0，则可以简单记为（a1,a2….,an)
+数据元素ai表示了各个元素，在不同场合含义不同逻辑结构特点
+有且仅有一个开始结点a1,没有直接前驱结点,有且仅有一个后继结点a2
+有且仅有一个终结点an,没有直接后继结点，有且仅有一个前驱结点a">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构（一）">
-<meta property="og:url" content="http://yoursite.com/2017/06/15/数据结构（一）/index.html">
+<meta property="og:title" content="数据结构之线性表">
+<meta property="og:url" content="http://yoursite.com/2017/06/18/数据结构之线性表/index.html">
 <meta property="og:site_name" content="Fighting！">
-<meta property="og:description" content="什么是数据结构
-数据结构是数据对象、存在于该对象的实例以及组成实例的数据元素之间的关系，并且这种关系可以通过定义相关的函数来给出
-数据结构是抽象数据类型ADT的物理实现
-一个数据结构是由数据元素依据某种逻辑联系起来的，对数据元素之间逻辑关系的描述称为数据的逻辑结构。由于数据必须在计算机内存储，数据的存储结构是其在计算机内的表示，既数据的实现形式
+<meta property="og:description" content="什么是线性表线性表就是由n（n&amp;gt;0）个数据元素a1,a2….组成的有限序列
 
-基本概念
-数据（Data）：数据是信息的载体，其能">
-<meta property="og:updated_time" content="2017-06-18T15:17:00.192Z">
+数据元素的个数为n，表长度，当n=0时为空表
+一个线性表为非空表，既n&amp;gt;0，则可以简单记为（a1,a2….,an)
+数据元素ai表示了各个元素，在不同场合含义不同逻辑结构特点
+有且仅有一个开始结点a1,没有直接前驱结点,有且仅有一个后继结点a2
+有且仅有一个终结点an,没有直接后继结点，有且仅有一个前驱结点a">
+<meta property="og:updated_time" content="2017-06-19T15:36:10.104Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构（一）">
-<meta name="twitter:description" content="什么是数据结构
-数据结构是数据对象、存在于该对象的实例以及组成实例的数据元素之间的关系，并且这种关系可以通过定义相关的函数来给出
-数据结构是抽象数据类型ADT的物理实现
-一个数据结构是由数据元素依据某种逻辑联系起来的，对数据元素之间逻辑关系的描述称为数据的逻辑结构。由于数据必须在计算机内存储，数据的存储结构是其在计算机内的表示，既数据的实现形式
+<meta name="twitter:title" content="数据结构之线性表">
+<meta name="twitter:description" content="什么是线性表线性表就是由n（n&amp;gt;0）个数据元素a1,a2….组成的有限序列
 
-基本概念
-数据（Data）：数据是信息的载体，其能">
+数据元素的个数为n，表长度，当n=0时为空表
+一个线性表为非空表，既n&amp;gt;0，则可以简单记为（a1,a2….,an)
+数据元素ai表示了各个元素，在不同场合含义不同逻辑结构特点
+有且仅有一个开始结点a1,没有直接前驱结点,有且仅有一个后继结点a2
+有且仅有一个终结点an,没有直接后继结点，有且仅有一个前驱结点a">
 
 
 
@@ -139,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/15/数据结构（一）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/18/数据结构之线性表/"/>
 
 
 
 
 
-  <title> 数据结构（一） | Fighting！ </title>
+  <title> 数据结构之线性表 | Fighting！ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -268,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/数据结构（一）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/数据结构之线性表/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="三金Sir">
@@ -292,7 +292,7 @@
             
             
               
-                数据结构（一）
+                数据结构之线性表
               
             
           </h1>
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T23:17:40+08:00">
-                2017-06-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T23:19:52+08:00">
+                2017-06-18
               </time>
             
 
@@ -343,71 +343,53 @@
       
 
       
-        <h4 id="什么是数据结构"><a href="#什么是数据结构" class="headerlink" title="什么是数据结构"></a>什么是数据结构</h4><ul>
-<li>数据结构是数据对象、存在于该对象的实例以及组成实例的数据元素之间的关系，并且这种关系可以通过定义相关的函数来给出</li>
-<li>数据结构是抽象数据类型ADT的物理实现</li>
-<li>一个数据结构是由数据元素依据某种逻辑联系起来的，对数据元素之间逻辑关系的描述称为数据的逻辑结构。由于数据必须在计算机内存储，数据的存储结构是其在计算机内的表示，既数据的实现形式</li>
-</ul>
-<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
-<li>数据（Data）：数据是信息的载体，其能够被计算机识别、存储和加工处理，是计算机程序加工的“原材料”。</li>
-<li>数据元素：数据元素是数据的基本单位，其也称之为元素，结点、顶点、记录等。</li>
-<li>数据项：一个元素可以由若干个数据项组成，数据项是具有独立含义的最小标识单位。数据项也可称之为字段、域、属性</li>
-<li>数据结构：是指数据间的相互关系，也就是数据的组织形式。</li>
-</ul>
-<p>####数据结构的内容</p>
+        <h4 id="什么是线性表"><a href="#什么是线性表" class="headerlink" title="什么是线性表"></a>什么是线性表</h4><p>线性表就是由n（n&gt;0）个数据元素a1,a2….组成的有限序列</p>
 <ul>
-<li>数据的逻辑结构</li>
-<li>数据的存储结构</li>
-<li>数据的运算（检索、插入、删除、更新、排序等） </li>
+<li>数据元素的个数为n，表长度，当n=0时为空表</li>
+<li>一个线性表为非空表，既n&gt;0，则可以简单记为（a1,a2….,an)</li>
+<li>数据元素ai表示了各个元素，在不同场合含义不同<br>逻辑结构特点</li>
+<li>有且仅有一个开始结点a1,没有直接前驱结点,有且仅有一个后继结点a2</li>
+<li>有且仅有一个终结点an,没有直接后继结点，有且仅有一个前驱结点an-1</li>
+<li>其余内部结点ai（2&lt;=i&lt;=n-1）都有且仅有一个前驱结点和一个后继结点</li>
+<li>同一个线性表，各个数据元素ai必须具有相同的数据类型</li>
 </ul>
-<h4 id="数据结构分类"><a href="#数据结构分类" class="headerlink" title="数据结构分类"></a>数据结构分类</h4><ul>
-<li>按逻辑结构分类<ol>
-<li>线性结构<ul>
-<li>线性结构是非空集</li>
-<li>线性结构有且仅有一个开始结点和一个终端结点</li>
-<li>线性结构所有结点最多只有一个直接前驱结点和一个直接后继结点 </li>
-<li>线性表、栈、队列和串等</li>
+<h4 id="线性表的基本运算"><a href="#线性表的基本运算" class="headerlink" title="线性表的基本运算"></a>线性表的基本运算</h4><ol>
+<li>初始化</li>
+<li>计算表表长</li>
+<li>获取结点</li>
+<li>查找结点</li>
+<li>插入结点</li>
+<li>删除结点</li>
+</ol>
+<h4 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h4><ol>
+<li>顺序表就是按照顺序存储方式存储的线性表，该线性表的结点按照逻辑次依次存放在计算机的一组连续的存储单元中</li>
+<li>结点ai存储地址的LOC(ai)计算式：LOC(ai)=a1+(i-1)*c  (0&lt;=i&lt;=n)</li>
+<li>重点<ul>
+<li>插入结点：先判断结点数量是否已满，以及插入结点序号是否正确，满足，将顺序表的数据后移，同时插入节点，更新结点数量表长度</li>
+<li>删除结点：先判断待删除结点序号是否正确，然后开始移动数据，并更新结点数量</li>
 </ul>
 </li>
-<li>非线性结构<ul>
-<li>非线性结构是非空集</li>
-<li>非线性结构的一个结点可能有多个直接前驱结点和多个直接后继结点</li>
-<li>数组、广义表、树结构和图结构等</li>
+<li>顺序表缺点<ul>
+<li>在插入和删除节点的时候，往往需要移动大量的数据</li>
+<li>如果表比较大，有时比较难分配足够的连续存储空间，往往导致内存分配失败，而无法存储</li>
 </ul>
 </li>
 </ol>
-</li>
-<li>按存储结构分类<ol>
-<li>顺序存储结构<ul>
-<li>在一块连续的存储区域一个接着一个的存放数据</li>
-<li>线性存储方式主要用于线性逻辑结构的数据存放</li>
+<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><ol>
+<li>链表结构是一种动态存储分配的结构形式，可以根据需要动态申请内存单元</li>
+<li>链表中每个结点都包含如下两部分<ul>
+<li>数据部分，保存的是该节点的实际数据</li>
+<li>地址部分，保存的是下一个节点的地址</li>
 </ul>
 </li>
-<li>链式存储结构<ul>
-<li>不要求逻辑上相邻的结点物理位置上相邻，结点间的逻辑关系由附加的引用字段表示。一个结点的引用字段往往指向下一个结点的存放位置。</li>
-<li>也称链式存储结构</li>
+<li>采用引用来指示下一个数据的地址，因此在链表结构中，逻辑上相邻的结点在内存中并不一定相邻，逻辑上相邻关系通过地址部分的引用变量来实现。</li>
+<li>链表结构分类<ul>
+<li>单链表</li>
+<li>双链表:每个结点包含两个引用，一个指向下一个结点，一个指向上一个结点</li>
+<li>单循环链表:在单链表中，将终端结点的引用域null改为指向表头结点或者开始结点</li>
+<li>多重链的循环表：将表中结点链在多个环上</li>
 </ul>
 </li>
-<li>索引存储结构<ul>
-<li>采用附加的索引表的方式来存储结点信息</li>
-</ul>
-</li>
-<li>散列存储方式<ul>
-<li>根据结点的关键字 直接计算出该结点的存储地址的一种存储方式</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="常用数据结构"><a href="#常用数据结构" class="headerlink" title="常用数据结构"></a>常用数据结构</h4><ol>
-<li>数组<br>数组是一种聚合数据类型，是将具有相同类型的若干变量有序的组织在一起的计集合。</li>
-<li>栈<br>栈是一种特殊的线性表，其只能在一个表的固定端进行数据节点的插入和删除操作。</li>
-<li>队列<br>队列和栈类似也是一种特殊的线性表。和栈不同的是，队列只允许在表的一端进行插入操作，在表的另一端进行删除操作。</li>
-<li>链表<br>链表是一种数据元素按照链式存储结构进行存储的数据结构。</li>
-<li>树<br>树是典型的非线性结构，其中包括了n个结点的有穷集合。</li>
-<li>图<br>图是另一种非线性结构</li>
-<li>堆<br>堆是一种特殊的树形结构，我们一般讨论的是堆都是二叉树。</li>
-<li>散列表<br>散列表源自于散列函数，结构中存在关键字和T相等的记录。</li>
 </ol>
 
       
@@ -430,19 +412,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/14/什么是算法/" rel="next" title="什么是算法">
-                <i class="fa fa-chevron-left"></i> 什么是算法
+              <a href="/2017/06/15/数据结构（一）/" rel="next" title="数据结构（一）">
+                <i class="fa fa-chevron-left"></i> 数据结构（一）
               </a>
             
           </div>
@@ -451,8 +427,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/18/数据结构之线性表/" rel="prev" title="数据结构之线性表">
-                数据结构之线性表 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/22/面试基础（一）/" rel="prev" title="面试基础（一）">
+                面试基础（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -576,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是数据结构"><span class="nav-number">1.</span> <span class="nav-text">什么是数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构分类"><span class="nav-number">3.</span> <span class="nav-text">数据结构分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用数据结构"><span class="nav-number">4.</span> <span class="nav-text">常用数据结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是线性表"><span class="nav-number">1.</span> <span class="nav-text">什么是线性表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性表的基本运算"><span class="nav-number">2.</span> <span class="nav-text">线性表的基本运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#顺序表"><span class="nav-number">3.</span> <span class="nav-text">顺序表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链表结构"><span class="nav-number">4.</span> <span class="nav-text">链表结构</span></a></li></ol></div>
             
 
           </div>
