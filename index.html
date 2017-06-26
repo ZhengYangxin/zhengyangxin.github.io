@@ -248,6 +248,171 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/26/Java中方法调用参数传递的方式是传值，有且只有传值/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="三金Sir">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://avatar.csdn.net/0/C/7/1_yangxin1113.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Fighting！">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Fighting！" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/26/Java中方法调用参数传递的方式是传值，有且只有传值/" itemprop="url">
+                  Java中方法调用参数传递的方式是传值，有且只有传值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-26T22:56:10+08:00">
+                2017-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>####Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）####</p>
+<h4 id="基本数据类型与引用数据类型的区别"><a href="#基本数据类型与引用数据类型的区别" class="headerlink" title="基本数据类型与引用数据类型的区别"></a>基本数据类型与引用数据类型的区别</h4><ul>
+<li><p>8中基本数据类型</p>
+</li>
+<li><p>引用数据类型：类、接口类型、数组类型、枚举类型、注解类型。</p>
+</li>
+<li><p>区别：</p>
+<ul>
+<li><p>基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。</p>
+</li>
+<li><p>引用数据类型在被创建时，首先要在栈上给其引用（句柄）分配一块内存，而对象的具体信息都存储在堆内存上，然后由栈上面的引用指向堆中对象的地址。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>例如，有一个类Person,有属性name,age,带有参的构造方法，</p>
+<p>Person p = new Person(“zhangsan”,20);</p>
+<p>在内存中的具体创建过程是：</p>
+<ol>
+<li><p>首先在栈内存中位其p分配一块空间;</p>
+</li>
+<li><p>在堆内存中为Person对象分配一块空间，并为其三个属性设初值””，0；</p>
+</li>
+<li><p>根据类Person中对属性的定义，为该对象的两个属性进行赋值操作；</p>
+</li>
+<li><p>调用构造方法，为两个属性赋值为”Tom”,20；（注意这个时候p与Person对象之间还没有建立联系）；</p>
+</li>
+<li><p>将Person对象在堆内存中的地址，赋值给栈中的p;通过引用（句柄）p可以找到堆中对象的具体信息。</p>
+</li>
+</ol>
+<h4 id="相关知识："><a href="#相关知识：" class="headerlink" title="相关知识："></a>相关知识：</h4><p>静态区： 保存自动全局变量和 static 变量（包括 static 全局和局部变量）。静态区的内容在总个程序的生命周期内都存在，由编译器在编译的时候分配。</p>
+<p>堆区：  一般由程序员分配释放，由 malloc 系列函数或 new 操作符分配的内存，其生命周期由 free 或 delete 决定。在没有释放之前一直存在，直到程序结束，由OS释放。其特点是使用灵活，空间比较大，但容易出错</p>
+<p>栈区： 由编译器自动分配释放，保存局部变量，栈上的内容只在函数的范围内存在，当函数运行结束，这些内容也会自动被销毁，其特点是效率高，但空间大小有限</p>
+<p>文字常量区： 常量字符串就是放在这里的。   程序结束后由系统释放。</p>
+<p>程序代码区：存放函数体的二进制代码。</p>
+<p><img src="http://images0.cnblogs.com/blog2015/751291/201507/051423530158394.png" alt="Alt text" title="Optional title"></p>
+<p>####在Java中，所有的对象变量都是引用，Java通过引用来管理对象。然而在给方法传参时，Java并没有使用传引用的方式，而是采用了传值的方式。####<br>例如下面的badSwap()方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void badSwap(int var1, int var2)  </div><div class="line">&#123;  </div><div class="line">  int temp = var1;  </div><div class="line">  var1 = var2;  </div><div class="line">  var2 = temp;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当badSwap方法结束时，原有的var1和var2的值并不会发生变化。即使我们用其它Object类型来替代int，也不会有变化，因为Java在传递引用时也是采用传值的方式。（译者注：这里是关键，全文的核心是：1. Java中对象变量是引用 2. Java中方法是传值的 3. 传方法中参数时，传递的是引用的值）<br>如果译者的注释没看明白，没关系，看看下面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public void tricky(Point arg1, Point arg2)  </div><div class="line">&#123;  </div><div class="line">  arg1.x = 100;  </div><div class="line">  arg1.y = 100;  </div><div class="line">  Point temp = arg1;  </div><div class="line">  arg1 = arg2;  </div><div class="line">  arg2 = temp;  </div><div class="line">&#125;  </div><div class="line">public static void main(String [] args)  </div><div class="line">&#123;  </div><div class="line">  Point pnt1 = new Point(0,0);  </div><div class="line">  Point pnt2 = new Point(0,0);  </div><div class="line">  System.out.println(&quot;X: &quot; + pnt1.x + &quot; Y: &quot; +pnt1.y);   </div><div class="line">  System.out.println(&quot;X: &quot; + pnt2.x + &quot; Y: &quot; +pnt2.y);  </div><div class="line">  System.out.println(&quot; &quot;);  </div><div class="line">  tricky(pnt1,pnt2);  </div><div class="line">  System.out.println(&quot;X: &quot; + pnt1.x + &quot; Y:&quot; + pnt1.y);   </div><div class="line">  System.out.println(&quot;X: &quot; + pnt2.x + &quot; Y: &quot; +pnt2.y);    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>执行main()的输出如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">X: 0 Y: 0  </div><div class="line">X: 0 Y: 0  </div><div class="line">X: 100 Y: 100  </div><div class="line">X: 0 Y: 0</div></pre></td></tr></table></figure></p>
+<p>这个方法成功地改变了pnt1的值，但pnt1和pnt2的交换却失败了！这是Java参数传递机制里最让人迷惑的地方。在main()中，pnt1和pnt2是Point对象的引用，当将pnt1和pnt2传递给tricky()时，Java使用的正是传值的方式，将这两个引用的传给了﻿﻿arg1和arg2。也就是说arg1和arg2正是pnt1和pnt2的复制，他们所指向的对象是相同的。详情可见下面的图示：</p>
+<div align="center"><br><img src="http://images.techhive.com/images/idge/imported/article/jvw/2000/05/03-qa-0512-pass1-100158781-orig.gif" alt="Alt text" title="Optional title"><br>在作为参数传递后，对象至少有两个引用指向自己<br></div><br>在main()中，引用被复制并以传值的方式进行传递，对象本身并不会被传递。因此，tricky()方法中pnt1所指向的对象发生了变化。因为传递的是引用的复制，因此引用的交换既不能引起对象的交换，更不会使原始引用发生变化。如图2所示，tricky()交换了arg1与arg2，但不会影响pnt1和pnt2。因此若想交换原始引用pnt1和pnt2，那么不能通过调用方法的方式来实现。<br><div align="center"><br><img src="http://hi.csdn.net/attachment/201201/31/0_13279907114A2K.gif" alt="Alt text" title="Optional title"><br>在作为参数传递后，对象至少有两个引用指向自己<br></div>
+
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ol>
+<li>Java中对象变量是引用 </li>
+<li>Java中方法是传值的 </li>
+<li>传方法中参数时，传递的是引用的值 </li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/25/try-catch-finally的执行顺序及数据处理情况/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1985,162 +2150,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/Teach-you-to-recognize-MVCMVPMVVM/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="三金Sir">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://avatar.csdn.net/0/C/7/1_yangxin1113.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Fighting！">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Fighting！" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/26/Teach-you-to-recognize-MVCMVPMVVM/" itemprop="url">
-                  Teach you to recognize MVC, MVP and MVVM
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-26T16:12:29+08:00">
-                2017-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Teach-you-to-recognize-MVC-MVP-AND-MVVM"><a href="#Teach-you-to-recognize-MVC-MVP-AND-MVVM" class="headerlink" title="Teach you to recognize MVC, MVP AND MVVM"></a>Teach you to recognize MVC, MVP AND MVVM</h3><p>I believe we are no stranger to MVC, MVP and MVVM, as the three most familiar Android framework. Their applications can be very extensive, but for some novice, it can be difficult to distinguish between them three.</p>
-<h3 id="Article-focus"><a href="#Article-focus" class="headerlink" title="Article focus:"></a>Article focus:</h3><ol>
-<li>Learn and distinguish between MVC, MVP and MVVM.</li>
-<li>Know how these three models in the use of Android.</li>
-<li>Out of the DataBinding errors.</li>
-<li>Understand the development model of MVP data binding.</li>
-</ol>
-<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC means Model View Controller, is the most common framework in the software architecture, simply through the control of controller to operate the modle layer of data, and return to view layer display.</p>
-<p><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvc.png" alt="Alt text" title="Optional title"></p>
-<p>Use the traditional MVC, which View, corresponding to a variety of layout files, but these layout files are not as powerful as the Web Side, can do very limited. Controller correspods to the Activity, but Activity has the function of operating UI. We in the actual project will hava a lot of UI operations, and also do a lot of View should be dong in the layer</p>
-<p>MVC there is an important flaw, we look at the picture above, view layer and the model layer is mutual konw, which means that there is coupling between the two layers. The Coupling is very fatal for large program, beacuse it means that development, testing, maintenance need to spend a lot of energy.</p>
-<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><p>MVP as MVC evolution, to solve a lot of MVC shortcommings. For Android, MVP model layer relative to the MVC is the same, but activity and fragment is no longer the controller layer, but the pure view layer.And all fordwarding of user events is handled by the presenter layer.<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvp.png" alt="Alt text" title="Optional title"></p>
-<p>It can be seen from the figure that the most obvious difference is that the view and model layer are no longer mutual konw and complete descoupling. Instead of the precenter layer acts as bridge, the events used to manipulate the view layer are passed to the presenter layer, the presenter layer to mainpulate the model layer, and the data is returned to the view layer. the view layer and the model layer are completely unconnected throughout the process.</p>
-<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM最早是由微软提出的<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvvm.png" alt="Alt text" title="Optional title"></p>
-<p>From the figure to see that it is similiar to MVP, but the presenter layer<br>be replaced by ViewModel layer. And the view layer and the viewmodel are bound to each other, the means that when you update the data of the viewmodel layer, the view layer changes accordingly ui. </p>
-<h3 id="Last-MVP-Databinding"><a href="#Last-MVP-Databinding" class="headerlink" title="Last: MVP + Databinding"></a>Last: MVP + Databinding</h3><p>We use the data binding framework to save similar findViewById and data binding time, and the use of presenter to separate the business logic and view layer.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2188,7 +2197,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
