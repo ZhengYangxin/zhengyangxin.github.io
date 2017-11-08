@@ -84,52 +84,21 @@
 
 
 
-<meta name="description" content="Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）基本数据类型与引用数据类型
-
-8种基本数据类型
-
-引用数据类型：类、接口类型、数组类型、枚举类型、注解类型。
-
-
-区别：
-
-基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。
-
-引用数据类型在被创建时，首先要在栈上给">
+<meta name="description" content="Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）基本数据类型与引用数据类型  8种基本数据类型  引用数据类型：类、接口类型、数组类型、枚举类型、注解类型。   区别：  基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。  引用数据类型在被创建时，首先要在栈上给">
+<meta name="keywords" content="Java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中方法调用参数传递的方式是传值，有且只有传值">
 <meta property="og:url" content="http://yoursite.com/2017/06/26/Java中方法调用参数传递的方式是传值，有且只有传值/index.html">
 <meta property="og:site_name" content="Fighting！">
-<meta property="og:description" content="Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）基本数据类型与引用数据类型
-
-8种基本数据类型
-
-引用数据类型：类、接口类型、数组类型、枚举类型、注解类型。
-
-
-区别：
-
-基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。
-
-引用数据类型在被创建时，首先要在栈上给">
+<meta property="og:description" content="Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）基本数据类型与引用数据类型  8种基本数据类型  引用数据类型：类、接口类型、数组类型、枚举类型、注解类型。   区别：  基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。  引用数据类型在被创建时，首先要在栈上给">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://images0.cnblogs.com/blog2015/751291/201507/051423530158394.png">
 <meta property="og:image" content="http://images.techhive.com/images/idge/imported/article/jvw/2000/05/03-qa-0512-pass1-100158781-orig.gif">
 <meta property="og:image" content="http://hi.csdn.net/attachment/201201/31/0_13279907114A2K.gif">
-<meta property="og:updated_time" content="2017-06-27T14:38:00.058Z">
+<meta property="og:updated_time" content="2017-11-08T13:33:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中方法调用参数传递的方式是传值，有且只有传值">
-<meta name="twitter:description" content="Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）基本数据类型与引用数据类型
-
-8种基本数据类型
-
-引用数据类型：类、接口类型、数组类型、枚举类型、注解类型。
-
-
-区别：
-
-基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。
-
-引用数据类型在被创建时，首先要在栈上给">
+<meta name="twitter:description" content="Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）基本数据类型与引用数据类型  8种基本数据类型  引用数据类型：类、接口类型、数组类型、枚举类型、注解类型。   区别：  基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。  引用数据类型在被创建时，首先要在栈上给">
 <meta name="twitter:image" content="http://images0.cnblogs.com/blog2015/751291/201507/051423530158394.png">
 
 
@@ -390,11 +359,11 @@
 <p>文字常量区： 常量字符串就是放在这里的。   程序结束后由系统释放。</p>
 <p>程序代码区：存放函数体的二进制代码。</p>
 <p><img src="http://images0.cnblogs.com/blog2015/751291/201507/051423530158394.png" alt="Alt text" title="Optional title"></p>
-<p><strong>在Java中，所有的对象变量都是引用，Java通过引用来管理对象。然而在给方法传参时，Java并没有使用传引用的方式，而是采用了传值的方式。</strong><br>例如下面的badSwap()方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void badSwap(int var1, int var2)  </div><div class="line">&#123;  </div><div class="line">  int temp = var1;  </div><div class="line">  var1 = var2;  </div><div class="line">  var2 = temp;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>在Java中，所有的对象变量都是引用，Java通过引用来管理对象。然而在给方法传参时，Java并没有使用传引用的方式，而是采用了传值的方式。</strong><br>例如下面的badSwap()方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void badSwap(int var1, int var2)  </span><br><span class="line">&#123;  </span><br><span class="line">  int temp = var1;  </span><br><span class="line">  var1 = var2;  </span><br><span class="line">  var2 = temp;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>当badSwap方法结束时，原有的var1和var2的值并不会发生变化。即使我们用其它Object类型来替代int，也不会有变化，因为Java在传递引用时也是采用传值的方式。（译者注：这里是关键，全文的核心是：1. Java中对象变量是引用 2. Java中方法是传值的 3. 传方法中参数时，传递的是引用的值）<br>代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">public void tricky(Point arg1, Point arg2)  </div><div class="line">&#123;  </div><div class="line">  arg1.x = 100;  </div><div class="line">  arg1.y = 100;  </div><div class="line">  Point temp = arg1;  </div><div class="line">  arg1 = arg2;  </div><div class="line">  arg2 = temp;  </div><div class="line">&#125;  </div><div class="line">public static void main(String [] args)  </div><div class="line">&#123;  </div><div class="line">  Point pnt1 = new Point(0,0);  </div><div class="line">  Point pnt2 = new Point(0,0);  </div><div class="line">  System.out.println(&quot;X: &quot; + pnt1.x + &quot; Y: &quot; +pnt1.y);   </div><div class="line">  System.out.println(&quot;X: &quot; + pnt2.x + &quot; Y: &quot; +pnt2.y);  </div><div class="line">  System.out.println(&quot; &quot;);  </div><div class="line">  tricky(pnt1,pnt2);  </div><div class="line">  System.out.println(&quot;X: &quot; + pnt1.x + &quot; Y:&quot; + pnt1.y);   </div><div class="line">  System.out.println(&quot;X: &quot; + pnt2.x + &quot; Y: &quot; +pnt2.y);    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public void tricky(Point arg1, Point arg2)  </span><br><span class="line">&#123;  </span><br><span class="line">  arg1.x = 100;  </span><br><span class="line">  arg1.y = 100;  </span><br><span class="line">  Point temp = arg1;  </span><br><span class="line">  arg1 = arg2;  </span><br><span class="line">  arg2 = temp;  </span><br><span class="line">&#125;  </span><br><span class="line">public static void main(String [] args)  </span><br><span class="line">&#123;  </span><br><span class="line">  Point pnt1 = new Point(0,0);  </span><br><span class="line">  Point pnt2 = new Point(0,0);  </span><br><span class="line">  System.out.println(&quot;X: &quot; + pnt1.x + &quot; Y: &quot; +pnt1.y);   </span><br><span class="line">  System.out.println(&quot;X: &quot; + pnt2.x + &quot; Y: &quot; +pnt2.y);  </span><br><span class="line">  System.out.println(&quot; &quot;);  </span><br><span class="line">  tricky(pnt1,pnt2);  </span><br><span class="line">  System.out.println(&quot;X: &quot; + pnt1.x + &quot; Y:&quot; + pnt1.y);   </span><br><span class="line">  System.out.println(&quot;X: &quot; + pnt2.x + &quot; Y: &quot; +pnt2.y);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行main()的输出如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">X: 0 Y: 0  </div><div class="line">X: 0 Y: 0  </div><div class="line">X: 100 Y: 100  </div><div class="line">X: 0 Y: 0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X: 0 Y: 0  </span><br><span class="line">X: 0 Y: 0  </span><br><span class="line">X: 100 Y: 100  </span><br><span class="line">X: 0 Y: 0</span><br></pre></td></tr></table></figure>
 <p>这个方法成功地改变了pnt1的值，但pnt1和pnt2的交换却失败了！这是Java参数传递机制里最让人迷惑的地方。在main()中，pnt1和pnt2是Point对象的引用，当将pnt1和pnt2传递给tricky()时，Java使用的正是传值的方式，将这两个引用的传给了﻿﻿arg1和arg2。也就是说arg1和arg2正是pnt1和pnt2的复制，他们所指向的对象是相同的。详情可见下面的图示：</p>
 <div align="center"><br><img src="http://images.techhive.com/images/idge/imported/article/jvw/2000/05/03-qa-0512-pass1-100158781-orig.gif" alt="Alt text" title="Optional title"><br>在作为参数传递后，对象至少有两个引用指向自己<br></div><br>在main()中，引用被复制并以传值的方式进行传递，对象本身并不会被传递。因此，tricky()方法中pnt1所指向的对象发生了变化。因为传递的是引用的复制，因此引用的交换既不能引起对象的交换，更不会使原始引用发生变化。如图2所示，tricky()交换了arg1与arg2，但不会影响pnt1和pnt2。因此若想交换原始引用pnt1和pnt2，那么不能通过调用方法的方式来实现。<br><div align="center"><br><img src="http://hi.csdn.net/attachment/201201/31/0_13279907114A2K.gif" alt="Alt text" title="Optional title"><br>在作为参数传递后，对象至少有两个引用指向自己<br></div>
 
@@ -517,7 +486,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

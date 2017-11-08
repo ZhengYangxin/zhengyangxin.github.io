@@ -85,14 +85,16 @@
 
 
 <meta name="description" content="Touch事件传递机制其中Activity和View控件（TextView）拥有分派和处理事件方法，View容器（LinearLayout）具有分派，拦截，处理事件方法。这里也有个比喻：领导都会把任务向下分派，一旦下面的人把事情做不好，就不会再把后续的任务交给下面的人来做了，只能自己亲自做，如果自己也做不了，就只能告诉上级不能完成任务，上级又会重复他的过程。另外，领导都有权利拦截任务，对下级隐瞒该">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事件传递机制">
 <meta property="og:url" content="http://yoursite.com/2017/03/27/事件传递机制/index.html">
 <meta property="og:site_name" content="Fighting！">
 <meta property="og:description" content="Touch事件传递机制其中Activity和View控件（TextView）拥有分派和处理事件方法，View容器（LinearLayout）具有分派，拦截，处理事件方法。这里也有个比喻：领导都会把任务向下分派，一旦下面的人把事情做不好，就不会再把后续的任务交给下面的人来做了，只能自己亲自做，如果自己也做不了，就只能告诉上级不能完成任务，上级又会重复他的过程。另外，领导都有权利拦截任务，对下级隐瞒该">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://static.open-open.com/lib/uploadImg/20150128/20150128145842_296.png">
 <meta property="og:image" content="http://www.codeceo.com/wp-content/uploads/2015/01/touch-event-5.png">
-<meta property="og:updated_time" content="2017-03-27T07:10:28.178Z">
+<meta property="og:updated_time" content="2017-11-08T13:33:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件传递机制">
 <meta name="twitter:description" content="Touch事件传递机制其中Activity和View控件（TextView）拥有分派和处理事件方法，View容器（LinearLayout）具有分派，拦截，处理事件方法。这里也有个比喻：领导都会把任务向下分派，一旦下面的人把事情做不好，就不会再把后续的任务交给下面的人来做了，只能自己亲自做，如果自己也做不了，就只能告诉上级不能完成任务，上级又会重复他的过程。另外，领导都有权利拦截任务，对下级隐瞒该">
@@ -350,7 +352,7 @@
       
 
       
-        <h3 id="Touch事件传递机制"><a href="#Touch事件传递机制" class="headerlink" title="Touch事件传递机制"></a>Touch事件传递机制</h3><p>其中Activity和View控件（TextView）拥有分派和处理事件方法，View容器（LinearLayout）具有分派，拦截，处理事件方法。这里也有个比喻：领导都会把任务向下分派，一旦下面的人把事情做不好，就不会再把后续的任务交给下面的人来做了，只能自己亲自做，如果自己也做不了，就只能告诉上级不能完成任务，上级又会重复他的过程。另外，领导都有权利拦截任务，对下级隐瞒该任务，而直接自己去做，如果做不成，也只能向上级报告不能完成任务。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//分派事件</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></span></div><div class="line"><span class="comment">//拦截事件 </span></div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span></div><div class="line"><span class="comment">//处理事件</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span></div></pre></td></tr></table></figure></p>
+        <h3 id="Touch事件传递机制"><a href="#Touch事件传递机制" class="headerlink" title="Touch事件传递机制"></a>Touch事件传递机制</h3><p>其中Activity和View控件（TextView）拥有分派和处理事件方法，View容器（LinearLayout）具有分派，拦截，处理事件方法。这里也有个比喻：领导都会把任务向下分派，一旦下面的人把事情做不好，就不会再把后续的任务交给下面的人来做了，只能自己亲自做，如果自己也做不了，就只能告诉上级不能完成任务，上级又会重复他的过程。另外，领导都有权利拦截任务，对下级隐瞒该任务，而直接自己去做，如果做不成，也只能向上级报告不能完成任务。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//分派事件</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></span></span><br><span class="line"><span class="function"><span class="comment">//拦截事件 </span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span></span></span><br><span class="line"><span class="function"><span class="comment">//处理事件</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span></span></span><br></pre></td></tr></table></figure></p>
 <p><img src="http://static.open-open.com/lib/uploadImg/20150128/20150128145842_296.png" alt="Alt text" title="Optional title"></p>
 <p><img src="http://www.codeceo.com/wp-content/uploads/2015/01/touch-event-5.png" alt="Alt text" title="Optional title"></p>
 <p>从上面两张事件传递图我们的出来一些结论：</p>
@@ -481,7 +483,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -84,23 +84,19 @@
 
 
 
-<meta name="description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to=origin/dev2.2 masterBranch master set up to track remote branch dev2.2 from origin.
-远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。
-二.查看所有分支（本地、远程）123456$ git branch -">
+<meta name="description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to=origin/dev2.2 masterBranch master set up to track remote branch dev2.2 from origin. 远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。 二.查看所有分支（本地、远程）123456$ git branch -">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git相关操作">
 <meta property="og:url" content="http://yoursite.com/2017/08/02/git相关操作/index.html">
 <meta property="og:site_name" content="Fighting！">
-<meta property="og:description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to=origin/dev2.2 masterBranch master set up to track remote branch dev2.2 from origin.
-远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。
-二.查看所有分支（本地、远程）123456$ git branch -">
+<meta property="og:description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to=origin/dev2.2 masterBranch master set up to track remote branch dev2.2 from origin. 远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。 二.查看所有分支（本地、远程）123456$ git branch -">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://img.blog.csdn.net/20150811134840627">
-<meta property="og:updated_time" content="2017-08-02T14:42:28.834Z">
+<meta property="og:updated_time" content="2017-11-08T13:33:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git相关操作">
-<meta name="twitter:description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to=origin/dev2.2 masterBranch master set up to track remote branch dev2.2 from origin.
-远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。
-二.查看所有分支（本地、远程）123456$ git branch -">
+<meta name="twitter:description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to=origin/dev2.2 masterBranch master set up to track remote branch dev2.2 from origin. 远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。 二.查看所有分支（本地、远程）123456$ git branch -">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20150811134840627">
 
 
@@ -355,18 +351,30 @@
       
 
       
-        <h3 id="一-git关联本地与远程分支"><a href="#一-git关联本地与远程分支" class="headerlink" title="一. git关联本地与远程分支"></a>一. git关联本地与远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch --set-upstream-to=origin/dev2.2 master</div><div class="line">Branch master set up to track remote branch dev2.2 from origin.</div></pre></td></tr></table></figure>
+        <h3 id="一-git关联本地与远程分支"><a href="#一-git关联本地与远程分支" class="headerlink" title="一. git关联本地与远程分支"></a>一. git关联本地与远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --set-upstream-to=origin/dev2.2 master</span><br><span class="line">Branch master set up to track remote branch dev2.2 from origin.</span><br></pre></td></tr></table></figure>
 <p>远程分支在前，本地分支在后。<br>关联之后就可以正常的pull代码了。</p>
-<h3 id="二-查看所有分支（本地、远程）"><a href="#二-查看所有分支（本地、远程）" class="headerlink" title="二.查看所有分支（本地、远程）"></a>二.查看所有分支（本地、远程）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ git branch -a</div><div class="line">* master</div><div class="line">  remotes/origin/HEAD -&gt; origin/master</div><div class="line">  remotes/origin/dev</div><div class="line">  remotes/origin/dev2.2</div><div class="line">  remotes/origin/master</div></pre></td></tr></table></figure>
-<h3 id="三-当前关联的远程分支"><a href="#三-当前关联的远程分支" class="headerlink" title="三.当前关联的远程分支"></a>三.当前关联的远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch -vv</div><div class="line">* master beb7725 [origin/dev2.2: behind 1] 首页本地记录上次关闭之前的状态</div></pre></td></tr></table></figure>
+<h3 id="二-查看所有分支（本地、远程）"><a href="#二-查看所有分支（本地、远程）" class="headerlink" title="二.查看所有分支（本地、远程）"></a>二.查看所有分支（本地、远程）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">  remotes/origin/HEAD -&gt; origin/master</span><br><span class="line">  remotes/origin/dev</span><br><span class="line">  remotes/origin/dev2.2</span><br><span class="line">  remotes/origin/master</span><br></pre></td></tr></table></figure>
+<h3 id="三-当前关联的远程分支"><a href="#三-当前关联的远程分支" class="headerlink" title="三.当前关联的远程分支"></a>三.当前关联的远程分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -vv</span><br><span class="line">* master beb7725 [origin/dev2.2: behind 1] 首页本地记录上次关闭之前的状态</span><br></pre></td></tr></table></figure>
 <h3 id="四-git-merge-和-git-merge-–no-ff"><a href="#四-git-merge-和-git-merge-–no-ff" class="headerlink" title="四.git merge 和 git merge –no-ff"></a>四.git merge 和 git merge –no-ff</h3><p><img src="http://img.blog.csdn.net/20150811134840627" alt="Alt text" title="Optional title"><br>根据这张图片可以看出<br>Git merge –no-ff 可以保存你之前的分支历史。能够更好的查看 merge历史，以及branch 状态。<br>git merge 则不会显示 feature，只保留单条分支记录。</p>
-<h3 id="五-merge-与-rebase-的区别"><a href="#五-merge-与-rebase-的区别" class="headerlink" title="五.merge 与 rebase 的区别"></a>五.merge 与 rebase 的区别</h3><p>1.Git merge 会生成一个新得合并节点，而rebase不会<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">      D---E test</div><div class="line">     /</div><div class="line">A---B---C---F master</div></pre></td></tr></table></figure></p>
-<p>使用merge合并, 为分支合并自动识别出最佳的同源合并点： git merge master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">      D--------E</div><div class="line">     /          \</div><div class="line">A---B---C---F----G   test, master</div></pre></td></tr></table></figure></p>
-<p>操作会舍弃 master 分支上提取的 commit，同时不会像 merge 一样生成一个合并修改内容的 commit，相当于把 master 分支（当前所在分支）上的修改在 deve 分支（目标分支）上原样复制了一遍:git rebase test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A---B---D---E---C&apos;---F&apos;   test, master</div></pre></td></tr></table></figure></p>
-<p>使用git pull时默认是merge， 加 –rebase参数使其使用rebase方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull --rebase</div></pre></td></tr></table></figure></p>
+<h3 id="五-merge-与-rebase-的区别"><a href="#五-merge-与-rebase-的区别" class="headerlink" title="五.merge 与 rebase 的区别"></a>五.merge 与 rebase 的区别</h3><p>1.Git merge 会生成一个新得合并节点，而rebase不会<br>比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      D---E test</span><br><span class="line">     /</span><br><span class="line">A---B---C---F master</span><br></pre></td></tr></table></figure></p>
+<p>使用merge合并, 为分支合并自动识别出最佳的同源合并点： git merge master<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      D--------E</span><br><span class="line">     /          \</span><br><span class="line">A---B---C---F----G   test, master</span><br></pre></td></tr></table></figure></p>
+<p>操作会舍弃 master 分支上提取的 commit，同时不会像 merge 一样生成一个合并修改内容的 commit，相当于把 master 分支（当前所在分支）上的修改在 deve 分支（目标分支）上原样复制了一遍:git rebase test<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A---B---D---E---C&apos;---F&apos;   test, master</span><br></pre></td></tr></table></figure></p>
+<p>使用git pull时默认是merge， 加 –rebase参数使其使用rebase方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase</span><br></pre></td></tr></table></figure></p>
 <p>2.rebase和merge的不同适用场景</p>
 <p><strong>rebase场景：</strong>如果修改了某个公用代码的BUG，这个时候就应该是把所有的OEM版本分支rebase到这个修复BUG的分支上来，在rebase过程中，Git会要你手动解决代码上的冲突，你需要做的就是把修复BUG的代码放到目标分支代码里面去。rebase的结果是：所有的分支依然存在</p>
 <p><strong>merge场景：</strong>因为成员的代码开发工作已经完成了，也不需要再保留这个分支了，所以我们可以把这个成员分支merge到主分支上，当然冲突在所难免，手工解决的工作肯定逃不掉，但是利大于弊不是吗。merge以后，分支就不存在了，但是在git的所有分支历史中还能看到身影。</p>
+<p><strong>一般我们把别的分支合并到master时用merge，而把master合并到别的分支时会用到rebase的原因，这是因为master分支一般commit会比较频繁。</strong></p>
+<p>所以每次下拉代码fetch之后用rebase的原因就是：<br>本地commit之后，fetch远端代码，此时，远端代码可能会被若干人修改会有若干个commit，而本地就一个commit，然后git rebase的时候，是默认rebase 远端代码，此时会将本地commit应用到远端代码，也就只需要解决一次冲突，并且rebase之后没有新的commit，很友好。但是，如果使用merge，则会产生新的commit。</p>
+<h3 id="六-网上推荐的工作流一般是用fetch-rebase-相比pull-merge工作流更干净，不容易出错"><a href="#六-网上推荐的工作流一般是用fetch-rebase-相比pull-merge工作流更干净，不容易出错" class="headerlink" title="六.网上推荐的工作流一般是用fetch+rebase (相比pull+merge工作流更干净，不容易出错)"></a>六.网上推荐的工作流一般是用fetch+rebase (相比pull+merge工作流更干净，不容易出错)</h3><p><strong>比如dev是你的公共开发分支*</strong></p>
+<p>git checkout dev  # 本地切到公共分支 </p>
+<p>git pull              # 将本地的dev更新</p>
+<p>git checkout -b bug_101026  # 新建一个主题分支（一个bug，一个功能什么的）<br>… # 改动.. commit.. 测试…</p>
+<p>git fetch origin      # 更新upstream</p>
+<p>git rebase origin/dev  # 将你的commits移到的末尾</p>
+<p>git checkout dev  # 切换到公共分支</p>
+<p>git pull              # 更新公共分支</p>
+<p>git rebase bug_101026  # 将你的主题分支加到公共分支的末尾</p>
+<p>git push               # 推送</p>
 
       
     </div>
@@ -481,7 +489,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -534,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-git关联本地与远程分支"><span class="nav-number">1.</span> <span class="nav-text">一. git关联本地与远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-查看所有分支（本地、远程）"><span class="nav-number">2.</span> <span class="nav-text">二.查看所有分支（本地、远程）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-当前关联的远程分支"><span class="nav-number">3.</span> <span class="nav-text">三.当前关联的远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-git-merge-和-git-merge-–no-ff"><span class="nav-number">4.</span> <span class="nav-text">四.git merge 和 git merge –no-ff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-merge-与-rebase-的区别"><span class="nav-number">5.</span> <span class="nav-text">五.merge 与 rebase 的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-git关联本地与远程分支"><span class="nav-number">1.</span> <span class="nav-text">一. git关联本地与远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-查看所有分支（本地、远程）"><span class="nav-number">2.</span> <span class="nav-text">二.查看所有分支（本地、远程）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三-当前关联的远程分支"><span class="nav-number">3.</span> <span class="nav-text">三.当前关联的远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-git-merge-和-git-merge-–no-ff"><span class="nav-number">4.</span> <span class="nav-text">四.git merge 和 git merge –no-ff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五-merge-与-rebase-的区别"><span class="nav-number">5.</span> <span class="nav-text">五.merge 与 rebase 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六-网上推荐的工作流一般是用fetch-rebase-相比pull-merge工作流更干净，不容易出错"><span class="nav-number">6.</span> <span class="nav-text">六.网上推荐的工作流一般是用fetch+rebase (相比pull+merge工作流更干净，不容易出错)</span></a></li></ol></div>
             
 
           </div>
