@@ -3,6 +3,7 @@ title: 使用Hexo，换电脑怎么更新博客
 date: 2017-11-10 15:33:53
 tags: "经验"
 ---
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=474567580&auto=1&height=66"></iframe>
 hexo官方给了一些迁移的方法，不过它上面介绍的方法都是把博客文章从hexo系统迁移到其他博客系统的方法。然而我们这里要讨论的是：
 #### 当我们更换电脑的时候我们应该怎么办？
 所以默认你已经成功利用hexo和github发布博客，如果还没有，网上很多资料。
