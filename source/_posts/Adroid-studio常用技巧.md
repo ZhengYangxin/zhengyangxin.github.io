@@ -5,6 +5,7 @@ tags: [Adroid studio, 经验]
 category: "开发工具"
 ---
 Android studio 是Google官方定制的Android开发工具，俗话说工欲善其事必先利其器，充分利用开发工具不仅能大大提高工作效率，同时也是个人能力的一种体现。在此提供关键字和官方文档方便查阅和记忆
+<!--more-->
 #### 1.Android 国际化多语言实现
 Translations Editor 翻译编辑
 preview中导航栏Language，设置及时显示语言
