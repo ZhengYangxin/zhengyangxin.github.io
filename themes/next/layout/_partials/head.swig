@@ -80,6 +80,7 @@
 
 
 {# Export some HEXO Configurations to Front-End #}
+<script type="text/javascript" src="http://opd2n5pxb.bkt.clouddn.com/high.js"></script>
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
