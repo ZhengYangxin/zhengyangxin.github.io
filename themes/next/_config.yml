@@ -485,3 +485,12 @@ alipay: http://opd2n5pxb.bkt.clouddn.com/zfb.jpg
 search: 
       path: search.xml
       field: post
+
+# Gitment comments
+gitment:
+  enable: true
+  owner: ZhengYangxin
+  repo: zhengyangxin.github.io
+  client_id: b24172d6c95cf7a5de0d
+  client_secret: dea089e1f4983170fa4b43eed199279456f1b6ac
+  lazy: true
