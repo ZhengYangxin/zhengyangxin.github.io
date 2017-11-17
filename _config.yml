@@ -72,3 +72,9 @@ deploy:
   type: git
   repo: git@github.com:ZhengYangxin/zhengyangxin.github.io.git
   branch: master
+
+# Feed Atom
+feed:
+type: atom
+path: atom.xml
+limit: 10
