@@ -1,14 +1,15 @@
 .header {
   position: relative;
   margin: 0 auto;
-  width: $main-desktop;
-
+  /*width: $main-desktop;*/
+  width: 1150px;
   +tablet() {
     width: auto;
   }
   +mobile() {
     width: auto;
   }
+  
 }
 
 .header-inner {
@@ -47,7 +48,7 @@
 }
 
 .container .main-inner {
-  width: $main-desktop;
+  /*width: $main-desktop;*/
 
   +tablet() {
     width: auto;
@@ -55,13 +56,16 @@
   +mobile() {
     width: auto;
   }
+
+  width: 1150px;
 }
 
 .content-wrap {
   float: right;
   box-sizing: border-box;
   padding: $content-desktop-padding;
-  width: $content-desktop;
+  /*width: $content-desktop;*/
+  width: calc(100% - 260px);
   background: white;
   min-height: 700px;
   box-shadow: $box-shadow-inner;
@@ -78,6 +82,8 @@
     min-height: auto;
     border-radius: initial;
   }
+
+  
 }
 
 .sidebar {
