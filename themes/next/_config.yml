@@ -503,3 +503,7 @@ post_wordcount:
   item_text: true
   wordcount: true
   min2read: true
+
+# 文章末尾添加“本文结束”标记
+passage_end_tag:
+  enabled: true

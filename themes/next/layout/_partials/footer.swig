@@ -9,7 +9,7 @@
 </div>
 
 {% if theme.copyright %}
-<div class="powered-by">
+<!-- <div class="powered-by">
   {{ __('footer.powered', '<a class="theme-link" href="https://hexo.io">Hexo</a>') }}
 </div>
 
@@ -19,9 +19,9 @@
     NexT.{{ theme.scheme }}
   </a>
 </div>
-
+-->
 <div class="theme-info">
-  <div class="powered-by"></div>
+  <!-- <div class="powered-by"></div>-->
   <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
 </div>
 {% endif %}
