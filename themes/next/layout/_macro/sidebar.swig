@@ -106,6 +106,9 @@
                 #}</a>
                 </span>
               {% endfor %}
+              <!--以下是加入关于high一下的代码-->
+              <span class="links-of-author-item"><a title="小high一下~" style="underline: none;color:red" rel="alternate" class="mw-harlem_shake_slow wobble shake" href="javascript:shake()"><i class="fa fa-music"></i> &nbsp;&nbsp;High</a></span>
+              <!--以上是加入关于high一下的代码-->
             {% endif %}
           </div>
 
