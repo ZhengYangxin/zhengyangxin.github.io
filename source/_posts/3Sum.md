@@ -3,7 +3,7 @@ title: 3Sum
 date: 2017-11-20 15:03:24
 tags: [leetCode, 算法]
 category: "算法"
-copyright:
+copyright: true
 ---
 题目链接：[3Sum](https://leetcode.com/problems/3sum/discuss/ "Optional title")
 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
