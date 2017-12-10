@@ -1,5 +1,5 @@
 ---
-title: bit manipulation
+title: Bit Manipulation
 copyright: true
 date: 2017-12-04 15:41:37
 tags: [leetCode, "算法"]
