@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Fighting！</title>
+  
+  <subtitle>潜行者的沉默</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yangxin.online/"/>
+  <updated>2018-01-29T09:11:47.272Z</updated>
+  <id>http://yangxin.online/</id>
+  
+  <author>
+    <name>三金Sir</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java反射那些事</title>
+    <link href="http://yangxin.online/Java%E5%8F%8D%E5%B0%84%E9%82%A3%E4%BA%9B%E4%BA%8B.html"/>
+    <id>http://yangxin.online/Java反射那些事.html</id>
+    <published>2018-01-29T03:05:10.000Z</published>
+    <updated>2018-01-29T09:11:47.272Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="反射机制的定义"><a href="#反射机制的定义" class="headerlink" title="反射机制的定义"></a>反射机制的定义</h2><p>在运行状态期间，能过动态的知道一个类的属性和方法，能够动态的调用一个对象的属性和方法的功能。</p><h2 id="反射机制的功能"><a href="#反射机制的功能" class="headerlink" title="反射机制的功能"></a>反射机制的功能</h2><p>在运行期间</p><ol><li>判断任意一个对象所属的类</li><li>构建任意一个类的对象</li><li>判断任意一个类的属性和方法</li><li>调用任意一个对象的方法</li><li>生成动态代理</li></ol><h2 id="反射机制的应用场景"><a href="#反射机制的应用场景" class="headerlink" title="反射机制的应用场景"></a>反射机制的应用场景</h2><ol><li>逆向代码，反编译</li><li>与注解相结合的框架，retrofit</li><li>单纯的反射机制框架，EventBus</li><li>动态生成类框架，Gson</li></ol><h2 id="通过反射获取类信息"><a href="#通过反射获取类信息" class="headerlink" title="通过反射获取类信息"></a>通过反射获取类信息</h2><p>每个类被加载后，系统会为该类生成一个对应的Class对象，通过该Class对象就可以访问JVM中的这个类</p><h4 id="在JAVA程序中获得Class对象通常有三种方法"><a href="#在JAVA程序中获得Class对象通常有三种方法" class="headerlink" title="在JAVA程序中获得Class对象通常有三种方法"></a>在JAVA程序中获得Class对象通常有三种方法</h4><ol><li>使用Class类的forName()静态方法,传入全限定名</li><li>调用某个类的class属性 </li><li>通过对象getClass()获取Class对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.Classs  class = Class.forName(com.zyx.Person);</span><br><span class="line">2.Class calss = Person.class;</span><br><span class="line">3.Person person = new Person();</span><br><span class="line">Class class = person.getClass();</span><br></pre></td></tr></table></figure></li></ol><h4 id="获取class对象的属性、方法、构造函数"><a href="#获取class对象的属性、方法、构造函数" class="headerlink" title="获取class对象的属性、方法、构造函数"></a>获取class对象的属性、方法、构造函数</h4><ol><li><p>获取class对象的属性</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Field[] allFields = class.getDeclaredFileds();// 获取所有声明的属性</span><br><span class="line">Filed[] publicFileds = calss.getFields[]; //获取所有public属性</span><br><span class="line">Field ageField = class.getDeclaredFiled(&quot;age&quot;);// 获取指定声明的属性</span><br><span class="line">Filed desFiled = calss.getField(&quot;age&quot;); //获取指定public属性</span><br></pre></td></tr></table></figure></li><li><p>获取class对象的方法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Method[] methods = class.getDeclaredMethods();// 获取所有声明的方法</span><br><span class="line">Method[] publicFileds = calss.getMethods[]; //获取所有public方法，</span><br><span class="line">Method[] publicFileds = calss.getMethods[]; //获取所有public方法，带指定形参列表的方法</span><br><span class="line">Method method= class.getDeclaredMethods(&quot;info&quot;,String.class);// 获取指定声明的方法，</span><br><span class="line">Method infoMethod = calss.getMethod(&quot;info&quot;,String.class); //获取指定public方法,带指定形参列表的方法</span><br></pre></td></tr></table></figure></li><li><p>获取class对象的构造函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Constructor</span><br></pre></td></tr></table></figure></li></ol><h4 id="通过Java反射生成并操作对象"><a href="#通过Java反射生成并操作对象" class="headerlink" title="通过Java反射生成并操作对象"></a>通过Java反射生成并操作对象</h4><p><strong>生成实例</strong></p><ol><li>使用Class对象的newInstance()方法来创建Class对象对应的实例，但对应类必须有默认的构造函数</li><li>先使用Class的对象获取指定的Constructor对象，在调用Constructor对象的newInstance()方法<br><strong>调用方法</strong></li><li>通过Class对象的getMethods()或者getMethod()获得指定方法，返回Method对象或者数组。</li><li>通过Method对象中的invoke()方法。第一个参数传调用该方法的对象，第二个参数传对应该方法的参数。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = class.newInstance();</span><br><span class="line">Method methdo = calss.getDeclareMethod(&quot;setAge&quot;, int.calss);</span><br><span class="line">method.invoke(obj, 28); //会检查调用权限</span><br></pre></td></tr></table></figure></li></ol><p><strong>访问成员变量赋值</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Object obj = class.newInstance();</span><br><span class="line">Field field = class.getField(&quot;age&quot;);</span><br><span class="line">field.setInt(obj, 28);</span><br><span class="line">int age = field.getInt(obj);</span><br></pre></td></tr></table></figure></p><h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>给某个类提供一个代理对象，并由代理对象控制对原对象的访问，即客户不直接操控原对象，而是通过代理对象操控原对象</p><h4 id="代理模式的分类"><a href="#代理模式的分类" class="headerlink" title="代理模式的分类"></a>代理模式的分类</h4><ol><li>静态代理，在编译时就实现好了，会生成对应的Class实际文件</li><li>动态代理，在运行时生成，在运行时生成类字节码被加载到JVM中</li></ol><h4 id="代理模式的思路"><a href="#代理模式的思路" class="headerlink" title="代理模式的思路"></a>代理模式的思路</h4><ol><li>代理对象和目标对象均实现同一个行为接口</li><li>代理对象和目标对象分别实现具体接口逻辑</li><li>在代理对像的构造函数中实例化一个目标对象</li><li>在代理对象中调用目标对象的行为接口</li><li>客户端想要调用目标对象的行为接口只能通过代理对象来操作</li></ol><h4 id="Java反射机制和动态代理"><a href="#Java反射机制和动态代理" class="headerlink" title="Java反射机制和动态代理"></a>Java反射机制和动态代理</h4><p><strong>动态代理介绍</strong></p><ol><li>运行时生成代理类，并将代理类的字节码载入当前代理的ClassLoader</li><li>不需要多些多写一个与目标类相同的代理类</li><li>可以在运行时定制代理类的执行逻辑<br><strong>涉及的类</strong></li><li>java.lang.reflect.Proxy,生成代理类的主类，通过Proxy生成的代理类都继承Proxy。Proxy提供了创建动态代理类和代理对象的方法，是所有动态代理类的父类。</li><li>java.lang.reflect.InvacationHandle 调用处理器，当调用动态代理的方法时会直接转到InvocationHandle的invoke()方法</li></ol><h4 id="泛型与Class"><a href="#泛型与Class" class="headerlink" title="泛型与Class"></a>泛型与Class</h4><p>避免强制转换<br>泛型参数化类型 getGenericType();<br>普通类型 getType()</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;反射机制的定义&quot;&gt;&lt;a href=&quot;#反射机制的定义&quot; class=&quot;headerlink&quot; title=&quot;反射机制的定义&quot;&gt;&lt;/a&gt;反射机制的定义&lt;/h2&gt;&lt;p&gt;在运行状态期间，能过动态的知道一个类的属性和方法，能够动态的调用一个对象的属性和方法的功能。&lt;/p&gt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yangxin.online/categories/Java/"/>
+    
+    
+      <category term="【反射机制】" scheme="http://yangxin.online/tags/%E3%80%90%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E3%80%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java泛型那些事</title>
+    <link href="http://yangxin.online/%E6%B3%9B%E5%9E%8B%E9%82%A3%E4%BA%9B%E4%BA%8B.html"/>
+    <id>http://yangxin.online/泛型那些事.html</id>
+    <published>2018-01-29T02:06:54.000Z</published>
+    <updated>2018-03-12T07:23:21.254Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="泛型的目的"><a href="#泛型的目的" class="headerlink" title="泛型的目的"></a>泛型的目的</h2><p>语法糖即糖衣语法，这种语法对语言并没有影响，只是方便了程序员的使用。主要包括：泛型，变长参数，条件编译，自动拆装箱，内部类等。虚拟机并不支持这种语法，在编译期就会被还原为基础语法结构，这个过程被称为解语法糖。<br>泛型的目的：通过泛型使得在编译期间完成类型转换工作，避免运行时强制类型转换而出现ClassCastException，类型转换异常<br><a id="more"></a></p><h2 id="泛型初窥"><a href="#泛型初窥" class="headerlink" title="泛型初窥"></a>泛型初窥</h2><p>JDK1.5之后添加<br>泛型的好处</p><ol><li>类型安全，将类型检测挪到了编译期。</li><li>消除了代码中许多的强制类型转换，增强了代码的可读性</li><li>为较大的优化带来了可能<h2 id="泛型使用"><a href="#泛型使用" class="headerlink" title="泛型使用"></a>泛型使用</h2>泛型的实质：允许在定义接口、类时声明类型形参，类型形参在整个接口、类体内可当做类型使用<br>方法声明定义的形参只能在该方法里使用<br>修饰符<t,s> 返回值类型 方法名（形参列表）{<br> 方法体<br>}<h2 id="类型通配符"><a href="#类型通配符" class="headerlink" title="类型通配符"></a>类型通配符</h2></t,s></li><li>任意通配符：？匹配任意的类型，用作读取不能添加</li><li>上限通配符：使用extends关键字指定这个类型必须是继承某个类，或者是实现某个接口（子类或者本身）</li><li>下限通配符：使用super关键字指定这个类型必须是某个类的父类，或者是某个接口的父类</li></ol><h2 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h2><p>作用于编译期间，所以运行期间泛型信息是被擦除的，编译后的Class不包含泛型信息。静态方法，静态初始化或者静态变量声明和初始化不允许使用类型形参。也不能使用instance of运算符</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;泛型的目的&quot;&gt;&lt;a href=&quot;#泛型的目的&quot; class=&quot;headerlink&quot; title=&quot;泛型的目的&quot;&gt;&lt;/a&gt;泛型的目的&lt;/h2&gt;&lt;p&gt;语法糖即糖衣语法，这种语法对语言并没有影响，只是方便了程序员的使用。主要包括：泛型，变长参数，条件编译，自动拆装箱，内部类等。虚拟机并不支持这种语法，在编译期就会被还原为基础语法结构，这个过程被称为解语法糖。&lt;br&gt;泛型的目的：通过泛型使得在编译期间完成类型转换工作，避免运行时强制类型转换而出现ClassCastException，类型转换异常&lt;br&gt;
+    
+    </summary>
+    
+      <category term="“JAVA”" scheme="http://yangxin.online/categories/%E2%80%9CJAVA%E2%80%9D/"/>
+    
+    
+      <category term="泛型" scheme="http://yangxin.online/tags/%E6%B3%9B%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java集合类分析理解</title>
+    <link href="http://yangxin.online/Java%E9%9B%86%E5%90%88%E7%B1%BB%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3.html"/>
+    <id>http://yangxin.online/Java集合类分析理解.html</id>
+    <published>2018-01-25T09:32:12.000Z</published>
+    <updated>2018-03-12T07:21:15.978Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/csdn_terence/article/details/78379878" title="Optional title" target="_blank" rel="external">Java集合面试总结</a></p><h2 id="Collecton-和-Map"><a href="#Collecton-和-Map" class="headerlink" title="Collecton 和 Map"></a>Collecton 和 Map</h2><h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><p>包括 Set List Queue</p><h4 id="主要分析"><a href="#主要分析" class="headerlink" title="主要分析"></a>主要分析</h4><ol><li><p>ArrayList</p><ul><li>动态数组</li><li>capacity 扩容机制  1.5倍， 初始 java1.8 : 10 ;android 21 :12</li><li>内部元素变动 System.copyarray();</li><li>线程不安全</li></ul></li><li><p>LinkList<br>双向链表<br>Node()函数，该函数以O(1/2)的性能去获取一个节点<br>链表操作<br>线程不安全</p></li><li><p><a href="http://www.importnew.com/20386.html" title="Optional title" target="_blank" rel="external">HashMap</a></p><ul><li>hash()方法 (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16) able的长度都是2的幂，因此index仅与hash值的低n位有关 <a href="http://blog.csdn.net/fan2012huan/article/details/51097331&quot;Optional title&quot;" target="_blank" rel="external">计算方式</a></li><li>tableSizeFor() 找到大于等于initialCapacity的最小的2的幂</li><li>Node[] tab哈希桶数组.哈希冲突，开放地址和链地址法</li><li>根据key获取哈希桶数组索引位置</li><li>tab 长度为2的幂次</li><li>threshold 所能容纳的key-value对极限</li><li>Map m = Collections.synchronizeMap(hashMap)实现同步</li><li>初始 capacity 16 loadFactor 0.75</li></ul></li><li><p><a href="http://www.iqiyi.com/v_19rro6v558.html?vfm=m_312_shsp" title="Optional title" target="_blank" rel="external">TreeMap</a></p><ul><li>红黑树的定义，节点非红即黑，根节点为黑色，不能连续的红色，任意节点到末端的路径黑色个数相同</li><li>红黑树的平衡调整，颜色和结构</li><li>继承了SortMap ，put()函数会做比较</li><li>寻找后继节点，中序遍历</li></ul></li><li><p>LinkHashMap</p></li></ol><ul><li>与HashMap类似，不过保证了put顺序</li><li>主要实现了afterNodeAccess(),afterNodeInsert(),afterNoderemoval三个方法</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/csdn_terence/article/details/78379878&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java集合面试总结&lt;/a&gt;
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yangxin.online/categories/Java/"/>
+    
+    
+      <category term="集合" scheme="http://yangxin.online/tags/%E9%9B%86%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android 线程那些事</title>
+    <link href="http://yangxin.online/android-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5.html"/>
+    <id>http://yangxin.online/android-线程同步.html</id>
+    <published>2018-01-20T14:55:58.000Z</published>
+    <updated>2018-01-24T04:22:37.678Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="线程和线程安全"><a href="#线程和线程安全" class="headerlink" title="线程和线程安全"></a>线程和线程安全</h3><h4 id="线程是什么"><a href="#线程是什么" class="headerlink" title="线程是什么"></a>线程是什么</h4><ol><li>线程为进程的一个实体</li><li>轻量级进程</li><li>是CPU调度和分配的基本单位</li><li>可与同一进程内的线程共享进程内的全部资源</li><li>android 进程通过fork创建，线程通过pthread.creat创建</li></ol><h4 id="并发的优势促使多线程的出现"><a href="#并发的优势促使多线程的出现" class="headerlink" title="并发的优势促使多线程的出现"></a>并发的优势促使多线程的出现</h4><ol><li>资源利用率 ，提高</li><li>公平性，共享资源</li><li>便利性，多任务并发执行比单任务更容易执行</li></ol><h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><p>多线程的引入意味着引入了线程安全。当单线程能正确运行的代码，在多线程访问的情况下，不管线程以何种顺序访问，并不添加同步代码都能正确表现行为，则称它为线程安全的</p><h3 id="并发的三大要素"><a href="#并发的三大要素" class="headerlink" title="并发的三大要素"></a>并发的三大要素</h3><h4 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h4><p>指的是一个或者多个不能再被分割的操作<br>value = 1; //院子操作<br>value++; //复合操作</p><h4 id="数据竞争"><a href="#数据竞争" class="headerlink" title="数据竞争"></a>数据竞争</h4><p>指多进程访问共享资源，不做同步</p><h4 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h4><h4 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h4><p>当一个线程对某个变量做出修改时，其他线程可以立刻读取修改后的值</p><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><ol><li>是一种稍弱的同步机制，用来确保变量更新操作同步到其他线程，虚拟机不会指令重排</li><li>锁与volatile不同，锁具有两个特性：互斥性和可见性</li></ol><h3 id="内置锁"><a href="#内置锁" class="headerlink" title="内置锁"></a>内置锁</h3><h4 id="Sychronized关键字"><a href="#Sychronized关键字" class="headerlink" title="Sychronized关键字"></a>Sychronized关键字</h4><p>可作用于class和java对象</p><h4 id="锁的原理"><a href="#锁的原理" class="headerlink" title="锁的原理"></a>锁的原理</h4><ol><li>锁实现了内存可见性和操作原子性</li><li>释放锁时，该线程的本地内存中的共享变量会被刷新到内存中</li><li>锁不会被继承</li><li>同步代码块是使用monitorenter和monitorexit指令实现的，同步方法是通过ACC_SYNCHRONIZED标识符实现</li></ol><h4 id="锁的使用原则"><a href="#锁的使用原则" class="headerlink" title="锁的使用原则"></a>锁的使用原则</h4><ol><li>可能被多个线程同时访问的可变变量，在访问它时都需要持有一个锁，变量由这个锁保护</li><li>每个可变变量都只有一个锁来保护，知道锁的范围</li><li>当锁作用于多个变量时，对每个变量的操作都应该由同一个恶锁保护</li><li>在Android中，工作线程尽量不要和UI线程做同步</li></ol><h4 id="重入"><a href="#重入" class="headerlink" title="重入"></a>重入</h4><h4 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h4><h4 id="显示锁"><a href="#显示锁" class="headerlink" title="显示锁"></a>显示锁</h4><p>reentrantLock<br>semaphore<br>countDownLatch<br>CyclicBarrier<br>FutureTask</p><h3 id="原子变量和非阻塞算法"><a href="#原子变量和非阻塞算法" class="headerlink" title="原子变量和非阻塞算法"></a>原子变量和非阻塞算法</h3><p>Atomic<br>cas非阻塞算法<br>性能比较</p><p><a href="https://segmentfault.com/l/1500000012849264/play" target="_blank" rel="external">https://segmentfault.com/l/1500000012849264/play</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;线程和线程安全&quot;&gt;&lt;a href=&quot;#线程和线程安全&quot; class=&quot;headerlink&quot; title=&quot;线程和线程安全&quot;&gt;&lt;/a&gt;线程和线程安全&lt;/h3&gt;&lt;h4 id=&quot;线程是什么&quot;&gt;&lt;a href=&quot;#线程是什么&quot; class=&quot;headerlink&quot; ti
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Bit Manipulation</title>
+    <link href="http://yangxin.online/bit-manipulation.html"/>
+    <id>http://yangxin.online/bit-manipulation.html</id>
+    <published>2017-12-04T07:41:37.000Z</published>
+    <updated>2018-01-15T10:01:39.987Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Bit-Manipulation-位运算-："><a href="#Bit-Manipulation-位运算-：" class="headerlink" title="Bit Manipulation(位运算)："></a>Bit Manipulation(位运算)：</h3><p>一共五种运算：与，或，异或，左移，右移。</p><h4 id="常用技巧："><a href="#常用技巧：" class="headerlink" title="常用技巧："></a>常用技巧：</h4><p>（1） n &amp; （n-1）能够消灭n中最低位中的1。<br>（2） 右移：除以2， 左移：乘以2。<br>（3） 异或性质：交换律，0^a=a, a^a=0;<br>（3） 将常用字符、数字等均转为按位运算，可以节约空间。<br><a id="more"></a></p><h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="Number-of-1-Bits"><a href="#Number-of-1-Bits" class="headerlink" title="Number of 1 Bits"></a><a href="https://leetcode.com/problems/number-of-1-bits/description/" title="Optional title" target="_blank" rel="external">Number of 1 Bits</a></h4><p>使用右移。<br>使用n&amp;(n-1)可以消灭一个1的性质来求解。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static int hammingWeight(int n) &#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    while (n &gt; 0) &#123;</span><br><span class="line">        cnt += (n &amp; 1);</span><br><span class="line">        n &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h4 id="Missing-Number"><a href="#Missing-Number" class="headerlink" title="Missing Number"></a><a href="https://leetcode.com/problems/missing-number/description/" title="Optional title" target="_blank" rel="external">Missing Number</a></h4><p>这道题给我们n个数字，是0到n之间的数但是有一个数字去掉了，让我们寻找这个数字，要求线性的时间复杂度和常数级的空间复杂度。<br><strong>解法一:</strong>最直观的一个方法是用等差数列的求和公式求出0到n之间所有的数字之和，然后再遍历数组算出给定数字的累积和，然后做减法，差值就是丢失的那个数字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static int missingNumber(int[] nums) &#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    int n = nums.length;</span><br><span class="line">    for(int i =0; i&lt; n; i++)&#123;</span><br><span class="line">        sum += nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    return (int)(0.5 * n * (n + 1) - sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>解法二：</strong>，使用位操作Bit Manipulation来解的，用到了异或操作的特性。思路是既然0到n之间少了一个数，我们将这个少了一个数的数组合0到n之间完整的数组异或一下，那么相同的数字都变为0了，剩下的就是少了的那个数字了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static int missingNumber1(int[] nums) &#123;</span><br><span class="line">    int res = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; ++i) &#123;</span><br><span class="line">        int midres = (i + 1) ^ nums[i];</span><br><span class="line">        res ^= midres;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>解法三：</strong>这道题还可以用二分查找法来做，我们首先要对数组排序，然后我们用二分查找法算出中间元素的下标，然后用元素值和下标值之间做对比，如果元素值大于下标值，则说明缺失的数字在左边，作为读者的你可能会提出，排序的时间复杂度都不止O(n)，何必要多此一举用二分查找，还不如用上面两种方法呢。对，你说的没错，但是在面试的时候，有可能人家给你的数组就是排好序的，那么此时用二分查找法肯定要优于上面两种方法，所以这种方法最好也要掌握以下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static int missingNumber2(int[] nums) &#123;</span><br><span class="line">    if(nums == null || nums.length ==0)</span><br><span class="line">        return -1;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = nums.length - 1;</span><br><span class="line">    while (low &lt;= high)&#123;</span><br><span class="line">        int mid = low + (high - low)/2;</span><br><span class="line">        if(nums[mid] &gt; mid)&#123;</span><br><span class="line">            high = mid -1;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return low;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h4 id="Power-of-Two"><a href="#Power-of-Two" class="headerlink" title="Power of Two"></a><a href="https://leetcode.com/problems/power-of-two/description/" title="Optional title" target="_blank" rel="external">Power of Two</a></h4><p>使用n&amp;(n-1）=0来判断。<br>注意0和负数的情况。<br>这道题让我们判断一个数是否为2的次方数，而且要求时间和空间复杂度都为常数<br><strong>解法一：</strong>那么我们很容易看出来2的次方数都只有一个1，剩下的都是0，所以我们的解题思路就有了，我们只要每次判断最低位是否为1，然后向右移位，最后统计1的个数即可判断是否是2的次方数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isPowerOfTwo(int n) &#123;</span><br><span class="line">    int cnt = 0;</span><br><span class="line">    while (n &gt; 0) &#123;</span><br><span class="line">        cnt += (n &amp; 1);</span><br><span class="line">        n &gt;&gt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return cnt == 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>解法二：</strong>这道题还有一个技巧，如果一个数是2的次方数的话，根据上面分析，那么它的二进数必然是最高位为1，其它都为0，那么如果此时我们减1的话，则最高位会降一位，其余为0的位现在都为变为1，那么我们把两数相与，就会得到0，用这个性质也能来解题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static boolean isPowerOfTwo2(int n)&#123;</span><br><span class="line">    int result = n &amp; (n - 1);</span><br><span class="line">    if(n &gt; 0 &amp;&amp; result == 0)&#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Bit-Manipulation-位运算-：&quot;&gt;&lt;a href=&quot;#Bit-Manipulation-位运算-：&quot; class=&quot;headerlink&quot; title=&quot;Bit Manipulation(位运算)：&quot;&gt;&lt;/a&gt;Bit Manipulation(位运算)：&lt;/h3&gt;&lt;p&gt;一共五种运算：与，或，异或，左移，右移。&lt;/p&gt;
+&lt;h4 id=&quot;常用技巧：&quot;&gt;&lt;a href=&quot;#常用技巧：&quot; class=&quot;headerlink&quot; title=&quot;常用技巧：&quot;&gt;&lt;/a&gt;常用技巧：&lt;/h4&gt;&lt;p&gt;（1） n &amp;amp; （n-1）能够消灭n中最低位中的1。&lt;br&gt;（2） 右移：除以2， 左移：乘以2。&lt;br&gt;（3） 异或性质：交换律，0^a=a, a^a=0;&lt;br&gt;（3） 将常用字符、数字等均转为按位运算，可以节约空间。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自建梯子，畅行无阻</title>
+    <link href="http://yangxin.online/vpn.html"/>
+    <id>http://yangxin.online/vpn.html</id>
+    <published>2017-12-04T02:12:53.000Z</published>
+    <updated>2018-03-12T07:23:35.684Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://github.com/codeyu/BTGFW" title="Optional title" target="_blank" rel="external">自建梯子教程</a><br><a href="https://github.com/XX-net/XX-Net/issues/6506#issuecomment-336799889" title="Optional title" target="_blank" rel="external">自己搭建ss/ssr服务器教程（适合初学者）</a></p><p>###【一键部署ssr代码】<br>yum -y install wget<br>wget -N –no-check-certificate <a href="https://softs.fun/Bash/ssr.sh" target="_blank" rel="external">https://softs.fun/Bash/ssr.sh</a> &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh</p><p>备用地址<br>yum -y install wget<br>wget -N –no-check-certificate <a href="https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh" target="_blank" rel="external">https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh</a> &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh<br><a id="more"></a><br>参数配置<br>远程端口<br>密码<br>加密方式 aes-256-cfb<br>协议 auth_chain_a<br>混淆方式 plain</p><p>###【谷歌BBR加速教程】</p><p>yum -y install wget</p><p>wget –no-check-certificate <a href="https://github.com/teddysun/across/raw/master/bbr.sh" target="_blank" rel="external">https://github.com/teddysun/across/raw/master/bbr.sh</a></p><p>chmod +x bbr.sh</p><p>./bbr.sh</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://github.com/codeyu/BTGFW&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自建梯子教程&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/XX-net/XX-Net/issues/6506#issuecomment-336799889&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;自己搭建ss/ssr服务器教程（适合初学者）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;###【一键部署ssr代码】&lt;br&gt;yum -y install wget&lt;br&gt;wget -N –no-check-certificate &lt;a href=&quot;https://softs.fun/Bash/ssr.sh&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://softs.fun/Bash/ssr.sh&lt;/a&gt; &amp;amp;&amp;amp; chmod +x ssr.sh &amp;amp;&amp;amp; bash ssr.sh&lt;/p&gt;
+&lt;p&gt;备用地址&lt;br&gt;yum -y install wget&lt;br&gt;wget -N –no-check-certificate &lt;a href=&quot;https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh&lt;/a&gt; &amp;amp;&amp;amp; chmod +x ssr.sh &amp;amp;&amp;amp; bash ssr.sh&lt;br&gt;
+    
+    </summary>
+    
+      <category term="经验" scheme="http://yangxin.online/categories/%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="经验" scheme="http://yangxin.online/tags/%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Largest Rectangle in Histogram and Maximal Rectangle</title>
+    <link href="http://yangxin.online/Largest-Rectangle-in-Histogram.html"/>
+    <id>http://yangxin.online/Largest-Rectangle-in-Histogram.html</id>
+    <published>2017-11-28T01:52:03.000Z</published>
+    <updated>2018-01-15T10:01:39.987Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目链接：<br><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/description/" title="Optional title" target="_blank" rel="external">Largest Rectangle in Histogram</a><br><a href="https://leetcode.com/problems/maximal-rectangle/description/" title="Optional title" target="_blank" rel="external">Maximal Rectangle</a><br><a id="more"></a><br>Largest Rectangle in Histogram 这道题算是比较难的一道题，最简单的做法就是对于任意一个bar，向左向右遍历，知道高度小于该bar。这时候计算该区域的面积。对于每一个bar，我们都做如上处理，最后得到最大值。当然这样的做法是O(n2)，过不了大数据集合测试。</p><p>从上面我们直到，对于任意一个bar n，我们得到的包含该bar n的矩形区域里面bar n是最小的。我们使用ln和rn来表示bar n向左及向右第一个小于bar n的bar的索引位置。<br>譬如题目中bar 2的高度是5,它的ln为1，rn为4.包含bar的矩形区域面积为（4-1-1）*5=10</p><p>我们可以从左往右遍历所有的bar，并将其push到一个stack中，如果dangqianbar的高度小于栈顶bar，我们pop出栈顶bar，同时以该bar计算举行面积。纳闷我们如何知道该bar的ln和rn呢？rn铁定就是当前遍历到的bar的索引，而ln则是当前栈顶bar的索引，因为此时栈顶bar的高度一定小于pop出来的bar的高度。</p><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>因为要找三个元素，所以时间复杂度为O(n)，空间复杂度为O(1)</p><h4 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static int largestRectangleArea(int[] height )&#123;</span><br><span class="line">    int maxArea  = 0;</span><br><span class="line">    Stack&lt;Integer&gt; s = new Stack&lt;&gt;();</span><br><span class="line">    int i = 0;</span><br><span class="line">    while (i &lt;= height.length)&#123;</span><br><span class="line">        int h = (i == height.length ? 0 : height[i]);</span><br><span class="line">        if(s.isEmpty() ||  h &gt;= height[s.peek()])&#123;</span><br><span class="line">            s.push(i);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            int t = s.pop();</span><br><span class="line">            maxArea = Math.max(maxArea, height[t] * (s.isEmpty() ? i : i - s.peek() - 1));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxArea;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Maximal Rectangle此题是之前那道的 Largest Rectangle in Histogram直方图中最大的矩形 的扩展，这道题的二维矩阵每一层向上都可以看做一个直方图，输入矩阵有多少行，就可以形成多少个直方图，对每个直方图都调用 Largest Rectangle in Histogram 直方图中最大的矩形 中的方法，就可以得到最大的矩形面积。那么这道题唯一要做的就是将每一层构成直方图，由于题目限定了输入矩阵的字符只有 ‘0’ 和 ‘1’ 两种，所以处理起来也相对简单。方法是，对于每一个点，如果是‘0’，则赋0，如果是 ‘1’，就赋之前的height值加上1。具体参见代码如下：</p><h4 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public static int maximalRectangle(char[][] matrix) &#123;</span><br><span class="line">    if(matrix == null || matrix.length == 0 || matrix[0].length == 0)</span><br><span class="line">        return 0;</span><br><span class="line"></span><br><span class="line">    int[] height = new int[matrix[0].length];</span><br><span class="line">    for(int i = 0; i &lt; matrix[0].length; i ++)&#123;</span><br><span class="line">        if(matrix[0][i] == &apos;1&apos;) height[i] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    int result = largestRectangleArea(height);</span><br><span class="line">    for(int i = 1; i &lt; matrix.length; i ++)&#123;</span><br><span class="line">        resetHeight(matrix, height, i);</span><br><span class="line">        result = Math.max(result, largestRectangleArea(height));</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void resetHeight(char[][] matrix, int[] height, int idx)&#123;</span><br><span class="line">    for(int i = 0; i &lt; matrix[0].length; i ++)&#123;</span><br><span class="line">        if(matrix[idx][i] == &apos;1&apos;) height[i] += 1;</span><br><span class="line">        else height[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static int largestRectangleArea(int[] height )&#123;</span><br><span class="line">    int maxArea  = 0;</span><br><span class="line">    Stack&lt;Integer&gt; s = new Stack&lt;&gt;();</span><br><span class="line">    int i = 0;</span><br><span class="line">    while (i &lt;= height.length)&#123;</span><br><span class="line">        int h = (i == height.length ? 0 : height[i]);</span><br><span class="line">        if(s.isEmpty() ||  h &gt;= height[s.peek()])&#123;</span><br><span class="line">            s.push(i);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            int t = s.pop();</span><br><span class="line">            maxArea = Math.max(maxArea, height[t] * (s.isEmpty() ? i : i - s.peek() - 1));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxArea;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目链接：&lt;br&gt;&lt;a href=&quot;https://leetcode.com/problems/largest-rectangle-in-histogram/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Largest Rectangle in Histogram&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://leetcode.com/problems/maximal-rectangle/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Maximal Rectangle&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>需常记心头</title>
+    <link href="http://yangxin.online/%E9%9C%80%E5%B8%B8%E8%AE%B0%E5%BF%83%E5%A4%B4.html"/>
+    <id>http://yangxin.online/需常记心头.html</id>
+    <published>2017-11-25T08:17:29.000Z</published>
+    <updated>2018-01-15T10:01:39.988Z</updated>
+    
+    <content type="html"><![CDATA[<p>在二维火工作收集的经典语句！<br><a id="more"></a><br><strong>不要起个大早，赶个晚集</strong><br>无法快速落地的“点子”都属于“忽悠”。趋势、潮流瞬息万变，竞争对手如狼似虎。再好的点子，如果只是挂在嘴上，不执行、不落实，等于把机会拱手送给别人。</p><p><strong>清空自己</strong><br>用户都很懒，并且时间宝贵，面对陌生的功能需要快速做出决定。所以在设计每一个细节时，尽量清空自己，忘掉身份，忘掉流程，让自己变成一个小白。最终呈现给用户的内容才是浅显易懂的。</p><p><strong>不要被用户牵着鼻子走</strong><br>与用户聊需求时，要挖掘其背后真实的目的。用户不会替我们考虑灵活性、普遍性、规范性。个性化的需求如何落实到通用的产品中区，需要思考，不能被用户带到沟里去。</p><p><strong>切记习以为常</strong><br>习惯一个人，习惯一件事，会让自己变得麻木，忽视其中存在的问题。我们的产品对大部分用户来说是陌生的，用户可能会卡在一些我们倒背如流的节点上，设计和使用自己的产品时需要保持敏感</p><p><strong>定期回顾</strong><br>行业在发展，技术在进步，客户的认知在变化，我们自己也在成长。长时间不用的东西，定期去回顾，会发现很多问题。有些功能用的很少，可能设计过时了，或者流程出问题了。</p><p><strong>产品能解决的事不要靠人去解决</strong><br>“这个功能给店家培训一下就好”，这句话是不负责任的，一个功能点做一次培训，一家店做一次培训，一千个功能点和十万店家需要多少人去培训多少次？人力成本的投入是巨大的，要用好的设计去引导用户，而不是靠人力去解决问题。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在二维火工作收集的经典语句！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="经验" scheme="http://yangxin.online/tags/%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Find Mininum in Rotated Sorted Array I and II</title>
+    <link href="http://yangxin.online/Find-Mininum-in-Rotated-Sorted-Array.html"/>
+    <id>http://yangxin.online/Find-Mininum-in-Rotated-Sorted-Array.html</id>
+    <published>2017-11-24T02:04:15.000Z</published>
+    <updated>2018-01-15T10:01:39.987Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目链接:<br><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/" title="Optional title" target="_blank" rel="external">Find Minimum in Rotated Sorted Array</a><br><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/description/" title="Optional title" target="_blank" rel="external">Find Minimum in Rotated Sorted Array II</a></p><p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.<br>(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).<br>Find the minimum element.<br><strong>I和II的区别在于是否有重复元素</strong><br><a id="more"></a></p><h4 id="题目的要求"><a href="#题目的要求" class="headerlink" title="题目的要求"></a>题目的要求</h4><ol><li>一个升序的数组且无重复元素</li><li>在处理数组前进行部分反转</li><li>找出最小元素</li></ol><h4 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h4><ol><li>寻找最小值，我们可以用二分查找法来做</li><li>在一个区间的A，如果A[start] &lt; A[end]，那么该区间一定是有序的</li></ol><h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><p>假设一个轮转的排序数组arr，我们首先获取中间元素的值，arr[mid], mid = start + (end - start)/2.因为没有重复数组，那么就有两种情况。</p><ol><li>arr[mid] &gt; arr[start], 那么最小值一定在右半区间，eg:{4,5,6,7,0,1,2} 中间数为7.7&gt;4,最小元素一定在{7,0,1,2}</li><li>arr[mid] &lt; arr[start], 那么最小值一定在左半区间,eg:{7,0,1,2,3,4,5,6}中间数为2,2&lt;7，最小元素一定在{7,0,1,2}</li><li>处理重复元素，当arr[mid] == arr[start], 跳过start++.</li></ol><h4 id="边界值"><a href="#边界值" class="headerlink" title="边界值"></a>边界值</h4><ol><li>输入数组arr == null, arr.length == 0 ,return 0</li><li>arr.length == 1, return arr[0]</li><li>输入数组arr为有序数组，return arr[start];</li></ol><h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><p>时间复杂度为O(logn)，空间复杂度为O(N)</p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public static int findMin(int[] arr)&#123;</span><br><span class="line">    if(arr == null || arr.length == 0)</span><br><span class="line">        return 0;</span><br><span class="line">    if(arr.length == 1)</span><br><span class="line">        return arr[0];</span><br><span class="line"></span><br><span class="line">    int start = 0;</span><br><span class="line">    int end = arr.length -1;</span><br><span class="line"></span><br><span class="line">    while (start &lt; end)&#123;</span><br><span class="line">        if(arr[start] &lt; arr[end])&#123;</span><br><span class="line">            return arr[start];</span><br><span class="line">        &#125;</span><br><span class="line">        int min = start + (end - start)/2; It can avoid overflow.</span><br><span class="line">        if(arr[start] &lt; arr[min])&#123;</span><br><span class="line">            start = min;</span><br><span class="line">        &#125;else if(arr[start] &lt; arr[min])&#123;</span><br><span class="line">            end = min;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            start++; //处理重复元素</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return arr[start] &lt; arr[end] ? arr[start] : arr[end];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目链接:&lt;br&gt;&lt;a href=&quot;https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Find Minimum in Rotated Sorted Array&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Find Minimum in Rotated Sorted Array II&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.&lt;br&gt;(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).&lt;br&gt;Find the minimum element.&lt;br&gt;&lt;strong&gt;I和II的区别在于是否有重复元素&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3Sum</title>
+    <link href="http://yangxin.online/3Sum.html"/>
+    <id>http://yangxin.online/3Sum.html</id>
+    <published>2017-11-20T07:03:24.000Z</published>
+    <updated>2018-01-15T10:01:39.987Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目链接：<a href="https://leetcode.com/problems/3sum/discuss/" title="Optional title" target="_blank" rel="external">3Sum</a><br>Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.<br>Note: The solution set must not contain duplicate triplets.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">For example, given array S = [-1, 0, 1, 2, -1, -4],</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><a id="more"></a><h4 id="题目的两点要求："><a href="#题目的两点要求：" class="headerlink" title="题目的两点要求："></a>题目的两点要求：</h4><ol><li>每个答案组里面的三个数字是要从小到大排列起来的</li><li>每个答案不可以和其他的答案相同</li></ol><h4 id="题目分析："><a href="#题目分析：" class="headerlink" title="题目分析："></a>题目分析：</h4><ol><li>每个答案数组triplet中的元素是要求升序排列的</li><li>不能包含重复的答案数组</li></ol><h4 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h4><ol><li>因为要求每个答案数组中的元素都是升序排列的，所以开头我们要对数组进行排序</li><li>因为不能包含重复的答案数组，我们要在代码里做去重操作</li><li>归根结底是Two pointers的想法，定位其中两个指针，根据和的大小移动另外一个</li></ol><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><p>因为要找三个元素，所以时间复杂度为O(n2)，空间复杂度为O(1)</p><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">    if(nums.length &lt; 3)</span><br><span class="line">        return result;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    int i = 0;</span><br><span class="line">    while (i &lt; nums.length -2)&#123;</span><br><span class="line">        if(nums[i] &gt; 0)</span><br><span class="line">            return result;</span><br><span class="line">        int j = i + 1;</span><br><span class="line">        int k = nums.length - 1;</span><br><span class="line"></span><br><span class="line">        while (j &lt; k)&#123;</span><br><span class="line">            int sum = nums[i] + nums[j] + nums[k];</span><br><span class="line">            if(sum == 0)</span><br><span class="line">                result.add(Arrays.asList(nums[i], nums[j], nums[k]));</span><br><span class="line">            if(sum &lt;= 0)</span><br><span class="line">                while (nums[j] == nums[++j] &amp;&amp; j &lt; k);</span><br><span class="line">            if(sum &gt;= 0)</span><br><span class="line">                while (nums[k] == nums[--k] &amp;&amp; j &lt; k);</span><br><span class="line">        &#125;</span><br><span class="line">        while (nums[i] == nums[++i] &amp;&amp; i &lt; nums.length - 2);</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目链接：&lt;a href=&quot;https://leetcode.com/problems/3sum/discuss/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;3Sum&lt;/a&gt;&lt;br&gt;Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;br&gt;Note: The solution set must not contain duplicate triplets.&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;For example, given array S = [-1, 0, 1, 2, -1, -4],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;A solution set is:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [-1, 0, 1],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [-1, -1, 2]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>20171117picture</title>
+    <link href="http://yangxin.online/20171117picture.html"/>
+    <id>http://yangxin.online/20171117picture.html</id>
+    <published>2017-11-17T09:31:56.000Z</published>
+    <updated>2017-11-19T13:46:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://ehlxr.me/images/eh3.png" alt=""></div><div class="group-picture-column" style="width: 50%;"><img src="http://opd2n5pxb.bkt.clouddn.com/yangxin.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="http://www.aisun.org/images/avatar.png" alt=""></div></div></div></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo优化参考</title>
+    <link href="http://yangxin.online/20171117hexo.html"/>
+    <id>http://yangxin.online/20171117hexo.html</id>
+    <published>2017-11-17T08:07:21.000Z</published>
+    <updated>2017-11-19T13:46:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" title="Optional title" target="_blank" rel="external">hexo的next主题个性化教程:打造炫酷网站</a></p><p><a href="https://ehlxr.me/2016/08/30/%E4%BD%BF%E7%94%A8Hexo%E5%9F%BA%E4%BA%8EGitHub-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%89%EF%BC%89/" title="Optional title" target="_blank" rel="external">使用Hexo基于GitHub Pages搭建个人博客</a></p><p><a href="http://www.aisun.org/2017/09/hexo+next+gitment/" title="Optional title" target="_blank" rel="external">为 hexo NexT 添加 Gitment 评论插件</a>(Next 5.1.3已集成)</p><p><a href="http://tc9011.com/2016/12/24/hexo%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E3%80%81high%E4%B8%80%E4%B8%8B%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%9D%91/" title="Optional title" target="_blank" rel="external">hexo添加音乐、high一下及一些坑</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html&quot; tit
+      
+    
+    </summary>
+    
+      <category term="经验" scheme="http://yangxin.online/categories/%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+      <category term="hexo" scheme="http://yangxin.online/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何阅读 一本书</title>
+    <link href="http://yangxin.online/20171117read.html"/>
+    <id>http://yangxin.online/20171117read.html</id>
+    <published>2017-11-17T02:37:20.000Z</published>
+    <updated>2018-01-15T10:01:39.987Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>想做一个会阅读的人！</strong><br>阅读的目的可以从三方面理解：<br>1.获取资讯，2.为了娱乐，3.增进阅读的理解力。<br><em>会读书的人都是主动的阅读，为了提高阅读的理解力。</em><br><a id="more"></a></p><h2 id="阅读的三个阶段："><a href="#阅读的三个阶段：" class="headerlink" title="阅读的三个阶段："></a>阅读的三个阶段：</h2><ul><li>基础阅读：掌握基础的字面上的意思</li><li>分析阅读：对书进行剖析，与作者深度沟通交流</li><li>主题阅读：同一主题书籍的相互对比，提炼。</li></ul><h3 id="分析阅读有："><a href="#分析阅读有：" class="headerlink" title="分析阅读有："></a>分析阅读有：</h3><h4 id="第一阶段：找出一本书在谈些什么的规则"><a href="#第一阶段：找出一本书在谈些什么的规则" class="headerlink" title="第一阶段：找出一本书在谈些什么的规则"></a>第一阶段：找出一本书在谈些什么的规则</h4><ul><li>了解这本书的种类和主题，并分类</li><li>能用简短的语句概括这本书的主要内容</li><li>按照书的特定顺序和重要内容，罗列书的大纲，并罗列重要部分的摘要</li><li>确定作者想要解决的问题</li></ul><h4 id="第二阶段：诊释一本书的内容规则"><a href="#第二阶段：诊释一本书的内容规则" class="headerlink" title="第二阶段：诊释一本书的内容规则"></a>第二阶段：诊释一本书的内容规则</h4><ul><li>找出关键字，与作者达成共识</li><li>理解关键字所在的句子，明确主题</li><li>分析重要句字所在的重要段落，知道作者重要的论述是什么。</li><li>确定作者已经解决了哪些问题，还有哪些是没解决的。判断哪些是作者已知的未解决问题</li></ul><h4 id="第三阶段：像是沟通知识一样的评论一本书的规则"><a href="#第三阶段：像是沟通知识一样的评论一本书的规则" class="headerlink" title="第三阶段：像是沟通知识一样的评论一本书的规则"></a>第三阶段：像是沟通知识一样的评论一本书的规则</h4><ul><li>在了解整本书的大纲并能诠释这本书前，不能轻易批评</li><li>避免争强好胜盲目反对</li><li>批评之前要证明自己分清了知识与个人观点的不同<h5 id="常见评判标准"><a href="#常见评判标准" class="headerlink" title="常见评判标准"></a>常见评判标准</h5></li></ul><ol><li>作者知识不足</li><li>作者知识错误</li><li>作者逻辑错误</li><li>作者分析不全</li></ol><h2 id="把书本内容变成自己的知识和能力（实用性阅读指南）"><a href="#把书本内容变成自己的知识和能力（实用性阅读指南）" class="headerlink" title="把书本内容变成自己的知识和能力（实用性阅读指南）"></a>把书本内容变成自己的知识和能力（实用性阅读指南）</h2><p>大严峻之认为：<strong>一本书的重要内容只占整本书的20%，这20%最重要的又仅有4%。</strong></p><h3 id="带着目标主动阅读，找重点"><a href="#带着目标主动阅读，找重点" class="headerlink" title="带着目标主动阅读，找重点"></a>带着目标主动阅读，找重点</h3><ul><li>想想你希望通过这本书获得什么</li><li>用二八法则关注书中20%最重要的知识<h3 id="做好读书笔记，尤其是思维导图"><a href="#做好读书笔记，尤其是思维导图" class="headerlink" title="做好读书笔记，尤其是思维导图"></a>做好读书笔记，尤其是思维导图</h3></li><li>笔记不是做单纯的摘录，而是提炼书本内容，并形成自己的理解，通过笔记完成信息到知识的转换，实现输出</li><li>将我们头脑中正在思考的内容，以可视化的图形呈现出来的思考工具<br><img src="http://opd2n5pxb.bkt.clouddn.com/read1.jpg" alt="实用性阅读指南思维导图" title="Optional title"></li></ul><h3 id="付诸行动，将学到的知识转化为能力"><a href="#付诸行动，将学到的知识转化为能力" class="headerlink" title="付诸行动，将学到的知识转化为能力"></a>付诸行动，将学到的知识转化为能力</h3><ul><li>设立具体的、可达到的行动目标</li><li>思考现状和目标的差距</li><li>将目标进一步具体化，细化到每一天之行，确定行动的优先顺序</li></ul><h2 id="如何在三年内有效地打造自己的专业能力-高效能阅读"><a href="#如何在三年内有效地打造自己的专业能力-高效能阅读" class="headerlink" title="如何在三年内有效地打造自己的专业能力(高效能阅读)"></a>如何在三年内有效地打造自己的专业能力(高效能阅读)</h2><h3 id="下定决心锁定一个主题"><a href="#下定决心锁定一个主题" class="headerlink" title="下定决心锁定一个主题"></a>下定决心锁定一个主题</h3><ul><li>请下定决心，锁定一个主题。只有骨气勇气锁定一个主题，就能形成思考的轴。有了这个轴，所有的信息都会随之而来。</li><li>读书要 <strong>先专后博</strong> ，深入思考一件事的时候，是不得不同时思考其他很多事。这是因为，人的生活本来就是综合性、整体性的。</li></ul><h3 id="把读书的七成投资在垂直型阅读上"><a href="#把读书的七成投资在垂直型阅读上" class="headerlink" title="把读书的七成投资在垂直型阅读上"></a>把读书的七成投资在垂直型阅读上</h3><p>投资基础 <strong>“70:20:10模式”</strong>，读书要7成投资在垂直型阅读，2成阅读支持现有业务或新业务的书，1成是阅读未知领域。</p><h3 id="观察业务能力强的前辈的书架"><a href="#观察业务能力强的前辈的书架" class="headerlink" title="观察业务能力强的前辈的书架"></a>观察业务能力强的前辈的书架</h3><p>观察或让前辈推荐他们认为好的书</p><h3 id="对业界关键人物进行定点观测"><a href="#对业界关键人物进行定点观测" class="headerlink" title="对业界关键人物进行定点观测"></a>对业界关键人物进行定点观测</h3><p>常常了解最新业界消息</p><p><strong>未完待续~~~</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;想做一个会阅读的人！&lt;/strong&gt;&lt;br&gt;阅读的目的可以从三方面理解：&lt;br&gt;1.获取资讯，2.为了娱乐，3.增进阅读的理解力。&lt;br&gt;&lt;em&gt;会读书的人都是主动的阅读，为了提高阅读的理解力。&lt;/em&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="读书" scheme="http://yangxin.online/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+    
+      <category term="阅读" scheme="http://yangxin.online/tags/%E9%98%85%E8%AF%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Merge Sorted Array</title>
+    <link href="http://yangxin.online/20171116.html"/>
+    <id>http://yangxin.online/20171116.html</id>
+    <published>2017-11-16T07:52:29.000Z</published>
+    <updated>2017-11-19T13:46:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目链接:<a href="https://leetcode.com/problems/merge-sorted-array/description/" title="Optional title" target="_blank" rel="external">Merge Sorted Array</a><br>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p><p>Note:<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.<br>由题意得：<br>1.A和B两个数组都是有序的数组，大小分别为m和n<br>2.合并两数组在A数组中，A数组容量足够大。<br>思路分析：如果暴力解法即(无脑解法)，遍历A数组和B数组每个元素比较，若A[i] &lt; B[j]，则继续比较下一个B元素，否则将A数组i及之后的元素往后移动以为。这种解法想想就不可能。换一种思路两数组都反向递减遍历。两数组总长度index = m+n-1, 遍历若A[i] &lt; B[j]，则A[index] = A[j] j–,否则A[index] = B[i] i–,index–。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int[] megerArray(int[] A, int m, int[] B, int n)&#123;</span><br><span class="line">    int aCount = m-1, bCount = n-1, index = m+n-1;</span><br><span class="line">    while (index &gt;= 0)&#123;</span><br><span class="line">        if(aCount&gt;=0 &amp;&amp; bCount&gt;=0)&#123;</span><br><span class="line">            if(A[aCount] &gt; B[bCount])&#123;</span><br><span class="line">                A[index] = A[aCount];</span><br><span class="line">                aCount--;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                A[index] = A[bCount];</span><br><span class="line">                bCount--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if(aCount &gt;= 0)&#123;</span><br><span class="line">            A[index] = A[aCount];</span><br><span class="line">            aCount--;</span><br><span class="line">        &#125;else if(bCount &gt;=0)&#123;</span><br><span class="line">            A[index] = A[bCount];</span><br><span class="line">            bCount--;</span><br><span class="line">        &#125;</span><br><span class="line">        index--;</span><br><span class="line">    &#125;</span><br><span class="line">    return A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;题目链接:&lt;a href=&quot;https://leetcode.com/problems/merge-sorted-array/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Merge 
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pascal&#39;s Triangle II</title>
+    <link href="http://yangxin.online/Pascal-s-Triangle-II.html"/>
+    <id>http://yangxin.online/Pascal-s-Triangle-II.html</id>
+    <published>2017-11-14T06:13:06.000Z</published>
+    <updated>2017-11-14T13:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目链接: <a href="https://leetcode.com/problems/pascals-triangle-ii/description/" title="Optional title" target="_blank" rel="external">Pascal’s Triangle II</a><br>Given an index k, return the kth row of the Pascal’s triangle.</p><p>For example, given k = 3,<br>Return [1,3,3,1].</p><p>Note:<br>Could you optimize your algorithm to use only O(k) extra space?</p><p>这道题跟Pascal’s Triangle很类似，只是这里只需要求出某一行的结果。Pascal’s Triangle中因为是求出全部结果，所以我们需要上一行的数据就很自然的可以去取。而这里我们只需要一行数据，就得考虑一下是不是能只用一行的空间来存储结果而不需要额外的来存储上一行呢？这里确实是可以实现的。对于每一行我们知道如果从前往后扫，第i个元素的值等于上一行的list[i]+list[i-1]，可以看到数据是往前看的，如果我们只用一行空间，那么需要的数据就会被覆盖掉。所以这里采取的方法是从后往前扫，这样每次需要的数据就是list[i]+list[i-1]，我们需要的数据不会被覆盖，因为需要的res[i]只在当前步用，下一步就不需要了。这个技巧在动态规划省空间时也经常使用，主要就是看我们需要的数据是原来的数据还是新的数据来决定我们遍历的方向。时间复杂度还是O(n^2)，而空间这里是O(k)来存储结果，仍然不需要额外空间。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;Integer&gt; getRow(int row)&#123;</span><br><span class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">    if(row&lt;0)</span><br><span class="line">        return list;</span><br><span class="line">    list.add(1);</span><br><span class="line">    for (int line = 1; line &lt; row; line++)&#123;</span><br><span class="line">        for (int index = list.size() - 1; index &gt; 0; index --)&#123;</span><br><span class="line">            list.set(index, list.get(index-1)+list.get(index));</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;题目链接: &lt;a href=&quot;https://leetcode.com/problems/pascals-triangle-ii/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pasc
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Adroid studio常用技巧</title>
+    <link href="http://yangxin.online/Adroid-studio%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7.html"/>
+    <id>http://yangxin.online/Adroid-studio常用技巧.html</id>
+    <published>2017-11-13T08:41:01.000Z</published>
+    <updated>2017-11-14T13:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Android studio 是Google官方定制的Android开发工具，俗话说工欲善其事必先利其器，充分利用开发工具不仅能大大提高工作效率，同时也是个人能力的一种体现。在此提供关键字和官方文档方便查阅和记忆<br><a id="more"></a></p><h4 id="1-Android-国际化多语言实现"><a href="#1-Android-国际化多语言实现" class="headerlink" title="1.Android 国际化多语言实现"></a>1.Android 国际化多语言实现</h4><p>Translations Editor 翻译编辑<br>preview中导航栏Language，设置及时显示语言<br><a href="https://developer.android.com/studio/write/translations-editor.html?hl=zh-cn" title="Optional title" target="_blank" rel="external">Localize the UI with Translations Editor</a></p><h4 id="2-最小化用户遇到“打开方式”对话框的概率"><a href="#2-最小化用户遇到“打开方式”对话框的概率" class="headerlink" title="2.最小化用户遇到“打开方式”对话框的概率"></a>2.最小化用户遇到“打开方式”对话框的概率</h4><p>Android App Links<br><a href="https://developer.android.com/studio/write/app-link-indexing.html?hl=zh-cn" title="Optional title" target="_blank" rel="external">Add Android App Links</a></p><h4 id="3-使用-Lint-改进代码"><a href="#3-使用-Lint-改进代码" class="headerlink" title="3.使用 Lint 改进代码"></a>3.使用 Lint 改进代码</h4><p>手动运行检查或从命令行运行 Lint<br><a href="https://developer.android.com/studio/write/lint.html?hl=zh-cn#config" title="Optional title" target="_blank" rel="external">使用 Lint 改进您的代码</a></p><h4 id="4-使用注解改进代码检查"><a href="#4-使用注解改进代码检查" class="headerlink" title="4.使用注解改进代码检查"></a>4.使用注解改进代码检查</h4><p>support-annotations依赖<br><a href="https://developer.android.com/studio/write/annotations.html?hl=zh-cn" title="Optional title" target="_blank" rel="external">使用注解改进代码检查</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android studio 是Google官方定制的Android开发工具，俗话说工欲善其事必先利其器，充分利用开发工具不仅能大大提高工作效率，同时也是个人能力的一种体现。在此提供关键字和官方文档方便查阅和记忆&lt;br&gt;
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://yangxin.online/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Adroid studio" scheme="http://yangxin.online/tags/Adroid-studio/"/>
+    
+      <category term="经验" scheme="http://yangxin.online/tags/%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pascal&#39;s Triangle</title>
+    <link href="http://yangxin.online/Pascal-s-Triangle.html"/>
+    <id>http://yangxin.online/Pascal-s-Triangle.html</id>
+    <published>2017-11-13T02:22:56.000Z</published>
+    <updated>2017-11-14T13:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目链接:<a href="https://leetcode.com/problems/pascals-triangle/description/" title="Optional title" target="_blank" rel="external">Pascal’s Triangle</a></p><p>Given numRows, generate the first numRows of Pascal’s triangle.<br>For example, given numRows = 5,<br>Return<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><p>这道题比较简单，属于基础的数组操作。知道规律就好做了，它的规律如下：<br>1.每行的元素个数等于行数<br>2.每行的第一个元素和最后一个元素等于1<br>3.第三行起，每行除第一个和最后一个元素外之间的元素第i行第k个元素 = 行数i-1行第k个元素 + 行数i-1行第k-1元素<br>4.隐藏条件：当行数i和元素j的下表相等时 ，i行的第j个元素等于1<br>具体代码如下：</p><pre><code>//方法一public static List&lt;List&lt;Integer&gt;&gt;  generate(int numRows){    List&lt;List&lt;Integer&gt;&gt; triangle = new ArrayList&lt;&gt;();    if(numRows &lt;= 0){        return triangle;    }    for (int i = 0; i &lt; numRows; i++) {        List&lt;Integer&gt; row = new ArrayList&lt;&gt;();        for (int j = 0; j &lt; i+1; j++) {            if(j ==0 || j == i){                row.add(1);            }else {                row.add(triangle.get(i-1).get(j-1) + triangle.get(i-1).get(j));            }        }        triangle.add(row);    }    return triangle;}//方法二public static int[][]  pascal(int rowNums){    if(rowNums&lt;=0)        return new int[1][1];    int[][] arr = new int[rowNums][];    for (int i = 0; i &lt; rowNums; i++){        arr[i] = new int[i+1];        for (int j = 0; j &lt; i+1; j++){            if(j == 0 || j == i){                arr[i][j] = 1;            }else {                arr[i][j] = arr[i-1][j-1] + arr[i-1][j];            }        }    }    return arr;}</code></pre><p>算法时间复杂度应该是O(1+2+3+…+n)=n(n-1)/2=O(n^2)，空间上只需要二维数组来存储结果，不需要额外空间。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;题目链接:&lt;a href=&quot;https://leetcode.com/problems/pascals-triangle/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pascal’s
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Plus One</title>
+    <link href="http://yangxin.online/Plus-One.html"/>
+    <id>http://yangxin.online/Plus-One.html</id>
+    <published>2017-11-11T02:35:02.000Z</published>
+    <updated>2017-11-14T13:59:59.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目链接 <a href="https://leetcode.com/problems/plus-one/description/" title="Optional title" target="_blank" rel="external">Plus One</a></p><p>Given a non-negative number represented as an array of digits, plus one to the number.<br>The digits are stored such that the most significant digit is at the head of the list.</p><p> 这道题很简单，就是考加法的进位运算问题对一个数组进行加一操作，具体思路：<br> 维护一个进位，对每一位进行加一，然后判断进位，如果有继续到下一位，否则就可以返回了，因为前面不需要计算了。有一个小细节就是如果到了最高位进位仍然存在，那么我们必须重新new一个数组，然后把第一个为赋成1（因为只是加一操作，其余位一定是0，否则不会进最高位）。代码如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static int[] plusOne(int[] digit)&#123;</span><br><span class="line">       int one = 1;</span><br><span class="line">       int sum = 0;</span><br><span class="line">       for(int i = digit.length -1 ; i &gt;= 0; i--)&#123;</span><br><span class="line">           sum = digit[i] + one;</span><br><span class="line">           digit[i] = sum % 10;  //取余</span><br><span class="line">           one = sum / 10;  //取整</span><br><span class="line">           if(one == 0)&#123; //无需进位，则返回即可</span><br><span class="line">               return digit;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       int[] res = new int[digit.length + 1]; //当最高位仍需进位则重新new一个数组</span><br><span class="line">       res[0] = 1;</span><br><span class="line">       return res;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p><p> 因为只需要一次扫描，所以算法复杂度是O(n)，n是数组的长度。而空间上，一般情况是O(1)，但是如果数是全9，那么是最坏情况，需要O(n)的额外空间。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;题目链接 &lt;a href=&quot;https://leetcode.com/problems/plus-one/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Plus One&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Hexo，换电脑怎么更新博客</title>
+    <link href="http://yangxin.online/%E4%BD%BF%E7%94%A8Hexo%EF%BC%8C%E6%8D%A2%E7%94%B5%E8%84%91%E6%80%8E%E4%B9%88%E6%9B%B4%E6%96%B0%E5%8D%9A%E5%AE%A2.html"/>
+    <id>http://yangxin.online/使用Hexo，换电脑怎么更新博客.html</id>
+    <published>2017-11-10T07:33:53.000Z</published>
+    <updated>2017-11-19T13:46:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>hexo官方给了一些迁移的方法，不过它上面介绍的方法都是把博客文章从hexo系统迁移到其他博客系统的方法。然而我们这里要讨论的是：</p><h4 id="当我们更换电脑的时候我们应该怎么办？"><a href="#当我们更换电脑的时候我们应该怎么办？" class="headerlink" title="当我们更换电脑的时候我们应该怎么办？"></a>当我们更换电脑的时候我们应该怎么办？</h4><p>所以默认你已经成功利用hexo和github发布博客，如果还没有，网上很多资料。<br><a id="more"></a><br>具体的思路是：在生成的已经推到github上的hexo静态代码出建立一个分支，利用这个分支来管理自己hexo的源文件。如果能在刚刚配置hexo的时候就想好以后的迁移的问题就太好了，可以省掉很多麻烦，可实际使用中，刚刚配置hexo的时候，好多人都是初学，不会想到以后的问题，我就是这样的。</p><h3 id="具体操作："><a href="#具体操作：" class="headerlink" title="具体操作："></a>具体操作：</h3><ol><li><p>克隆gitHub上面生成的静态文件到本地</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ZhengYangxin/zhengyangxin.github.io.git</span><br></pre></td></tr></table></figure></li><li><p>把克隆到本地的文件除了git的文件都删掉，找不到git的文件的话就当删了吧。不要用hexo init初始化。</p></li><li><p>将之前使用hexo写博客时候的整个目录（所有文件）搬过来。把该忽略的文件忽略了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line"></span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br><span class="line">node_modules</span><br><span class="line">##注意忽略node_modules,这个文件换一台电脑都需要用npm install 重新生成</span><br></pre></td></tr></table></figure></li><li><p>创建一个叫hexo的分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b hexo</span><br></pre></td></tr></table></figure></li><li><p>提交复制过来的文件并推送至hexo分支</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add --all</span><br><span class="line">git commit -m &quot;新建分支源文件&quot;</span><br><span class="line">git push --set-upstream origin hexo</span><br></pre></td></tr></table></figure></li></ol><p>到这里基本上就搞定了，以后再推就可以直接git push了，hexo的操作跟以前一样。<br>今后无论什么时候想要在其他电脑上面用hexo写博客，就先装好node然后直接把创建的分支克隆下来，npm install安装依赖之后就可以用了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b hexo git@github.com:ZhengYangxin/zhengyangxin.github.io.git</span><br></pre></td></tr></table></figure><p>这样做完了以后，每次写完博客发布之后不要忘了还要git push把源文件推到分支上。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hexo官方给了一些迁移的方法，不过它上面介绍的方法都是把博客文章从hexo系统迁移到其他博客系统的方法。然而我们这里要讨论的是：&lt;/p&gt;
+&lt;h4 id=&quot;当我们更换电脑的时候我们应该怎么办？&quot;&gt;&lt;a href=&quot;#当我们更换电脑的时候我们应该怎么办？&quot; class=&quot;headerlink&quot; title=&quot;当我们更换电脑的时候我们应该怎么办？&quot;&gt;&lt;/a&gt;当我们更换电脑的时候我们应该怎么办？&lt;/h4&gt;&lt;p&gt;所以默认你已经成功利用hexo和github发布博客，如果还没有，网上很多资料。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="经验" scheme="http://yangxin.online/tags/%E7%BB%8F%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>算法面试准备</title>
+    <link href="http://yangxin.online/%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87.html"/>
+    <id>http://yangxin.online/算法面试准备.html</id>
+    <published>2017-08-13T08:15:21.000Z</published>
+    <updated>2017-11-12T03:08:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一道排序体题需要考与面试官沟通的点"><a href="#一道排序体题需要考与面试官沟通的点" class="headerlink" title="一道排序体题需要考与面试官沟通的点"></a>一道排序体题需要考与面试官沟通的点</h3><ul><li>有没有可能包含大量的重复元素</li><li>是否近乎有序</li><li>数据取值范围是否有限</li><li>是否需要稳定排序</li><li>是否用链式存储</li><li>数据大小足够装载内存里</li></ul><h3 id="算法面试优秀不意味技术面试优秀"><a href="#算法面试优秀不意味技术面试优秀" class="headerlink" title="算法面试优秀不意味技术面试优秀"></a>算法面试优秀不意味技术面试优秀</h3><ul><li>考虑项目经历和项目中遇到的实际问题</li><li>印象最深的bug</li><li>面向对象</li><li>设计模式</li><li>网络相关：安全相关、内存相关、并发相关</li><li>系统设计：scalability</li></ul><h3 id="技术面试优秀不意味着能够拿到Offer"><a href="#技术面试优秀不意味着能够拿到Offer" class="headerlink" title="技术面试优秀不意味着能够拿到Offer"></a>技术面试优秀不意味着能够拿到Offer</h3><p><strong>创建自己的项目</strong></p><ul><li>自己做小应用</li><li>自己解决小问题</li><li>“不是项目”的项目：书籍的整理</li><li>技术分享，blog、github </li></ul><p><strong>了解过去自身的思考行为方式</strong></p><ul><li>遇到最大的挑战</li><li>犯过的错误</li><li>遭遇的失败</li><li>最享受的工作内容</li><li>遇到冲突处理方式</li><li>做的最与众不同的事儿</li></ul><p><strong>准备好问面试官的问题</strong></p><ul><li>整个小组的大概运行模式是怎么样的</li><li>整个项目组的后续规划是如何</li><li>这个产品中某个问题的解决方案</li><li>为什么选择某些技术？标准？</li><li>对某技术很感性局，是否有机会深入</li></ul><h3 id="算法面试没这么难"><a href="#算法面试没这么难" class="headerlink" title="算法面试没这么难"></a>算法面试没这么难</h3><ul><li>没必要啃完《算法导论》</li><li>高级数据结构和算法面试提及概率很低（红黑树、计算几何、B-Tree、数论、斐波那契堆、FFT）</li></ul><h3 id="准备范围"><a href="#准备范围" class="headerlink" title="准备范围"></a>准备范围</h3><p><strong>关注基础算法和数据结构，非“有意思”的题目</strong></p><ul><li>各种排序算法</li><li>基础数据结构和算法实现：堆、二叉树、图…</li><li>基础数据结构使用：链表、栈、队列、哈希表、图、Trie…</li><li>基础算法：深度优先、广度优先、二分查找、递归…</li><li>基本算法思想：递归、分支、回溯搜索、贪心、动态规划…</li></ul><h3 id="解决算法问题的整体思路"><a href="#解决算法问题的整体思路" class="headerlink" title="解决算法问题的整体思路"></a>解决算法问题的整体思路</h3><ul><li>注意题目中的条件</li><li>当没有思路时（测试用例，暴力解法——&gt;优化）</li><li>优化算法（算法思路、数据结构、空间换时间、预处理数据、瓶颈除找解决方案）</li><li>实际编写问题，极端条件的判断（数组为空、字符串为空、数据为NULL），代码规范（变量名、模块化、复用性）</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;一道排序体题需要考与面试官沟通的点&quot;&gt;&lt;a href=&quot;#一道排序体题需要考与面试官沟通的点&quot; class=&quot;headerlink&quot; title=&quot;一道排序体题需要考与面试官沟通的点&quot;&gt;&lt;/a&gt;一道排序体题需要考与面试官沟通的点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;有没有可
+      
+    
+    </summary>
+    
+      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+</feed>
