@@ -9,6 +9,7 @@ category: "Java"
 ## Collecton 和 Map
 ### Collection
 包括 Set List Queue
+<!-- more -->
 #### 主要分析
 1. ArrayList
  * 动态数组

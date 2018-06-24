@@ -29,7 +29,7 @@ public static <T> Flowable<T> just(T item) { //方法参数是个泛型，
 }
 ```
 <!-- more -->
-2.方法第一行是判空操作，查看方法不为空则返回原对象，否则，抛出异常NullPointerException
+2.方法第一行是判空操作在很多地方都使用到了，查看方法不为空则返回原对象，否则，抛出异常NullPointerException
 ```
 public static <T> T requireNonNull(T object, String message) {
         if (object == null) {
