@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Fighting！">
 <meta property="og:description" content="基于Rxjava-2.1.10版本源码分析从开源文档范例开始分析 范例一.Flowable.just输出HelloWord123456Flowable.just(&amp;quot;Hello world&amp;quot;).subscribe(new Consumer&amp;lt;String&amp;gt;() &amp;#123;    @Override    public void accept(String s) thr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T15:56:04.636Z">
+<meta property="og:updated_time" content="2018-03-27T12:50:09.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava的使用及源码分析">
 <meta name="twitter:description" content="基于Rxjava-2.1.10版本源码分析从开源文档范例开始分析 范例一.Flowable.just输出HelloWord123456Flowable.just(&amp;quot;Hello world&amp;quot;).subscribe(new Consumer&amp;lt;String&amp;gt;() &amp;#123;    @Override    public void accept(String s) thr">
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,585 字
+                  1,595 字
                 </span>
               
 
@@ -449,7 +449,7 @@
 <h4 id="范例一-Flowable-just输出HelloWord"><a href="#范例一-Flowable-just输出HelloWord" class="headerlink" title="范例一.Flowable.just输出HelloWord"></a>范例一.Flowable.just输出HelloWord</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Flowable.just(&quot;Hello world&quot;).subscribe(new Consumer&lt;String&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void accept(String s) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>1.从just方法开始,首先可以看到三个注解方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@CheckReturnValue  //检查返回值</span><br><span class="line">@BackpressureSupport(BackpressureKind.FULL)  //支持的背压方式</span><br><span class="line">@SchedulerSupport(SchedulerSupport.NONE) //调度方式,即处理事件的方式IO数据流，新开一个线程等。</span><br><span class="line">public static &lt;T&gt; Flowable&lt;T&gt; just(T item) &#123; //方法参数是个泛型，</span><br><span class="line">    ObjectHelper.requireNonNull(item, &quot;item is null&quot;);</span><br><span class="line">    //返回值是个Flowable对象</span><br><span class="line">    return RxJavaPlugins.onAssembly(new FlowableJust&lt;T&gt;(item)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p>2.方法第一行是判空操作，查看方法不为空则返回原对象，否则，抛出异常NullPointerException<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; T requireNonNull(T object, String message) &#123;</span><br><span class="line">        if (object == null) &#123;</span><br><span class="line">            throw new NullPointerException(message);</span><br><span class="line">        &#125;</span><br><span class="line">        return object;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.方法第一行是判空操作在很多地方都使用到了，查看方法不为空则返回原对象，否则，抛出异常NullPointerException<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; T requireNonNull(T object, String message) &#123;</span><br><span class="line">        if (object == null) &#123;</span><br><span class="line">            throw new NullPointerException(message);</span><br><span class="line">        &#125;</span><br><span class="line">        return object;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>3.方法第三行中的看new FlowableJust<t>(item)创建的实例对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public final class FlowableJust&lt;T&gt; extends Flowable&lt;T&gt; implements ScalarCallable&lt;T&gt; &#123;</span><br><span class="line">    private final T value; //final变量，赋值后不能改变</span><br><span class="line">    public FlowableJust(final T value) &#123;</span><br><span class="line">        this.value = value;</span><br><span class="line">    &#125;</span><br><span class="line">    //重写了Flowable的subscribeActual方法，传入了观察者与发射内容构造一个订阅对象</span><br><span class="line">    //由观察者去订阅这个对象</span><br><span class="line">    @Override</span><br><span class="line">    protected void subscribeActual(Subscriber&lt;? super T&gt; s) &#123;</span><br><span class="line">        s.onSubscribe(new ScalarSubscription&lt;T&gt;(s, value));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public T call() &#123;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></t></p>
 <p>4.然后看RxJavaPlugins.onAssembly()方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SuppressWarnings(&#123; &quot;rawtypes&quot;, &quot;unchecked&quot; &#125;)</span><br><span class="line">    @NonNull</span><br><span class="line">    public static &lt;T&gt; Flowable&lt;T&gt; onAssembly(@NonNull Flowable&lt;T&gt; source) &#123;</span><br><span class="line">        //在这里钩子函数为null，即直接返回source</span><br><span class="line">        Function&lt;? super Flowable, ? extends Flowable&gt; f = onFlowableAssembly;</span><br><span class="line">        if (f != null) &#123;</span><br><span class="line">            return apply(f, source);</span><br><span class="line">        &#125;</span><br><span class="line">        return source;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>5.所以Flowable.just(“Hello world”)只是生成了一个Flowable对象。接着看subscribe()方法。实现了Consumer接口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface Consumer&lt;T&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 回调函数accept去消费这个传入值，</span><br><span class="line">     * Consume the given value.</span><br><span class="line">     * @param t the value</span><br><span class="line">     * @throws Exception on error</span><br><span class="line">     */</span><br><span class="line">    void accept(T t) throws Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -496,7 +496,7 @@
   <p><span>本文标题:</span><a href="/RxJava的使用及源码分析.html">RxJava的使用及源码分析</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 三金Sir 的个人博客">三金Sir</a></p>
   <p><span>发布时间:</span>2018年03月18日 - 15:03</p>
-  <p><span>最后更新:</span>2018年03月18日 - 23:03</p>
+  <p><span>最后更新:</span>2018年03月27日 - 20:03</p>
   <p><span>原始链接:</span><a href="/RxJava的使用及源码分析.html" title="RxJava的使用及源码分析">http://yangxin.online/RxJava的使用及源码分析.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yangxin.online/RxJava的使用及源码分析.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -574,6 +574,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Android-IPC.html" rel="prev" title="Android IPC">
+                Android IPC <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -661,7 +665,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -672,7 +676,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -683,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -788,7 +792,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">34.9k</span>
+    <span title="博客全站字数">35.7k</span>
   
 </div>
 
