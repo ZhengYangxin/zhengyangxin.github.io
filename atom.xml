@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangxin.online/"/>
-  <updated>2018-06-24T04:26:23.642Z</updated>
+  <updated>2019-08-09T13:46:06.068Z</updated>
   <id>http://yangxin.online/</id>
   
   <author>
@@ -17,13 +17,200 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>8月8日</title>
+    <link href="http://yangxin.online/8%E6%9C%888%E6%97%A5.html"/>
+    <id>http://yangxin.online/8月8日.html</id>
+    <published>2019-08-08T02:27:32.000Z</published>
+    <updated>2019-08-09T13:46:06.068Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Android开源框架-Aoppermission"><a href="#Android开源框架-Aoppermission" class="headerlink" title="Android开源框架 Aoppermission"></a>Android开源框架 Aoppermission</h3><p>Aoppermission是基于Aspect实现。实现过程及原理分析。Android的常用Aop有两种方式1.通过JNI Hook，2.静态织入</p><h4 id="Acpect基础知识"><a href="#Acpect基础知识" class="headerlink" title="Acpect基础知识"></a>Acpect基础知识</h4><ol><li>注解@Aspect，申明切面标记类</li><li>@Pointcut, 定义切点，标记方法</li><li>@Befeore 前置通知，切点前执行</li><li>@Around 围绕切点执行</li><li>@after 后置通知，切点后执行</li><li>@AfterReturening,返回返回值，切点返回值</li><li>@AfterThrowing ，异常通知，切点抛出异常</li><li>首先需要依赖com.hujiang.aspectjx:gradle-android-plugin-aspectjx，配置好了所需的环境</li><li>通过定义注解，包括NeedPermission,PermissionCanceled,PermissionDenied，三个注解对应这申请权限的三种情况。通过源码看他们的作用域都是Method，保留时间都是一直到运行时期，那就意味着，我们可以通过反射的技术实现想做的，而本项目也恰恰是基于反射和Aspect实现 </li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Android开源框架-Aoppermission&quot;&gt;&lt;a href=&quot;#Android开源框架-Aoppermission&quot; class=&quot;headerlink&quot; title=&quot;Android开源框架 Aoppermission&quot;&gt;&lt;/a&gt;Android开源框架
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>8月7日</title>
+    <link href="http://yangxin.online/8%E6%9C%887%E6%97%A5.html"/>
+    <id>http://yangxin.online/8月7日.html</id>
+    <published>2019-08-07T00:46:51.000Z</published>
+    <updated>2019-08-08T13:41:28.653Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Android中AOP应用"><a href="#Android中AOP应用" class="headerlink" title="Android中AOP应用"></a>Android中AOP应用</h4><p>在Android开发中，有很多知名的开源框架在使用AOP思想。例如ButterKnife,Retrofit,Hugo等。AOP可以做性能检测和埋点技术也有很多</p><ol><li>性能检测和优化，360的ArgusAPM,滴滴的booster，Hugo</li><li>埋点技术，逻辑思维的DDAuto Tracker, 网易的HubbleData</li><li>通过AOP技术，还可以在我们向服务器请求数据时，会显示一个Loding，结果返回后隐藏它，可以通过AOP技术将Loading动作与业务主体分离</li><li>Android的权限管理Aopermission</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;Android中AOP应用&quot;&gt;&lt;a href=&quot;#Android中AOP应用&quot; class=&quot;headerlink&quot; title=&quot;Android中AOP应用&quot;&gt;&lt;/a&gt;Android中AOP应用&lt;/h4&gt;&lt;p&gt;在Android开发中，有很多知名的开源框架在使用A
+      
+    
+    </summary>
+    
+      <category term="“日记”" scheme="http://yangxin.online/categories/%E2%80%9C%E6%97%A5%E8%AE%B0%E2%80%9D/"/>
+    
+    
+      <category term="AOP" scheme="http://yangxin.online/tags/AOP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>8月6日</title>
+    <link href="http://yangxin.online/8%E6%9C%886%E6%97%A5.html"/>
+    <id>http://yangxin.online/8月6日.html</id>
+    <published>2019-08-06T06:45:59.000Z</published>
+    <updated>2019-08-08T00:13:45.360Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><p>UML是一种可视化的面向对象的建模语言,可以用来描述系统的静态结构和动态行为。用得最多的是类图，时序图，用例图。</p><h4 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h4><p>类图中类是对象的集合，用来描述类的对象结构类及与类,系统之间的交互关系</p><ol><li>泛化关系(表现为is a)：实线加指向父类或接口的空心箭头,包括类与类的继承，接口与接口的继承，类对接口的实现.</li><li>实现抽象：虚线+指向抽象的类的空心箭头</li><li>聚合关系：不是强依赖关系，用实线+空心菱形箭头指向依赖对象，公司和员工的关系</li><li>组合关系：强依赖关系(共存),用实线+实心菱形箭头指向依赖对象，公司和部门的关系，同时创建，同生命周期</li><li>依赖关系：通过入参依赖，用虚线+实心箭头，体现为局部变量，方法参数或者静态调用方法</li><li>关联关系(has a)：一个类知道另一个类的属性和方法，是另一个类的全局变量<a id="more"></a></li></ol><h4 id="时序图"><a href="#时序图" class="headerlink" title="时序图"></a>时序图</h4><p>用来显示对象之间的交互关系的图，涉及到角色,生命线，控制焦点和消息等元素<br>消息可以分为：同步消息，异步消息，返回消息，自关联消息</p><h4 id="用例图"><a href="#用例图" class="headerlink" title="用例图"></a>用例图</h4><p>用来描述角色和系统之间的关系，角色与系统交互及系统反应，包括扩展关系和包含关系</p><h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p>AOP面向切面编程。程序设计原则中的单一职责原则，要求我们一个类只负责一个任务，那就意味着一个程序将会有很多类，负责不同能功能。好处是解耦了，但同时如果需要对类的方法进行埋点统一配置等，将会异常繁琐。而AOP就是为了解决这个问题.</p><h4 id="横切关注点"><a href="#横切关注点" class="headerlink" title="横切关注点"></a>横切关注点</h4><p>贯穿多个模块的非主体业务功能，如日志功能</p><h4 id="AOP的几种实现方式"><a href="#AOP的几种实现方式" class="headerlink" title="AOP的几种实现方式"></a>AOP的几种实现方式</h4><ol><li>动态代理</li><li>APT是一种编译期注解处理技术。通过注解和处理来实现编译期生成代码,和源代码一起编译成class文件。将拓展的关注点代码放入注解处理器中</li><li>AspectJ<br>是一种编译器。java编译器基础上加了关键字识别和编译方法，可以编写Aspect程序植入目标程序，拓展程序功能。</li><li>Transform + Javassist/ASM<br>Transform是Android Gradle提供的，可以操作字节码的一种方式。源码-.class-.dex。在.class转变为.dex过程会经历一系列的Transform处理。Javassist/ASM是操作.class字节码</li></ol><p><a href="https://juejin.im/post/5d0a0dfce51d45775d516f94" target="_blank" rel="external">参考</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;UML&quot;&gt;&lt;a href=&quot;#UML&quot; class=&quot;headerlink&quot; title=&quot;UML&quot;&gt;&lt;/a&gt;UML&lt;/h3&gt;&lt;p&gt;UML是一种可视化的面向对象的建模语言,可以用来描述系统的静态结构和动态行为。用得最多的是类图，时序图，用例图。&lt;/p&gt;
+&lt;h4 id=&quot;类图&quot;&gt;&lt;a href=&quot;#类图&quot; class=&quot;headerlink&quot; title=&quot;类图&quot;&gt;&lt;/a&gt;类图&lt;/h4&gt;&lt;p&gt;类图中类是对象的集合，用来描述类的对象结构类及与类,系统之间的交互关系&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;泛化关系(表现为is a)：实线加指向父类或接口的空心箭头,包括类与类的继承，接口与接口的继承，类对接口的实现.&lt;/li&gt;
+&lt;li&gt;实现抽象：虚线+指向抽象的类的空心箭头&lt;/li&gt;
+&lt;li&gt;聚合关系：不是强依赖关系，用实线+空心菱形箭头指向依赖对象，公司和员工的关系&lt;/li&gt;
+&lt;li&gt;组合关系：强依赖关系(共存),用实线+实心菱形箭头指向依赖对象，公司和部门的关系，同时创建，同生命周期&lt;/li&gt;
+&lt;li&gt;依赖关系：通过入参依赖，用虚线+实心箭头，体现为局部变量，方法参数或者静态调用方法&lt;/li&gt;
+&lt;li&gt;关联关系(has a)：一个类知道另一个类的属性和方法，是另一个类的全局变量
+    
+    </summary>
+    
+      <category term="日记" scheme="http://yangxin.online/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="AOP" scheme="http://yangxin.online/tags/AOP/"/>
+    
+      <category term="UML" scheme="http://yangxin.online/tags/UML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>8月4日</title>
+    <link href="http://yangxin.online/8%E6%9C%884%E6%97%A5.html"/>
+    <id>http://yangxin.online/8月4日.html</id>
+    <published>2019-08-04T07:27:33.000Z</published>
+    <updated>2019-08-06T15:00:17.658Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="阿里开源项目启动框架Alpha"><a href="#阿里开源项目启动框架Alpha" class="headerlink" title="阿里开源项目启动框架Alpha"></a>阿里开源项目启动框架Alpha</h3><p>前面已经介绍了它的原理是基于PERT技术实现的。将一个项目过程以任务单元合理的安排资源，有些任务存在依赖关系所以执行顺序是定死的，但有些任务可以是脱离顺序，可以从关键任务路径中拎出来并行，从而一个项目的耗时及资源占比最大的任务即关键任务路径，在保证项目质量的前提下，可以对关键任务路径上的任务进行优化，也可以从次要任务优化，使关键任务资源充足，达到优化整体项目的效果。下面介绍关键代码类及点</p><h4 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h4><p>任务即项目的执行单元，任务包含的元素</p><ol><li>任务的状态：空闲(idle)，正在执行(runing)，结束(finish)，等待(wait)</li><li>任务优先级：线程是有限的，对于同一时机的任务，其执行顺序也是有先后顺序的</li><li>任务执行所在线程的优先级，对于优先级高的可以分配到更多的cpu时间</li><li>任务执行的线程：1.线程池子线程；2.主线程</li><li>任务名和任务的监听器对象集合</li><li>任务的关联关系：1.前驱任务集合，2.后继任务集合。执行顺序</li><li>当然可以添加监控器，监控任务的执行情况（任务耗时）<a id="more"></a></li></ol><h4 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h4><p>项目即由多个任务组成的集合体，它本身也是一个任务，但有其特殊的属性和方法定义</p><ol><li>定义了项目的生命周期，ProjectStart(),TaskFinish(),ProjectFinish()。项目的开始，项目中某任务的结束，项目的结束</li><li>定义开始和结束任务，两个任务是从图的执行角度来讲是唯一的起始和结束点，可以有效衡量一个图的开始和结束，并且方便将图插入另一个图中.startTask, finishTask</li><li>项目名称及生命周期监听集合 </li><li>添加监控器，及项目执行性能统计</li></ol><h4 id="流程分析"><a href="#流程分析" class="headerlink" title="流程分析"></a>流程分析</h4><ol><li>初始化Project对象，定义startTask，finishTask，定义回调事件</li><li>添加任务，建立任务间的顺序关系</li><li>添加任务会与startTask与finishTask构成环形的有向图，每个任务会记录它的前驱任务集合和后继任务集合。当且仅当前驱任务执行完毕才会执行它自己，然后是后继任务，也就意味着，finnishTask只会在所有任务执行结束调用，最后的最后回调project的finish</li></ol><h4 id="项目意义"><a href="#项目意义" class="headerlink" title="项目意义"></a>项目意义</h4><p>在项目中的实践，</p><ol><li>可以应用于应用启动流程,在应用启动时会初始化很多任务，如数<br>据库，Tinker，图片库，缓存数据等等，这些任务或许可以同步执行<br>，但有些必须顺序执行。通过PERT技术恰恰能解释并优化这个过程</li><li>图片上传任务，数据上传等。数据多可以通过并发上传额方式充分利用cpu</li></ol><p><a href="https://github.com/alibaba/alpha" target="_blank" rel="external">项目地址</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;阿里开源项目启动框架Alpha&quot;&gt;&lt;a href=&quot;#阿里开源项目启动框架Alpha&quot; class=&quot;headerlink&quot; title=&quot;阿里开源项目启动框架Alpha&quot;&gt;&lt;/a&gt;阿里开源项目启动框架Alpha&lt;/h3&gt;&lt;p&gt;前面已经介绍了它的原理是基于PERT技术实现的。将一个项目过程以任务单元合理的安排资源，有些任务存在依赖关系所以执行顺序是定死的，但有些任务可以是脱离顺序，可以从关键任务路径中拎出来并行，从而一个项目的耗时及资源占比最大的任务即关键任务路径，在保证项目质量的前提下，可以对关键任务路径上的任务进行优化，也可以从次要任务优化，使关键任务资源充足，达到优化整体项目的效果。下面介绍关键代码类及点&lt;/p&gt;
+&lt;h4 id=&quot;Task&quot;&gt;&lt;a href=&quot;#Task&quot; class=&quot;headerlink&quot; title=&quot;Task&quot;&gt;&lt;/a&gt;Task&lt;/h4&gt;&lt;p&gt;任务即项目的执行单元，任务包含的元素&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;任务的状态：空闲(idle)，正在执行(runing)，结束(finish)，等待(wait)&lt;/li&gt;
+&lt;li&gt;任务优先级：线程是有限的，对于同一时机的任务，其执行顺序也是有先后顺序的&lt;/li&gt;
+&lt;li&gt;任务执行所在线程的优先级，对于优先级高的可以分配到更多的cpu时间&lt;/li&gt;
+&lt;li&gt;任务执行的线程：1.线程池子线程；2.主线程&lt;/li&gt;
+&lt;li&gt;任务名和任务的监听器对象集合&lt;/li&gt;
+&lt;li&gt;任务的关联关系：1.前驱任务集合，2.后继任务集合。执行顺序&lt;/li&gt;
+&lt;li&gt;当然可以添加监控器，监控任务的执行情况（任务耗时）
+    
+    </summary>
+    
+      <category term="日记" scheme="http://yangxin.online/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="Alpha" scheme="http://yangxin.online/tags/Alpha/"/>
+    
+      <category term="启动优化" scheme="http://yangxin.online/tags/%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>8月3日</title>
+    <link href="http://yangxin.online/8%E6%9C%883%E6%97%A5.html"/>
+    <id>http://yangxin.online/8月3日.html</id>
+    <published>2019-08-03T01:20:18.000Z</published>
+    <updated>2019-08-06T14:58:33.689Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Https的用途和工作模式"><a href="#Https的用途和工作模式" class="headerlink" title="Https的用途和工作模式"></a>Https的用途和工作模式</h3><p>用Http协议看新闻没什么问题，但换到严肃的场景中就存在安全风向了，如支付，使用普通的Http协议就会被黑客盯上。通过拦截请求假装自己是服务器，让你输入密码等。解决这种问题的思路是对数据加密，加密方式分两种：</p><h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>在对称加密中，加密解密都使用相同的秘钥，因此秘钥的保密工作需要做好，只能给使用的人知道,存在问题</p><ul><li>秘钥的约定时机，秘钥通过互联网传输一样会被黑客截获</li></ul><h4 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h4><p>加密和解密使用的秘钥不相同。分公钥和私钥，且公钥加密只能私钥解密，反之亦然。对称加密会存在秘钥约定十几的问题，所以需要非对称加密介入。将非对称加密的公钥公开，私钥自己保留。同样存在问题</p><ul><li>服务器的回复数据，黑客可以通过公钥解密，且黑客也可以模拟发送请求，所以一对公钥私钥不够，客户端同样需要有自己的公钥和私钥，并且客户端的公钥给服务端<a id="more"></a></li></ul><h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p>对称加密的算法比分对称加密的算法效率高性能也好，大多数场景都是用对称加密</p><h4 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h4><p>非对称加密也存在同样的问题，如何将不对称的公钥给对方。一种是放在公网地址上，让对方下载；二是建立链接的时候传给对方。存在问题：</p><ul><li>如何鉴别别人发给你的公钥是对的，而不是冒充的<br>通过权威机构(CA)部门的证书，证书里面包括公钥还要发布者的信息及发布机构，证书有效期等，如身份证一样的存在。证书的签名算法即ＣＡ的私钥,给公司的公钥加密。所有用户在网站上得到的是一个证书，你只要得到ＣＡ的公钥去解密签名就能得到公司的公钥了。关于ＣＡ公钥的可靠性，则需要更加权威的机构证实。</li></ul><h4 id="Https的工作模式"><a href="#Https的工作模式" class="headerlink" title="Https的工作模式"></a>Https的工作模式</h4><p>非对称加密性能不及对称加密，通过非对称加密只对对称加密的秘钥进行加密码，而真正通讯的传输数据则通过对称加密的秘钥进行加解密。过程<br><img width="200" src="/images/lADPDgQ9q4pv-gfNBLbNAuA_736_1206.jpg"></p><ol><li>客户端发送Client Hello 到服务器,会以明文传输TLS版本信息，加密套件候选列表，压缩算法列表等信息，还有一个随机数，在协商对称秘钥的时候使用</li><li>服务器返回Server Hello消息，告诉客户端服务器所选的协议版本，加密套件和压缩算法等，还有一个随机数，用于后续秘钥协商</li><li>服务器发送证书</li><li>客户端从CA仓库里的公钥去解密证书，成功则可信任获得了服务器的公钥。最后客户端产生一个随机数，用服务器公钥加密发送给服务端</li><li>客户端接收到Client Key Exchange,通过私钥解密。最后协商出对称加密的秘钥为客户端的随机数+服务端的随机数+Pre-master产生与客户端相同的对称秘钥</li><li>客户端和服务端通过协商的对称秘钥进行通讯</li></ol><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul><li>对称加密的效率比非对称加密高，但无法解决了秘钥传输的问题。非对称加密可以解决这个问题，但是效率不高</li><li>非对称加密需要通过证书合权威机构来验证公钥的合法性</li><li>Https是综合了对称加密合非对称加密算法的Http协议，既保证传输安全，有保证了传输效</li></ul><h3 id="阿里开源项目Alpha启动框架"><a href="#阿里开源项目Alpha启动框架" class="headerlink" title="阿里开源项目Alpha启动框架"></a>阿里开源项目Alpha启动框架</h3><p>是一个基于PERT图构建的异步启动框架，使用简单，高效。<br>在应用启动的时候，我们通常会做很多工作需要，为了提高启动速度，我们尽可能的让这些工作并发进行。但这些工作可能存在前后依赖关系，所以我们需要想办法保证执行顺序的正确性。</p><h4 id="PERT"><a href="#PERT" class="headerlink" title="PERT"></a>PERT</h4><p>即计划评审技术，利用网络分析制定计划以及对计划予以评价的技术。它能调整计划的各道工序，合理安排资源，加速计划进度.</p><h5 id="四个概念"><a href="#四个概念" class="headerlink" title="四个概念"></a>四个概念</h5><ol><li>事件：表示主要活动结束的哪一点</li><li>活动：表示从一个事件到另一个事件之间的过程</li><li>松弛事件：不影响完工前提下可能被推迟完成的最大时间</li><li>关键路线：是PERT中花费时间最长的事件和活动序列</li></ol><h5 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h5><ol><li>构建一个清晰精确的事件活动网络，其中包括时间和资源</li><li>对时间活动进行逻辑排序以确定关键路线</li><li>确定“不确定性”</li><li>计算关键路线和宽裕时间</li></ol><h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ol><li>标识出项目的关键路径，以明确项目活动的重点</li><li>对关键步骤进行资源调度及优化</li><li>资源发生矛盾时，通过调度非关键路径资源，保证项目进度</li><li>通过PERT网络分析法可大大缩短项目完成的时间</li></ol><h4 id="在軟件设计的应用"><a href="#在軟件设计的应用" class="headerlink" title="在軟件设计的应用"></a>在軟件设计的应用</h4><ol><li>软件的模块化，不同业务线并行开发</li><li>应用插件化，使宿主与插件分开编译，提高编译速度</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Https的用途和工作模式&quot;&gt;&lt;a href=&quot;#Https的用途和工作模式&quot; class=&quot;headerlink&quot; title=&quot;Https的用途和工作模式&quot;&gt;&lt;/a&gt;Https的用途和工作模式&lt;/h3&gt;&lt;p&gt;用Http协议看新闻没什么问题，但换到严肃的场景中就存在安全风向了，如支付，使用普通的Http协议就会被黑客盯上。通过拦截请求假装自己是服务器，让你输入密码等。解决这种问题的思路是对数据加密，加密方式分两种：&lt;/p&gt;
+&lt;h4 id=&quot;对称加密&quot;&gt;&lt;a href=&quot;#对称加密&quot; class=&quot;headerlink&quot; title=&quot;对称加密&quot;&gt;&lt;/a&gt;对称加密&lt;/h4&gt;&lt;p&gt;在对称加密中，加密解密都使用相同的秘钥，因此秘钥的保密工作需要做好，只能给使用的人知道,存在问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;秘钥的约定时机，秘钥通过互联网传输一样会被黑客截获&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;非对称加密&quot;&gt;&lt;a href=&quot;#非对称加密&quot; class=&quot;headerlink&quot; title=&quot;非对称加密&quot;&gt;&lt;/a&gt;非对称加密&lt;/h4&gt;&lt;p&gt;加密和解密使用的秘钥不相同。分公钥和私钥，且公钥加密只能私钥解密，反之亦然。对称加密会存在秘钥约定十几的问题，所以需要非对称加密介入。将非对称加密的公钥公开，私钥自己保留。同样存在问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器的回复数据，黑客可以通过公钥解密，且黑客也可以模拟发送请求，所以一对公钥私钥不够，客户端同样需要有自己的公钥和私钥，并且客户端的公钥给服务端
+    
+    </summary>
+    
+      <category term="日记" scheme="http://yangxin.online/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="Https" scheme="http://yangxin.online/tags/Https/"/>
+    
+      <category term="日记" scheme="http://yangxin.online/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gradle学习</title>
+    <link href="http://yangxin.online/Gradle%E5%AD%A6%E4%B9%A0.html"/>
+    <id>http://yangxin.online/Gradle学习.html</id>
+    <published>2019-08-02T01:23:14.000Z</published>
+    <updated>2019-08-03T14:31:38.648Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="什么是Gradle"><a href="#什么是Gradle" class="headerlink" title="什么是Gradle"></a>什么是Gradle</h4><p>Gradle是一个开源的，非常灵活的自动化构建工具，具有以下几大特点：</p><ol><li>高性能:只执行定义的任务，可以复用任务的输入输出，避免不必要的执行</li><li>基于JVM:可以利用java，Kotlin,Groovy等编译器支持的语言</li><li>定制了基础框架，便于构建</li><li>扩展性：可以自定义任务</li><li>编辑器的支持</li></ol><h4 id="设计Gradle插件"><a href="#设计Gradle插件" class="headerlink" title="设计Gradle插件"></a>设计Gradle插件</h4><h5 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h5><ol><li>提取可用的逻辑编写成二进制插件</li><li>插件对性能的影响</li><li>定制规范，减少配置</li><li>将功能与规范隔离</li></ol><h5 id="2-技术"><a href="#2-技术" class="headerlink" title="2. 技术"></a>2. 技术</h5><ol><li>使用静态语言编写插件</li><li>尽量通过Gradle内部的ApI实现插件<br>2.3 减少外部依赖</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;什么是Gradle&quot;&gt;&lt;a href=&quot;#什么是Gradle&quot; class=&quot;headerlink&quot; title=&quot;什么是Gradle&quot;&gt;&lt;/a&gt;什么是Gradle&lt;/h4&gt;&lt;p&gt;Gradle是一个开源的，非常灵活的自动化构建工具，具有以下几大特点：&lt;/p&gt;
+&lt;o
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>OkHttp</title>
+    <link href="http://yangxin.online/OkHttp.html"/>
+    <id>http://yangxin.online/OkHttp.html</id>
+    <published>2019-05-20T15:02:01.000Z</published>
+    <updated>2019-05-28T15:12:54.624Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一-曾经的网络框架"><a href="#一-曾经的网络框架" class="headerlink" title="一. 曾经的网络框架"></a>一. 曾经的网络框架</h4><h5 id="Android的网络框架有四种"><a href="#Android的网络框架有四种" class="headerlink" title="Android的网络框架有四种"></a>Android的网络框架有四种</h5><ol><li>HttpClient ： 2.2版本以下存在bug，所以2.3之后建议使用HttpUrlConnection</li><li>HttpUrlConnection 2.3+， 官方推荐</li><li>Volley，谷歌开发，简单的网络任务框架，底层兼容2.3以前版本使用了HttpClient，2.3+使用的是HttpUrlConnection，功能拓展性弱</li><li>Okhttp，从Android4.4开始HttpURLConnection的底层实现采用的是okHttp.</li></ol><h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><p><img src="/image/compare.png" alt=""><br>通过上面的比较，在Android发展的每个阶段，他们有各自存在的意义，只是时过境迁，被种种原因被替换或者废弃。<br>这个过程是一个框架发展的过程，从重量级繁杂且难以维护，到轻量级易扩展，到过度版本新老版本的兼容，最后取长补短完善自己的网络框架。<br>化繁为简，然后又能包容万象的过程</p><h5 id="网络框架应该有的功能"><a href="#网络框架应该有的功能" class="headerlink" title="网络框架应该有的功能"></a>网络框架应该有的功能</h5><ol><li>自定义请求的Header</li><li>GET，POST</li><li>支持文件上传下载</li><li>图片加载</li><li>支持多任务网络请求操作</li><li>支持缓存</li><li>支持回调</li><li>支持session</li><li>…..</li></ol><h4 id="二-OkHttp简介"><a href="#二-OkHttp简介" class="headerlink" title="二. OkHttp简介"></a>二. OkHttp简介</h4><p>一张图了解OkHttp的整个过程<br><img src="/image/OkHttp.jpg" alt=""><br>在OkHttp中真正核心的东西是Interceptor，他不仅负责拦截请求进行额外的处理(入cookie)，实际上他还会把实际的网络请求，缓存，透明压缩等功能都统一起来，每一个功能都只是一个Interceptor，它们在连接成一个Interceptor.Chain,环环相扣最终完成一次网络请求，从getResponseWithInterceptorChain函数中我们可以看到Interceptor.Chain的分布情况依次是：</p><ol><li>在配置OkHttpClinet时设置的interceptors</li><li>负责失败重试和重定向的RetryAndFollowUpInterceptor</li><li>负责把用户构造的请求转化为发送到服务器的请求，把服务器返回的响应转化为用户友好的响应BridgeInterceptor</li><li>负责读取缓存直接返回，更新缓存的CacheInterceptor</li><li>负责和服务器建立连接的ConnectInterceptor</li><li>配置OkHttpClient时设置的NetworkInterceptor</li><li>负责向服务器发送请求数据，从服务器读取响应数据的CallServerInterceptor</li></ol><p>在这里位置决定了功能，最后一个一定是CallServerInterceptor，其他的在这之前。责任链模式在Interceptor中得到了很好的实践。对于request变成response对象，每个interceptor都能完成这件事，也由各自的inteceptor决定是否要交给下个interceptor。</p><h4 id="三-Interceptor分析"><a href="#三-Interceptor分析" class="headerlink" title="三. Interceptor分析"></a>三. Interceptor分析</h4><p>首先看分析ConnectInterceptor和CallServerInterceptor，这两个interceptor实现了和服务器进行通信的核心</p><h5 id="1-ConnectInterceptor建立连接"><a href="#1-ConnectInterceptor建立连接" class="headerlink" title="1. ConnectInterceptor建立连接"></a>1. ConnectInterceptor建立连接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/** Opens a connection to the target server and proceeds to the next interceptor. */</span><br><span class="line"></span><br><span class="line">  @Override </span><br><span class="line">  public Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">    RealInterceptorChain realChain = (RealInterceptorChain) chain;</span><br><span class="line">    Request request = realChain.request();</span><br><span class="line">    Transmitter transmitter = realChain.transmitter();</span><br><span class="line"></span><br><span class="line">    // We need the network to satisfy this request. Possibly for validating a conditional GET.</span><br><span class="line">    boolean doExtensiveHealthChecks = !request.method().equals(&quot;GET&quot;);</span><br><span class="line">    Exchange exchange = transmitter.newExchange(chain, doExtensiveHealthChecks);</span><br><span class="line"></span><br><span class="line">    return realChain.proceed(request, transmitter, exchange);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>通过创建一个Exchange对象，他将在后面使用。他的内部是对http，https请求的实现，内部都是利用Okio对Socket的读写操作进行了封装.在内部是对java.io和java.nio进行了封装，内部创建了一个主要的RealConnectionn对象，利用RealConnectionn进行读写</p><h5 id="2-CallServerInterceptor-发送和接受数据"><a href="#2-CallServerInterceptor-发送和接受数据" class="headerlink" title="2. CallServerInterceptor 发送和接受数据"></a>2. CallServerInterceptor 发送和接受数据</h5><p>主要过程：</p><ol><li>向服务器发送request header</li><li>如果有request body,就向服务器发送</li><li>读取response header, 构造response 对象</li><li>如果有response body,则创建一个带body的response对象</li></ol><h5 id="3-CacheIntercepter-缓存"><a href="#3-CacheIntercepter-缓存" class="headerlink" title="3. CacheIntercepter 缓存"></a>3. CacheIntercepter 缓存</h5><p>在建立连接，和服务器通讯之前就是CacheIntercepter，我们需要检查响应是否已经本地缓存了，如果缓存了则直接返回，否则进行后面的流程，并把返回的数据写入缓存</p><ol><li>获取本地缓存cacheCandidate</li><li>如果本地缓存可用则直接返回CacheCandidate，从而打断interceptor链</li><li>走剩下的interceptor获取nnetworkResponse</li><li>networkResponse、cacheResponse构造新的response</li><li>根据新的response里的header定制缓存策略，存入缓存中（method 为get）</li></ol><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>创建一个单例的OkHttpClient，创建请求对象request，初始化请求方式，请求url，请求header，请求body，然后通过client的newcall（request）构建真正的请求对象realcall。有realcall的execute方法和qnqueue方法区分是同步请求还是异步请求，异步请求依赖线程池dispatcher，最终会调用getResponseWithInterceptorsChain方法返回返回response。内部通过这种拦截器对request请求数据和response响应数据进行处理，每个拦截器直接通过realinterceptchain对象的process连接起来（责任链模式）</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一-曾经的网络框架&quot;&gt;&lt;a href=&quot;#一-曾经的网络框架&quot; class=&quot;headerlink&quot; title=&quot;一. 曾经的网络框架&quot;&gt;&lt;/a&gt;一. 曾经的网络框架&lt;/h4&gt;&lt;h5 id=&quot;Android的网络框架有四种&quot;&gt;&lt;a href=&quot;#Android的
+      
+    
+    </summary>
+    
+    
+      <category term="网络，Okhttp" scheme="http://yangxin.online/tags/%E7%BD%91%E7%BB%9C%EF%BC%8COkhttp/"/>
+    
+  </entry>
+  
+  <entry>
     <title>二维火火种培训</title>
     <link href="http://yangxin.online/%E4%BA%8C%E7%BB%B4%E7%81%AB%E7%81%AB%E7%A7%8D%E5%9F%B9%E8%AE%AD.html"/>
     <id>http://yangxin.online/二维火火种培训.html</id>
     <published>2018-06-21T11:51:43.000Z</published>
-    <updated>2018-06-24T04:26:23.642Z</updated>
+    <updated>2018-07-04T05:52:30.547Z</updated>
     
-    <content type="html"><![CDATA[<p>毕业在即，我也在二维火实习了近半年时间，随着对产品和公司的了解我决定将继续留在公司学习，想在未来的某一天看着自己参与或者做的项目投入市场，得到大家的认可。</p><h3 id="火种培训"><a href="#火种培训" class="headerlink" title="火种培训"></a>火种培训</h3><p>火种：二维火的种子（实习生），年轻，活力。星星之火可以燎原。</p><h3 id="第一天-2018-6-20"><a href="#第一天-2018-6-20" class="headerlink" title="第一天 2018/6/20"></a>第一天 2018/6/20</h3><ul><li>红烧肉：产品研发负责人《开篇介绍》<br>给我们介绍了公司的使命，愿景，价值观等。聊了聊公司的发展历程以及在公司多年来的经历，给了我们一些切身的建议：每个月看书，写日记 todolist等</li><li>人参果：产品委员会主席《公司产品介绍》<br>细致的讲述了公司的价值观：正直善良，敬畏之心，天道酬情！<br>讲述了公司在10几年间，产品的迭代更替以及公司的主要产品线（排队，扫码点餐，厨房KDS，收银，供应链，掌柜等等）<a id="more"></a></li></ul><h3 id="第二天-2018-6-21"><a href="#第二天-2018-6-21" class="headerlink" title="第二天 2018/6/21"></a>第二天 2018/6/21</h3><ul><li>生抽：交易架构师《高并发下的变成》<br>介绍了Java并发编程的基础，以及交易订单的一些具体场景，如何避免并发导致的数据同步问题。还介绍了锁的应用等等</li><li>小米：项目管理主管《流程规范&amp;项目管理》<br>详细介绍了项目的具体含义：一群人为达到某一目标而做某一件事。<br>告诉我们项目即输入物-〉输出物<br>项目的整个流程等</li></ul><h3 id="第三天-2018-6-22"><a href="#第三天-2018-6-22" class="headerlink" title="第三天 2018/6/22"></a>第三天 2018/6/22</h3><ul><li>四季豆：共享业务总监《二维火服务端技术架构》<br>介绍了千亿级别服务架构的演变过程，从一个点子，几个人快速的做了一个东西推向市场，产品使用量上升，服务器资源有限，添加服务器，负载均衡，缓存设计，业务模块拆封等等</li><li>马宝：供应链客户经理《客户端架构》<br>介绍了Android的一些历史及在二维火中的一些具体应用，同时分享了很多有趣的程序员日常。最后一句，8小时的生存，other 生活！</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>毕业在即，我也在二维火实习了近半年时间，随着对产品和公司的了解我决定将继续留在公司学习，想在未来的某一天看着自己参与或者做的项目投入市场，得到大家的认可。</p><h3 id="火种培训"><a href="#火种培训" class="headerlink" title="火种培训"></a>火种培训</h3><p>火种：二维火的种子（实习生），年轻，活力。星星之火可以燎原。</p><h3 id="第一天-2018-6-20"><a href="#第一天-2018-6-20" class="headerlink" title="第一天 2018/6/20"></a>第一天 2018/6/20</h3><ul><li>红烧肉：产品研发负责人《开篇介绍》<br>给我们介绍了公司的使命，愿景，价值观等。聊了聊公司的发展历程以及在公司多年来的经历，给了我们一些切身的建议：每个月看书，写日记 todolist等</li><li>人参果：产品委员会主席《公司产品介绍》<br>细致的讲述了公司的价值观：正直善良，敬畏之心，天道酬情！<br>讲述了公司在10几年间，产品的迭代更替以及公司的主要产品线（排队，扫码点餐，厨房KDS，收银，供应链，掌柜等等）<a id="more"></a></li></ul><h3 id="第二天-2018-6-21"><a href="#第二天-2018-6-21" class="headerlink" title="第二天 2018/6/21"></a>第二天 2018/6/21</h3><ul><li>生抽：交易架构师《高并发下的变成》<br>介绍了Java并发编程的基础，以及交易订单的一些具体场景，如何避免并发导致的数据同步问题。还介绍了锁的应用等等</li><li>小米：项目管理主管《流程规范&amp;项目管理》<br>详细介绍了项目的具体含义：一群人为达到某一目标而做某一件事。<br>告诉我们项目即输入物-〉输出物<br>项目的整个流程等</li></ul><h3 id="第三天-2018-6-22"><a href="#第三天-2018-6-22" class="headerlink" title="第三天 2018/6/22"></a>第三天 2018/6/22</h3><ul><li>四季豆：共享业务总监《二维火服务端技术架构》<br>介绍了千亿级别服务架构的演变过程，从一个点子，几个人快速的做了一个东西推向市场，产品使用量上升，服务器资源有限，添加服务器，负载均衡，缓存设计，业务模块拆封等等</li><li>马宝：供应链客户经理《客户端架构》<br>介绍了Android的一些历史及在二维火中的一些具体应用，同时分享了很多有趣的程序员日常。最后一句，8小时的生存，other 生活！</li></ul><p>上了7天请假两天参加毕业典礼</p><p>pm开放平台项目</p><h3 id="确定项目角色，流程角色及职责"><a href="#确定项目角色，流程角色及职责" class="headerlink" title="确定项目角色，流程角色及职责"></a>确定项目角色，流程角色及职责</h3><ol><li>项目经理：简称PM，项目中职责为主导项目全体成员按照项目计划执行，完成项目目标，管控项目的全过程；善于风险识别及跟踪问题解决。更侧重于项目过程中的沟通协作，会议组织，里程碑进度把控，组织过程资产归档，对外汇报等工作。</li><li>需求经理：简称DM，负责收集各类需求，整理分析后列入禅道的需求池，对接PD推动需求的实现。</li><li>产品经理：简称PD，细化需求制作市场需求文档（简称MRD）；明确项目需求范围边界值，编写产品说明书（简称PRD），协同交互，视觉完善PRD正式版。跟踪产品验收。 立项初始，判定此项目是否为重点业务型项目。</li><li>视觉设计师：简称UI，实现PD的页面需求，将其可视化。视觉稿需通过视觉评审。协同PD确认最终界面符合视觉设计稿。 </li><li>技术经理：简称TM，项目中职责为担任技术总负责，把控项目整体技术方案可行；重点跟进架构设计阶段，开发阶段及发布阶段的具体执行。更侧重于项目过程中的任务计划评估，技术难题解决，代码质量把控，发布管理跟踪等工作。</li><li>开发人员：客户端及服务端的代码实现者。完成编码后的自测，联调，根据冒烟用例进行冒烟测试。</li><li>测试人员：质量的把关者。需要根据测试用例，担当内部测试，接口测试、预发后测试，线上回归测试等。</li><li>配置管理员：简称SCM，进行版本控制，协助完成项目环境配置。</li><li>运维人员：简称SA，提供项目环境（开发、测试环境），评审发布计划，协助发布等。</li><li><p>数据库管理员：简称DBA，主要负责产品研发中心所有数据库的运营和维护，评审SQL等。</p></li><li><p>业务线技术TL：各业务线技术负责人。主要负责立项时候判定项目是否重点技术项目。</p></li><li>架构委员会：由高级架构师，核心应用owner们及业务线技术负责人组成的技术架构组织。如有技术型项目启动时，负责判定项目是否为重点技术型项目。</li><li>产品架构委员会：简称PDM，在项目执行过程中主要负责参与二维火核心产品业务的MRD&amp;PRD评审，以及上线后产品目标的验收。</li></ol><h3 id="立项会"><a href="#立项会" class="headerlink" title="立项会"></a>立项会</h3><p>产品组织，项目经理结果通知</p>]]></content>
     
     <summary type="html">
     
@@ -316,179 +503,6 @@
     <summary type="html">
     
       &lt;p&gt;题目链接：&lt;a href=&quot;https://leetcode.com/problems/3sum/discuss/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;3Sum&lt;/a&gt;&lt;br&gt;Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.&lt;br&gt;Note: The solution set must not contain duplicate triplets.&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;For example, given array S = [-1, 0, 1, 2, -1, -4],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;A solution set is:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [-1, 0, 1],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [-1, -1, 2]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
-    
-      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>20171117picture</title>
-    <link href="http://yangxin.online/20171117picture.html"/>
-    <id>http://yangxin.online/20171117picture.html</id>
-    <published>2017-11-17T09:31:56.000Z</published>
-    <updated>2017-11-19T13:46:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<div class="group-picture"><div class="group-picture-container"><div class="group-picture-row"><div class="group-picture-column" style="width: 50%;"><img src="https://ehlxr.me/images/eh3.png" alt=""></div><div class="group-picture-column" style="width: 50%;"><img src="http://opd2n5pxb.bkt.clouddn.com/yangxin.jpg" alt=""></div></div><div class="group-picture-row"><div class="group-picture-column" style="width: 100%;"><img src="http://www.aisun.org/images/avatar.png" alt=""></div></div></div></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;div class=&quot;group-picture&quot;&gt;&lt;div class=&quot;group-picture-container&quot;&gt;&lt;div class=&quot;group-picture-row&quot;&gt;&lt;div class=&quot;group-picture-column&quot; style=&quot;widt
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo优化参考</title>
-    <link href="http://yangxin.online/20171117hexo.html"/>
-    <id>http://yangxin.online/20171117hexo.html</id>
-    <published>2017-11-17T08:07:21.000Z</published>
-    <updated>2017-11-19T13:46:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html" title="Optional title" target="_blank" rel="external">hexo的next主题个性化教程:打造炫酷网站</a></p><p><a href="https://ehlxr.me/2016/08/30/%E4%BD%BF%E7%94%A8Hexo%E5%9F%BA%E4%BA%8EGitHub-Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%89%EF%BC%89/" title="Optional title" target="_blank" rel="external">使用Hexo基于GitHub Pages搭建个人博客</a></p><p><a href="http://www.aisun.org/2017/09/hexo+next+gitment/" title="Optional title" target="_blank" rel="external">为 hexo NexT 添加 Gitment 评论插件</a>(Next 5.1.3已集成)</p><p><a href="http://tc9011.com/2016/12/24/hexo%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E3%80%81high%E4%B8%80%E4%B8%8B%E5%8F%8A%E4%B8%80%E4%BA%9B%E5%9D%91/" title="Optional title" target="_blank" rel="external">hexo添加音乐、high一下及一些坑</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;http://shenzekun.cn/hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B.html&quot; tit
-      
-    
-    </summary>
-    
-      <category term="经验" scheme="http://yangxin.online/categories/%E7%BB%8F%E9%AA%8C/"/>
-    
-    
-      <category term="hexo" scheme="http://yangxin.online/tags/hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何阅读 一本书</title>
-    <link href="http://yangxin.online/20171117read.html"/>
-    <id>http://yangxin.online/20171117read.html</id>
-    <published>2017-11-17T02:37:20.000Z</published>
-    <updated>2018-01-15T10:01:39.987Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>想做一个会阅读的人！</strong><br>阅读的目的可以从三方面理解：<br>1.获取资讯，2.为了娱乐，3.增进阅读的理解力。<br><em>会读书的人都是主动的阅读，为了提高阅读的理解力。</em><br><a id="more"></a></p><h2 id="阅读的三个阶段："><a href="#阅读的三个阶段：" class="headerlink" title="阅读的三个阶段："></a>阅读的三个阶段：</h2><ul><li>基础阅读：掌握基础的字面上的意思</li><li>分析阅读：对书进行剖析，与作者深度沟通交流</li><li>主题阅读：同一主题书籍的相互对比，提炼。</li></ul><h3 id="分析阅读有："><a href="#分析阅读有：" class="headerlink" title="分析阅读有："></a>分析阅读有：</h3><h4 id="第一阶段：找出一本书在谈些什么的规则"><a href="#第一阶段：找出一本书在谈些什么的规则" class="headerlink" title="第一阶段：找出一本书在谈些什么的规则"></a>第一阶段：找出一本书在谈些什么的规则</h4><ul><li>了解这本书的种类和主题，并分类</li><li>能用简短的语句概括这本书的主要内容</li><li>按照书的特定顺序和重要内容，罗列书的大纲，并罗列重要部分的摘要</li><li>确定作者想要解决的问题</li></ul><h4 id="第二阶段：诊释一本书的内容规则"><a href="#第二阶段：诊释一本书的内容规则" class="headerlink" title="第二阶段：诊释一本书的内容规则"></a>第二阶段：诊释一本书的内容规则</h4><ul><li>找出关键字，与作者达成共识</li><li>理解关键字所在的句子，明确主题</li><li>分析重要句字所在的重要段落，知道作者重要的论述是什么。</li><li>确定作者已经解决了哪些问题，还有哪些是没解决的。判断哪些是作者已知的未解决问题</li></ul><h4 id="第三阶段：像是沟通知识一样的评论一本书的规则"><a href="#第三阶段：像是沟通知识一样的评论一本书的规则" class="headerlink" title="第三阶段：像是沟通知识一样的评论一本书的规则"></a>第三阶段：像是沟通知识一样的评论一本书的规则</h4><ul><li>在了解整本书的大纲并能诠释这本书前，不能轻易批评</li><li>避免争强好胜盲目反对</li><li>批评之前要证明自己分清了知识与个人观点的不同<h5 id="常见评判标准"><a href="#常见评判标准" class="headerlink" title="常见评判标准"></a>常见评判标准</h5></li></ul><ol><li>作者知识不足</li><li>作者知识错误</li><li>作者逻辑错误</li><li>作者分析不全</li></ol><h2 id="把书本内容变成自己的知识和能力（实用性阅读指南）"><a href="#把书本内容变成自己的知识和能力（实用性阅读指南）" class="headerlink" title="把书本内容变成自己的知识和能力（实用性阅读指南）"></a>把书本内容变成自己的知识和能力（实用性阅读指南）</h2><p>大严峻之认为：<strong>一本书的重要内容只占整本书的20%，这20%最重要的又仅有4%。</strong></p><h3 id="带着目标主动阅读，找重点"><a href="#带着目标主动阅读，找重点" class="headerlink" title="带着目标主动阅读，找重点"></a>带着目标主动阅读，找重点</h3><ul><li>想想你希望通过这本书获得什么</li><li>用二八法则关注书中20%最重要的知识<h3 id="做好读书笔记，尤其是思维导图"><a href="#做好读书笔记，尤其是思维导图" class="headerlink" title="做好读书笔记，尤其是思维导图"></a>做好读书笔记，尤其是思维导图</h3></li><li>笔记不是做单纯的摘录，而是提炼书本内容，并形成自己的理解，通过笔记完成信息到知识的转换，实现输出</li><li>将我们头脑中正在思考的内容，以可视化的图形呈现出来的思考工具<br><img src="http://opd2n5pxb.bkt.clouddn.com/read1.jpg" alt="实用性阅读指南思维导图" title="Optional title"></li></ul><h3 id="付诸行动，将学到的知识转化为能力"><a href="#付诸行动，将学到的知识转化为能力" class="headerlink" title="付诸行动，将学到的知识转化为能力"></a>付诸行动，将学到的知识转化为能力</h3><ul><li>设立具体的、可达到的行动目标</li><li>思考现状和目标的差距</li><li>将目标进一步具体化，细化到每一天之行，确定行动的优先顺序</li></ul><h2 id="如何在三年内有效地打造自己的专业能力-高效能阅读"><a href="#如何在三年内有效地打造自己的专业能力-高效能阅读" class="headerlink" title="如何在三年内有效地打造自己的专业能力(高效能阅读)"></a>如何在三年内有效地打造自己的专业能力(高效能阅读)</h2><h3 id="下定决心锁定一个主题"><a href="#下定决心锁定一个主题" class="headerlink" title="下定决心锁定一个主题"></a>下定决心锁定一个主题</h3><ul><li>请下定决心，锁定一个主题。只有骨气勇气锁定一个主题，就能形成思考的轴。有了这个轴，所有的信息都会随之而来。</li><li>读书要 <strong>先专后博</strong> ，深入思考一件事的时候，是不得不同时思考其他很多事。这是因为，人的生活本来就是综合性、整体性的。</li></ul><h3 id="把读书的七成投资在垂直型阅读上"><a href="#把读书的七成投资在垂直型阅读上" class="headerlink" title="把读书的七成投资在垂直型阅读上"></a>把读书的七成投资在垂直型阅读上</h3><p>投资基础 <strong>“70:20:10模式”</strong>，读书要7成投资在垂直型阅读，2成阅读支持现有业务或新业务的书，1成是阅读未知领域。</p><h3 id="观察业务能力强的前辈的书架"><a href="#观察业务能力强的前辈的书架" class="headerlink" title="观察业务能力强的前辈的书架"></a>观察业务能力强的前辈的书架</h3><p>观察或让前辈推荐他们认为好的书</p><h3 id="对业界关键人物进行定点观测"><a href="#对业界关键人物进行定点观测" class="headerlink" title="对业界关键人物进行定点观测"></a>对业界关键人物进行定点观测</h3><p>常常了解最新业界消息</p><p><strong>未完待续~~~</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;strong&gt;想做一个会阅读的人！&lt;/strong&gt;&lt;br&gt;阅读的目的可以从三方面理解：&lt;br&gt;1.获取资讯，2.为了娱乐，3.增进阅读的理解力。&lt;br&gt;&lt;em&gt;会读书的人都是主动的阅读，为了提高阅读的理解力。&lt;/em&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="读书" scheme="http://yangxin.online/categories/%E8%AF%BB%E4%B9%A6/"/>
-    
-    
-      <category term="阅读" scheme="http://yangxin.online/tags/%E9%98%85%E8%AF%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Merge Sorted Array</title>
-    <link href="http://yangxin.online/20171116.html"/>
-    <id>http://yangxin.online/20171116.html</id>
-    <published>2017-11-16T07:52:29.000Z</published>
-    <updated>2017-11-19T13:46:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>题目链接:<a href="https://leetcode.com/problems/merge-sorted-array/description/" title="Optional title" target="_blank" rel="external">Merge Sorted Array</a><br>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p><p>Note:<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.<br>由题意得：<br>1.A和B两个数组都是有序的数组，大小分别为m和n<br>2.合并两数组在A数组中，A数组容量足够大。<br>思路分析：如果暴力解法即(无脑解法)，遍历A数组和B数组每个元素比较，若A[i] &lt; B[j]，则继续比较下一个B元素，否则将A数组i及之后的元素往后移动以为。这种解法想想就不可能。换一种思路两数组都反向递减遍历。两数组总长度index = m+n-1, 遍历若A[i] &lt; B[j]，则A[index] = A[j] j–,否则A[index] = B[i] i–,index–。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public static int[] megerArray(int[] A, int m, int[] B, int n)&#123;</span><br><span class="line">    int aCount = m-1, bCount = n-1, index = m+n-1;</span><br><span class="line">    while (index &gt;= 0)&#123;</span><br><span class="line">        if(aCount&gt;=0 &amp;&amp; bCount&gt;=0)&#123;</span><br><span class="line">            if(A[aCount] &gt; B[bCount])&#123;</span><br><span class="line">                A[index] = A[aCount];</span><br><span class="line">                aCount--;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                A[index] = A[bCount];</span><br><span class="line">                bCount--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;else if(aCount &gt;= 0)&#123;</span><br><span class="line">            A[index] = A[aCount];</span><br><span class="line">            aCount--;</span><br><span class="line">        &#125;else if(bCount &gt;=0)&#123;</span><br><span class="line">            A[index] = A[bCount];</span><br><span class="line">            bCount--;</span><br><span class="line">        &#125;</span><br><span class="line">        index--;</span><br><span class="line">    &#125;</span><br><span class="line">    return A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;题目链接:&lt;a href=&quot;https://leetcode.com/problems/merge-sorted-array/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Merge 
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
-    
-      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pascal&#39;s Triangle II</title>
-    <link href="http://yangxin.online/Pascal-s-Triangle-II.html"/>
-    <id>http://yangxin.online/Pascal-s-Triangle-II.html</id>
-    <published>2017-11-14T06:13:06.000Z</published>
-    <updated>2017-11-14T13:59:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>题目链接: <a href="https://leetcode.com/problems/pascals-triangle-ii/description/" title="Optional title" target="_blank" rel="external">Pascal’s Triangle II</a><br>Given an index k, return the kth row of the Pascal’s triangle.</p><p>For example, given k = 3,<br>Return [1,3,3,1].</p><p>Note:<br>Could you optimize your algorithm to use only O(k) extra space?</p><p>这道题跟Pascal’s Triangle很类似，只是这里只需要求出某一行的结果。Pascal’s Triangle中因为是求出全部结果，所以我们需要上一行的数据就很自然的可以去取。而这里我们只需要一行数据，就得考虑一下是不是能只用一行的空间来存储结果而不需要额外的来存储上一行呢？这里确实是可以实现的。对于每一行我们知道如果从前往后扫，第i个元素的值等于上一行的list[i]+list[i-1]，可以看到数据是往前看的，如果我们只用一行空间，那么需要的数据就会被覆盖掉。所以这里采取的方法是从后往前扫，这样每次需要的数据就是list[i]+list[i-1]，我们需要的数据不会被覆盖，因为需要的res[i]只在当前步用，下一步就不需要了。这个技巧在动态规划省空间时也经常使用，主要就是看我们需要的数据是原来的数据还是新的数据来决定我们遍历的方向。时间复杂度还是O(n^2)，而空间这里是O(k)来存储结果，仍然不需要额外空间。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;Integer&gt; getRow(int row)&#123;</span><br><span class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">    if(row&lt;0)</span><br><span class="line">        return list;</span><br><span class="line">    list.add(1);</span><br><span class="line">    for (int line = 1; line &lt; row; line++)&#123;</span><br><span class="line">        for (int index = list.size() - 1; index &gt; 0; index --)&#123;</span><br><span class="line">            list.set(index, list.get(index-1)+list.get(index));</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;题目链接: &lt;a href=&quot;https://leetcode.com/problems/pascals-triangle-ii/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pasc
-      
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yangxin.online/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="leetCode" scheme="http://yangxin.online/tags/leetCode/"/>
-    
-      <category term="算法" scheme="http://yangxin.online/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Adroid studio常用技巧</title>
-    <link href="http://yangxin.online/Adroid-studio%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7.html"/>
-    <id>http://yangxin.online/Adroid-studio常用技巧.html</id>
-    <published>2017-11-13T08:41:01.000Z</published>
-    <updated>2017-11-14T13:59:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Android studio 是Google官方定制的Android开发工具，俗话说工欲善其事必先利其器，充分利用开发工具不仅能大大提高工作效率，同时也是个人能力的一种体现。在此提供关键字和官方文档方便查阅和记忆<br><a id="more"></a></p><h4 id="1-Android-国际化多语言实现"><a href="#1-Android-国际化多语言实现" class="headerlink" title="1.Android 国际化多语言实现"></a>1.Android 国际化多语言实现</h4><p>Translations Editor 翻译编辑<br>preview中导航栏Language，设置及时显示语言<br><a href="https://developer.android.com/studio/write/translations-editor.html?hl=zh-cn" title="Optional title" target="_blank" rel="external">Localize the UI with Translations Editor</a></p><h4 id="2-最小化用户遇到“打开方式”对话框的概率"><a href="#2-最小化用户遇到“打开方式”对话框的概率" class="headerlink" title="2.最小化用户遇到“打开方式”对话框的概率"></a>2.最小化用户遇到“打开方式”对话框的概率</h4><p>Android App Links<br><a href="https://developer.android.com/studio/write/app-link-indexing.html?hl=zh-cn" title="Optional title" target="_blank" rel="external">Add Android App Links</a></p><h4 id="3-使用-Lint-改进代码"><a href="#3-使用-Lint-改进代码" class="headerlink" title="3.使用 Lint 改进代码"></a>3.使用 Lint 改进代码</h4><p>手动运行检查或从命令行运行 Lint<br><a href="https://developer.android.com/studio/write/lint.html?hl=zh-cn#config" title="Optional title" target="_blank" rel="external">使用 Lint 改进您的代码</a></p><h4 id="4-使用注解改进代码检查"><a href="#4-使用注解改进代码检查" class="headerlink" title="4.使用注解改进代码检查"></a>4.使用注解改进代码检查</h4><p>support-annotations依赖<br><a href="https://developer.android.com/studio/write/annotations.html?hl=zh-cn" title="Optional title" target="_blank" rel="external">使用注解改进代码检查</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Android studio 是Google官方定制的Android开发工具，俗话说工欲善其事必先利其器，充分利用开发工具不仅能大大提高工作效率，同时也是个人能力的一种体现。在此提供关键字和官方文档方便查阅和记忆&lt;br&gt;
-    
-    </summary>
-    
-      <category term="开发工具" scheme="http://yangxin.online/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Adroid studio" scheme="http://yangxin.online/tags/Adroid-studio/"/>
-    
-      <category term="经验" scheme="http://yangxin.online/tags/%E7%BB%8F%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Pascal&#39;s Triangle</title>
-    <link href="http://yangxin.online/Pascal-s-Triangle.html"/>
-    <id>http://yangxin.online/Pascal-s-Triangle.html</id>
-    <published>2017-11-13T02:22:56.000Z</published>
-    <updated>2017-11-14T13:59:59.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>题目链接:<a href="https://leetcode.com/problems/pascals-triangle/description/" title="Optional title" target="_blank" rel="external">Pascal’s Triangle</a></p><p>Given numRows, generate the first numRows of Pascal’s triangle.<br>For example, given numRows = 5,<br>Return<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><p>这道题比较简单，属于基础的数组操作。知道规律就好做了，它的规律如下：<br>1.每行的元素个数等于行数<br>2.每行的第一个元素和最后一个元素等于1<br>3.第三行起，每行除第一个和最后一个元素外之间的元素第i行第k个元素 = 行数i-1行第k个元素 + 行数i-1行第k-1元素<br>4.隐藏条件：当行数i和元素j的下表相等时 ，i行的第j个元素等于1<br>具体代码如下：</p><pre><code>//方法一public static List&lt;List&lt;Integer&gt;&gt;  generate(int numRows){    List&lt;List&lt;Integer&gt;&gt; triangle = new ArrayList&lt;&gt;();    if(numRows &lt;= 0){        return triangle;    }    for (int i = 0; i &lt; numRows; i++) {        List&lt;Integer&gt; row = new ArrayList&lt;&gt;();        for (int j = 0; j &lt; i+1; j++) {            if(j ==0 || j == i){                row.add(1);            }else {                row.add(triangle.get(i-1).get(j-1) + triangle.get(i-1).get(j));            }        }        triangle.add(row);    }    return triangle;}//方法二public static int[][]  pascal(int rowNums){    if(rowNums&lt;=0)        return new int[1][1];    int[][] arr = new int[rowNums][];    for (int i = 0; i &lt; rowNums; i++){        arr[i] = new int[i+1];        for (int j = 0; j &lt; i+1; j++){            if(j == 0 || j == i){                arr[i][j] = 1;            }else {                arr[i][j] = arr[i-1][j-1] + arr[i-1][j];            }        }    }    return arr;}</code></pre><p>算法时间复杂度应该是O(1+2+3+…+n)=n(n-1)/2=O(n^2)，空间上只需要二维数组来存储结果，不需要额外空间。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;题目链接:&lt;a href=&quot;https://leetcode.com/problems/pascals-triangle/description/&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pascal’s
-      
     
     </summary>
     
