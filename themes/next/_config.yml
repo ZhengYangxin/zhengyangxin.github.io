@@ -147,7 +147,7 @@ links:
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
-avatar: http://opd2n5pxb.bkt.clouddn.com/yangxin.jpg
+avatar: /images/head.jpeg
 
 # Table Of Contents in the Sidebar
 toc:
