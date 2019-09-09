@@ -317,6 +317,1258 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Pascal-s-Triangle-II.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Pascal-s-Triangle-II.html" itemprop="url">Pascal's Triangle II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T14:13:06+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Pascal-s-Triangle-II.html" class="leancloud_visitors" data-flag-title="Pascal's Triangle II">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  444 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目链接: <a href="https://leetcode.com/problems/pascals-triangle-ii/description/" title="Optional title" target="_blank" rel="external">Pascal’s Triangle II</a><br>Given an index k, return the kth row of the Pascal’s triangle.</p>
+<p>For example, given k = 3,<br>Return [1,3,3,1].</p>
+<p>Note:<br>Could you optimize your algorithm to use only O(k) extra space?</p>
+<p>这道题跟Pascal’s Triangle很类似，只是这里只需要求出某一行的结果。Pascal’s Triangle中因为是求出全部结果，所以我们需要上一行的数据就很自然的可以去取。而这里我们只需要一行数据，就得考虑一下是不是能只用一行的空间来存储结果而不需要额外的来存储上一行呢？这里确实是可以实现的。对于每一行我们知道如果从前往后扫，第i个元素的值等于上一行的list[i]+list[i-1]，可以看到数据是往前看的，如果我们只用一行空间，那么需要的数据就会被覆盖掉。所以这里采取的方法是从后往前扫，这样每次需要的数据就是list[i]+list[i-1]，我们需要的数据不会被覆盖，因为需要的res[i]只在当前步用，下一步就不需要了。这个技巧在动态规划省空间时也经常使用，主要就是看我们需要的数据是原来的数据还是新的数据来决定我们遍历的方向。时间复杂度还是O(n^2)，而空间这里是O(k)来存储结果，仍然不需要额外空间。代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;Integer&gt; getRow(int row)&#123;</span><br><span class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">    if(row&lt;0)</span><br><span class="line">        return list;</span><br><span class="line">    list.add(1);</span><br><span class="line">    for (int line = 1; line &lt; row; line++)&#123;</span><br><span class="line">        for (int index = list.size() - 1; index &gt; 0; index --)&#123;</span><br><span class="line">            list.set(index, list.get(index-1)+list.get(index));</span><br><span class="line">        &#125;</span><br><span class="line">        list.add(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Adroid-studio常用技巧.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Adroid-studio常用技巧.html" itemprop="url">Adroid studio常用技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T16:41:01+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Adroid-studio常用技巧.html" class="leancloud_visitors" data-flag-title="Adroid studio常用技巧">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  193 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Android studio 是Google官方定制的Android开发工具，俗话说工欲善其事必先利其器，充分利用开发工具不仅能大大提高工作效率，同时也是个人能力的一种体现。在此提供关键字和官方文档方便查阅和记忆<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Adroid-studio常用技巧.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Pascal-s-Triangle.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Pascal-s-Triangle.html" itemprop="url">Pascal's Triangle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T10:22:56+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Pascal-s-Triangle.html" class="leancloud_visitors" data-flag-title="Pascal's Triangle">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  370 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目链接:<a href="https://leetcode.com/problems/pascals-triangle/description/" title="Optional title" target="_blank" rel="external">Pascal’s Triangle</a></p>
+<p>Given numRows, generate the first numRows of Pascal’s triangle.<br>For example, given numRows = 5,<br>Return<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">     [1],</span><br><span class="line">    [1,1],</span><br><span class="line">   [1,2,1],</span><br><span class="line">  [1,3,3,1],</span><br><span class="line"> [1,4,6,4,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>这道题比较简单，属于基础的数组操作。知道规律就好做了，它的规律如下：<br>1.每行的元素个数等于行数<br>2.每行的第一个元素和最后一个元素等于1<br>3.第三行起，每行除第一个和最后一个元素外之间的元素第i行第k个元素 = 行数i-1行第k个元素 + 行数i-1行第k-1元素<br>4.隐藏条件：当行数i和元素j的下表相等时 ，i行的第j个元素等于1<br>具体代码如下：</p>
+<pre><code>//方法一
+public static List&lt;List&lt;Integer&gt;&gt;  generate(int numRows){
+    List&lt;List&lt;Integer&gt;&gt; triangle = new ArrayList&lt;&gt;();
+    if(numRows &lt;= 0){
+        return triangle;
+    }
+
+    for (int i = 0; i &lt; numRows; i++) {
+        List&lt;Integer&gt; row = new ArrayList&lt;&gt;();
+        for (int j = 0; j &lt; i+1; j++) {
+            if(j ==0 || j == i){
+                row.add(1);
+            }else {
+                row.add(triangle.get(i-1).get(j-1) + triangle.get(i-1).get(j));
+            }
+        }
+        triangle.add(row);
+    }
+    return triangle;
+}
+
+
+//方法二
+public static int[][]  pascal(int rowNums){
+    if(rowNums&lt;=0)
+        return new int[1][1];
+
+    int[][] arr = new int[rowNums][];
+    for (int i = 0; i &lt; rowNums; i++){
+        arr[i] = new int[i+1];
+        for (int j = 0; j &lt; i+1; j++){
+            if(j == 0 || j == i){
+                arr[i][j] = 1;
+            }else {
+                arr[i][j] = arr[i-1][j-1] + arr[i-1][j];
+            }
+        }
+    }
+    return arr;
+}
+</code></pre><p>算法时间复杂度应该是O(1+2+3+…+n)=n(n-1)/2=O(n^2)，空间上只需要二维数组来存储结果，不需要额外空间。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Plus-One.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Plus-One.html" itemprop="url">Plus One</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T10:35:02+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Plus-One.html" class="leancloud_visitors" data-flag-title="Plus One">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  344 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目链接 <a href="https://leetcode.com/problems/plus-one/description/" title="Optional title" target="_blank" rel="external">Plus One</a></p>
+<p>Given a non-negative number represented as an array of digits, plus one to the number.<br>The digits are stored such that the most significant digit is at the head of the list.</p>
+<p> 这道题很简单，就是考加法的进位运算问题对一个数组进行加一操作，具体思路：<br> 维护一个进位，对每一位进行加一，然后判断进位，如果有继续到下一位，否则就可以返回了，因为前面不需要计算了。有一个小细节就是如果到了最高位进位仍然存在，那么我们必须重新new一个数组，然后把第一个为赋成1（因为只是加一操作，其余位一定是0，否则不会进最高位）。代码如下：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public static int[] plusOne(int[] digit)&#123;</span><br><span class="line">       int one = 1;</span><br><span class="line">       int sum = 0;</span><br><span class="line">       for(int i = digit.length -1 ; i &gt;= 0; i--)&#123;</span><br><span class="line">           sum = digit[i] + one;</span><br><span class="line">           digit[i] = sum % 10;  //取余</span><br><span class="line">           one = sum / 10;  //取整</span><br><span class="line">           if(one == 0)&#123; //无需进位，则返回即可</span><br><span class="line">               return digit;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       int[] res = new int[digit.length + 1]; //当最高位仍需进位则重新new一个数组</span><br><span class="line">       res[0] = 1;</span><br><span class="line">       return res;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p> 因为只需要一次扫描，所以算法复杂度是O(n)，n是数组的长度。而空间上，一般情况是O(1)，但是如果数是全9，那么是最坏情况，需要O(n)的额外空间。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/使用Hexo，换电脑怎么更新博客.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/使用Hexo，换电脑怎么更新博客.html" itemprop="url">使用Hexo，换电脑怎么更新博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-10T15:33:53+08:00">
+                2017-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/使用Hexo，换电脑怎么更新博客.html" class="leancloud_visitors" data-flag-title="使用Hexo，换电脑怎么更新博客">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  550 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>hexo官方给了一些迁移的方法，不过它上面介绍的方法都是把博客文章从hexo系统迁移到其他博客系统的方法。然而我们这里要讨论的是：</p>
+<h4 id="当我们更换电脑的时候我们应该怎么办？"><a href="#当我们更换电脑的时候我们应该怎么办？" class="headerlink" title="当我们更换电脑的时候我们应该怎么办？"></a>当我们更换电脑的时候我们应该怎么办？</h4><p>所以默认你已经成功利用hexo和github发布博客，如果还没有，网上很多资料。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/使用Hexo，换电脑怎么更新博客.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/算法面试准备.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/算法面试准备.html" itemprop="url">算法面试准备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-13T16:15:21+08:00">
+                2017-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/算法面试准备.html" class="leancloud_visitors" data-flag-title="算法面试准备">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  583 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一道排序体题需要考与面试官沟通的点"><a href="#一道排序体题需要考与面试官沟通的点" class="headerlink" title="一道排序体题需要考与面试官沟通的点"></a>一道排序体题需要考与面试官沟通的点</h3><ul>
+<li>有没有可能包含大量的重复元素</li>
+<li>是否近乎有序</li>
+<li>数据取值范围是否有限</li>
+<li>是否需要稳定排序</li>
+<li>是否用链式存储</li>
+<li>数据大小足够装载内存里</li>
+</ul>
+<h3 id="算法面试优秀不意味技术面试优秀"><a href="#算法面试优秀不意味技术面试优秀" class="headerlink" title="算法面试优秀不意味技术面试优秀"></a>算法面试优秀不意味技术面试优秀</h3><ul>
+<li>考虑项目经历和项目中遇到的实际问题</li>
+<li>印象最深的bug</li>
+<li>面向对象</li>
+<li>设计模式</li>
+<li>网络相关：安全相关、内存相关、并发相关</li>
+<li>系统设计：scalability</li>
+</ul>
+<h3 id="技术面试优秀不意味着能够拿到Offer"><a href="#技术面试优秀不意味着能够拿到Offer" class="headerlink" title="技术面试优秀不意味着能够拿到Offer"></a>技术面试优秀不意味着能够拿到Offer</h3><p><strong>创建自己的项目</strong></p>
+<ul>
+<li>自己做小应用</li>
+<li>自己解决小问题</li>
+<li>“不是项目”的项目：书籍的整理</li>
+<li>技术分享，blog、github </li>
+</ul>
+<p><strong>了解过去自身的思考行为方式</strong></p>
+<ul>
+<li>遇到最大的挑战</li>
+<li>犯过的错误</li>
+<li>遭遇的失败</li>
+<li>最享受的工作内容</li>
+<li>遇到冲突处理方式</li>
+<li>做的最与众不同的事儿</li>
+</ul>
+<p><strong>准备好问面试官的问题</strong></p>
+<ul>
+<li>整个小组的大概运行模式是怎么样的</li>
+<li>整个项目组的后续规划是如何</li>
+<li>这个产品中某个问题的解决方案</li>
+<li>为什么选择某些技术？标准？</li>
+<li>对某技术很感性局，是否有机会深入</li>
+</ul>
+<h3 id="算法面试没这么难"><a href="#算法面试没这么难" class="headerlink" title="算法面试没这么难"></a>算法面试没这么难</h3><ul>
+<li>没必要啃完《算法导论》</li>
+<li>高级数据结构和算法面试提及概率很低（红黑树、计算几何、B-Tree、数论、斐波那契堆、FFT）</li>
+</ul>
+<h3 id="准备范围"><a href="#准备范围" class="headerlink" title="准备范围"></a>准备范围</h3><p><strong>关注基础算法和数据结构，非“有意思”的题目
+</strong></p>
+<ul>
+<li>各种排序算法</li>
+<li>基础数据结构和算法实现：堆、二叉树、图…</li>
+<li>基础数据结构使用：链表、栈、队列、哈希表、图、Trie…</li>
+<li>基础算法：深度优先、广度优先、二分查找、递归…</li>
+<li>基本算法思想：递归、分支、回溯搜索、贪心、动态规划…</li>
+</ul>
+<h3 id="解决算法问题的整体思路"><a href="#解决算法问题的整体思路" class="headerlink" title="解决算法问题的整体思路"></a>解决算法问题的整体思路</h3><ul>
+<li>注意题目中的条件</li>
+<li>当没有思路时（测试用例，暴力解法——&gt;优化）</li>
+<li>优化算法（算法思路、数据结构、空间换时间、预处理数据、瓶颈除找解决方案）</li>
+<li>实际编写问题，极端条件的判断（数组为空、字符串为空、数据为NULL），代码规范（变量名、模块化、复用性）</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yangxin.online/git相关操作.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1380,1367 +2632,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/数据结构之线性表.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/数据结构之线性表.html" itemprop="url">数据结构之线性表</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T23:19:52+08:00">
-                2017-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/数据结构之线性表.html" class="leancloud_visitors" data-flag-title="数据结构之线性表">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  730 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="什么是线性表"><a href="#什么是线性表" class="headerlink" title="什么是线性表"></a>什么是线性表</h4><p>线性表就是由n（n&gt;0）个数据元素a1,a2….组成的有限序列</p>
-<ul>
-<li>数据元素的个数为n，表长度，当n=0时为空表</li>
-<li>一个线性表为非空表，既n&gt;0，则可以简单记为（a1,a2….,an)</li>
-<li>数据元素ai表示了各个元素，在不同场合含义不同<br>逻辑结构特点</li>
-<li>有且仅有一个开始结点a1,没有直接前驱结点,有且仅有一个后继结点a2</li>
-<li>有且仅有一个终结点an,没有直接后继结点，有且仅有一个前驱结点an-1</li>
-<li>其余内部结点ai（2&lt;=i&lt;=n-1）都有且仅有一个前驱结点和一个后继结点</li>
-<li>同一个线性表，各个数据元素ai必须具有相同的数据类型</li>
-</ul>
-<h4 id="线性表的基本运算"><a href="#线性表的基本运算" class="headerlink" title="线性表的基本运算"></a>线性表的基本运算</h4><ol>
-<li>初始化</li>
-<li>计算表表长</li>
-<li>获取结点</li>
-<li>查找结点</li>
-<li>插入结点</li>
-<li>删除结点</li>
-</ol>
-<h4 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h4><ol>
-<li>顺序表就是按照顺序存储方式存储的线性表，该线性表的结点按照逻辑次依次存放在计算机的一组连续的存储单元中</li>
-<li>结点ai存储地址的LOC(ai)计算式：LOC(ai)=a1+(i-1)*c  (0&lt;=i&lt;=n)</li>
-<li>重点<ul>
-<li>插入结点：先判断结点数量是否已满，以及插入结点序号是否正确，满足，将顺序表的数据后移，同时插入节点，更新结点数量表长度</li>
-<li>删除结点：先判断待删除结点序号是否正确，然后开始移动数据，并更新结点数量</li>
-</ul>
-</li>
-<li>顺序表缺点<ul>
-<li>在插入和删除节点的时候，往往需要移动大量的数据</li>
-<li>如果表比较大，有时比较难分配足够的连续存储空间，往往导致内存分配失败，而无法存储</li>
-</ul>
-</li>
-</ol>
-<h4 id="链表结构"><a href="#链表结构" class="headerlink" title="链表结构"></a>链表结构</h4><ol>
-<li>链表结构是一种动态存储分配的结构形式，可以根据需要动态申请内存单元</li>
-<li>链表中每个结点都包含如下两部分<ul>
-<li>数据部分，保存的是该节点的实际数据</li>
-<li>地址部分，保存的是下一个节点的地址</li>
-</ul>
-</li>
-<li>采用引用来指示下一个数据的地址，因此在链表结构中，逻辑上相邻的结点在内存中并不一定相邻，逻辑上相邻关系通过地址部分的引用变量来实现。</li>
-<li>链表结构分类<ul>
-<li>单链表</li>
-<li>双链表:每个结点包含两个引用，一个指向下一个结点，一个指向上一个结点</li>
-<li>单循环链表:在单链表中，将终端结点的引用域null改为指向表头结点或者开始结点</li>
-<li>多重链的循环表：将表中结点链在多个环上</li>
-</ul>
-</li>
-<li>重点<ul>
-<li>追加结点</li>
-<li>头引用head</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/数据结构（一）.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/数据结构（一）.html" itemprop="url">数据结构（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T23:17:40+08:00">
-                2017-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/数据结构（一）.html" class="leancloud_visitors" data-flag-title="数据结构（一）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  935 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="什么是数据结构"><a href="#什么是数据结构" class="headerlink" title="什么是数据结构"></a>什么是数据结构</h4><ul>
-<li>数据结构是数据对象、存在于该对象的实例以及组成实例的数据元素之间的关系，并且这种关系可以通过定义相关的函数来给出</li>
-<li>数据结构是抽象数据类型ADT的物理实现</li>
-<li>一个数据结构是由数据元素依据某种逻辑联系起来的，对数据元素之间逻辑关系的描述称为数据的逻辑结构。由于数据必须在计算机内存储，数据的存储结构是其在计算机内的表示，既数据的实现形式</li>
-</ul>
-<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
-<li>数据（Data）：数据是信息的载体，其能够被计算机识别、存储和加工处理，是计算机程序加工的“原材料”。</li>
-<li>数据元素：数据元素是数据的基本单位，其也称之为元素，结点、顶点、记录等。</li>
-<li>数据项：一个元素可以由若干个数据项组成，数据项是具有独立含义的最小标识单位。数据项也可称之为字段、域、属性</li>
-<li>数据结构：是指数据间的相互关系，也就是数据的组织形式。</li>
-</ul>
-<p>####数据结构的内容</p>
-<ul>
-<li>数据的逻辑结构</li>
-<li>数据的存储结构</li>
-<li>数据的运算（检索、插入、删除、更新、排序等） </li>
-</ul>
-<h4 id="数据结构分类"><a href="#数据结构分类" class="headerlink" title="数据结构分类"></a>数据结构分类</h4><ul>
-<li>按逻辑结构分类<ol>
-<li>线性结构<ul>
-<li>线性结构是非空集</li>
-<li>线性结构有且仅有一个开始结点和一个终端结点</li>
-<li>线性结构所有结点最多只有一个直接前驱结点和一个直接后继结点 </li>
-<li>线性表、栈、队列和串等</li>
-</ul>
-</li>
-<li>非线性结构<ul>
-<li>非线性结构是非空集</li>
-<li>非线性结构的一个结点可能有多个直接前驱结点和多个直接后继结点</li>
-<li>数组、广义表、树结构和图结构等</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>按存储结构分类<ol>
-<li>顺序存储结构<ul>
-<li>在一块连续的存储区域一个接着一个的存放数据</li>
-<li>线性存储方式主要用于线性逻辑结构的数据存放</li>
-</ul>
-</li>
-<li>链式存储结构<ul>
-<li>不要求逻辑上相邻的结点物理位置上相邻，结点间的逻辑关系由附加的引用字段表示。一个结点的引用字段往往指向下一个结点的存放位置。</li>
-<li>也称链式存储结构</li>
-</ul>
-</li>
-<li>索引存储结构<ul>
-<li>采用附加的索引表的方式来存储结点信息</li>
-</ul>
-</li>
-<li>散列存储方式<ul>
-<li>根据结点的关键字 直接计算出该结点的存储地址的一种存储方式</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h4 id="常用数据结构"><a href="#常用数据结构" class="headerlink" title="常用数据结构"></a>常用数据结构</h4><ol>
-<li>数组<br>数组是一种聚合数据类型，是将具有相同类型的若干变量有序的组织在一起的计集合。</li>
-<li>栈<br>栈是一种特殊的线性表，其只能在一个表的固定端进行数据节点的插入和删除操作。</li>
-<li>队列<br>队列和栈类似也是一种特殊的线性表。和栈不同的是，队列只允许在表的一端进行插入操作，在表的另一端进行删除操作。</li>
-<li>链表<br>链表是一种数据元素按照链式存储结构进行存储的数据结构。</li>
-<li>树<br>树是典型的非线性结构，其中包括了n个结点的有穷集合。</li>
-<li>图<br>图是另一种非线性结构</li>
-<li>堆<br>堆是一种特殊的树形结构，我们一般讨论的是堆都是二叉树。</li>
-<li>散列表<br>散列表源自于散列函数，结构中存在关键字和T相等的记录。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/什么是算法.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/什么是算法.html" itemprop="url">什么是算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T22:31:05+08:00">
-                2017-06-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/什么是算法.html" class="leancloud_visitors" data-flag-title="什么是算法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  721 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h4><ul>
-<li>算法是模型分析的一组可行的、确定的和有穷的规则（广泛）</li>
-<li>算法是解决实际问题的一种精确的描述方法</li>
-<li>算法是对特定问题的求解步骤的一种精确描述方法</li>
-</ul>
-<h4 id="算法的特性"><a href="#算法的特性" class="headerlink" title="算法的特性"></a>算法的特性</h4><ul>
-<li>有穷性：算法的指令或者执行步骤是有限的</li>
-<li>确切的：算法的每一个指令和步骤都必须有明确的定义和描述</li>
-<li>输入：一个算法应该有的输入条件，用于初始化</li>
-<li>输出：一个算法应该有个名明确的结果输出</li>
-<li>可行性：执行步骤的可行，且有可以在有限时间内完成</li>
-</ul>
-<h4 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h4><ul>
-<li>按照应用来分类<ul>
-<li>基础算法、数据结构、几何、加密、查询、排序等等 </li>
-</ul>
-</li>
-<li>按照确定性来分类<ul>
-<li>确定性算法：有限时间内完成，结果唯一</li>
-<li>非确定性算法：有限时间内完成，结果往往不唯一</li>
-</ul>
-</li>
-<li>按照算法思路<ul>
-<li>递推、递归、穷举、贪婪、分治、动态规划、迭代等算法 </li>
-</ul>
-</li>
-</ul>
-<h4 id="算法概念"><a href="#算法概念" class="headerlink" title="算法概念"></a>算法概念</h4><ul>
-<li>数据结构+算法+程序设计语言 = 程序</li>
-<li>数据结构表示处理对象，算法是计算和处理的核心方法，程序设计语言是算法的实现方法。这几者综合便构成了一个程序</li>
-</ul>
-<h4 id="算法的表示"><a href="#算法的表示" class="headerlink" title="算法的表示"></a>算法的表示</h4><ul>
-<li>自然语言表示</li>
-<li>流程图</li>
-<li>N-S图</li>
-<li>伪代码表示</li>
-</ul>
-<h4 id="算法性能评价"><a href="#算法性能评价" class="headerlink" title="算法性能评价"></a>算法性能评价</h4><ul>
-<li>时间复杂度：算法执行所消耗的时间，时间越短，性能越好,算法越好。<ul>
-<li>与每条语句执行的数量有关</li>
-<li>与问题的规模有关</li>
-</ul>
-</li>
-<li>空间复杂度：算法执行所消耗的存储空间，消耗越小，算法越好。<ul>
-<li>程序保存所需要的存储空间，程序的大小</li>
-<li>程序执行过程中所需消耗的存储空间（变量等）</li>
-</ul>
-</li>
-</ul>
-<h4 id="算法实例"><a href="#算法实例" class="headerlink" title="算法实例"></a>算法实例</h4><p>一个班级学生档案集中查找某一个学生的档案<br>伪代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">变量 x = 输入需要查找的数据</span><br><span class="line">变量 arr = 随机生产数组数据</span><br><span class="line">for 1到20&#123;</span><br><span class="line">    if(arr[i] ==)&#123;</span><br><span class="line">    找到数据</span><br><span class="line">    break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">输出该数据的位置</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure></p>
-<p>Code<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public Class Test1&#123;</span><br><span class="line">    static int N = 20;</span><br><span class="line">    public static void main(String args[])&#123;</span><br><span class="line">    int arr[] = new int[N];</span><br><span class="line">    int x;</span><br><span class="line">    int pos = -1;</span><br><span class="line">    Random r= new Random();</span><br><span class="line">    for(int i=0; i&lt;N; i++)&#123;</span><br><span class="line">        arr[i] = r.nextInt(100);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;生成随机数序列&quot;)</span><br><span class="line">    for(int i=0; i&lt;N; i++)&#123;</span><br><span class="line">        System.out.print(arr[i]+&quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    System.out.print(&quot;输入要查找的整数&quot;);</span><br><span class="line">    Scanner input = new Scanner(System.in);</span><br><span class="line">    x = input.getInt();</span><br><span class="line">    for(int i=0; i&lt;N; i++)&#123;</span><br><span class="line">        if(arr[i] == x)&#123;</span><br><span class="line">            pos = i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(f&lt;0)&#123;</span><br><span class="line">        System.out.print(&quot;未找到数据&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        System.out.print(x+&quot;数据位于&quot;+pos+&quot;位置，是数组的第&quot;+(pos+1)+&quot;个元素&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/第三方登录的注意与坑.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/第三方登录的注意与坑.html" itemprop="url">第三方登录的注意与坑</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-30T00:00:23+08:00">
-                2017-04-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/第三方登录的注意与坑.html" class="leancloud_visitors" data-flag-title="第三方登录的注意与坑">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  90 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="三方登录实多平台快捷方现方式"><a href="#三方登录实多平台快捷方现方式" class="headerlink" title="三方登录实多平台快捷方现方式"></a>三方登录实多平台快捷方现方式</h3><p>Mob平台 集成开发 三方登录和分享<br>ShareSdk.xml 配置<br>AndroidManifest.xml 配置</p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
-<li>微信平台<br>  包名千万不要写错<br>  数字签名 是MD5 非 SHA1(大部分平台都是SHA1)<br>  测试签名和发行签名区分或统一。</li>
-<li>QQ 平台<br>  添加测试账号</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/数据传输加密——非对称加密算法RSA-对称算法AES.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/数据传输加密——非对称加密算法RSA-对称算法AES.html" itemprop="url">数据传输加密——非对称加密算法RSA+对称算法AES</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-29T23:52:12+08:00">
-                2017-04-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/安全/" itemprop="url" rel="index">
-                    <span itemprop="name">安全</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/数据传输加密——非对称加密算法RSA-对称算法AES.html" class="leancloud_visitors" data-flag-title="数据传输加密——非对称加密算法RSA+对称算法AES">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3,174 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  12 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="数据传输加密"><a href="#数据传输加密" class="headerlink" title="数据传输加密"></a>数据传输加密</h3><p>&emsp;&emsp;在开发应用过程中，客户端与服务端经常需要进行数据传输，涉及到重要隐私信息时，开发者自然会想到对其进行加密，即使传输过程中被“有心人”截取，也不会将信息泄露。对于加密算法，相信不少开发者也有所耳闻，比如MD5加密，Base64加密，DES加密，AES加密，RSA加密等等。在这里我主要向大家介绍一下我在开发过程中使用到的加密算法，RSA加密算法+AES加密算法。简单地介绍一下这两种算法吧。</p>
-<h3 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h3><p>&emsp;&emsp;之所以叫RSA算法，是因为算法的三位发明者RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推荐为公钥数据加密标准，主要的算法原理就不多加介绍，如果对此感兴趣的话，建议去百度一下RSA算法。需要了解的是RSA算法属于非对称加密算法，非对称加密算法需要两个密钥：公开密钥（publickey）和私有密钥（privatekey）。公开密钥与私有密钥是一对，如果用公开密钥对数据进行加密，只有用对应的私有密钥才能解密；如果用私有密钥对数据进行加密，那么只有用对应的公开密钥才能解密。因为加密和解密使用的是两个不同的密钥，所以这种算法叫作非对称加密算法。简单的说是“公钥加密，私钥解密；私钥加密，公钥解密”。</p>
-<h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><p> &emsp;&emsp;高级加密标准（英语：Advanced Encryption Standard，缩写：AES），在密码学中又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院（NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。2006年，高级加密标准已然成为对称密钥加密中最流行的算法之一。</p>
-<h3 id="为什么要结合使用这两种算法"><a href="#为什么要结合使用这两种算法" class="headerlink" title="为什么要结合使用这两种算法"></a>为什么要结合使用这两种算法</h3><p>&emsp;&emsp;如果不清楚非对称算法和对称算法，也许你会问，为什么要结合使用这两种算法，单纯使用一种算法不行吗？这就要结合不同的场景和需求了。</p>
-<p>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息不需加密的情况<br>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息不需加密，例如绑定银行卡的时候，需要传递用户的银行卡号，手机号等重要信息，客户端这边就需要对这些重要信息进行加密，使用RSA公钥加密，服务端使用RSA解密，然后返回一些普通信息，比如状态码code,提示信息msg,提示操作是成功还是失败。这种场景下，仅仅使用RSA加密是可以的。</p>
-<p>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息需加密的情况<br>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息需加密,例如客户端登录的时候，传递用户名和密码等资料，需要进行加密，服务端验证登录信息后，返回令牌token需要进行加密，客户端解密后保存。此时就需要结合这两种算法了。至于整个流程是怎样的，在下面会慢慢通过例子向你介绍，因为如果一开始就这么多文字类的操作，可能会让读者感到一头雾水。</p>
-<h3 id="使用RSA加密和解密"><a href="#使用RSA加密和解密" class="headerlink" title="使用RSA加密和解密"></a>使用RSA加密和解密</h3><p>产生公钥和私钥：产生RSA公钥和密钥的方法有很多，在这里我直接使用我封装好的方法产生，都最后我会将两个算法的工具类赠送给大家。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 生成公钥和私钥</span><br><span class="line"> * </span><br><span class="line"> * @throws Exception</span><br><span class="line"> * </span><br><span class="line"> */</span><br><span class="line">public static void getKeys() throws Exception &#123;</span><br><span class="line">    KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(&quot;RSA&quot;);</span><br><span class="line">    keyPairGen.initialize(1024);</span><br><span class="line">    KeyPair keyPair = keyPairGen.generateKeyPair();</span><br><span class="line">    RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();</span><br><span class="line">    RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();</span><br><span class="line"></span><br><span class="line">    String publicKeyStr = getPublicKeyStr(publicKey);</span><br><span class="line">    String privateKeyStr = getPrivateKeyStr(privateKey);</span><br><span class="line"></span><br><span class="line">    System.out.println(&quot;公钥\r\n&quot; + publicKeyStr);</span><br><span class="line">    System.out.println(&quot;私钥\r\n&quot; + privateKeyStr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static String getPrivateKeyStr(PrivateKey privateKey)</span><br><span class="line">        throws Exception &#123;</span><br><span class="line">    return new String(Base64Utils.encode(privateKey.getEncoded()));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static String getPublicKeyStr(PublicKey publicKey) throws Exception &#123;</span><br><span class="line">    return new String(Base64Utils.encode(publicKey.getEncoded()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>公匙<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRQZ5O/AOAjeYAaSFf6Rjhqovws78I716I9oGF7WxCIPmcaUa1YuyLOncCCuPsaw69+RMWjdbOBp8hd4PPM/d4mKTOVEYUE0SfxhhDTZaM5CzQEUXUyXy7icQTGR5wBjrbjU1yHCKOf5PJJZZQWB06husSFZ40TdL7FdlBpZ1u1QIDAQAB</span><br></pre></td></tr></table></figure></p>
-<p>私钥<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJFBnk78A4CN5gBpIV/pGOGqi/CzvwjvXoj2gYXtbEIg+ZxpRrVi7Is6dwIK4+xrDr35ExaN1s4GnyF3g88z93iYpM5URhQTRJ/GGENNlozkLNARRdTJfLuJxBMZHnAGOtuNTXIcIo5/k8klllBYHTqG6xIVnjRN0vsV2UGlnW7VAgMBAAECgYBMoT9xD8aRNUrXgJ7YyFIWCzEUZN8tSYqn2tPt4ZkxMdA9UdS5sFx1/vv1meUwPjJiylnlliJyQlAFCdYBo7qzmib8+3Q8EU3MDP9bNlpxxC1go57/q/TbaymWyOk3pK2VXaX+8vQmllgRZMQRi2JFBHVoep1f1x7lSsf2TpipgQJBANJlO+UDmync9X/1YdrVaDOi4o7g3w9u1eVq9B01+WklAP3bvxIoBRI97HlDPKHx+CZXeODx1xj0xPOK3HUz5FECQQCwvdagPPtWHhHx0boPF/s4ZrTUIH04afuePUuwKTQQRijnl0eb2idBe0z2VAH1utPps/p4SpuT3HI3PJJ8MlVFAkAFypuXdj3zLQ3k89A5wd4Ybcdmv3HkbtyccBFALJgs+MPKOR5NVaSuF95GiD9HBe4awBWnu4B8Q2CYg54F6+PBAkBKNgvukGyARnQGc6eKOumTTxzSjSnHDElIsjgbqdFgm/UE+TJqMHmXNyyjqbaA9YeRc67R35HfzgpvQxHG8GN5AkEAxSKOlfACUCQ/CZJovETMmaUDas463hbrUznp71uRMk8RP7DY/lBnGGMeUeeZLIVK5X2Ngcp9nJQSKWCGtpnfLQ==</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;很明显，公钥字符串长度比较短，私钥的比较长。生成完密钥后，公钥可以存放在客户端，即使被别人知道公钥，也是没有问题的；私钥则一定要保存在服务端。如果到时公司面临人事变动，避免私钥被离职人员泄露，可以重新生成公钥和密钥。</p>
-<p>使用公钥加密，私钥解密<br><img src="http://i.imgur.com/EzSYTst.png" alt="Alt text" title="Optional title"><br>这里在客户端模拟加密的情况，对字符串”Beyond黄家驹”使用RSA加密，调用RSAUtils的encryptByPublicKey()方法，输出结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">密文: BRFjf3tUqRqlwuP5JtzxZinf7lp+AHuHM9JSabM5BNFDxuUe9+uuO6RpCHVH5PibifqQHzGNsyZn1G9QcIENT9Tbm+PZwAbNUlMPZRDBU1FSnOtY8dBdeW/lJdnY9sJVwNvIBnOLQk66hxRh6R2149dwlgdsGUpWMOMBzcP3vsU=</span><br></pre></td></tr></table></figure></p>
-<p>在服务端，可以使用RSAUtils的decryptByPrivateKey()方法进行解密，现在模拟服务端解密<br><img src="http://i.imgur.com/oNox5Ma.png" alt="Alt text" title="Optional title"><br>&emsp;&emsp;在这里虽然没有完全模拟数据传输过程，比如说客户端发起一个网络请求，传递参数给服务端，服务端接收参数并进行处理，也是为了让大家可以更加容易明白，所以这里只是进行简单的模拟。可以看到Android客户端端和Java服务端的RSA加密解密算法是可以互通的，原因是他们所使用到的base64加密类是一致的，所以才可以实现加密和解密的算法互通。<br><img src="http://i.imgur.com/lLgQbab.png" alt="Alt text" title="Optional title"><br><img src="http://i.imgur.com/lLgQbab.png" alt="Alt text" title="Optional title"><br>&emsp;&emsp;使用到的jar包都是javabase64-1.3.1.jar,相信不少人都知道，java中有自带的Base64算法类，但是安卓中却没有，之前出现的情况是，使用的Base64类不统一，比如在安卓客户端开发使用的Base64算法是使用第三方提供的jar包，而java服务端中使用的是JDK自带的Base64,导致从客户端传过来的密文，服务端解析出错。</p>
-<p>&emsp;&emsp;上面的例子展示了客户端使用公钥加密，服务端使用私钥解密的过程。也许你会这么想，既然可以如此，那服务端那边信息也可以通过RSA加密后，传递加密信息过来，客户端进行解密。但是，这样做，显示是不安全的。原因是，由于客户端并没有保存私钥，只有公钥，只可以服务端进行私钥加密，客户端进行公钥解密，但由于公钥是公开，别人也可以获取到公钥，如果信息被他们截取，他们同样可以通过公钥进行解密，那么这样子加密，就毫无意义了，所以这个时候，就要结合对称算法，实现客户端与服务端之前的安全通信了。</p>
-<p>使用AES加密解密<br>加密<br><img src="http://i.imgur.com/WgX5ss7.png" alt="Alt text" title="Optional title"><br>模拟客户端进行AES加密，我们通过调用AESUtils中的generateKey()方法，随机产生一个密钥，用于对数据进行加密。输出的结果为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">密钥: 6446c69c0f914a57</span><br><span class="line">密文: GECDQOsc22yV48hdJENTMg==</span><br></pre></td></tr></table></figure></p>
-<p>解密<br>&emsp;&emsp;模拟服务端进行AES解密，由于AES属于对称算法，加密和解密需要使用同一把密钥，所以，服务端要解密传递过来的内容，就需要密钥 + 密文。这里模拟一下服务端解密。<br><img src="http://i.imgur.com/NXLPGwG.png" alt="Alt text" title="Optional title"><br>&emsp;&emsp;到这里也许你会问，客户端使用AES进行加密，服务端要进行解密的话，需要用到产生的密钥，那密钥必须从客户端传输到服务端，如果不对密钥进行加密，那加密就没有意义了。所以这里终于谈到了重点，RSA算法+AES算法结合使用。</p>
-<p>RSA算法+AES算法的使用<br>&emsp;&emsp;举一个简单的例子来说明一下吧，例如实名认证功能，需要传递用户真实姓名和身份证号，对于这种重要信息，需要进行加密处理。</p>
-<p>客户端使用RSA + AES对重要信息进行加密<br>客户端加密过程主要分为以下三个步骤：</p>
-<ol>
-<li><p>客户端随机产生AES的密钥；</p>
-</li>
-<li><p>对身份证信息（重要信息）进行AES加密；</p>
-</li>
-<li><p>通过使用RSA对AES密钥进行公钥加密。<br><img src="http://i.imgur.com/8c2YKWN.png" alt="Alt text" title="Optional title"></p>
-</li>
-</ol>
-<p>&emsp;&emsp;这样在传输的过程中，即时加密后的AES密钥被别人截取，对其也无济于事，因为他并不知道RSA的私钥，无法解密得到原本的AES密钥，就无法解密用AES加密后的重要信息。</p>
-<p>服务端使用RSA + AES对重要信息进行解密</p>
-<p>服务端解密过程主要分为以下两个步骤：</p>
-<ol>
-<li><p>对加密后的AES密钥进行RSA私钥解密，拿到密钥原文；</p>
-</li>
-<li><p>对加密后的重要信息进行AES解密，拿到原始内容。<br><img src="http://i.imgur.com/kVrEvsu.png" alt="Alt text" title="Optional title"></p>
-</li>
-</ol>
-<p>&emsp;&emsp;现实开发中，服务端有时也需要向客户端传递重要信息，比如登录的时候，返回token给客户端，作为令牌，这个令牌就需要进行加密，原理也是差不多的，比上面多一个步骤而已，就是将解密后的AES密钥，对将要传递给客户端的数据token进行AES加密，返回给客户端，由于客户端和服务端都已经拿到同一把AES钥匙，所以客户端可以解密服务端返回的加密后的数据。如果客户端想要将令牌进行保存，则需要使用自己定义的默认的AES密钥进行加密后保存，需要使用的时候传入默认密钥和密文，解密后得到原token。</p>
-<p>&emsp;&emsp;上面提及到客户端加密，服务端返回数据不加密的情况，上面说到仅仅使用RSA是可以，但是还是建议同时使用这两种算法，即产生一个AES密钥，使用RSA对该密钥进行公钥加密，对重要信息进行AES加密，服务端通过RSA私钥解密拿到AES密钥，再对加密后的重要信息进行解密。如果仅仅使用RSA，服务端只通过RSA解密，这样会对于性能会有所影响，原因是RSA的解密耗时约等于AES解密耗时的100倍，所以如果每个重要信息都只通过RSA加密和解密，则会影响服务端系统的性能，所以建议两种算法一起使用。</p>
-<p>同时还有相应的JS版RSA和AES算法，使用方式也差不多，在这里简单演示一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;RSA+AES.html&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;meta name=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;description&quot; content=&quot;this is my page&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;./js/rsa.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;./js/aes.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        var key = getKey();//随机产生AES密钥</span><br><span class="line">        var encryptKey = RSA(key);//对AES密钥进行RSA加密</span><br><span class="line">        console.log(&quot;encryptKey: &quot; + encryptKey);</span><br><span class="line"></span><br><span class="line">        //测试AES加密和解密</span><br><span class="line">        var cipherText = AESEnc(key,&quot;123456&quot;);</span><br><span class="line">        var plainText = AESDec(key,cipherText);</span><br><span class="line">        console.log(&quot;密文: &quot; + cipherText);</span><br><span class="line">        console.log(&quot;明文: &quot; + plainText);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    This is my HTML page. &lt;br&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-<p>打开页面后，查看控制台输出：<br><img src="http://i.imgur.com/PyU0b3r.png" alt="Alt text" title="Optional title"><br>同时，模拟服务端解密，运行结果如下：<br><img src="http://i.imgur.com/3VrRv3d.png" alt="Alt text" title="Optional title"></p>
-<p>需要注意的是:</p>
-<p>1.RSAUtils中配置公钥和密钥，可以使用getKeys()方法产生。如果是客户端，则无须配置私钥，把没有私钥的RSAUtils放到客户端，因为仅需要用到公钥加密的方法。</p>
-<p>2.AESUtils中配置偏移量IV_STRING；</p>
-<p>3.rsa.js中最底部配置公钥，须和上面RSAUtils配置的公钥一致；</p>
-<p>4.aes.js中的底部var iv = CryptoJS.enc.Utf8.parse(“16-Bytes–String”); //加密向量中，替换里面的字符串，加密向量须和<br>是上面的AESUtils中的偏移量一致。</p>
-<p>各种语言的加密的处理方式有所差异，所以我们需要因地制宜。了解此加密的思想方法即可</p>
-<ol>
-<li><a href="http://blog.csdn.net/treesky/article/details/49422645" target="_blank" rel="external">php 和 java RSA 对称加密互通的问题</a></li>
-<li><a href="http://www.cnblogs.com/yipu/articles/3871576.html" target="_blank" rel="external">php与java通用AES加密解密算法</a></li>
-<li><a href="http://blog.csdn.net/pbm863521/article/details/54023009" target="_blank" rel="external">Android错误解决：java.lang.NoSuchMethodError: No static method encodeBase64String</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Android-Studio修改包名.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Android-Studio修改包名.html" itemprop="url">Android Studio修改包名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-28T19:52:24+08:00">
-                2017-03-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/Android-Studio修改包名.html" class="leancloud_visitors" data-flag-title="Android Studio修改包名">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  83 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Android-Studio修改包名"><a href="#Android-Studio修改包名" class="headerlink" title="Android Studio修改包名"></a>Android Studio修改包名</h3><ol>
-<li>修改包显示方式</li>
-</ol>
-<p><img src="http://img2.tuicool.com/BBBR3qN.png!web" alt="Alt text" title="修改包显示方式"></p>
-<p>通过修改包显示方式，我们可以更方便的修改包名。</p>
-<ol>
-<li>修改包名</li>
-</ol>
-<p><img src="http://www.itnose.net/img/20150709/10391686.png" alt="Alt text" title="修改包名"></p>
-<ol>
-<li>改build.gradle(module：APP名字)文件中的 applicationId</li>
-</ol>
-<p><img src="http://www.itnose.net/img/20150709/10391688.png" alt="Alt text" title="改build.gradle("></p>
-<ol>
-<li>clean和rebuild project</li>
-</ol>
-<p><img src="http://www.itnose.net/img/20150709/10391689.png" alt="Alt text" title="clean和rebuild project"></p>
-<ol>
-<li>关闭android studio重启(可选)</li>
-</ol>
-<p>亲测有效，完美~</p>
-<h3 id="简易操作，全局替换"><a href="#简易操作，全局替换" class="headerlink" title="简易操作，全局替换"></a>简易操作，全局替换</h3><p>ctr+shift+r</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2790,7 +2686,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2812,7 +2708,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2901,7 +2797,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">41.1k</span>
+    <span title="博客全站字数">43.4k</span>
   
 </div>
 
