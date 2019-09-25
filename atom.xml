@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangxin.online/"/>
-  <updated>2019-09-09T00:37:03.551Z</updated>
+  <updated>2019-09-25T11:37:40.270Z</updated>
   <id>http://yangxin.online/</id>
   
   <author>
@@ -15,6 +15,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AndroidUI 加载和绘制流程</title>
+    <link href="http://yangxin.online/AndroidUI-%E5%8A%A0%E8%BD%BD%E5%92%8C%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.html"/>
+    <id>http://yangxin.online/AndroidUI-加载和绘制流程.html</id>
+    <published>2019-09-25T05:24:26.000Z</published>
+    <updated>2019-09-25T11:37:40.270Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="源码总结"><a href="#源码总结" class="headerlink" title="源码总结"></a>源码总结</h3><h4 id="View是如何被添加到屏幕窗口上去的"><a href="#View是如何被添加到屏幕窗口上去的" class="headerlink" title="View是如何被添加到屏幕窗口上去的"></a>View是如何被添加到屏幕窗口上去的</h4><ol><li>在Activity的onCreate方法中调用setContentView将我们的布局传入</li><li>内部调用了Window的唯一实例对象PhoneWindow的setContentView方法</li><li>内部创建了顶层布局容器DecorView</li><li>在DecorView中加载了基础布局ViewGroup(主题布局)，</li><li>将我们的布局添加到基础布局的FrameLayout中 </li></ol><h4 id="View的绘制流程"><a href="#View的绘制流程" class="headerlink" title="View的绘制流程"></a>View的绘制流程</h4><ol><li>绘制入口<ul><li>ActivityThread.handlerResumeActivity</li><li>WindowManagerImpl.addView(decorView, layoutParams)</li><li>WindowManagerGlobal.addView()</li></ul></li><li>绘制的类及方法<ul><li>ViewRootImpl.addView(decorView, layoutParams, parentView)</li><li>ViewRootImpl.requestLayout()-&gt;scheduleTraversals()-&gt;doTraversals()-&gt;performTraversals()</li></ul></li><li>绘制流程的三大步骤<ul><li>ViewRootImpl.performMeasure()</li><li>ViewRootImpl.performLayout()</li><li>ViewRootImpl.performDraw</li></ul></li><li>绘制中的测量<ul><li>MeasureSpec的确定及计算: 顶层DecoView和其他View</li><li>DecorView通过窗口大小和DecoView本身大小确定</li><li>其他View通过父View的MeasureSpec和本身的大小确定</li></ul></li><li>绘制中的布局<ul><li>view.layout的方法确定自身的位置</li><li>若是ViewGroup类型，需要调用onLayout的方法确定子View的位置</li></ul></li><li>绘制中的绘制<ul><li>绘制背景drawableBackground</li><li>绘制自己onDraw</li><li>绘制子View  dispatchDraw</li><li>绘制前景，滚动条装等饰</li></ul></li></ol><h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>onMeasure -&gt; onLayout(ViewGroup要实现) -&gt; onDraw(可选，系统控件不用实现)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;源码总结&quot;&gt;&lt;a href=&quot;#源码总结&quot; class=&quot;headerlink&quot; title=&quot;源码总结&quot;&gt;&lt;/a&gt;源码总结&lt;/h3&gt;&lt;h4 id=&quot;View是如何被添加到屏幕窗口上去的&quot;&gt;&lt;a href=&quot;#View是如何被添加到屏幕窗口上去的&quot; class=&quot;
+      
+    
+    </summary>
+    
+      <category term="AndroidUI" scheme="http://yangxin.online/categories/AndroidUI/"/>
+    
+    
+      <category term="学习" scheme="http://yangxin.online/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>插件化</title>
+    <link href="http://yangxin.online/%E6%8F%92%E4%BB%B6%E5%8C%96.html"/>
+    <id>http://yangxin.online/插件化.html</id>
+    <published>2019-09-21T02:33:35.000Z</published>
+    <updated>2019-09-23T01:02:34.050Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="VirtualAPK"><a href="#VirtualAPK" class="headerlink" title="VirtualAPK"></a>VirtualAPK</h3><p>是滴滴开源的插件化项目，实现动态加载和运行apk的功能。<br>支持任何class的加载，资源的加载及四大组件<br><img src="https://github.com/didi/VirtualAPK/raw/master/imgs/va.png" alt="架构图"><br>android 插件化框架VitualAPK解析</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;VirtualAPK&quot;&gt;&lt;a href=&quot;#VirtualAPK&quot; class=&quot;headerlink&quot; title=&quot;VirtualAPK&quot;&gt;&lt;/a&gt;VirtualAPK&lt;/h3&gt;&lt;p&gt;是滴滴开源的插件化项目，实现动态加载和运行apk的功能。&lt;br&gt;支持任何cl
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>阿里镜像</title>
+    <link href="http://yangxin.online/%E9%98%BF%E9%87%8C%E9%95%9C%E5%83%8F.html"/>
+    <id>http://yangxin.online/阿里镜像.html</id>
+    <published>2019-09-17T13:26:11.000Z</published>
+    <updated>2019-09-17T13:29:02.869Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="阿里镜像"><a href="#阿里镜像" class="headerlink" title="阿里镜像"></a>阿里镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext.kotlin_version = &apos;1.2.71&apos;</span><br><span class="line">    repositories &#123;</span><br><span class="line">    // 以下四行代码为阿里gradle 源</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/google&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/gradle-plugin&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/public&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/jcenter&apos;&#125;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.2.0&apos;</span><br><span class="line">        classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">    // 所有的model 都优先使用阿里源</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/google&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/gradle-plugin&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/public&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/jcenter&apos;&#125;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;阿里镜像&quot;&gt;&lt;a href=&quot;#阿里镜像&quot; class=&quot;headerlink&quot; title=&quot;阿里镜像&quot;&gt;&lt;/a&gt;阿里镜像&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
+      
+    
+    </summary>
+    
+      <category term="日记" scheme="http://yangxin.online/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="阿里" scheme="http://yangxin.online/tags/%E9%98%BF%E9%87%8C/"/>
+    
+  </entry>
   
   <entry>
     <title>8月25日</title>
@@ -231,9 +302,9 @@
       <category term="日记" scheme="http://yangxin.online/categories/%E6%97%A5%E8%AE%B0/"/>
     
     
-      <category term="UML" scheme="http://yangxin.online/tags/UML/"/>
-    
       <category term="AOP" scheme="http://yangxin.online/tags/AOP/"/>
+    
+      <category term="UML" scheme="http://yangxin.online/tags/UML/"/>
     
   </entry>
   
@@ -447,72 +518,6 @@
     
     
       <category term="【反射机制】" scheme="http://yangxin.online/tags/%E3%80%90%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E3%80%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java泛型那些事</title>
-    <link href="http://yangxin.online/%E6%B3%9B%E5%9E%8B%E9%82%A3%E4%BA%9B%E4%BA%8B.html"/>
-    <id>http://yangxin.online/泛型那些事.html</id>
-    <published>2018-01-29T02:06:54.000Z</published>
-    <updated>2018-03-12T07:23:21.254Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="泛型的目的"><a href="#泛型的目的" class="headerlink" title="泛型的目的"></a>泛型的目的</h2><p>语法糖即糖衣语法，这种语法对语言并没有影响，只是方便了程序员的使用。主要包括：泛型，变长参数，条件编译，自动拆装箱，内部类等。虚拟机并不支持这种语法，在编译期就会被还原为基础语法结构，这个过程被称为解语法糖。<br>泛型的目的：通过泛型使得在编译期间完成类型转换工作，避免运行时强制类型转换而出现ClassCastException，类型转换异常<br><a id="more"></a></p><h2 id="泛型初窥"><a href="#泛型初窥" class="headerlink" title="泛型初窥"></a>泛型初窥</h2><p>JDK1.5之后添加<br>泛型的好处</p><ol><li>类型安全，将类型检测挪到了编译期。</li><li>消除了代码中许多的强制类型转换，增强了代码的可读性</li><li>为较大的优化带来了可能<h2 id="泛型使用"><a href="#泛型使用" class="headerlink" title="泛型使用"></a>泛型使用</h2>泛型的实质：允许在定义接口、类时声明类型形参，类型形参在整个接口、类体内可当做类型使用<br>方法声明定义的形参只能在该方法里使用<br>修饰符<t,s> 返回值类型 方法名（形参列表）{<br> 方法体<br>}<h2 id="类型通配符"><a href="#类型通配符" class="headerlink" title="类型通配符"></a>类型通配符</h2></t,s></li><li>任意通配符：？匹配任意的类型，用作读取不能添加</li><li>上限通配符：使用extends关键字指定这个类型必须是继承某个类，或者是实现某个接口（子类或者本身）</li><li>下限通配符：使用super关键字指定这个类型必须是某个类的父类，或者是某个接口的父类</li></ol><h2 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h2><p>作用于编译期间，所以运行期间泛型信息是被擦除的，编译后的Class不包含泛型信息。静态方法，静态初始化或者静态变量声明和初始化不允许使用类型形参。也不能使用instance of运算符</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;泛型的目的&quot;&gt;&lt;a href=&quot;#泛型的目的&quot; class=&quot;headerlink&quot; title=&quot;泛型的目的&quot;&gt;&lt;/a&gt;泛型的目的&lt;/h2&gt;&lt;p&gt;语法糖即糖衣语法，这种语法对语言并没有影响，只是方便了程序员的使用。主要包括：泛型，变长参数，条件编译，自动拆装箱，内部类等。虚拟机并不支持这种语法，在编译期就会被还原为基础语法结构，这个过程被称为解语法糖。&lt;br&gt;泛型的目的：通过泛型使得在编译期间完成类型转换工作，避免运行时强制类型转换而出现ClassCastException，类型转换异常&lt;br&gt;
-    
-    </summary>
-    
-      <category term="“JAVA”" scheme="http://yangxin.online/categories/%E2%80%9CJAVA%E2%80%9D/"/>
-    
-    
-      <category term="泛型" scheme="http://yangxin.online/tags/%E6%B3%9B%E5%9E%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java集合类分析理解</title>
-    <link href="http://yangxin.online/Java%E9%9B%86%E5%90%88%E7%B1%BB%E5%88%86%E6%9E%90%E7%90%86%E8%A7%A3.html"/>
-    <id>http://yangxin.online/Java集合类分析理解.html</id>
-    <published>2018-01-25T09:32:12.000Z</published>
-    <updated>2018-04-22T06:55:26.381Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="http://blog.csdn.net/csdn_terence/article/details/78379878" title="Optional title" target="_blank" rel="external">Java集合面试总结</a></p><h2 id="Collecton-和-Map"><a href="#Collecton-和-Map" class="headerlink" title="Collecton 和 Map"></a>Collecton 和 Map</h2><h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><p>包括 Set List Queue<br><a id="more"></a></p><h4 id="主要分析"><a href="#主要分析" class="headerlink" title="主要分析"></a>主要分析</h4><ol><li><p>ArrayList</p><ul><li>动态数组</li><li>capacity 扩容机制  1.5倍， 初始 java1.8 : 10 ;android 21 :12</li><li>内部元素变动 System.copyarray();</li><li>线程不安全</li></ul></li><li><p>LinkList<br>双向链表<br>Node()函数，该函数以O(1/2)的性能去获取一个节点<br>链表操作<br>线程不安全</p></li><li><p><a href="http://www.importnew.com/20386.html" title="Optional title" target="_blank" rel="external">HashMap</a></p><ul><li>hash()方法 (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16) able的长度都是2的幂，因此index仅与hash值的低n位有关 <a href="http://blog.csdn.net/fan2012huan/article/details/51097331&quot;Optional title&quot;" target="_blank" rel="external">计算方式</a></li><li>tableSizeFor() 找到大于等于initialCapacity的最小的2的幂</li><li>Node[] tab哈希桶数组.哈希冲突，开放地址和链地址法</li><li>根据key获取哈希桶数组索引位置</li><li>tab 长度为2的幂次</li><li>threshold 所能容纳的key-value对极限</li><li>Map m = Collections.synchronizeMap(hashMap)实现同步</li><li>初始 capacity 16 loadFactor 0.75</li></ul></li><li><p><a href="http://www.iqiyi.com/v_19rro6v558.html?vfm=m_312_shsp" title="Optional title" target="_blank" rel="external">TreeMap</a></p><ul><li>红黑树的定义，节点非红即黑，根节点为黑色，不能连续的红色，任意节点到末端的路径黑色个数相同</li><li>红黑树的平衡调整，颜色和结构</li><li>继承了SortMap ，put()函数会做比较</li><li>寻找后继节点，中序遍历</li></ul></li><li><p>LinkHashMap</p></li></ol><ul><li>与HashMap类似，不过保证了put顺序</li><li>主要实现了afterNodeAccess(),afterNodeInsert(),afterNoderemoval三个方法</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/csdn_terence/article/details/78379878&quot; title=&quot;Optional title&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Java集合面试总结&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Collecton-和-Map&quot;&gt;&lt;a href=&quot;#Collecton-和-Map&quot; class=&quot;headerlink&quot; title=&quot;Collecton 和 Map&quot;&gt;&lt;/a&gt;Collecton 和 Map&lt;/h2&gt;&lt;h3 id=&quot;Collection&quot;&gt;&lt;a href=&quot;#Collection&quot; class=&quot;headerlink&quot; title=&quot;Collection&quot;&gt;&lt;/a&gt;Collection&lt;/h3&gt;&lt;p&gt;包括 Set List Queue&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="http://yangxin.online/categories/Java/"/>
-    
-    
-      <category term="集合" scheme="http://yangxin.online/tags/%E9%9B%86%E5%90%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android 线程那些事</title>
-    <link href="http://yangxin.online/android-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5.html"/>
-    <id>http://yangxin.online/android-线程同步.html</id>
-    <published>2018-01-20T14:55:58.000Z</published>
-    <updated>2018-01-24T04:22:37.678Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="线程和线程安全"><a href="#线程和线程安全" class="headerlink" title="线程和线程安全"></a>线程和线程安全</h3><h4 id="线程是什么"><a href="#线程是什么" class="headerlink" title="线程是什么"></a>线程是什么</h4><ol><li>线程为进程的一个实体</li><li>轻量级进程</li><li>是CPU调度和分配的基本单位</li><li>可与同一进程内的线程共享进程内的全部资源</li><li>android 进程通过fork创建，线程通过pthread.creat创建</li></ol><h4 id="并发的优势促使多线程的出现"><a href="#并发的优势促使多线程的出现" class="headerlink" title="并发的优势促使多线程的出现"></a>并发的优势促使多线程的出现</h4><ol><li>资源利用率 ，提高</li><li>公平性，共享资源</li><li>便利性，多任务并发执行比单任务更容易执行</li></ol><h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><p>多线程的引入意味着引入了线程安全。当单线程能正确运行的代码，在多线程访问的情况下，不管线程以何种顺序访问，并不添加同步代码都能正确表现行为，则称它为线程安全的</p><h3 id="并发的三大要素"><a href="#并发的三大要素" class="headerlink" title="并发的三大要素"></a>并发的三大要素</h3><h4 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h4><p>指的是一个或者多个不能再被分割的操作<br>value = 1; //院子操作<br>value++; //复合操作</p><h4 id="数据竞争"><a href="#数据竞争" class="headerlink" title="数据竞争"></a>数据竞争</h4><p>指多进程访问共享资源，不做同步</p><h4 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h4><h4 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h4><p>当一个线程对某个变量做出修改时，其他线程可以立刻读取修改后的值</p><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><ol><li>是一种稍弱的同步机制，用来确保变量更新操作同步到其他线程，虚拟机不会指令重排</li><li>锁与volatile不同，锁具有两个特性：互斥性和可见性</li></ol><h3 id="内置锁"><a href="#内置锁" class="headerlink" title="内置锁"></a>内置锁</h3><h4 id="Sychronized关键字"><a href="#Sychronized关键字" class="headerlink" title="Sychronized关键字"></a>Sychronized关键字</h4><p>可作用于class和java对象</p><h4 id="锁的原理"><a href="#锁的原理" class="headerlink" title="锁的原理"></a>锁的原理</h4><ol><li>锁实现了内存可见性和操作原子性</li><li>释放锁时，该线程的本地内存中的共享变量会被刷新到内存中</li><li>锁不会被继承</li><li>同步代码块是使用monitorenter和monitorexit指令实现的，同步方法是通过ACC_SYNCHRONIZED标识符实现</li></ol><h4 id="锁的使用原则"><a href="#锁的使用原则" class="headerlink" title="锁的使用原则"></a>锁的使用原则</h4><ol><li>可能被多个线程同时访问的可变变量，在访问它时都需要持有一个锁，变量由这个锁保护</li><li>每个可变变量都只有一个锁来保护，知道锁的范围</li><li>当锁作用于多个变量时，对每个变量的操作都应该由同一个恶锁保护</li><li>在Android中，工作线程尽量不要和UI线程做同步</li></ol><h4 id="重入"><a href="#重入" class="headerlink" title="重入"></a>重入</h4><h4 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h4><h4 id="显示锁"><a href="#显示锁" class="headerlink" title="显示锁"></a>显示锁</h4><p>reentrantLock<br>semaphore<br>countDownLatch<br>CyclicBarrier<br>FutureTask</p><h3 id="原子变量和非阻塞算法"><a href="#原子变量和非阻塞算法" class="headerlink" title="原子变量和非阻塞算法"></a>原子变量和非阻塞算法</h3><p>Atomic<br>cas非阻塞算法<br>性能比较</p><p><a href="https://segmentfault.com/l/1500000012849264/play" target="_blank" rel="external">https://segmentfault.com/l/1500000012849264/play</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;线程和线程安全&quot;&gt;&lt;a href=&quot;#线程和线程安全&quot; class=&quot;headerlink&quot; title=&quot;线程和线程安全&quot;&gt;&lt;/a&gt;线程和线程安全&lt;/h3&gt;&lt;h4 id=&quot;线程是什么&quot;&gt;&lt;a href=&quot;#线程是什么&quot; class=&quot;headerlink&quot; ti
-      
-    
-    </summary>
-    
     
   </entry>
   

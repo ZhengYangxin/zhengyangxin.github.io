@@ -317,6 +317,606 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Teach-you-to-recognize-MVCMVPMVVM.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Teach-you-to-recognize-MVCMVPMVVM.html" itemprop="url">Teach you to recognize MVC, MVP and MVVM</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T16:12:29+08:00">
+                2017-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Teach-you-to-recognize-MVCMVPMVVM.html" class="leancloud_visitors" data-flag-title="Teach you to recognize MVC, MVP and MVVM">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  457 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Teach-you-to-recognize-MVC-MVP-AND-MVVM"><a href="#Teach-you-to-recognize-MVC-MVP-AND-MVVM" class="headerlink" title="Teach you to recognize MVC, MVP AND MVVM"></a>Teach you to recognize MVC, MVP AND MVVM</h3><p>I believe we are no stranger to MVC, MVP and MVVM, as the three most familiar Android framework. Their applications can be very extensive, but for some novice, it can be difficult to distinguish between them three.</p>
+<h3 id="Article-focus"><a href="#Article-focus" class="headerlink" title="Article focus:"></a>Article focus:</h3><ol>
+<li>Learn and distinguish between MVC, MVP and MVVM.</li>
+<li>Know how these three models in the use of Android.</li>
+<li>Out of the DataBinding errors.</li>
+<li>Understand the development model of MVP data binding.</li>
+</ol>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC means Model View Controller, is the most common framework in the software architecture, simply through the control of controller to operate the modle layer of data, and return to view layer display.</p>
+<p><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvc.png" alt="Alt text" title="Optional title"></p>
+<p>Use the traditional MVC, which View, corresponding to a variety of layout files, but these layout files are not as powerful as the Web Side, can do very limited. Controller correspods to the Activity, but Activity has the function of operating UI. We in the actual project will hava a lot of UI operations, and also do a lot of View should be dong in the layer</p>
+<p>MVC there is an important flaw, we look at the picture above, view layer and the model layer is mutual konw, which means that there is coupling between the two layers. The Coupling is very fatal for large program, beacuse it means that development, testing, maintenance need to spend a lot of energy.</p>
+<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><p>MVP as MVC evolution, to solve a lot of MVC shortcommings. For Android, MVP model layer relative to the MVC is the same, but activity and fragment is no longer the controller layer, but the pure view layer.And all fordwarding of user events is handled by the presenter layer.<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvp.png" alt="Alt text" title="Optional title"></p>
+<p>It can be seen from the figure that the most obvious difference is that the view and model layer are no longer mutual konw and complete descoupling. Instead of the precenter layer acts as bridge, the events used to manipulate the view layer are passed to the presenter layer, the presenter layer to mainpulate the model layer, and the data is returned to the view layer. the view layer and the model layer are completely unconnected throughout the process.</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM最早是由微软提出的<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvvm.png" alt="Alt text" title="Optional title"></p>
+<p>From the figure to see that it is similiar to MVP, but the presenter layer<br>be replaced by ViewModel layer. And the view layer and the viewmodel are bound to each other, the means that when you update the data of the viewmodel layer, the view layer changes accordingly ui. </p>
+<h3 id="Last-MVP-Databinding"><a href="#Last-MVP-Databinding" class="headerlink" title="Last: MVP + Databinding"></a>Last: MVP + Databinding</h3><p>We use the data binding framework to save similar findViewById and data binding time, and the use of presenter to separate the business logic and view layer.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/性能优化之布局.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/性能优化之布局.html" itemprop="url">性能优化之布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T23:34:46+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/性能优化之布局.html" class="leancloud_visitors" data-flag-title="性能优化之布局">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  767 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>性能优化之布局<br>重用<br>减少视图层级<br>需要时加载，懒加载布局<br>使用工具：Hierarchy View</li>
+<li>Android 性能优化方法<br>使用Dalvik提供的 dalvik.system.VMRuntime类来设置最小堆内存为例:</li>
+<li>bitmap 设置图片尺寸<br>避免 内存溢出 OutOfMemoryError的优化方法<br>options.inSampleSize = 2;//图片宽高都为原来的二分之一，即图片为原来的四分之一</li>
+<li>Android 还有一些性能优化的方法：<br>首先内存方面，可以参考 Android堆内存也可自己定义大小 和 优化Dalvik虚拟机的堆内存分配<br>基础类型上，因为Java没有实际的指针，在敏感运算方面还是要借助NDK来完成。这点比较有意思的是Google 推出NDK可能是帮助游戏开发人员，比如OpenGL ES的支持有明显的改观，本地代码操作图形界面是很必要的。<br>图形对象优化，这里要说的是Android上的Bitmap对象销毁，可以借助recycle()方法显示让GC回收一个Bitmap对象，通常对一个不用的Bitmap可以使用下面的方式。</li>
+<li><a href="http://mobile.51cto.com/abased-410791.htm" target="_blank" rel="external">从代码角度进行优化</a><br>静态变量引起内存泄露<br>使用Application的Context<br>及时关闭资源<br>使用Bitmap及时调用recycle()<br>对Adapter进行优化<br>代码“微优化”</li>
+<li><a href="http://mobile.51cto.com/abased-410795.htm" target="_blank" rel="external">使用软引用和弱引用</a></li>
+<li><a href="http://www.cnblogs.com/kest/p/5141817.html" target="_blank" rel="external">Android 中的Activity、Window、View之间的关系</a><br>Activity在onCreate时调用attach方法，在attach方法中会创建window对象。window对象创建时并没有创建 DocerView 对象。用户在Activity中调用setContentView,然后调用window的setContentView，这时会检查DecorView是否存在，如果不存在则创建DecorView对象，然后把用户自己的 View  添加到 DecorView 中。</li>
+<li><a href="http://www.tuicool.com/articles/iIf6BbV" target="_blank" rel="external">Activity的几种LaunchMode及使用场景</a><br><a href="http://blog.csdn.net/linmiansheng/article/details/24297375" target="_blank" rel="external">Android关于Task的一些实践</a></li>
+<li><a href="http://www.cnblogs.com/liqw/p/4175325.html" target="_blank" rel="external">Android 设计模式之MVC模式</a><br>MVC模式下，系统框架的类库被划分为3种：模型（Model）、视图（View）、控制器（Controller）。模型对象负责建立数据结构和相应的行为操作处理。视图对象负责在屏幕上渲染出相应的图形信息展示给用户看。控制器对象负责截获用户的按键和屏幕触摸等事件，协调Model对象和View对象。<br>　　用户与视图交互，视图接收并反馈用户的动作；视图把用户的请求传给相应的控制器，由控制器决定调用哪个模型，然后由模型调用相应的业务逻辑对用户请求进行加工处理，如果需要返回数据，模型会把相应的数据返回给控制器，由控制器调用相应的视图，最终由视图格式化和渲染返回的数据，对于返回的数据完全可以增加用户体验效果展现给用户。</li>
+<li><a href="http://zjutkz.net/2016/04/13/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC%EF%BC%8CMVP%E5%92%8CMVVM/" target="_blank" rel="external">教你认清MVC，MVP和MVVM</a><br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0301/4018.html" target="_blank" rel="external">如何设计MVP中的Presentation层</a><br><a href="http://www.jianshu.com/p/ce1b447efc4f" target="_blank" rel="external">google 官方mvp实例的实践之mvp-databinding-Rxjava（一）</a></li>
+<li><a href="https://jiangchunyu.github.io/2016/08/28/Netty-4-0%E5%9C%A8Android-%E4%B8%8A%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%96%AD%E7%BA%BF%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E/" target="_blank" rel="external">Netty 4.0在Android 上的使用，长连接断线自动重连</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/android系统架构-一.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/android系统架构-一.html" itemprop="url">android系统架构(一)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T18:59:49+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/android系统架构-一.html" class="leancloud_visitors" data-flag-title="android系统架构(一)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,044 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="出发点"><a href="#出发点" class="headerlink" title="出发点"></a>出发点</h3><p>&emsp;&emsp;由于在学习Android的时候并没有很系统地进行学习，知识点比较零碎，所以需要将自己的知识点进行系统的整理，那么首要的我需要将android的系统架构搞清楚，这样才能分清楚我所了解的知识点附属于哪个层面，是内核还是应用层，可以进行怎样的扩展，在哪些场景去运用。</p>
+<h3 id="Android架构解析"><a href="#Android架构解析" class="headerlink" title="Android架构解析"></a>Android架构解析</h3><p><a href="http://mobile.51cto.com/android-235496.htm" target="_blank" rel="external">Google工程师多图详解Android系统架构</a><br><a href="https://my.oschina.net/fhd/blog/349830" target="_blank" rel="external">Android基础之Android系统架构</a><br><a href="https://zh.wikipedia.org/wiki/Android#Linux.E6.A0.B8.E5.BF.83" target="_blank" rel="external">Android维基百科</a><br><a href="http://tech.it168.com/a2011/0805/1228/000001228471.shtml" target="_blank" rel="external">Android对Linux内核的增强</a><br><a href="http://www.tuicool.com/articles/EN7nuiN" target="_blank" rel="external">Android系统架构详解(2)–Android Runtime</a></p>
+<p>以上是我在这个课题下的一些参考博客或者网页链接。里面有对于android架构的一些较好的分析理解，接下来是阅读后自己的一些整理。</p>
+<p>Android采用层次化系统架构，官方公布的标准架构如下图所示。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Android-System-Architecture.svg/1000px-Android-System-Architecture.svg.png" alt="Alt text" title="Optional title"></p>
+<p>Android由底层往上分为4个主要功能层，分别是Linux内核层（Linux Kernel），系统运行时库层（Libraries和Android Runtime），应用程序架构层（Application Framework）和应用程序层（Applications）。</p>
+<p>接下来对这几个层面进行逐个分析：</p>
+<h4 id="Linux内核层"><a href="#Linux内核层" class="headerlink" title="Linux内核层"></a>Linux内核层</h4><p>&emsp;&emsp;Android以Linux操作系统内核为基础，借助Linux内核服务实现硬件设备驱动，进程和内存管理，网络协议栈，电源管理，无线通信等核心功能。Android4.0版本之前基于Linux2.6系列内核，4.0及之后的版本使用更新的Linux3.X内核，并且两个开源项目开始有了互通。Linux3.3内核中正式包括一些Android代码，可以直接引导进入Android。Linux3.4增添了电源管理等更多功能，以增加与Android的硬件兼容性，使Android在更多设备上得到支持。直到现在最新的android6.0仍然继续延用着linux3.4.0，而linux最新的版本已经到了4.3系列，那么为什么android没有继续去更新Linuxkernel的版本也是一个值得探讨的课题。 </p>
+<p>&emsp;&emsp;Android内核 对Linux内核进行了增强，增加了一些面向移动计算的特有功能。例如，低内存管理器LMK（Low Memory Keller），匿名共享内存（Ashmem）,以及轻量级的进程间通信Binder机制等。这些内核的增强使Android在继承Linux内核安全机制的同时，进一步提升了内存管理，进程间通信等方面的安全性。</p>
+<h4 id="硬件抽象层"><a href="#硬件抽象层" class="headerlink" title="硬件抽象层"></a>硬件抽象层</h4><p>&emsp;&emsp;内核驱动和用户软件之间还存在所谓的硬件抽象层（Hardware Abstract Layer,HAL），它是对硬件设备的具体实现加以抽象。HAL没有在Android官方系统架构图中标明，下图标出了硬件抽象层在android系统中的位置：</p>
+<p><img src="http://static.oschina.net/uploads/space/2014/1128/125552_hnZu_168814.jpg" alt="Alt text" title="Optional title"></p>
+<p>&emsp;&emsp;鉴于许多硬件设备厂商不希望公开其设备驱动的源代码，如果能将android的应用框架层与linux系统内核的设备驱动隔离，使应用程序框架的开发尽量独立于具体的驱动程序，则android将减少对Linux内核的依赖。HAL由此而生，它是对Linux内核驱动程序进行的封装，将硬件抽象化，屏蔽掉了底层的实现细节。HAL规定了一套应用层对硬件层读写和配置的统一接口，本质上就是将硬件的驱动分为用户空间和内核空间两个层面；Linux内核驱动程序运行于内核空间，硬件抽象层运行于用户空间。</p>
+<h4 id="系统运行库层"><a href="#系统运行库层" class="headerlink" title="系统运行库层"></a>系统运行库层</h4><p>&emsp;&emsp;官方的系统架构图中，位于Linux内核层之上的系统运行库层是应用程序框架的支撑，为Android系统中的各个组件提供服务。系统运行库层由系统类库和Android运行时构成。</p>
+<ul>
+<li>系统类库<br>系统类库大部分由C/C++编写，所提供的功能通过Android应用程序框架为开发者所使用。例如SQlite,WebKit,SSL都在会在日常开发中有用到</li>
+</ul>
+<p><img src="http://images.51cto.com/files/uploadimg/20101129/1011272.png" alt="Alt text" title="Optional title"></p>
+<ul>
+<li>运行时<br>Android运行时包含核心库和Dalvik虚拟机两部分。<ul>
+<li>核心库：核心库提供了Java5 se API的多数功能，并提供Android的核心API，如android.os，android.net，android.media等。</li>
+<li>Dalvik虚拟机：Dalvik虚拟机是基于apache的java虚拟机，并被改进以适应低内存，低处理器速度的移动设备环境。Dalvik虚拟机依赖于Linux内核，实现进程隔离与线程调试管理，安全和异常管理，垃圾回收等重要功能。</li>
+</ul>
+</li>
+</ul>
+<p>Dalvik和标准Java虚拟机有以下主要区别：</p>
+<ul>
+<li>Dalvik基于寄存器，而JVM基于栈。一般认为，基于寄存器的实现虽然更多依赖于具体的CPU结构，硬件通用性稍差，但其使用等长指令，在效率速度上较传统JVM更有优势。</li>
+<li>Dalvik经过优化，允许在有限的内存中同时高效地运行多个虚拟机的实例，并且每一个Dalvik应用作为一个独立的Linux进程执行，都拥有一个独立的Dalvik虚拟机实例。Android这种基于Linux的进程“沙箱”机制，是整个安全设计的基础之一。</li>
+<li>Dalvik虚拟机从DEX（Dalvik Executable）格式的文件中读取指令与数据，进行解释运行。DEX文件由传统的，编译产生的CLASS文件，经dx工具软件处理后生成。</li>
+<li>Dalvik的DEX文件还可以进一步优化，提高运行性能。通常，OEM的应用程序可以在系统编译后，直接生成优化文件（.ODEX）； 第三方的应用程序则可在运行时在缓存中优化与保存，优化后的格式为DEY（.dey文件）。</li>
+</ul>
+<p>&emsp;&emsp;这部分内容，即从android4.4开始就出现了ART（android runtime），但是这个ART并不是指这一节的主题，而是一种用来代替Dalvik的新型运行环境。当然在4.4的正式环境中用的还是Dalvik，真正开始用ART取代Dalvik是从android5.0开始的。（todo:针对这个改动，楼主会专门另开一个篇幅的文章去探究ART和Dalvik之间的区别）</p>
+<p>另外这一节中有提到NDK,相信对于开发者而言SDK和NDK都是必要要接触和了解的东西，那么先从下图来看看sdk和ndk的关系。</p>
+<p><img src="http://img.blog.csdn.net/20160107235017221" alt="Alt text" title="Optional title"></p>
+<p>&emsp;&emsp;很显然地，ndk可以通过native code跨过使用dalvik runtime,直接调用到android内核资源，而sdk则需要在dalvik runtime环境下才能调用到内核资源。然而两者并不是各司其职，各不相关。android提供了JNI(Java native interface)使两者可以进行相互调用和通信。</p>
+<h4 id="应用程序框架层"><a href="#应用程序框架层" class="headerlink" title="应用程序框架层"></a>应用程序框架层</h4><p>&emsp;&emsp;应用程序框架层提供开发Android应用程序所需的一系列类库，使开发人员可以进行快速的应用程序开发，方便重用组件，也可以通过继承实现个性化的扩展。</p>
+<p><img src="http://images.51cto.com/files/uploadimg/20101129/1011271.png" alt="Alt text" title="Optional title"></p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>&emsp;&emsp;Android平台的应用层上包括各类与用户直接交互的应用程序，或由java语言编写的运行于后台的服务程序。例如，智能手机上实现的常见基本功能 程序，诸如SMS短信，电话拨号，图片浏览器，日历，游戏，地图，web浏览器等程序，以及开发人员开发的其他应用程序。</p>
+<p>&emsp;&emsp;将android的基本架构进行了一个总体的分析和罗列，我们可以发现，平时开发中最常接触和用到的一定是application层，但是我们也不难发现，一些application层应用到的东西都能在系统层找到对应的踪迹，例如sqlite,webkit,甚至alarm。他们是怎么从底层到达application层供我们日常开发所用，这个也是需要去了解和研究的。本篇文章的目的在开篇已经阐述过，是为了能更好地将自己的知识对号入座，并且去补充一些自己在某些层面上缺乏的知识，最终可以将自己的知识形成一个整体的体系结构。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yangxin.online/Netty项目实践（一）.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -999,7 +1599,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1010,7 +1610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1021,7 +1621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1110,7 +1710,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">43.4k</span>
+    <span title="博客全站字数">43.9k</span>
   
 </div>
 
