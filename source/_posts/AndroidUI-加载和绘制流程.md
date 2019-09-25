@@ -2,8 +2,8 @@
 title: AndroidUI 加载和绘制流程
 copyright: true
 date: 2019-09-25 13:24:26
-tags: [学习]
-category: "AndroidUI"
+tags: [AndroidUI]
+category: "Android"
 ---
 ### 源码总结
 #### View是如何被添加到屏幕窗口上去的
