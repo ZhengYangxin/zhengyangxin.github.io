@@ -32,7 +32,7 @@ category:
 
 #### 二. OkHttp简介
 一张图了解OkHttp的整个过程
-![](/image/OkHttp.jpg)
+![](/images/OkHttp.jpg)
 在OkHttp中真正核心的东西是Interceptor，他不仅负责拦截请求进行额外的处理(入cookie)，实际上他还会把实际的网络请求，缓存，透明压缩等功能都统一起来，每一个功能都只是一个Interceptor，它们在连接成一个Interceptor.Chain,环环相扣最终完成一次网络请求，从getResponseWithInterceptorChain函数中我们可以看到Interceptor.Chain的分布情况依次是：
 1. 在配置OkHttpClinet时设置的interceptors
 2. 负责失败重试和重定向的RetryAndFollowUpInterceptor
