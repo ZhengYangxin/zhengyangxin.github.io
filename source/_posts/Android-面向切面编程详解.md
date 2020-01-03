@@ -255,19 +255,20 @@ public class ParamaterCheckApt extends AbstractProcessor {
     * AOP代理（AOP Proxy）：将通知应用到目标对象之后动态的创建对象。代理对象的功能等于目标对象的核心业务逻辑功能加上共有功能
     * 织入(Weaving): 将切面应用到目标对象从而创建一个新的代理对象的过程，这个过程可以发生在编译期，类装载期及运行期，不同的时期有着不同的条件。如AspectJ则需要一种支持AOP的特殊编译器；发生在类装载期，就要求有一个支持AOP实现的特殊类装载器；发生在运行期，则可直接通过java语言的反射机制与动态代理机制来实现
 4. AspectJ中的Join Point
-    | Join Points | 说明 | 实例 |
-    | ---  | --- | --- |
-    | method call | 函数调用| 比如Log.e()调用的地方是一个joinPoint |
-    | method execution| 函数执行| 比如Log.e()的内部执行，是一出joinPoint|
-    | constructor call| 构造函数的调用| 和method call 类似|
-    | constructor execution| 构造函数的执行| 和method execution类似|
-    | field get | 获取某个变量| 比如读取DemoActivity.debug成员|
-    | field set | 设置某变量| 比如设置DemoActivity.debug变量|
-    | preinitialization| Object 在构造函数中做一些工作| 很少使用|
-    | initialization| Object在构造函数中做得工作| 很少使用|
-    | static initialization | 类初始化 | 比如类的static{} |
-    | handler | 异常处理 | 比如try catch（xxx）中，对应catch内的执行
-    | advice execution | AspectJ的内容| ... |
+
+| Join Points | 说明 | 实例 |
+| ---  | --- | --- | --- |
+| method call | 函数调用| 比如Log.e()调用的地方是一个joinPoint |
+| method execution| 函数执行| 比如Log.e()的内部执行，是一出joinPoint|
+| constructor call| 构造函数的调用|s 和method call 类似|
+| constructor execution| 构造函数的执行| 和method execution类似|
+| field get | 获取某个变量| 比如读取DemoActivity.debug成员|
+| field set | 设置某变量| 比如设置DemoActivity.debug变量|
+| preinitialization| Object 在构造函数中做一些工作| 很少使用|
+| initialization| Object在构造函数中做得工作| 很少使用|
+| static initialization | 类初始化 | 比如类的static{} |
+| handler | 异常处理 | 比如try catch（xxx）中，对应catch内的执行
+| advice execution | AspectJ的内容| ... |
 
 5. PointCut基于正则表达式@注解 访问权限 返回值的类型 包名.函数名(参数),call(public  *  *.println(..)) 
 是匹配一个方法，第一个*表示方法的返回值，第二个*表示方法的包名，(..)表示方法的参数的样子，..代表任意个数，任意类型的参数
@@ -277,5 +278,5 @@ public class ParamaterCheckApt extends AbstractProcessor {
 * 同java一样，提供了一元和二元的条件表达操作符。
 s一元操作符：!
 二元操作符：||和&&
-* 参考 ![深入理解Android之Aop](https://blog.csdn.net/innost/article/details/49387395)
+* 参考![深入理解Android之Aop](https://blog.csdn.net/innost/article/details/49387395)
 
