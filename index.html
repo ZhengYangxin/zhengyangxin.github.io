@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/AndroidUI-加载和绘制流程.html">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Android-面向切面编程详解.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三金Sir">
@@ -336,7 +336,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/AndroidUI-加载和绘制流程.html" itemprop="url">AndroidUI 加载和绘制流程</a></h1>
+                <a class="post-title-link" href="/Android-面向切面编程详解.html" itemprop="url">Android 面向切面编程详解</a></h1>
         
 
         <div class="post-meta">
@@ -348,8 +348,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-25T13:24:26+08:00">
-                2019-09-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-27T21:38:50+08:00">
+                2019-12-27
               </time>
             
 
@@ -388,7 +388,7 @@
 
           
           
-             <span id="/AndroidUI-加载和绘制流程.html" class="leancloud_visitors" data-flag-title="AndroidUI 加载和绘制流程">
+             <span id="/Android-面向切面编程详解.html" class="leancloud_visitors" data-flag-title="Android 面向切面编程详解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  289 字
+                  3,526 字
                 </span>
               
 
@@ -429,7 +429,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  14 分钟
                 </span>
               
             </div>
@@ -451,54 +451,33 @@
 
       
         
-          
-            <h3 id="源码总结"><a href="#源码总结" class="headerlink" title="源码总结"></a>源码总结</h3><h4 id="View是如何被添加到屏幕窗口上去的"><a href="#View是如何被添加到屏幕窗口上去的" class="headerlink" title="View是如何被添加到屏幕窗口上去的"></a>View是如何被添加到屏幕窗口上去的</h4><ol>
-<li>在Activity的onCreate方法中调用setContentView将我们的布局传入</li>
-<li>内部调用了Window的唯一实例对象PhoneWindow的setContentView方法</li>
-<li>内部创建了顶层布局容器DecorView</li>
-<li>在DecorView中加载了基础布局ViewGroup(主题布局)，</li>
-<li>将我们的布局添加到基础布局的FrameLayout中 </li>
+          <h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ol>
+<li>什么是AOP（WHAT）</li>
+<li>AOP的使用 (HOW)</li>
+<li>比较主流AOP方案的优缺点 (WHY)</li>
+<li>基于AOP实现的业务开源库 (WHERE)</li>
 </ol>
-<h4 id="View的绘制流程"><a href="#View的绘制流程" class="headerlink" title="View的绘制流程"></a>View的绘制流程</h4><ol>
-<li>绘制入口<ul>
-<li>ActivityThread.handlerResumeActivity</li>
-<li>WindowManagerImpl.addView(decorView, layoutParams)</li>
-<li>WindowManagerGlobal.addView()</li>
+<h3 id="AOP的概念"><a href="#AOP的概念" class="headerlink" title="AOP的概念"></a>AOP的概念</h3><h4 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP"></a>什么是AOP</h4><ul>
+<li>AOP与OOP一样，是一种程序设计的思想：面向切面编程(Aspect Oritented Programming)，而非技术手段。思想的实现方式是一种技术，即通过预编译方式和运行期动态代理的方式实现程序功能的统一维护</li>
+<li>AOP是OOP的延续，是软件开发中的热点。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各个部分之间的耦合度降低，提高程序的可重用性，提高开发效率。</li>
 </ul>
-</li>
-<li>绘制的类及方法<ul>
-<li>ViewRootImpl.addView(decorView, layoutParams, parentView)</li>
-<li>ViewRootImpl.requestLayout()-&gt;scheduleTraversals()-&gt;doTraversals()-&gt;performTraversals()</li>
+<h4 id="什么是OOP"><a href="#什么是OOP" class="headerlink" title="什么是OOP"></a>什么是OOP</h4><ul>
+<li>OOP机面向对象编程(Object Oriented Programming)，被理解为是一种将程序分解为封装数据及相关操作的对象的编程思想。它有三大特性：多态，继承，封装。其中封装指：隐藏对象的属性和实现细节，仅对外公开访问方法，控制在程序中属性的读和写的级别，以获得更加清晰高效的逻辑单元划分。这个程序的六大设计原则中的单一职责原则一致：一个类只负责一件事。</li>
+<li>因此针对上面的封装特性，他存在一个问题：当存在关注点聚焦的场景时，他无法很好的解决，因为一个关注点是面向所有而不是一个单一的类，不受类的边界的约束,因此它只能分散到各个类,方法中去。这样的好处是降低了类的复杂性，提高了程序的可维护性，但同时他也使代码变得啰嗦了，例如添加方法的调用日志，那就必须为所有的需要日志的方法添加调用日志的方法。</li>
 </ul>
-</li>
-<li>绘制流程的三大步骤<ul>
-<li>ViewRootImpl.performMeasure()</li>
-<li>ViewRootImpl.performLayout()</li>
-<li>ViewRootImpl.performDraw</li>
+<h4 id="AOP和OOP的关系"><a href="#AOP和OOP的关系" class="headerlink" title="AOP和OOP的关系"></a>AOP和OOP的关系</h4><ul>
+<li>面对上述聚焦某个点的问题，AOP可以理解为是针对业务处理过程中的切面进行提取，它所面对的是处理过程中的某个步骤或者阶段，以获得逻辑过程中各个部分之间低耦合性隔离效果。这两种思想在目标上有本质上的差异，但两者不是对立的，AOP是为了弥补OOP的不足。</li>
+<li>OOP解决了竖向的问题，AOP则解决了横向的问题，有了AOP对程序的监控将更加简单清晰</li>
 </ul>
-</li>
-<li>绘制中的测量<ul>
-<li>MeasureSpec的确定及计算: 顶层DecoView和其他View</li>
-<li>DecorView通过窗口大小和DecoView本身大小确定</li>
-<li>其他View通过父View的MeasureSpec和本身的大小确定</li>
-</ul>
-</li>
-<li>绘制中的布局<ul>
-<li>view.layout的方法确定自身的位置</li>
-<li>若是ViewGroup类型，需要调用onLayout的方法确定子View的位置</li>
-</ul>
-</li>
-<li>绘制中的绘制<ul>
-<li>绘制背景drawableBackground</li>
-<li>绘制自己onDraw</li>
-<li>绘制子View  dispatchDraw</li>
-<li>绘制前景，滚动条装等饰</li>
-</ul>
-</li>
-</ol>
-<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>onMeasure -&gt; onLayout(ViewGroup要实现) -&gt; onDraw(可选，系统控件不用实现)</p>
-
-          
+<h4 id="使用的业务场景"><a href="#使用的业务场景" class="headerlink" title="使用的业务场景"></a>使用的业务场景</h4><p>日志记录，性能统计，安全控制，事务处理，异常处理等等</p>
+<h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><p><img src="/images/20171016213933903.png" alt=""><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Android-面向切面编程详解.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -554,7 +533,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/插件化.html">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/数据库学习.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三金Sir">
@@ -573,7 +552,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/插件化.html" itemprop="url">插件化</a></h1>
+                <a class="post-title-link" href="/数据库学习.html" itemprop="url">数据库学习</a></h1>
         
 
         <div class="post-meta">
@@ -585,179 +564,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T10:33:35+08:00">
-                2019-09-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/插件化.html" class="leancloud_visitors" data-flag-title="插件化">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  52 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="VirtualAPK"><a href="#VirtualAPK" class="headerlink" title="VirtualAPK"></a>VirtualAPK</h3><p>是滴滴开源的插件化项目，实现动态加载和运行apk的功能。<br>支持任何class的加载，资源的加载及四大组件<br><img src="https://github.com/didi/VirtualAPK/raw/master/imgs/va.png" alt="架构图"><br>android 插件化框架VitualAPK解析</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/阿里镜像.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/阿里镜像.html" itemprop="url">阿里镜像</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-17T21:26:11+08:00">
-                2019-09-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-31T22:21:36+08:00">
+                2019-10-31
               </time>
             
 
@@ -779,8 +587,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/日记/" itemprop="url" rel="index">
-                    <span itemprop="name">日记</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -796,7 +604,7 @@
 
           
           
-             <span id="/阿里镜像.html" class="leancloud_visitors" data-flag-title="阿里镜像">
+             <span id="/数据库学习.html" class="leancloud_visitors" data-flag-title="数据库学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -821,7 +629,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  163 字
+                  36 字
                 </span>
               
 
@@ -860,184 +668,10 @@
       
         
           
-            <h3 id="阿里镜像"><a href="#阿里镜像" class="headerlink" title="阿里镜像"></a>阿里镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext.kotlin_version = &apos;1.2.71&apos;</span><br><span class="line">    repositories &#123;</span><br><span class="line">    	// 以下四行代码为阿里gradle 源</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/google&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/gradle-plugin&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/public&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/jcenter&apos;&#125;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:3.2.0&apos;</span><br><span class="line">        classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">    	// 所有的model 都优先使用阿里源</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/google&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/gradle-plugin&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/public&apos;&#125;</span><br><span class="line">        maven&#123; url &apos;https://maven.aliyun.com/repository/jcenter&apos;&#125;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/8月25日.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/8月25日.html" itemprop="url">8月25日</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-25T16:46:06+08:00">
-                2019-08-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/8月25日.html" class="leancloud_visitors" data-flag-title="8月25日">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  248 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h4><ol>
-<li>事件分发的对象是MotionEvent,通过触摸屏幕和点击按键产生</li>
-<li>事件分发的组件包括Activity，ViewGroup，View以及硬件驱动。</li>
-<li>事件传递的方法，Native通过监听，读取dev/input/eventX文件产生新事件，发送给Java层。经过上面提到的组件，主要通过dispatchTouchEvent(),onInterceptTouchEvent(),onTouchEvent()三个方法传递，拦截和消费</li>
-<li>Activity和View没有OnInterceptTouchEvent方法，无需拦截事件</li>
-<li>在调用子View的dispatchTouchEvent时会判断是否设置了onTouchListener，会回调onTouch方法，返回true则为已经消费了,就不会调用onTouchEvent()的方法及内部的OnClick()方法</li>
-<li>处理滑动冲突的方式1.外部拦截：由重写父View在onInterceptTouchEvent()根据业务来判断move事件是否要拦截事件，down和up事件不拦截。2. 内部拦截，父View除了down事件都拦截，然后由子View通过requesDisallowInterceptTouchEvent()来控制父类是否要拦截，或者交给子View处理 </li>
+            <h3 id="数据库设计的三大范式"><a href="#数据库设计的三大范式" class="headerlink" title="数据库设计的三大范式"></a>数据库设计的三大范式</h3><ol>
+<li>第一：原子性， 即不可拆分</li>
+<li>第二：唯一性， id</li>
+<li>第三：避免冗余性</li>
 </ol>
 
           
@@ -1096,7 +730,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/8月21日.html">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/OkHttp的学习.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三金Sir">
@@ -1115,7 +749,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/8月21日.html" itemprop="url">8月21日</a></h1>
+                <a class="post-title-link" href="/OkHttp的学习.html" itemprop="url">OkHttp的学习</a></h1>
         
 
         <div class="post-meta">
@@ -1127,8 +761,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-21T22:20:58+08:00">
-                2019-08-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T21:34:11+08:00">
+                2019-10-29
               </time>
             
 
@@ -1138,6 +772,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1145,7 +801,7 @@
 
           
           
-             <span id="/8月21日.html" class="leancloud_visitors" data-flag-title="8月21日">
+             <span id="/OkHttp的学习.html" class="leancloud_visitors" data-flag-title="OkHttp的学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1170,7 +826,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  385 字
+                  703 字
                 </span>
               
 
@@ -1186,7 +842,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -1209,16 +865,45 @@
       
         
           
-            <h4 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h4><p>模板方法模式：在模板类中定义算法或任务执行的流程框架，将一些具体步骤延迟到子类中去实现。即可定义出不同的表现类。</p>
-<h4 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h4><p>在项目中订单类型往往很多，订单的处理方式也是别有不同。现在介绍一个用户扫码点餐后，收银接受订单消息的处理流程。首先看一下流程</p>
+            <h3 id="学习大纲"><a href="#学习大纲" class="headerlink" title="学习大纲"></a>学习大纲</h3><ol>
+<li>OSI七层模型介绍，TCP/IP模型介绍，Http协议的格式介绍</li>
+<li>OkHttp主线流程的源码阅读</li>
+<li>OkHttp源码阅读之线程池详解</li>
+<li>OkHttp责任链模式/建造者模式</li>
+<li>OkHttp整体框架</li>
+<li>OkHttp之Socket的请求与实现</li>
+</ol>
+<h3 id="1-网路模型"><a href="#1-网路模型" class="headerlink" title="1. 网路模型"></a>1. 网路模型</h3><ol>
+<li>OSI七层模型，数据封装，解封装的过程</li>
+<li>TCP/IP模型， 应用层，传输层，网络层， 主机到网络层</li>
+<li>Http1.0, 请求响应后会马上断开；Http1.1,添加了keepAlive的长连接保持</li>
+<li>get请求，请求行，请求属性集；post请求，请求行，请求属性集，请求体长度，请求体类型</li>
+</ol>
+<h3 id="2-OkHttp主流程源码阅读"><a href="#2-OkHttp主流程源码阅读" class="headerlink" title="2. OkHttp主流程源码阅读"></a>2. OkHttp主流程源码阅读</h3><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><pre><code>1. 创建OkHttpClient的实例对象client
+2. 创建请求对象Request的实例对象request
+3. 通过client.newCall(request)获取到请求对象call
+4. 通过请求对象call进行同步call.execute()请求或者call.enqueue(new CallBack())的异步请求
+</code></pre><h4 id="主流程"><a href="#主流程" class="headerlink" title="主流程"></a>主流程</h4><pre><code>1. 通过构建者设计模式，创建出OkHttpClient的实例
+2. 同样通过构建者设计模式，创建出Request的实例
+3. client.newCall(request)内部通过Call的实现类RealCall，返回call的对象
+4. 进行异步请求call.enqueue(new CallBack())不能重复请求，会调用分发器dispatcher.enqueue(new AsyncCall(responseCallback))
+5. 在dispatcher中定义了双端的runningAsyncCalls和readyAsyncCalls及限制了同时访问同一个服务器为最大5个
+6. 通过线程池调用executor.execute(asyncCall), asyncCall实现了Runnable
+7. AsyncCall内部执行耗时execute方法，会调用责任链获得响应response
+8. 成功与失败的回调，并且进行错误责任的划分
+</code></pre><h3 id="3-OkHttp源码阅读之线程池详解"><a href="#3-OkHttp源码阅读之线程池详解" class="headerlink" title="3. OkHttp源码阅读之线程池详解"></a>3. OkHttp源码阅读之线程池详解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public synchronized ExecutorService executorService() &#123;</span><br><span class="line">    if (executorService == null) &#123;</span><br><span class="line">      executorService = new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS,</span><br><span class="line">          new SynchronousQueue&lt;&gt;(), Util.threadFactory(&quot;OkHttp Dispatcher&quot;, false));</span><br><span class="line">    &#125;</span><br><span class="line">    return executorService;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <ol>
-<li>用户下单：下单来源：支付宝，微信，口碑等，订单类型：堂食，自提，外卖</li>
-<li>服务端收到下单请求，定义与之对应的消息推送给收银机</li>
-<li>商户在收银机上收到下单消息，进行处理</li>
-<li>服务端收到收银的处理结果，推送消息给用户</li>
-<li>用户收到消息<br>上面流程在自动审核消息里就是一个通用的过程，因此可以多这个过程制定一个步骤，具体实现由开发者定义。</li>
+<li>OkHttp中使用的线程池，采用了缓存方案。线程任务60s内执行完毕，则会复用线程。自定义线程工厂</li>
+<li>守护线程的设置</li>
 </ol>
-<p>整个流程中收银机处理的就是订单消息。由于订单的来源及订单类型的多种多样，也就意味着存在两方面的不同。1. 订单数据：基础数据+扩展数据 2.业务处理不同，不同的订单类型需要有不同的UI透出和额外的特殊操作。因此我们可以定义一个基础的UI操作类，定义出，获取订单数据，填充数据等</p>
+<h3 id="4-OkHttp责任链模式-建造者模式"><a href="#4-OkHttp责任链模式-建造者模式" class="headerlink" title="4. OkHttp责任链模式/建造者模式"></a>4. OkHttp责任链模式/建造者模式</h3><p>责任链模式关键是，拦截器集合，拦截器的一个管理类，index+1<br>建造者模式关键是构建对象</p>
+<h3 id="OkHttp整体框架"><a href="#OkHttp整体框架" class="headerlink" title="OkHttp整体框架"></a>OkHttp整体框架</h3><ol>
+<li>http的默认端口是80， https是443</li>
+<li>callServerIntercept 建立连接，会做连接池的复用</li>
+<li>网络层是在路由器之间的传输ip数据包，数据链路层是交换机间的传输是帧，最后是物理机的比特流的传输</li>
+<li>OkHttp封装了Socket,对socket进行了复用，缓存机制</li>
+<li>连接池的设计，定义了一个线程池和一个清理连接对象的线程，通过连接对象的空闲时间和允许的最大空闲时间来回收连接池</li>
+</ol>
 
           
         
@@ -1276,7 +961,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/8月20号.html">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/组件化总结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三金Sir">
@@ -1295,7 +980,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/8月20号.html" itemprop="url">8月20号</a></h1>
+                <a class="post-title-link" href="/组件化总结.html" itemprop="url">组件化总结</a></h1>
         
 
         <div class="post-meta">
@@ -1307,8 +992,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T23:20:23+08:00">
-                2019-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-22T21:37:59+08:00">
+                2019-10-22
               </time>
             
 
@@ -1318,6 +1003,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1325,7 +1032,7 @@
 
           
           
-             <span id="/8月20号.html" class="leancloud_visitors" data-flag-title="8月20号">
+             <span id="/组件化总结.html" class="leancloud_visitors" data-flag-title="组件化总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1350,7 +1057,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  388 字
+                  724 字
                 </span>
               
 
@@ -1366,7 +1073,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -1389,26 +1096,56 @@
       
         
           
-            <h4 id="四大引用"><a href="#四大引用" class="headerlink" title="四大引用"></a>四大引用</h4><p>垃圾回收机制在回收对象的时候，会判断是否有引用指向对象</p>
-<ol>
-<li>强引用</li>
+            <h4 id="library和phone的区别"><a href="#library和phone的区别" class="headerlink" title="library和phone的区别"></a>library和phone的区别</h4><ol>
+<li>library 是集成化，phone是组件化</li>
+<li>library中是apply plugin: ‘com.android.android’，且没有applicationId，phone是apply plugin: ‘com.android.application’，有applicationId</li>
+<li>library不能单独运行和单独打包，phone可以</li>
 </ol>
-<ul>
-<li>程序中大部分的对象都是强引用，如果一个对象具有一个强引用指向它，那垃圾回收器是不会回收他的，在内存不足的情况，系统宁愿报outOfMemery也不会回收这些对象</li>
-</ul>
-<ol>
-<li>软引用</li>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><ol>
+<li>定义config.gradle,统一配置信息及，定义是否为isRelease开关(是否为发布版本)</li>
+<li>在每个模块里做isRelease判断，是否是library，修改组件和集成库的区别</li>
+<li>组件时debug代码的配置</li>
 </ol>
-<ul>
-<li>如果一个对象只具有软引用，那内存充足的情况是不会被回收的，但在系统内存不足的情况，垃圾回收器还是会回收的。在未被回收之前，程序能正常使用该对象。软引用和一个引用队列管理，若软应用被回收，就会将软应用加入的引用队列中</li>
-</ul>
-<ol>
-<li>弱引用<br>弱引用和软引用的区别在于，只具有弱引用的对象具有更短的生命周期，当垃圾回收器扫描到弱引用对象时，就会回收掉该对象。无论内存是否充足。回收后同样会将该引用加入到相关联的引用队列中</li>
-<li>虚引用</li>
+<h4 id="组件化开发规范"><a href="#组件化开发规范" class="headerlink" title="组件化开发规范"></a>组件化开发规范</h4><p>组件前缀</p>
+<h4 id="module之间的交互"><a href="#module之间的交互" class="headerlink" title="module之间的交互"></a>module之间的交互</h4><ol>
+<li>EventBus 必须一对一，若一对多将混乱不堪难以维护</li>
+<li>反射  维护成本高，容易出现高版本@hide限制</li>
+<li>隐式意图，需要维护manifest</li>
+<li>BroadcastReceiver ，7.0后需要动态注册，需求方发送广播</li>
+<li>类加载，需要准确的全类名，维护成本高容易出错</li>
 </ol>
-<ul>
-<li>虚引用顾名思义就是形同虚设，对对象的生命周期毫无影响。一个对象被虚引用指引，就和没有引用一下。会被回收。与软引用和虚引用的区别在于：他必须和引用队列联合使用。唯一目的就是对象被回收的时候收到一个系统通知</li>
-</ul>
+<h4 id="注解处理器的APT的应用"><a href="#注解处理器的APT的应用" class="headerlink" title="注解处理器的APT的应用"></a>注解处理器的APT的应用</h4><ol>
+<li>简单来说是一种按一定规则，自动生成代码的工具</li>
+<li>需要了解他的程序元素Element包括：PackageElement包元素，TypeElement类或接口元素，VariableElement属性字段参数元素，ExecutableElement方法(包括构造，静态方法)元素</li>
+<li>Android studio 及 gradle的 版本兼容 1.as3.3.2 gradle 4.10.1(临界版本)  2. as3.4.1 gradle5.1.1(向下兼容)</li>
+<li>定义需扫描的注解类</li>
+<li>创建注解处理器@AutoService(Processor.class)，指定支持的注解，编译的java版本及注解处理器接受内容的参数</li>
+<li>通过获取节点，定义包名及新的class名称，通过filter创建一个JavaFileObject对象</li>
+<li>获取JavaFileObject的Write对象，进行一行一行的写入文件</li>
+</ol>
+<h4 id="JavaPoet的应用"><a href="#JavaPoet的应用" class="headerlink" title="JavaPoet的应用"></a>JavaPoet的应用</h4><p>JavaPoet是square推出的开源的java代码自动生成框架，提供javaApi生成Java文件</p>
+<ol>
+<li>MethodSpec生成方法</li>
+<li>TypeSpec生成类或者接口class</li>
+<li>JavaFile创建java文件</li>
+<li>Element的子类，包括TypeElement, PackageElement等等表示程序可操作的元素，包括类，方法，属性，包等</li>
+<li>TypeMirror,获取类的所有信息，可以判断子类关系</li>
+</ol>
+<h4 id="Arouter的源碼分析"><a href="#Arouter的源碼分析" class="headerlink" title="Arouter的源碼分析"></a>Arouter的源碼分析</h4><h5 id="1-初始化過程ARouter-init-gt-Arouter-init-gt-LogisticsCenter-init"><a href="#1-初始化過程ARouter-init-gt-Arouter-init-gt-LogisticsCenter-init" class="headerlink" title="1. 初始化過程ARouter.init -&gt; Arouter.init -&gt; LogisticsCenter.init()"></a>1. 初始化過程ARouter.init -&gt; <em>Arouter.init -&gt; LogisticsCenter.init()</em></h5><pre><code>* 在该方法中会进行APT生成文件的dex文件的扫码，加载所有的class文件，保存到routerMap对像并保存到sp中（第一次启动比较慢），同时开启了线程池每个dex的加载都会创建一个线程，最后放入缓存对象Warehouse的map中
+* 在 LogisticsCenter.init() -&gt; _Arouter.afterInit()内部会创建拦截器对象interceptorService
+</code></pre><h4 id="路由的设计及应用"><a href="#路由的设计及应用" class="headerlink" title="路由的设计及应用"></a>路由的设计及应用</h4><p>参考Arouter</p>
+<ol>
+<li>组件间的跳转</li>
+<li>组件间的值传递</li>
+<li>获取其他组件的资源及实习方法</li>
+<li>对未安装组件的拦截</li>
+</ol>
+<h4 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h4><p>存在问题</p>
+<ol>
+<li>各模块的service耦合度高</li>
+<li>模块间的跳转都类名</li>
+<li>数据的传输是调用方法的</li>
+</ol>
 
           
         
@@ -1466,7 +1203,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/8月16日.html">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Binder的学习.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三金Sir">
@@ -1485,7 +1222,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/8月16日.html" itemprop="url">8月16日</a></h1>
+                <a class="post-title-link" href="/Binder的学习.html" itemprop="url">Binder的学习</a></h1>
         
 
         <div class="post-meta">
@@ -1497,8 +1234,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-16T09:13:00+08:00">
-                2019-08-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-20T00:02:11+08:00">
+                2019-10-20
               </time>
             
 
@@ -1508,6 +1245,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1515,7 +1274,7 @@
 
           
           
-             <span id="/8月16日.html" class="leancloud_visitors" data-flag-title="8月16日">
+             <span id="/Binder的学习.html" class="leancloud_visitors" data-flag-title="Binder的学习">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1540,7 +1299,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  219 字
+                  1,249 字
                 </span>
               
 
@@ -1556,7 +1315,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -1579,205 +1338,66 @@
       
         
           
-            <h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><ol>
-<li>HashMap是线程不安全的</li>
-<li>允许key和value为null</li>
-<li>不保证存储的有序性</li>
-<li>影响HashMap性能的两个变量，init capacity(16)和loadFactor(0.75),load链表长度，减少Hash</li>
-<li>faile-fast机制，不允许迭代遍历时remove，add</li>
-<li>1.7和1.8jdk版本的数据存储结构.Entry,数组+链表。Node，数组+链表/红黑树</li>
-<li>扩容大小2倍，容量为2次幂，方便获取捅数组位置提高效率</li>
-<li>HashSet基于HashMap实现，value为object对象</li>
+            <h3 id="进程通讯的方式"><a href="#进程通讯的方式" class="headerlink" title="进程通讯的方式"></a>进程通讯的方式</h3><ol>
+<li>管道，耗性能</li>
+<li>共享内存，多进程访问，管理混乱</li>
+<li>Socket适用于网络通讯，进程通讯不适用</li>
 </ol>
-<h4 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h4><ol>
-<li>线程安全，synchronize修饰方法</li>
-<li>key，value不为null</li>
-<li>不保证有序性<br>4.initcapcity(11) loadFactor 0.75</li>
-<li>扩容大小2倍+1，容量为奇数或者素数，使哈希更加均匀</li>
+<h3 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h3><ol>
+<li>binder机制为每个进程都分配了UID和PID来作为鉴别身份的标识，安全性</li>
+<li>对数据只进行了一次拷贝，通过驱动的内核空间拷贝数据，不需要额外的同步处理</li>
+<li>使用简单C/S架构，实现面向对象的调用方式即在使用binder时，就和调用1个本地对象实例一样</li>
 </ol>
-<h4 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h4><ol>
-<li>并发容器，多线程下更加高效</li>
-<li>key或者value不为null</li>
-<li>cas无所操作。inittable初始化.SIZECTl，synchronnize</li>
-<li>扩容，rehash</li>
+<h4 id="Binder的四个重要角色"><a href="#Binder的四个重要角色" class="headerlink" title="Binder的四个重要角色"></a>Binder的四个重要角色</h4><ol>
+<li>server</li>
+<li>Client</li>
+<li>ServiceMannager</li>
+<li>Binder驱动(存在线程池 16个)，具体实现通过内存映射，内部调用了mmap()函数<br>前三者在用户空间，Binder驱动在内核空间</li>
 </ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    
-    
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/8月14日.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="三金Sir">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/head.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/8月14日.html" itemprop="url">8月14日</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-14T13:59:11+08:00">
-                2019-08-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/8月14日.html" class="leancloud_visitors" data-flag-title="8月14日">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  226 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Android中使用ProtoBuf"><a href="#Android中使用ProtoBuf" class="headerlink" title="Android中使用ProtoBuf"></a>Android中使用ProtoBuf</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Protobuf是一种Google开发的一种格式，这种格式与开发语言无关，与运行平台无关，用于序列化数据结构，并且很容易扩展，可用于通讯协议和数据存储等，类似于XML，json，但是序列化，反序列化，和数据的大小都远远高于其他数据结构。因为他会将具备可读性的key值的信息都进行过滤，转化更加精简的数据。</p>
-<h5 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h5><ol>
-<li>数据更加精简</li>
-<li>数据大小是json数据的3~10倍</li>
-<li>压缩性能是可以提升20~100倍</li>
-<li>数据歧义少</li>
-<li>代码自动生成<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5>数据大小的减少是。对key值的特殊定义，及数据都转成了16进制。<br>性能的提升，主要针对整形，浮点型的优化处理。字符型相对提升</li>
+<h4 id="AIDL接口定义语言"><a href="#AIDL接口定义语言" class="headerlink" title="AIDL接口定义语言"></a>AIDL接口定义语言</h4><p>是对Binder通讯的封装<br>IBinder代表有能力进行快进程的能力<br>IIterface 拥有了Binder机制的能力，只有一个asBinder的方法<br>Binder<br>Stub 本地对象</p>
+<h4 id="Binder的源码分析"><a href="#Binder的源码分析" class="headerlink" title="Binder的源码分析"></a>Binder的源码分析</h4><ol>
+<li><p>打开binder设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frameworks /native /cmds /servicemanager /service_manager.c</span><br><span class="line">driver = &quot;/dev/binder&quot;;  //返回文件描述符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>buffer的创建(用于进程间数据传递)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bs = binder_open(driver, 128*1024); binder，创建128k的那内存映射</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开辟内存呢映射128k</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">frameworks /native /cmds /servicemanager /binder.c</span><br><span class="line">bs-&gt;mapped = mmap(NULL, mapsize, PROT_READ, MAP_PRIVATE, bs-&gt;fd, 0);</span><br><span class="line">mmap()命令</span><br><span class="line">device /google /cuttlefish_kernel /4.4-x86_64 /System.map</span><br><span class="line">在系统启动的时候开辟了内存映射</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>serviceManager的启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system /core /rootdir /init.rc</span><br><span class="line">start servicemanager</span><br><span class="line">在系统启动的时候做了启动服务</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打包Parcel,数据写入binder驱动，copy_from_user</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">打包Parcel</span><br><span class="line">frameworks native libs binder IServiceManager.cpp</span><br><span class="line">addService</span><br><span class="line"></span><br><span class="line">数据写入binder驱动</span><br><span class="line">frameworks native libs binder IPCThreadState.cpp</span><br><span class="line">writeTransactionData</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务注册，添加到链表SVClist中</p>
+</li>
+<li>定义主线程中的线程池</li>
+<li>循环从mIn和mOut中读和写数据请求，发到binder设备中</li>
+</ol>
+<h3 id="三方登录实例"><a href="#三方登录实例" class="headerlink" title="三方登录实例"></a>三方登录实例</h3><p>A应用client端，B应用为Server端。A调用B进行登录。两应用aidl文件的包名必须一致</p>
+<h4 id="A应用"><a href="#A应用" class="headerlink" title="A应用"></a>A应用</h4><ol>
+<li><p>创建ILoginInterface.aidl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// ILoginInterface.aidl</span><br><span class="line">package com.netease.binder;</span><br><span class="line"></span><br><span class="line">// Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface ILoginInterface &#123;</span><br><span class="line"></span><br><span class="line">    // 登录</span><br><span class="line">    void login();</span><br><span class="line"></span><br><span class="line">    // 登录返回</span><br><span class="line">    void loginCallback(boolean loginStatus, String loginUser);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在A应用中建立Binder连接,记得销毁</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public void initBindService() &#123;</span><br><span class="line">        Intent intent = new Intent();</span><br><span class="line">        // 设置Server应用Action</span><br><span class="line">        intent.setAction(&quot;BinderB_Action&quot;);</span><br><span class="line">        // 设置Server应用包名（5.1+要求）</span><br><span class="line">        intent.setPackage(&quot;com.netease.binder.b&quot;);</span><br><span class="line">        // 开始绑定服务</span><br><span class="line">        bindService(intent, conn, BIND_AUTO_CREATE);</span><br><span class="line">        // 标识跨进程绑定</span><br><span class="line">        isStartRemote = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 服务连接</span><br><span class="line">    private ServiceConnection conn = new ServiceConnection() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">            iLogin = ILoginInterface.Stub.asInterface(service);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>因为需要接受B进程返回的数据，需要同样创建一个服务，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package com.netease.binder.a.service;</span><br><span class="line"></span><br><span class="line">import android.app.Service;</span><br><span class="line">import android.content.Intent;</span><br><span class="line">import android.os.IBinder;</span><br><span class="line">import android.os.RemoteException;</span><br><span class="line">import android.util.Log;</span><br><span class="line"></span><br><span class="line">import com.netease.binder.ILoginInterface;</span><br><span class="line"></span><br><span class="line">public class MyService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line"></span><br><span class="line">        return new ILoginInterface.Stub() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void login() throws RemoteException &#123;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void loginCallback(boolean loginStatus, String loginUser) throws RemoteException &#123;</span><br><span class="line">                Log.e(&quot;netease &gt;&gt;&gt; &quot;, &quot;loginStatus: &quot; + loginStatus + &quot; / loginUser: &quot; + loginUser);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="B应用"><a href="#B应用" class="headerlink" title="B应用"></a>B应用</h4><ol>
+<li>创建ILoginInterface.aidl</li>
+<li><p>创建对应的service服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class MyService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line"></span><br><span class="line">        return new ILoginInterface.Stub() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void login() throws RemoteException &#123;</span><br><span class="line">                Log.e(&quot;netease &gt;&gt;&gt; &quot;, &quot;BinderB_MyService&quot;);</span><br><span class="line">                // 单项通信有问题，真实项目双向通信，双服务绑定</span><br><span class="line">                serviceStartActivity();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void loginCallback(boolean loginStatus, String loginUser) throws RemoteException &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 在Service启动Activity，需要配置：.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">     */</span><br><span class="line">    private void serviceStartActivity() &#123;</span><br><span class="line">        Intent intent = new Intent(this, MainActivity.class);</span><br><span class="line">        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在AndroidManifest配置文件中注册服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">                 代表在应用程序里，当需要该service时，会自动创建新的进程。</span><br><span class="line">                 android:process=&quot;:remote&quot;</span><br><span class="line"></span><br><span class="line">                 是否可以被系统实例化</span><br><span class="line">                 android:enabled=&quot;true&quot;</span><br><span class="line"></span><br><span class="line">                 代表是否能被其他应用隐式调用</span><br><span class="line">                 android:exported=&quot;true&quot;</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;service</span><br><span class="line">            android:name=&quot;.service.MyService&quot;</span><br><span class="line">            android:enabled=&quot;true&quot;</span><br><span class="line">            android:exported=&quot;true&quot;</span><br><span class="line">            android:process=&quot;:remote_service&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;!-- 激活 MyService 唯一name，不能重名--&gt;</span><br><span class="line">                &lt;action android:name=&quot;BinderB_Action&quot; /&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/service&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当A请求登录时，会唤起B应用打开登录界面，当输入完登录信息后需要将登录结果返回给A应用，因此同样需要A应用有一个跨进程服务接受B进程的登录结果，所以同样在B中创建Ade服务连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public void initBindService() &#123;</span><br><span class="line">        Intent intent = new Intent();</span><br><span class="line">        // 设置Server应用Action</span><br><span class="line">        intent.setAction(&quot;BinderA_Action&quot;);</span><br><span class="line">        // 设置Server应用包名（5.1+要求）</span><br><span class="line">        intent.setPackage(&quot;com.netease.binder.a&quot;);</span><br><span class="line">        // 开始绑定服务</span><br><span class="line">        bindService(intent, conn, BIND_AUTO_CREATE);</span><br><span class="line">        // 标识跨进程绑定</span><br><span class="line">        isStartRemote = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 服务连接</span><br><span class="line">    private ServiceConnection conn = new ServiceConnection() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">            iLogin = ILoginInterface.Stub.asInterface(service);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></li>
 </ol>
 
           
@@ -1836,7 +1456,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/8月13日.html">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Handler解析.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三金Sir">
@@ -1855,7 +1475,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/8月13日.html" itemprop="url">8月13日</a></h1>
+                <a class="post-title-link" href="/Handler解析.html" itemprop="url">Handler解析</a></h1>
         
 
         <div class="post-meta">
@@ -1867,8 +1487,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T19:54:48+08:00">
-                2019-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-19T21:27:32+08:00">
+                2019-10-19
               </time>
             
 
@@ -1878,6 +1498,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1885,7 +1527,7 @@
 
           
           
-             <span id="/8月13日.html" class="leancloud_visitors" data-flag-title="8月13日">
+             <span id="/Handler解析.html" class="leancloud_visitors" data-flag-title="Handler解析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1910,7 +1552,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  511 字
+                  522 字
                 </span>
               
 
@@ -1949,34 +1591,24 @@
       
         
           
-            <h3 id="Android打包流程"><a href="#Android打包流程" class="headerlink" title="Android打包流程"></a>Android打包流程</h3><p>打包流程包括包含四步骤</p>
-<ol>
-<li>通过aapt工具打包res资源文件，生成R.java,resources.arsc和res文件</li>
-<li>处理.aidl文件，生成对应的java接口文件</li>
-<li>通过java compiler编译R.java, java接口文件，java源文件，生成.class文件</li>
-<li>通过dex命令，将.class文件和第三方库的.class文件处理称classes.dex</li>
-<li>通过apkbuilder工具，将Dex文件，res资源合并成一个APK</li>
-<li>通过jarsinger工具，为APK进行签名</li>
-<li>通过zipalign工具进行apk的对齐优化</li>
+            <h4 id="Handler的几个问题"><a href="#Handler的几个问题" class="headerlink" title="Handler的几个问题"></a>Handler的几个问题</h4><ol>
+<li>Handler内存泄漏的测试<br>在消息未发送之前，将activity销毁，需要remove消息及将handler赋值为null</li>
+<li>为什么不能在子线程创建Handler<br>在子线程中直接new Handler，会获取当前线程的Looper，但我们并没有穿件Looper</li>
+<li>textView.setText()只能在主线程执行？<br>是的，因为setText()会刷新界面，调用requestLayout及invalidate，内部会做是否为主线程的检查</li>
+<li>new Handler()两种写法有什么区别？<br>直接new Handler 重写他的handlerMessage()方法不推荐，通过new Handler(new Handler.CallBack)是推荐做法 CallBack接口的handlerMessage方法应返回为true</li>
+<li>ThreadLocal用法和原理<br>ThreadLocal 内部是一个Map对象，保存着key和value，可以为当前的线程，value为线程保存的值</li>
 </ol>
-<h3 id="自定义Gradle插件"><a href="#自定义Gradle插件" class="headerlink" title="自定义Gradle插件"></a>自定义Gradle插件</h3><ol>
-<li>创建一个module，无论phone还是Android Library，因为后面会删掉大部分文件</li>
-<li>删除module下的文件及文件夹，只保留空的src/main目录及build.gradle文件</li>
-<li>创建groovy文件夹，定义包名。如java项目一样</li>
-<li>创建一个类MyPlugin.groovy</li>
-<li><p>在build.build中加入groovy引用和用于上传的maven的引用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;groovy&apos;</span><br><span class="line">apply plugin: &apos;maven&apos;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    //gradle sdk</span><br><span class="line">    compile gradleApi()</span><br><span class="line">    //groovy sdk</span><br><span class="line">    compile localGroovy()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line">group = &apos;com.zyx.plugin&apos; </span><br><span class="line">version = &apos;1.0.0&apos;</span><br><span class="line"></span><br><span class="line">uploadArchives &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            //提交到远程服务器：</span><br><span class="line">            // repository(url: &quot;http://www.xxx.com/repos&quot;) &#123;</span><br><span class="line">            //    authentication(userName: &quot;admin&quot;, password: &quot;admin&quot;)</span><br><span class="line">            // &#125;</span><br><span class="line">            //本地的Maven地址设置为D:/repos</span><br><span class="line">            repository(url: uri(&apos;/Users/zhengyangxin/StudioProjects/myProject/LibraryCollection/pluginrepos&apos;))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>插件已经编好，接着需要告诉gradle我们定义了哪个插件，需要创建文件src/main/resources/META-INF/gradle-plugins/XXXX.properties, 这里的XXXX就是外部module引用的名称，在这里我们定义为com.zyx.plugin.properties</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.zyx.plugin&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>然后在XXXX.properties指明我们定义的插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation-class=com.hc.plugin.MyPlugin</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最后可以进行打包一个plugin在本地，通过定义的uploadArchives Task</p>
-</li>
-<li>在需要的modlue中引用自定义的plugin<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.zyx.plugin&apos;</span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;//本地Maven仓库地址</span><br><span class="line">            url uri(&apos;/Users/zhengyangxin/StudioProjects/myProject/LibraryCollection/pluginrepos&apos;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        //格式为--&gt;group:module:version</span><br><span class="line">        classpath &apos;com.zyx.plugin:plugin:1.0.0&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><ol>
+<li>从应用的创建：ActivityThread.main() -&gt; Looper.preMainLooper-&gt; 这时候ThreadLocal.get() = null -&gt;会创建主线程的Looper对象及唯一关联的MessageQueue</li>
+<li>当在主线程中new Handler()时 -&gt; 内部回调Looper.myLooper获取到主线程的Looper-&gt; 将looper的messagequeue赋值给Handler的变量 -&gt; 当handler调用sendMessage -&gt; queue.enqueueMessage()</li>
+<li>在ActivityThread.main() -&gt; 会调用Looper.loop()方法 -&gt; 从消息队列中获取消息 -&gt;</li>
+<li>调用message.target.dispachMessage -&gt; target即Handler，则会调用handler中的dispatch方法 -&gt; 最终掉用handler的handlerMessage方法</li>
+</ol>
+<h4 id="解决几个问题"><a href="#解决几个问题" class="headerlink" title="解决几个问题"></a>解决几个问题</h4><ol>
+<li>为什么主线程用Looper死循环不会引发ANR异常<br>因为Looper.next开启死循环的时候，一旦需要等待时或者还没有执行到执行的时候，会调用NDK里的JNI方法，释放当前的时间片，这样就不会引发ANR异常</li>
+<li>为什么Handler构造方法里面的Looper不是直接new？<br>因为直接new出来不一定能保证唯一，只有用Looper.prepare才能保证唯一性</li>
+<li>MessageQueue为什么要放在Looper的私有构造方法里初始化<br>因为一个线程只能由一个Looper，所以在构造方法里初始化也就能保证MessageQueue的唯一性</li>
+<li>主线程里的Looper.prepare/Looper.loop,是一直在无限循环里面的吗<br>是的</li>
 </ol>
 
           
@@ -2035,7 +1667,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangxin.online/8月8日.html">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Android架构MVX.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="三金Sir">
@@ -2054,7 +1686,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/8月8日.html" itemprop="url">8月8日</a></h1>
+                <a class="post-title-link" href="/Android架构MVX.html" itemprop="url">Android架构MVX</a></h1>
         
 
         <div class="post-meta">
@@ -2066,8 +1698,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T10:27:32+08:00">
-                2019-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T22:40:23+08:00">
+                2019-10-18
               </time>
             
 
@@ -2077,6 +1709,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -2084,7 +1738,7 @@
 
           
           
-             <span id="/8月8日.html" class="leancloud_visitors" data-flag-title="8月8日">
+             <span id="/Android架构MVX.html" class="leancloud_visitors" data-flag-title="Android架构MVX">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2109,7 +1763,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  612 字
+                  697 字
                 </span>
               
 
@@ -2125,7 +1779,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -2148,29 +1802,670 @@
       
         
           
-            <h3 id="Android开源框架-Aoppermission"><a href="#Android开源框架-Aoppermission" class="headerlink" title="Android开源框架 Aoppermission"></a>Android开源框架 Aoppermission</h3><p>Aoppermission是基于Aspect实现。实现过程及原理分析。Android的常用Aop有两种方式1.通过JNI Hook，2.静态织入</p>
-<h4 id="Acpect基础知识"><a href="#Acpect基础知识" class="headerlink" title="Acpect基础知识"></a>Acpect基础知识</h4><ol>
-<li>注解@Aspect，申明切面标记类</li>
-<li>@Pointcut, 定义切点，标记方法</li>
-<li>@Befeore 前置通知，切点前执行</li>
-<li>@Around 围绕切点执行</li>
-<li>@after 后置通知，切点后执行</li>
-<li>@AfterReturening,返回返回值，切点返回值</li>
-<li>@AfterThrowing ，异常通知，切点抛出异常</li>
-<li>首先需要依赖com.hujiang.aspectjx:gradle-android-plugin-aspectjx，配置好了所需的环境</li>
-<li>通过定义注解，包括NeedPermission,PermissionCanceled,PermissionDenied，三个注解对应这申请权限的三种情况。通过源码看他们的作用域都是Method，保留时间都是一直到运行时期，那就意味着，我们可以通过反射的技术实现想做的，而本项目也恰恰是基于反射和Aspect实现</li>
+            <h3 id="MVC架构设计"><a href="#MVC架构设计" class="headerlink" title="MVC架构设计"></a>MVC架构设计</h3><h4 id="流程关系"><a href="#流程关系" class="headerlink" title="流程关系"></a>流程关系</h4><ol>
+<li>View接受用户交互事件</li>
+<li>View将用户的操作，交给Controller</li>
+<li>Controller完成具体业务逻辑</li>
+<li>得到封装好的Model,再进行View的更新</li>
 </ol>
-<h4 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h4><p>纵向关系OOP，横向关系AOP</p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>Controller是作为媒介，处于Model和View之前，Model和View之间有紧密的联系，耦合性强<br>Controller做的事情过多，违反了面向对象的单一职责原则 </p>
+<h3 id="MVP架构设计"><a href="#MVP架构设计" class="headerlink" title="MVP架构设计"></a>MVP架构设计</h3><h4 id="流程关系-1"><a href="#流程关系-1" class="headerlink" title="流程关系"></a>流程关系</h4><ol>
+<li>View接受用户交互事件</li>
+<li>View把用户的操作交给了Presenter</li>
+<li>presenter控制Model进行业务逻辑的处理</li>
+<li>presenter处理完毕后，数据封装进Model</li>
+<li>presenter收到通知后，再更新数据</li>
+</ol>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>双向通信方式</p>
 <ol>
-<li>OOP是面向对象编程，按照单一职责原则会将会定义一个个类，每个类只负责一个责任。当我们要使用这个时会引用他，使他分散在个个模块，到处都有。如日志，埋点等。从对象组织角度来讲，采用的分类方式是类似生物学的方式，以继承为主线</li>
-<li>AOP是面向切面编程，我们从横向的的角度去观察这些对象，无需到处调用。这些需要打印日志的地方就是一个切点，AOp会在适当的时机打印<br>OOP是将问题划分到某个单个模块里去，而AOP是将把涉及到众多模块的某一类问题进行统一管理。AOP是将这些功能集中起来放到一个地方进行管理。是与业务逻辑进行隔离解耦</li>
+<li>View层与Model层完全解耦</li>
+<li>所有的逻辑都交给Presenter处理</li>
+<li>MVP分层较为严谨</li>
 </ol>
-<h4 id="实现特定方法的前后执行"><a href="#实现特定方法的前后执行" class="headerlink" title="实现特定方法的前后执行"></a>实现特定方法的前后执行</h4><ol>
-<li>硬编码，在执行方法前添加额外的执行方法</li>
-<li>静态织入，通过AspectJ，通过扫描文件分析代码，找到切点JoinPoint，通过自动生成代码获取方法的各种信息，</li>
-<li>JDK动态代理是对接口的代理，CGLib是对类的代理，把被代理的对象的class加载起来修改字节码，修改其字节码生成一个继承被代理对象的子类.通过子类增强功能</li>
+<h4 id="MVVM架构设计"><a href="#MVVM架构设计" class="headerlink" title="MVVM架构设计"></a>MVVM架构设计</h4><h4 id="流程关系-2"><a href="#流程关系-2" class="headerlink" title="流程关系"></a>流程关系</h4><ol>
+<li>View接受用户数据</li>
+<li>View把用户的操作交给了ViewModel</li>
+<li>ViewModel控制Model进行业务处理</li>
+<li>ViewModel处理完毕后，数据封装进Model，刷新View</li>
+</ol>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>降低耦合度：一个ViewModel层可以绑定不同的View层，当Model变化时View可以不变</li>
+<li>可以把一些视图逻辑放在ViewModel层中，让很多View可以重用这些视图逻辑</li>
+</ol>
+<h4 id="dataBinding的使用"><a href="#dataBinding的使用" class="headerlink" title="dataBinding的使用"></a>dataBinding的使用</h4><p>1.gradle文件添加，支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 添加DataBinding依赖</span><br><span class="line">    dataBinding&#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>布局文件中，添加最外层layout根布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加定义data标签，定义数据及数据来源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 定义该View（布局）需要绑定的数据来源 --&gt;</span><br><span class="line">   &lt;data&gt;</span><br><span class="line">       &lt;variable</span><br><span class="line">               name=&quot;user&quot;</span><br><span class="line">               type=&quot;com.zyx.cherish.mvp.bean.UserInfo&quot; /&gt;</span><br><span class="line">   &lt;/data&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在正常布局中用data中定义的name去使用“@=”是为了实现双向绑定（v -&gt; model）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">                android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                android:text=&quot;@=&#123;user.name&#125;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>build之后在activity中通过DatabindinngUtils绑定类与布局,然后就可以设置数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ActivityLoginLayoutBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_layout);</span><br><span class="line"></span><br><span class="line">viewDataBinding.setUser(userInfo);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><p><strong>内存消耗的缺点</strong></p>
+<ol>
+<li>会生成大量的object的对象，用到了数组保存数组</li>
+<li>每个View会监听数据变化，创建了线程</li>
+<li>在刷新时会轮训发送handler消息<br>在定义布局后通过rebuild，会生成额外的文件，这个是系统通过APT生成的<br>主要有</li>
+<li>activity_login_layout-layout.xml 配置文件，可以让dataBing方便查找View</li>
+<li>activity_login_layout 为每个View添加了Tag如binding_1</li>
+<li>DataBinderMapperImpl 这个是具体实现绑定类</li>
+<li>在DataBindingUtil.setContentView(this, R.layout.activity_login_layout)后会对布局中的控件进行绑定</li>
+<li>线程 mRebindRunnable  控件会对M数据修改做监听，来更新V的数据</li>
+<li>InverseBindingListener 控件自身数据修改即V数据修改，会更新M的数据</li>
 </ol>
 
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/切面编程.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/切面编程.html" itemprop="url">切面编程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T19:11:24+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/切面编程.html" class="leancloud_visitors" data-flag-title="切面编程">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  38 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="AspectJ-的几个注意"><a href="#AspectJ-的几个注意" class="headerlink" title="AspectJ 的几个注意"></a>AspectJ 的几个注意</h4><ol>
+<li>as3.0.1 gradle4.4-all  需要r17(NDK)</li>
+<li>as3.2.1 gradle4.6-all</li>
+<li>as3.4.0 gradle5.1.1-all 存在过时的api</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/几个问题.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/几个问题.html" itemprop="url">几个问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-11T20:33:40+08:00">
+                2019-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/几个问题.html" class="leancloud_visitors" data-flag-title="几个问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  294 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-fragment的切换有多少种方式，有区别吗"><a href="#1-fragment的切换有多少种方式，有区别吗" class="headerlink" title="1. fragment的切换有多少种方式，有区别吗"></a>1. fragment的切换有多少种方式，有区别吗</h4><ol>
+<li>add/remove，replace（remove后add，只有一个），hide/show(较耗性能), attach/detach(不会回收fragment,但会回收里面的View)</li>
+<li>只要我们创建了activity一定要在manifest中声明吗<h4 id="3-activity有几种启动模式，各自的使用场景"><a href="#3-activity有几种启动模式，各自的使用场景" class="headerlink" title="3. activity有几种启动模式，各自的使用场景"></a>3. activity有几种启动模式，各自的使用场景</h4></li>
+<li>共有四种启动模式</li>
+<li>应用的首页，通常是singleTask <h4 id="4-实际开发中文件命名有何规范"><a href="#4-实际开发中文件命名有何规范" class="headerlink" title="4.实际开发中文件命名有何规范"></a>4.实际开发中文件命名有何规范</h4></li>
+<li>java文件以系统名结尾，XXXActivity,XXXFragment,XXXApplication</li>
+<li>布局名以系统名+业务名+类型， activity_home_layout ,Layout布局文件</li>
+<li>类或者方法添加注释<h4 id="5-如何封装框架"><a href="#5-如何封装框架" class="headerlink" title="5. 如何封装框架"></a>5. 如何封装框架</h4></li>
+<li>从调用时可变参数的封装</li>
+<li>核心部分不变参数及通用方法的设计</li>
+<li>回调函数处理，异常处理，线程切换，数据转化的通用设计<h4 id="6-Charles的使用"><a href="#6-Charles的使用" class="headerlink" title="6.Charles的使用"></a>6.Charles的使用</h4></li>
+<li>请求拦截，查看请求及响应信息</li>
+<li>请求地址的映射(Map),主要用于接口调试</li>
+<li>请求参数设置，模拟慢网，超时等情况<br>4.<h4 id="7-如何有序地做内存分析与优化"><a href="#7-如何有序地做内存分析与优化" class="headerlink" title="7. 如何有序地做内存分析与优化"></a>7. 如何有序地做内存分析与优化</h4><a href="https://juejin.im/post/5b1b5e29f265da6e01174b84" target="_blank" rel="external">https://juejin.im/post/5b1b5e29f265da6e01174b84</a><h4 id="8-启动优化"><a href="#8-启动优化" class="headerlink" title="8. 启动优化"></a>8. 启动优化</h4><a href="https://juejin.im/post/5d95f4a4f265da5b8f10714b" target="_blank" rel="external">https://juejin.im/post/5d95f4a4f265da5b8f10714b</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    
+    
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yangxin.online/Material-Design.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="三金Sir">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Material-Design.html" itemprop="url">Material Design</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T11:27:37+08:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/Material-Design.html" class="leancloud_visitors" data-flag-title="Material Design">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  176 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Material-Design"><a href="#Material-Design" class="headerlink" title="Material Design"></a>Material Design</h3><p>它是一种Google官方推荐的设计规范。正如Android的碎片化，基于Android系统自研发的，拥有独特的交互和视觉效果的手机品牌在国内也是层出不穷，如小米的MIUI，魅族的flyme，锤子的Smartisan等等，这种开发被叫做ROM开发。对于App应用，按照安卓最新的MaterialDesign规范来进行单独的安卓版界面设计，这个是最花时间的，但是是最规范的</p>
+<h4 id="常用组件"><a href="#常用组件" class="headerlink" title="常用组件"></a>常用组件</h4><ol>
+<li>FloatActionBar</li>
+<li>bottomBar</li>
+<li>topBar</li>
+<li>Bottom navigation</li>
+<li>Navigation drawer</li>
+<li>Snackbars<br>…等等</li>
+</ol>
+<h3 id="CoordinatorLayout的原理"><a href="#CoordinatorLayout的原理" class="headerlink" title="CoordinatorLayout的原理"></a>CoordinatorLayout的原理</h3><p>依赖于NestedScroll的实现，CoordinatorLayout必须实现NestedScrollingParent,滚动对象如RecycleView必须实现NestedScrollingChild，</p>
+<h4 id="CardView的原理"><a href="#CardView的原理" class="headerlink" title="CardView的原理"></a>CardView的原理</h4>
           
         
       
@@ -2218,7 +2513,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2268,7 +2563,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2279,7 +2574,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2290,7 +2585,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2365,7 +2660,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -2379,7 +2674,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">43.9k</span>
+    <span title="博客全站字数">54.3k</span>
   
 </div>
 

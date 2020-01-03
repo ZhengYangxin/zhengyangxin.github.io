@@ -107,8 +107,8 @@
 <meta property="og:description" content="一. 曾经的网络框架Android的网络框架有四种 HttpClient ： 2.2版本以下存在bug，所以2.3之后建议使用HttpUrlConnection HttpUrlConnection 2.3+， 官方推荐 Volley，谷歌开发，简单的网络任务框架，底层兼容2.3以前版本使用了HttpClient，2.3+使用的是HttpUrlConnection，功能拓展性弱 Okhttp，从An">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yangxin.online/image/compare.png">
-<meta property="og:image" content="http://yangxin.online/image/OkHttp.jpg">
-<meta property="og:updated_time" content="2019-05-28T15:12:54.624Z">
+<meta property="og:image" content="http://yangxin.online/images/OkHttp.jpg">
+<meta property="og:updated_time" content="2020-01-03T02:07:10.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OkHttp">
 <meta name="twitter:description" content="一. 曾经的网络框架Android的网络框架有四种 HttpClient ： 2.2版本以下存在bug，所以2.3之后建议使用HttpUrlConnection HttpUrlConnection 2.3+， 官方推荐 Volley，谷歌开发，简单的网络任务框架，底层兼容2.3以前版本使用了HttpClient，2.3+使用的是HttpUrlConnection，功能拓展性弱 Okhttp，从An">
@@ -466,7 +466,7 @@
 <li>支持session</li>
 <li>…..</li>
 </ol>
-<h4 id="二-OkHttp简介"><a href="#二-OkHttp简介" class="headerlink" title="二. OkHttp简介"></a>二. OkHttp简介</h4><p>一张图了解OkHttp的整个过程<br><img src="/image/OkHttp.jpg" alt=""><br>在OkHttp中真正核心的东西是Interceptor，他不仅负责拦截请求进行额外的处理(入cookie)，实际上他还会把实际的网络请求，缓存，透明压缩等功能都统一起来，每一个功能都只是一个Interceptor，它们在连接成一个Interceptor.Chain,环环相扣最终完成一次网络请求，从getResponseWithInterceptorChain函数中我们可以看到Interceptor.Chain的分布情况依次是：</p>
+<h4 id="二-OkHttp简介"><a href="#二-OkHttp简介" class="headerlink" title="二. OkHttp简介"></a>二. OkHttp简介</h4><p>一张图了解OkHttp的整个过程<br><img src="/images/OkHttp.jpg" alt=""><br>在OkHttp中真正核心的东西是Interceptor，他不仅负责拦截请求进行额外的处理(入cookie)，实际上他还会把实际的网络请求，缓存，透明压缩等功能都统一起来，每一个功能都只是一个Interceptor，它们在连接成一个Interceptor.Chain,环环相扣最终完成一次网络请求，从getResponseWithInterceptorChain函数中我们可以看到Interceptor.Chain的分布情况依次是：</p>
 <ol>
 <li>在配置OkHttpClinet时设置的interceptors</li>
 <li>负责失败重试和重定向的RetryAndFollowUpInterceptor</li>
@@ -529,7 +529,7 @@
   <p><span>本文标题:</span><a href="/OkHttp.html">OkHttp</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 三金Sir 的个人博客">三金Sir</a></p>
   <p><span>发布时间:</span>2019年05月20日 - 23:05</p>
-  <p><span>最后更新:</span>2019年05月28日 - 23:05</p>
+  <p><span>最后更新:</span>2020年01月03日 - 10:01</p>
   <p><span>原始链接:</span><a href="/OkHttp.html" title="OkHttp">http://yangxin.online/OkHttp.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://yangxin.online/OkHttp.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -698,7 +698,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -709,7 +709,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -720,7 +720,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -811,7 +811,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -825,7 +825,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">43.9k</span>
+    <span title="博客全站字数">54.3k</span>
   
 </div>
 
