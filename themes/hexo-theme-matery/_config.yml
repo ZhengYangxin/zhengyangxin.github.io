@@ -268,7 +268,7 @@ postCalendar: true
 gitalk:
   enable: true
   owner: ZhengYangxin
-  repo: zhengyangxin.github.ico
+  repo: zhengyangxin.github.io
   oauth:
     clientId: b24172d6c95cf7a5de0d
     clientSecret: dea089e1f4983170fa4b43eed199279456f1b6ac
