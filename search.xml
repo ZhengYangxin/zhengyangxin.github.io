@@ -27,7 +27,9 @@
 <li>编译型，解释型。Java是两种高级编程语言的结合，先编译成.class文件，再解释成计算机识别的机器指令</li>
 <li>编译命令：Javac.exe</li>
 <li>解释命令：Java.exe</li>
-<li>Java程序的组成：Java源文件，字节码文件，机器码指令<h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4></li>
+<li>Java程序的组成：Java源文件，字节码文件，机器码指令</li>
+</ul>
+<h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><ul>
 <li>一台模拟的计算机，可以读取并处理经编译过的与平台无关的字节码class文件</li>
 <li>java编译器针对JVM产生class文件，因此独立于平台</li>
 <li>Java解释器负责将JVM的代码在特定的平台上运行</li>
@@ -47,6 +49,63 @@
 <li>在JVM上进行程序的解释执行Java xxx/HelloWord。解释的就是字节码文件，字节码文件的后缀是不需要编写的</li>
 <li>类的定义有两种形式，public class 类名， class 类名。第一种文件名必须与类名一致，第二种可以不一致，生成的*.class文件名与类名一致。一般情况是一个class并且以public修饰，类名是驼峰式</li>
 <li>main方法，程序运行入口主方法</li>
+</ul>
+<h4 id="ClASSPATH环境属性"><a href="#ClASSPATH环境属性" class="headerlink" title="ClASSPATH环境属性"></a>ClASSPATH环境属性</h4><ul>
+<li>PATH: 是操作系统提供的路径配置，定义所有可执行程序的路径</li>
+<li>CLASSPATH: 是JRE提供的，用于定义Java程序解释时类加载路径，默认是源文件的目录</li>
+</ul>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
+<li>单行注释 //</li>
+<li>多行注释 /* …. */</li>
+<li>文档注释 /** …. */</li>
+</ul>
+<h4 id="标识符和关键字"><a href="#标识符和关键字" class="headerlink" title="标识符和关键字"></a>标识符和关键字</h4><ul>
+<li>Java语言中有不同的结构：类，方法，变量结构等，对于结构的说明实际上就是标识符，是有命名规则的。</li>
+<li>关键字，是系统对于一些结构的的描述处理，有着特殊含义，public static final 等等</li>
+</ul>
+<h4 id="Java数据类型简介"><a href="#Java数据类型简介" class="headerlink" title="Java数据类型简介"></a>Java数据类型简介</h4><ul>
+<li>数据分类：基本数据类型(数字单元)分三大类，数值型，浮点型，字符型，引用数据类型(内存关系的使用)分数组，类，接口<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>包括</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基本数据类型</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>整型</td>
+<td>byte,short,int,long</td>
+<td>0</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>float，double</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>布尔型</td>
+<td>boolea</td>
+<td>false</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>char</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>引用类型</td>
+<td>数组，类，接口</td>
+<td>null</td>
+</tr>
+</tbody></table>
+</li>
+<li>使用原则： 如果是描述数字首选int,double；如果要进行数据传输或者文字编码选择byte(二进制处理)；处理中文char;描述内存或者文件大小，表的主键列long</li>
+<li>内存溢出：如果数值的操作超出了数值类型的范围就会陷入循环的现象，通过使用范围更大的数值类型解决</li>
 </ul>
 ]]></content>
       <categories>
