@@ -3,8 +3,6 @@ title: Android 面向切面编程详解
 copyright: true
 date: 2019-12-27 21:38:50
 author: Yangcy
-top: true
-cover: true
 img: https://cn.bing.com/th?id=OHR.TrakaiLithuania_ZH-CN0447602818_1920x1080.jpg&rf=LaDigue_1920x1080.jpg
 coverImg: https://cn.bing.com/th?id=OHR.TrakaiLithuania_ZH-CN0447602818_1920x1080.jpg&rf=LaDigue_1920x1080.jpg
 summary: 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
