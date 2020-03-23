@@ -1,9 +1,1374 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>重学Java</title>
-    <url>/chong-xue-java.html</url>
-    <content><![CDATA[<h2 id="阿里云Java学习路线"><a href="#阿里云Java学习路线" class="headerlink" title="阿里云Java学习路线"></a><a href="https://developer.aliyun.com/learning/roadmap/java?source=5176.11533457&userCode=r3yteowb&type=copy&spm=5176.12901015.0.i12901015.510b525c9IzVPf" target="_blank" rel="noopener">阿里云Java学习路线</a></h2><h3 id="Java语言基础"><a href="#Java语言基础" class="headerlink" title="Java语言基础"></a>Java语言基础</h3><h4 id="Java编程入门"><a href="#Java编程入门" class="headerlink" title="Java编程入门"></a>Java编程入门</h4><h5 id="认识Java"><a href="#认识Java" class="headerlink" title="认识Java"></a>认识Java</h5><ol>
+    <title>网络知识</title>
+    <url>/wang-luo-zhi-shi.html</url>
+    <content><![CDATA[<h4 id="OSI-七层网络模型"><a href="#OSI-七层网络模型" class="headerlink" title="OSI 七层网络模型"></a>OSI 七层网络模型</h4><ol>
+<li>应用层： 为用户进程提供网络服务</li>
+<li>表示层：负责数据的转化，数据的压缩/解压，数据的加密/解密等</li>
+<li>会话层：负责会话的建立，管理，销毁等服务</li>
+<li>传输层：基于TCP/UDP进行 端口对端口的传输</li>
+<li>IP层：数据打包成IP数据报，在路由器/交换机上传输</li>
+<li>数据链路层: </li>
+<li>物理层：</li>
+</ol>
+<h4 id="TCP-IP-网络模型"><a href="#TCP-IP-网络模型" class="headerlink" title="TCP/IP 网络模型"></a>TCP/IP 网络模型</h4><ol>
+<li>应用层</li>
+<li>传输层</li>
+<li>IP层</li>
+<li>数据链路层</li>
+</ol>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><h4 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h4><h4 id="HTTPDNS优化"><a href="#HTTPDNS优化" class="headerlink" title="HTTPDNS优化"></a>HTTPDNS优化</h4><h3 id="HTTP-的版本区别"><a href="#HTTP-的版本区别" class="headerlink" title="HTTP 的版本区别"></a>HTTP 的版本区别</h3><h5 id="HTTP1-0与-HTTP1-1"><a href="#HTTP1-0与-HTTP1-1" class="headerlink" title="HTTP1.0与 HTTP1.1"></a>HTTP1.0与 HTTP1.1</h5><ol>
+<li>缓存优化</li>
+<li>网络带宽及网络连接都优化</li>
+<li>host请求头添加</li>
+<li>支持长连接（串行单线程处理请求，可以同时发起多个请求，但必须等待前一个请求处理完，才会处理新的请求，否则只能被阻塞）</li>
+</ol>
+<h5 id="HTTP1-1与HTTP2-0"><a href="#HTTP1-1与HTTP2-0" class="headerlink" title="HTTP1.1与HTTP2.0"></a>HTTP1.1与HTTP2.0</h5><ol>
+<li>新的二进制文件</li>
+<li>多路复用（多个请求可以在一个连接上并行执行，某个请求耗时严重，不会影响到其他连接的正常执行）<ol>
+<li>做到了延迟的优化，TCP连接是慢启动，因此突发性和短时性的http连接不高效，通过复用连接可以更有效的使用TCP</li>
+</ol>
+</li>
+<li>Header压缩 （一个页面有100个资源要加载，而每次请求都有1kb的消息头，则至少要消耗100kb获取请求头，http2.0，维护了一个字典，用以差量更新http头部）</li>
+<li>服务端推送（服务端会主动把客户端所需要的资源一起发给客户端）</li>
+</ol>
+<h3 id="TCP-与UDP"><a href="#TCP-与UDP" class="headerlink" title="TCP 与UDP"></a>TCP 与UDP</h3><p>TCP 是面向连接的，可靠，慢，占用头部字节20多</p>
+<p>UDP是无连接的，尽最大交付，快，占用头部字节少8</p>
+<h4 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h4><h4 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h4><h4 id="TCP与UDP比较"><a href="#TCP与UDP比较" class="headerlink" title="TCP与UDP比较"></a>TCP与UDP比较</h4>]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm 系列</title>
+    <url>/algorithm-xi-lie.html</url>
+    <content><![CDATA[<h3 id="算法的学习"><a href="#算法的学习" class="headerlink" title="算法的学习"></a>算法的学习</h3><h4 id><a href="#" class="headerlink" title></a><a href="/shi-me-shi-suan-fa.html" title="什么是算法">什么是算法</a></h4><h4 id="-1"><a href="#-1" class="headerlink" title></a><a href="/suan-fa-mian-shi-zhun-bei.html" title="算法面试准备">算法面试准备</a></h4><h3 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h3><p><a href="https://github.com/ZhengYangxin/LeetCode" target="_blank" rel="noopener">自己的LeetCode代码库</a></p>
+<p><a href="https://github.com/labuladong/fucking-algorithm" target="_blank" rel="noopener">比较好的算法总结</a></p>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode，算法数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android系列</title>
+    <url>/android-xi-lie.html</url>
+    <content><![CDATA[<h3 id><a href="#" class="headerlink" title></a><a href="/protocol-buffer-shi-yong-he-yuan-li.html" title="protocol buffer 使用和原理">protocol buffer 使用和原理</a></h3>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>protocol buffer 使用和原理</title>
+    <url>/protocol-buffer-shi-yong-he-yuan-li.html</url>
+    <content><![CDATA[<h3 id="Protocol-Buffer-介绍"><a href="#Protocol-Buffer-介绍" class="headerlink" title="Protocol Buffer 介绍"></a>Protocol Buffer 介绍</h3><p>Protocol Buffer 是一种轻便高效的结构化数据格式，可以用于结构化数据的序列号，适合做数据存储和RPC数据交换格式，他是平台无关，语言无关，可扩展的序列号结构数据格式</p>
+<h4 id="结构化数据格式"><a href="#结构化数据格式" class="headerlink" title="结构化数据格式"></a>结构化数据格式</h4><ol>
+<li>XML, 通过标签定义的</li>
+<li>JSON，通过键值对定义的</li>
+<li>DB，数据库</li>
+</ol>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><ol>
+<li>Serilizable</li>
+<li>Parseable</li>
+</ol>
+<h4 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h4><ol>
+<li>RPC数据交换格式 即网络通讯</li>
+<li>数据存储</li>
+</ol>
+<h4 id="跨平台，语言"><a href="#跨平台，语言" class="headerlink" title="跨平台，语言"></a>跨平台，语言</h4><p>如json，不限操作平台和编程语言同可以使用json</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>序列化后的体积相比json和xml很小，适合网络传输  40M的json数据  17M Protobuffer</li>
+<li>支持跨平台，多语言</li>
+<li>消息格式升级和兼容性不错</li>
+<li>序列化反序列化快   40M的json数据  10s, Protobuffer 0.8s</li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Android studio 环境配置</p>
+<h4 id="配置应用build"><a href="#配置应用build" class="headerlink" title="配置应用build"></a>配置应用build</h4><pre><code>buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:3.1.0&#39;
+        classpath &#39;com.google.protobuf:protobuf-gradle-plugin:0.8.10&#39;
+    }
+}</code></pre><h4 id="配置module-build-gradle"><a href="#配置module-build-gradle" class="headerlink" title="配置module build.gradle"></a>配置module build.gradle</h4><pre><code>apply plugin: &#39;com.android.application&#39;
+apply plugin: &#39;com.google.protobuf&#39;
+protobuf {
+    protoc {
+        artifact = &#39;com.google.protobuf:protoc:3.8.0&#39;
+    }
+    generateProtoTasks {
+        all().each { task -&gt;
+            task.builtins {
+                java {
+                    option &quot;lite&quot;
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: &#39;libs&#39;, include: [&#39;*.jar&#39;])
+    implementation &#39;com.google.protobuf:protobuf-javalite:3.9.1&#39;
+    ...
+}
+</code></pre><h4 id="构建消息"><a href="#构建消息" class="headerlink" title="构建消息"></a>构建消息</h4><p>消息由至少一个字段组合而成：字段 = 字段修饰符 + 字段类型 + 字段名 + 标识符<br>标识符TAG：每个字段的唯一标识数字，用于说明二进制文件的对应关系，不能修改，</p>
+<pre><code>syntax = &quot;proto3&quot;;
+
+//option java_package = &quot;www.dcf.com.vo&quot;;
+package tutorial;
+
+option java_package = &quot;com.zyx.proto&quot;;
+option java_outer_classname = &quot;TestProto&quot;;
+
+message test {
+     int32     id = 1;  // ID
+     string    str = 2;  // str
+     int32     opt = 3;  //optional field
+}
+</code></pre><h4 id="Studio-自动生成代码"><a href="#Studio-自动生成代码" class="headerlink" title="Studio 自动生成代码"></a>Studio 自动生成代码</h4><p>通过Android Studio build，Protobuf插件会帮助我们自动生成TestProto类，类结构如下</p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/proto_generate_code.png" alt></p>
+<p>Protobuf帮助我们自动生成了testOrBuilder接口，主要定义了个字段的get，set方法，并生成了test类，核心逻辑，通过writeTo（CodedOutputStream）接口序列化到CodedOutputStream，通过parseFrom(InputStream) 接口从InputStream中反序列化</p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/protobuffer_struct.png" alt></p>
+<h3 id="ProtoBuffer-原理"><a href="#ProtoBuffer-原理" class="headerlink" title="ProtoBuffer 原理"></a>ProtoBuffer 原理</h3><p>ProtoBuffer不管在时间还是空间上更加高效，是怎么做到的？</p>
+<p>消息经过ProtoBuffer序列化后会成为二进制数据流，通过key-Value组成方式写入到二进制数据流。</p>
+<h4 id="编码机制"><a href="#编码机制" class="headerlink" title="编码机制"></a>编码机制</h4><h5 id="Base-128-Varints"><a href="#Base-128-Varints" class="headerlink" title="Base 128 Varints"></a>Base 128 Varints</h5><p>是一种可变字节序列化整形的方法</p>
+<ol>
+<li>每个byte的最高位是标志位(msb), 如果是1，则表示后面还有byte，否则为结束byte</li>
+<li>每个byte的低7位用来存储数值的位</li>
+<li>Varints方法用Litte-Endian(小端)字节序列</li>
+</ol>
+<h4 id="消息结构"><a href="#消息结构" class="headerlink" title="消息结构"></a>消息结构</h4><h5 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h5><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Meaning</th>
+<th align="center">Used For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">Varint</td>
+<td align="center">int32,int64,uinit32,uint64,sint32,sint64,bool,enum</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">64-bit</td>
+<td align="center">fixed64,sfixed64,double</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Length-delimited</td>
+<td align="center">string,bytes,embedded messages</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">32-bit</td>
+<td align="center">fixed32,sfixed32,float</td>
+</tr>
+</tbody></table>
+<h5 id="key"><a href="#key" class="headerlink" title="key"></a>key</h5><p>key的具体值为   (field_number &lt;&lt; 3) | wire_type，</p>
+<p>以上面的例子来说，如字段id定义：</p>
+<pre><code> int32 id = 2; // 150</code></pre><p>在序列化时，并不会把字段id写进二进制流中，而是把<code>field_number=2</code>通过上述<code>Key</code>的定义计算后写进二进制流中，这就是Protobuf可读性差的原因，也是其高效的主要原因。</p>
+<pre><code>key = (field_number &lt;&lt; 3) | wire_type = 2 &lt;&lt; 3 | 0 = 10000 |0 = 16  = 0x10
+value 150 二进制位1001 0110  
+最高位 为msb，将它分为一个一组
+1 0010110 进行补齐 0000001 0010110
+小端序存储则为0010110  0000001
+补齐 表示为msb   10010110 00000001 = 0x96  0x01
+则最后的存储为 10 96 01
+
+如果value 300 二进制为 100101100
+最高位为msb， 进行7位一组分组
+10  0101100  进行补齐0000010 0101100
+小端序存储 10101100 00000010  = 0xac 0x2
+则最后存储为 10 ac 02</code></pre><p>key的范围：wire_type只有六种类型，用3bit表示，在一个byte里，去掉mbs，以及3bit的wire_type,只剩下4bit来表示field_number,因此一个Byte里，field_number只能表达0-15，超过15个需要多个byte表示</p>
+<h5 id="负数"><a href="#负数" class="headerlink" title="负数"></a>负数</h5><p>所谓ZigZag编码即将负数转换成正数，而所有正数都乘2，如0编码成0，-1编码成1，1编码成2，-2编码成3，以此类推，因而它对负数的编码依然保持比较高的效率。</p>
+<h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>Varint适用于表达比较小的整形，当数字很大时，采用定长编码类型(64bit,32bit)</li>
+<li>不利于表达负数，负数采用补码表示，会占用更多字节，确定出现负数用sint32,sint64,他会采用ZigZig编码将负数映射成整数，之后再使用Varint编码</li>
+</ul>
+<p>Length-delimited</p>
+<ul>
+<li><p>Length-delimited编码格式会将数据的length也编码进最终的数据，编码格式有string，bytes，自定义消息</p>
+</li>
+<li><p>在消息中将str = “testing”, </p>
+<p>序列化的打印结果 为</p>
+<pre><code> private void test() {
+        TestProto.test.Builder test = TestProto.test.newBuilder();
+        TestProto.test test1 = test.setStr(&quot;testing&quot;).build();
+        // 序列化
+        byte[] bytes = test1.toByteArray();
+
+        for (byte aByte : bytes) {
+            System.out.print(aByte +&quot; &quot;);
+        }
+}
+// 18 7 116 101 115 116 105 110 103
+str 的field_number = 2; str = &quot;testing&quot;
+key = (field &lt;&lt; 3) | wire_type = 2 &lt;&lt; 3 | 2 = 10000 | 10 = (十进制) 18 = (16进制)0x12
+7 为 value的长度testing长度为7
+然后计算value的每个字母 t 在ASCII中的 十进制数是 116， e 为101， s为115 以此类推
+发现每个byte存储的是计算后的10进制数字，和网上说16进制 byte存储方式不一致 12 07 74 65 73 74 69 6e 67
+现在按照16进制存储计算
+key = 12 已经确定
+t 的二进制为 0111 0100 16 进制为74
+e 则为65 ..
+所以string的转换方式是 key的16进制 + 字符串长度16进制 + 字符串的每个字母的16进制</code></pre><h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><p>通过原理破解，在通过观察源码Protobuffer的序列化和反序列化同时通过几个位运算实现的，所以他的效率高，体积小</p>
+</li>
+</ul>
+<h4 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h4><ul>
+<li>尽量不要修改tag</li>
+<li>字段数量不要超过16个，否则会采用2个字节编码, (1个字节最大值为128， key的计算会通过field_number &lt;&lt; 3 | wire_type, 当field_number 为16时刚好使用了1个字节计算，否则就需要两个字节计算)</li>
+<li>如果确定使用负数，采用sint32/sint64</li>
+</ul>
+<h3 id="FastJson对比"><a href="#FastJson对比" class="headerlink" title="FastJson对比"></a>FastJson对比</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html" target="_blank" rel="noopener">Google Protocol Buffer 的使用和原理</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>数据存储</tag>
+        <tag>Protocol Buff</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之性能测试和理论</title>
+    <url>/flutter-zhi-xing-neng-ce-shi-he-li-lun.html</url>
+    <content><![CDATA[<h4 id="Flutter的渲染阶段"><a href="#Flutter的渲染阶段" class="headerlink" title="Flutter的渲染阶段"></a>Flutter的渲染阶段</h4><p><strong>VSync-&gt;Animation-&gt;Build-&gt;Layout-&gt;Paint-&gt;Display List(GPU)</strong></p>
+<ul>
+<li>Build ： Widget，Element树</li>
+<li>Layout，Paint： RenderObject树的创建</li>
+<li>Display List(GPU)，是对Layer图层的创建</li>
+</ul>
+<h4 id="检查Flutter的渲染"><a href="#检查Flutter的渲染" class="headerlink" title="检查Flutter的渲染"></a>检查Flutter的渲染</h4><p>Debug模式和最终的生产模式，有很大的性能特点，所以在做真实的测量之前都用Profile模式</p>
+<ul>
+<li>Debug模式</li>
+<li>Profile模式</li>
+</ul>
+<h4 id="RenderObject"><a href="#RenderObject" class="headerlink" title="RenderObject"></a>RenderObject</h4><p>它不是一个顶层Api，并且充分利用了组合的性质，所以他的公共方法比Android的View少</p>
+<ul>
+<li>是Flutter的UI单位，有很长的生命周期和状态</li>
+<li>主要方法<ul>
+<li>createRenderObject、updateRenderObject</li>
+<li>performLayout</li>
+<li>paint</li>
+</ul>
+</li>
+</ul>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><ul>
+<li>ComponentElement，主要是做组合的，不直接参与布局绘制<ul>
+<li>StatelessElement</li>
+<li>StatefulElement</li>
+</ul>
+</li>
+<li>RenderObjectElement，会对RenderObject树上的RenderObject做连接</li>
+</ul>
+<h4 id="同类型更新"><a href="#同类型更新" class="headerlink" title="同类型更新"></a>同类型更新</h4><p>修改某个Text的值</p>
+<ul>
+<li>Build<ul>
+<li>在Flutter中Widget树是不可改变的，这也包括树节点之间的父子关系</li>
+<li>在开始build时，会创造一个新的树</li>
+<li>遍历Element，通过Element.updateChild(),观察子节点，若子节点类型发生改变，则会扔掉老节点，创造一个新的节点</li>
+<li>更新过程中，若Element是Component则build即可，若是RenderObjectElement则会updateRenderObject</li>
+<li>若内容发生改变会进行标脏处理</li>
+</ul>
+</li>
+</ul>
+<h4 id="Buid性能测试工具"><a href="#Buid性能测试工具" class="headerlink" title="Buid性能测试工具"></a>Buid性能测试工具</h4><ul>
+<li>观望台，TimeLine，类似安卓的systrace,设置debugProfileBuildsEnable = true,检查build过程的性能损耗</li>
+<li>遍历的触发 <ul>
+<li>setState方法</li>
+<li>依赖了InHeritedWidget,当InHeritedWidget发生改变会影响其他</li>
+<li>热重载，所有节点都会被更新</li>
+</ul>
+</li>
+<li>提高build效率<ul>
+<li>通过Extra单独的Widget，减少遍历的节点</li>
+<li>停止遍历</li>
+</ul>
+</li>
+</ul>
+<h4 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h4><p>在工程完成后会对RenderObject的某些节点进行标脏，让他重新绘制。<br>debugProfileBuildsEnabled = true;<br>debugProfilePaintsEnabled = true;<br>debugPaintLayerBordersEnabled = true;</p>
+<ul>
+<li>如何知道多少其他节点需要跟被标脏的树一起被更新呢？<ul>
+<li>基于图层树Layer</li>
+<li>更新指定图层</li>
+</ul>
+</li>
+<li>Layer种类<ul>
+<li>PictureLayer</li>
+<li>ContainerLayer:主要用于做PictureLayer的连接</li>
+</ul>
+</li>
+</ul>
+<p>yum -y install wget<br>wget -N –no-check-certificate <a href="https://softs.fun/Bash/ssr.sh" target="_blank" rel="noopener">https://softs.fun/Bash/ssr.sh</a> &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh</p>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之平台集成</title>
+    <url>/flutter-zhi-ping-tai-ji-cheng.html</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之手势</title>
+    <url>/flutter-zhi-shou-shi.html</url>
+    <content><![CDATA[<h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><p>描述屏幕上由触摸板，鼠标，指示笔等触发的指针的位置和移动</p>
+<h4 id="指针事件"><a href="#指针事件" class="headerlink" title="指针事件"></a>指针事件</h4><ul>
+<li>PointerDownEvent：指针在特定位置与屏幕接触</li>
+<li>PointerMoveEvent：指针从屏幕的一个尾椎移动到另一个位置</li>
+<li>PointerUpEvent：指针与屏幕停止接触</li>
+<li>PointerCancelEvent：指针的输入已经不在指向此应用</li>
+</ul>
+<h4 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h4><pre><code>const Listener({
+    Key key,
+    this.onPointerDown,
+    this.onPointerMove,
+    // We have to ignore the lint rule here in order to use deprecated
+    // parameters and keep backward compatibility.
+    // TODO(tongmu): After it goes stable, remove these 3 parameters from Listener
+    // and Listener should no longer need an intermediate class _PointerListener.
+    // https://github.com/flutter/flutter/issues/36085
+    @Deprecated(
+      &#39;Use MouseRegion.onEnter instead. See MouseRegion.opaque for behavioral difference. &#39;
+      &#39;This feature was deprecated after v1.10.14.&#39;
+    )
+    this.onPointerEnter, // ignore: deprecated_member_use_from_same_package
+    @Deprecated(
+      &#39;Use MouseRegion.onExit instead. See MouseRegion.opaque for behavioral difference. &#39;
+      &#39;This feature was deprecated after v1.10.14.&#39;
+    )
+    this.onPointerExit, // ignore: deprecated_member_use_from_same_package
+    @Deprecated(
+      &#39;Use MouseRegion.onHover instead. See MouseRegion.opaque for behavioral difference. &#39;
+      &#39;This feature was deprecated after v1.10.14.&#39;
+    )
+    this.onPointerHover, // ignore: deprecated_member_use_from_same_package
+    this.onPointerUp,
+    this.onPointerCancel,
+    this.onPointerSignal,
+    this.behavior = HitTestBehavior.deferToChild,
+    Widget child,
+  })</code></pre><h4 id="HitTestBehavior"><a href="#HitTestBehavior" class="headerlink" title="HitTestBehavior"></a>HitTestBehavior</h4><ul>
+<li><p>translucent：层叠布局时，可以使布局都收到事件</p>
+</li>
+<li><p>opaque: 布局透明也可以收到事件</p>
+</li>
+<li><p>deferToChild：当布局透明时收不到事件</p>
+<pre><code>enum HitTestBehavior {
+/// Targets that defer to their children receive events within their bounds
+/// only if one of their children is hit by the hit test.
+deferToChild, // 子组件会一个接一个的进行命中测试，如果子组件收到，那父组件也能收到该事件
+
+/// Opaque targets can be hit by hit tests, causing them to both receive
+/// events within their bounds and prevent targets visually behind them from
+/// also receiving events.
+opaque, // 在命中测试中，将当前组件当成不透明处理
+
+/// Translucent targets both receive events within their bounds and permit
+/// targets visually behind them to also receive events.
+translucent, // 当点击组件透明区域时，可以对自身边界内及底部可视区域，都进行命中测试
+}</code></pre></li>
+</ul>
+<h4 id="忽略指针事件"><a href="#忽略指针事件" class="headerlink" title="忽略指针事件"></a>忽略指针事件</h4><ul>
+<li>IgnorePointer：阻止子树接受指针事件，本身不会参与命中测试</li>
+<li>AbsorbPointer：阻止子树接受指针事件，本身参与命中测试</li>
+</ul>
+<h3 id="手势"><a href="#手势" class="headerlink" title="手势"></a>手势</h3><p>Gesture代表的是语义操作（比如点击，拖动，缩放），通过一系列单独的指针事件组成，甚至是一系列指针组成。Gesture可以分发多种事件，对应着指针的生命周期（比如开始拖动，拖动更新，结束拖动）</p>
+<h4 id="手势类别"><a href="#手势类别" class="headerlink" title="手势类别"></a>手势类别</h4><ul>
+<li>GestureDetector：用于手势识别的功能性组件，可以识别各种手势，是指针事件的语义分装，内部使用了一个或者多个GestureRecognizer</li>
+<li>GestureRecognizer：通过Listener将原始指针事件转化为语义手势</li>
+</ul>
+<h4 id="GestureDetector"><a href="#GestureDetector" class="headerlink" title="GestureDetector"></a>GestureDetector</h4><ul>
+<li>点击：onTapDown，onTapUp，onTap，onTapCancel</li>
+<li>双击：onDoubleTap</li>
+<li>长按：onLongPress</li>
+<li>纵向拖动：onVerticalDragStart，onVerticalDragUpdate，onVerticalDragEnd</li>
+<li>横向拖动：onHorizontalDragStart，onHorizontalDragUpdate，onHorizontalDragEnd</li>
+<li>移动：onPanStart,onPanUpdate,onPanEnd</li>
+<li>移动和横向，纵向拖动互斥</li>
+</ul>
+<h4 id="手势消歧处理"><a href="#手势消歧处理" class="headerlink" title="手势消歧处理"></a>手势消歧处理</h4><ul>
+<li>在屏幕的指定位置上，可能有多个手势捕捉器。所有的手势捕捉器监听了指针输入流事件并判断出特定的手势</li>
+<li>在任何时候，识别器都可以宣告失败并离开竞技场。如果竞技场中只有一个识别器，那么这个识别器就是胜者。</li>
+<li>在任何时候，任何识别器都可以宣告胜利，这将导致这个识别器胜出，其他识别器失败</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之动画</title>
+    <url>/flutter-zhi-dong-hua.html</url>
+    <content><![CDATA[<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>Animation：Flutter动画库中的核心类，插入用于指导动画的值</li>
+<li>AnimationController:管理Animation</li>
+<li>CurvedAnimation:定义动画的曲线</li>
+<li>Tween:为动画对象插入一个范围值</li>
+</ul>
+<h4 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h4><ul>
+<li>提供了每一帧动画变化的监听事件和移除事件，VoidCallback<ul>
+<li>addListener</li>
+<li>removeListener</li>
+</ul>
+</li>
+<li>提供了动画状态的监听和移除事件，AnimationStatusListener<ul>
+<li>addStatusListener</li>
+<li>removeStatusListener</li>
+</ul>
+</li>
+<li>动画的四种状态<ul>
+<li>dismiss，在动画开始时停止</li>
+<li>forward，动画从开始向结束运行</li>
+<li>reverse，动画从结束向开始运行</li>
+<li>completed，动画在结束时运行完成</li>
+</ul>
+</li>
+<li>获取动画的状态</li>
+<li>泛型参数为范围值，一般是double类型</li>
+</ul>
+<h4 id="AnimationController"><a href="#AnimationController" class="headerlink" title="AnimationController"></a>AnimationController</h4><ul>
+<li>继承自Animation，是一个特殊的Animation，当硬件准备新帧时，它都会生成一个新值</li>
+<li>需要一个vsync参数，vsync的存在防止后台动画消耗不必要的资源<pre><code>AnimationController({
+  double value,
+  this.duration, // 动画时长
+  this.reverseDuration,
+  this.debugLabel, 
+  this.lowerBound = 0.0,  // 最小值
+  this.upperBound = 1.0, // 最大值
+  this.animationBehavior = AnimationBehavior.normal,
+  @required TickerProvider vsync,  // 每一帧同步时的回调
+})</code></pre></li>
+</ul>
+<h4 id="CurvedAnimation"><a href="#CurvedAnimation" class="headerlink" title="CurvedAnimation"></a>CurvedAnimation</h4><p>怎么运动，运动的过程，动画运行的曲线，可以继承Curve,重写transformInternal</p>
+<ul>
+<li>Curve曲线分类<ul>
+<li>linear:匀速的</li>
+<li>decelerate：匀减速</li>
+<li>ease：开始加速后面减速</li>
+<li>easeIn：开始慢后面快</li>
+<li>easeOut：开始快，后面慢</li>
+<li>easeInOut：开始慢，先加速，后减速</li>
+</ul>
+</li>
+</ul>
+<h4 id="Tween"><a href="#Tween" class="headerlink" title="Tween"></a>Tween</h4><p>可以自定义移动的类型，如移动像素等</p>
+<ul>
+<li>配置动画插入不同的范围和数据类型</li>
+</ul>
+<h4 id="AnimatedBuilder"><a href="#AnimatedBuilder" class="headerlink" title="AnimatedBuilder"></a>AnimatedBuilder</h4><p>动画的构建器</p>
+<pre><code>const AnimatedBuilder({
+    Key key,
+    @required Listenable animation, // 具体动画
+    @required this.builder, // 实现动画的对象
+    this.child,
+  })</code></pre><h4 id="路由切换动画"><a href="#路由切换动画" class="headerlink" title="路由切换动画"></a>路由切换动画</h4><ul>
+<li>Android提供默认的MaterialPageRoute</li>
+<li>IOS提供默认的CupertionPageRoute</li>
+<li>自定义实现采用PageRouteBuilder<pre><code>Navigator.push(context, PageRouteBuilder(pageBuilder: (context, animation, econdaryAnimation){
+return FadeTransition(opacity: animation, child: SyncAnim(),);
+}));</code></pre></li>
+</ul>
+<h4 id="Hero动画"><a href="#Hero动画" class="headerlink" title="Hero动画"></a>Hero动画</h4><p>指在页面之间飞行的Widget，相当于转场动画，Hero在动画切换的时候，有一个共享的Widget可以在新旧路由之间切换</p>
+<ul>
+<li>InkWell:水波纹效果的widget</li>
+<li>将需要共享的元素放入Hero Widget中</li>
+<li>需要指定相同的tag<pre><code>InkWell(
+          child: Hero(tag: &quot;avator&quot;, child: ClipOval(
+            child: Image.network(&quot;http://yangxin.online/images/head.jpeg&quot;, width: 50, height: 50 , ),
+          )),
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context){
+              return Scaffold(
+                body: Center(
+                  child: Hero(tag: &quot;avator&quot;, child: Image.network(&quot;http://yangxin.online/images/head.jpeg&quot;, width: 300, height: 300 , ),
+                ),
+              ));
+            }));
+          },
+        )</code></pre></li>
+</ul>
+<h4 id="交织动画"><a href="#交织动画" class="headerlink" title="交织动画"></a>交织动画</h4><p>设计复杂动画，动画序列，重叠动画</p>
+<ul>
+<li><p>使用多个动画对象</p>
+</li>
+<li><p>一个AnimationControl控制所有的动画</p>
+</li>
+<li><p>每个动画对象指定间隔时间</p>
+<pre><code>class Stagger extends StatelessWidget {
+final AnimationController controller;
+
+final Animation&lt;double&gt; opacity, width, height;
+
+final Animation&lt;EdgeInsets&gt; padding;
+
+final Animation&lt;BorderRadius&gt; borderRadius;
+
+final Animation&lt;Color&gt; color;
+
+Stagger({Key key, this.controller})
+    : opacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.0, 0.1000, curve: Curves.linear))),
+      width = Tween(begin: 50.0, end: 150.0).animate(CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.125, 0.250, curve: Curves.linear))),
+      height = Tween(begin: 50.0, end: 150.0).animate(CurvedAnimation(
+          parent: controller,
+          curve: Interval(0.250, 0.375, curve: Curves.linear))),
+      padding = EdgeInsetsTween(
+              begin: EdgeInsets.only(bottom: 10),
+              end: EdgeInsets.only(bottom: 50))
+          .animate(CurvedAnimation(
+              parent: controller,
+              curve: Interval(0.250, 0.375, curve: Curves.linear))),
+      borderRadius = BorderRadiusTween(
+              begin: BorderRadius.circular(5), end: BorderRadius.circular(15))
+          .animate(CurvedAnimation(
+              parent: controller,
+              curve: Interval(0.375, 0.500, curve: Curves.linear))),
+      color = ColorTween(begin: Colors.blue, end: Colors.red).animate(
+          CurvedAnimation(
+              parent: controller,
+              curve: Interval(0.500, 0.750, curve: Curves.linear))),
+      super(key: key);
+
+@override
+Widget build(BuildContext context) {
+  return AnimatedBuilder(
+    animation: controller,
+    builder: (context, child) {
+      return Container(
+        padding: padding.value,
+        alignment: Alignment.bottomCenter,
+        child: Opacity(
+          opacity: opacity.value,
+          child: Container(
+            width: width.value,
+            height: height.value,
+            decoration: BoxDecoration(
+                color: color.value,
+                border: Border.all(color: Colors.blue, width: 3),
+                borderRadius: borderRadius.value),
+          ),
+        ),
+      );
+    },
+  );
+}
+}
+</code></pre></li>
+</ul>
+<p>class StaggerF extends StatefulWidget {<br>  @override<br>  State<statefulwidget> createState() {<br>    // TODO: implement createState<br>    return StaggerS();<br>  }<br>}</statefulwidget></p>
+<p>class StaggerS extends State<staggerf> with TickerProviderStateMixin {<br>  AnimationController _controller;</staggerf></p>
+<p>  _play() async {<br>    await _controller.forward().orCancel;<br>    await _controller.reverse().orCancel;<br>  }</p>
+<p>  @override<br>  void initState() {<br>    super.initState();<br>    _controller =<br>        AnimationController(duration: Duration(seconds: 10), vsync: this);<br>    _controller.addStatusListener((status) {<br>      switch (status) {<br>        case AnimationStatus.dismissed:<br>          _controller.forward();<br>          break;<br>        case AnimationStatus.completed:<br>          _controller.reverse();<br>          break;<br>        case AnimationStatus.forward:<br>        case AnimationStatus.reverse:<br>          break;<br>      }<br>    });<br>  }</p>
+<p>  @override<br>  Widget build(BuildContext context) {<br>    // TODO: implement build<br>    return Scaffold(<br>      body: GestureDetector(<br>        onTap: () {<br>          _play();<br>        },<br>        child: Center(<br>          child: Container(<br>            width: 300,<br>            height: 300,<br>            color: Colors.yellow,<br>            child: Stagger(<br>              controller: _controller,<br>            ),<br>          ),<br>        ),<br>      ),<br>    );<br>  }<br>}</p>
+<pre><code></code></pre>]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之路由</title>
+    <url>/flutter-zhi-lu-you.html</url>
+    <content><![CDATA[<h3 id="路由管理"><a href="#路由管理" class="headerlink" title="路由管理"></a>路由管理</h3><p>在Flutter中，屏于页面都叫做路由。路由管理，就是管理页面之间如何跳转，在Flutter中维护一个路由栈，路由入栈操作对应着就是打开一个新页面，路由出栈操作就是对应页面的关闭操作</p>
+<ul>
+<li>Navigator.push()跳转到第二个页面</li>
+<li>Navigator.pop()退回到第一个页面<pre><code>Navigator.push(context, MaterialPageRoute(builder: (context) {
+  return SecondRoute2(&quot;hello word&quot;);
+}));
+</code></pre></li>
+</ul>
+<p>Navigator.pop(context);</p>
+<pre><code>
+#### 路由传值
+* Navigator.push()返回Flutter对象，用以接收新路由出栈时的返回数据
+* Navigator.pop()将栈顶路由出栈，参数Result为页面关闭时返回给上一个页面的数据</code></pre><p> Scaffold(<br>      appBar: AppBar(<br>        title: Text(“SendRoute route”),<br>      ),<br>      body: Center(<br>        child: Column(<br>          children: <widget>[<br>            Text(arg),<br>            RaisedButton(<br>              child: Text(<br>                “go back”,<br>              ),<br>              onPressed: () {<br>                Navigator.pop(context, “hello world”);<br>              },<br>            ),<br>          ],<br>        ),<br>      ),<br>    );</widget></p>
+<pre><code>
+#### 命名路由
+* 注册路由表
+* Navigator.pushNamed()跳转到第二个界面。
+* Navigator.pop()回退到第一个路由</code></pre><p>class MyApp2 extends StatelessWidget{<br>  @override<br>  Widget build(BuildContext context) {<br>    // TODO: implement build<br>    return MaterialApp(<br>      title: ‘Flutter Demo’,<br>      theme: ThemeData(<br>        primarySwatch: Colors.blue,<br>      ),<br>      routes: {<br>        ‘/‘: (context) =&gt; FirstRoute(),<br>        ‘/second_route’: (context) =&gt; SecondRoute()<br>      },<br>      initialRoute: ‘/‘,<br>    );<br>  }<br>}</p>
+<p>// 跳转<br>Navigator.pushNamed(context, ‘/second_route’, arguments: ‘卡啦啦啦’);</p>
+<p>// 获取命名跳转的传值<br>final String arg = ModalRoute.of(context).settings.arguments;</p>
+<p>// 优先级最低路由列表<br>onGenerateRoute: (settings) {<br>        if(settings.name == ‘/second_route4’){<br>          var arg = settings.arguments;<br>          return MaterialPageRoute(builder: (context) =&gt; SecondRoute4(arg), settings: settings);<br>        }<br>      },</p>
+<pre><code>
+#### 路由动画
+* MaterialPageRoute：继承自PageRoute，是MaterIAL组件库提供的组件，它可以针对不同的平台，实现与平台页面切换动画一致的路由切换动画
+* PageRouteBuilder</code></pre><p>  Navigator.push(context, PageRouteBuilder(<br>    transitionDuration: Duration(milliseconds: 800),<br>    pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation){<br>      return FadeTransition(opacity: animation, child: SecondRoute5(),);<br>    }<br>  ));</double></double></p>
+<pre><code></code></pre>]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之列表控件</title>
+    <url>/flutter-zhi-lie-biao-kong-jian.html</url>
+    <content><![CDATA[<h4 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h4><ul>
+<li><p>少量数据</p>
+<pre><code>ListView({
+  Key key,
+  Axis scrollDirection = Axis.vertical, // 滚动方向
+  bool reverse = false, // 是否反向展示数据
+  ScrollController controller,
+  bool primary,
+  ScrollPhysics physics, // 物理滚动，默认根据不同平台采用不同对象
+  bool shrinkWrap = false,
+  EdgeInsetsGeometry padding,
+  this.itemExtent, // item 有效范围
+  bool addAutomaticKeepAlives = true, // 自动保存视图缓存
+  bool addRepaintBoundaries = true, // 添加重绘边界
+  bool addSemanticIndexes = true,
+  double cacheExtent,
+  List&lt;Widget&gt; children = const &lt;Widget&gt;[],
+  int semanticChildCount,
+  DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+})</code></pre></li>
+<li><p>长列表数据</p>
+<ul>
+<li>itemBuilder:它是列表项的的构造器，返回值是一个Wideget，当列表滚动到具体的index时，会调用改构造器构建列表</li>
+<li>itemCount：列表项的数量，数量为null，则为无限列表<pre><code>ListView.builder({
+Key key,
+Axis scrollDirection = Axis.vertical,
+bool reverse = false,
+ScrollController controller,
+bool primary,
+ScrollPhysics physics,
+bool shrinkWrap = false,
+EdgeInsetsGeometry padding,
+this.itemExtent,
+@required IndexedWidgetBuilder itemBuilder,
+int itemCount,
+bool addAutomaticKeepAlives = true,
+bool addRepaintBoundaries = true,
+bool addSemanticIndexes = true,
+double cacheExtent,
+int semanticChildCount,
+DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+})</code></pre></li>
+</ul>
+</li>
+<li><p>分割组件生成器</p>
+<pre><code>ListView.separated({
+  Key key,
+  Axis scrollDirection = Axis.vertical,
+  bool reverse = false,
+  ScrollController controller,
+  bool primary,
+  ScrollPhysics physics,
+  bool shrinkWrap = false,
+  EdgeInsetsGeometry padding,
+  @required IndexedWidgetBuilder itemBuilder,
+  @required IndexedWidgetBuilder separatorBuilder,
+  @required int itemCount,
+  bool addAutomaticKeepAlives = true,
+  bool addRepaintBoundaries = true,
+  bool addSemanticIndexes = true,
+  double cacheExtent,
+})</code></pre></li>
+</ul>
+<h4 id="GridView"><a href="#GridView" class="headerlink" title="GridView"></a>GridView</h4><pre><code>GridView({
+    Key key,
+    Axis scrollDirection = Axis.vertical,
+    bool reverse = false,
+    ScrollController controller,
+    bool primary,
+    ScrollPhysics physics,
+    bool shrinkWrap = false,
+    EdgeInsetsGeometry padding,
+    @required this.gridDelegate,  // 表格处理类，SliverGridDelegateWithFixedCrossAxisCount，SliverGridDelegateWithMaxCrossAxisExtent
+    bool addAutomaticKeepAlives = true,
+    bool addRepaintBoundaries = true,
+    bool addSemanticIndexes = true,
+    double cacheExtent,
+    List&lt;Widget&gt; children = const &lt;Widget&gt;[],
+    int semanticChildCount,
+  })</code></pre>]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之布局组件</title>
+    <url>/flutter-zhi-bu-ju-zu-jian.html</url>
+    <content><![CDATA[<h3 id="线性布局"><a href="#线性布局" class="headerlink" title="线性布局"></a>线性布局</h3><p>线性布局，指的是沿水平或者垂直方向排布子组件。Flutter中通过Row和Column来实现线性布局。</p>
+<ul>
+<li>主轴和纵轴的区分，依赖于布局方向<ul>
+<li>布局是水平方向，主轴就是水平方向(Main Axis)</li>
+<li>反之，主轴就是竖直方向</li>
+</ul>
+</li>
+</ul>
+<h4 id="Row"><a href="#Row" class="headerlink" title="Row"></a>Row</h4><pre><code>  Row({
+    Key key,
+    MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start,  // 子组件在水平方向上的对齐方式
+    MainAxisSize mainAxisSize = MainAxisSize.max,  // 主轴占用的空间
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center, //纵轴方向上的对齐方式
+    TextDirection textDirection,  // 文字方向
+    VerticalDirection verticalDirection = VerticalDirection.down, // 表示row纵轴的对齐方式,down:自上而下，up:自下而上
+    TextBaseline textBaseline,
+    List&lt;Widget&gt; children = const &lt;Widget&gt;[],
+  })</code></pre><h3 id="弹性布局"><a href="#弹性布局" class="headerlink" title="弹性布局"></a>弹性布局</h3><p>弹性布局允许子组件按照一定比例来分配父容器空间。Flutter中的弹性布局主要通过Flex和Expanded来配合实现</p>
+<h4 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h4><p>Flex组件可以沿着水平或者垂直方向排列子组件</p>
+<pre><code>Flex({
+    Key key,
+    @required this.direction,
+    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.max,
+    this.crossAxisAlignment = CrossAxisAlignment.center,
+    this.textDirection,
+    this.verticalDirection = VerticalDirection.down,
+    this.textBaseline,
+    List&lt;Widget&gt; children = const &lt;Widget&gt;[],
+  })</code></pre><h4 id="Expanded"><a href="#Expanded" class="headerlink" title="Expanded"></a>Expanded</h4><p>可以按照比例”扩伸”，Row、Column和Flex子组件所占空间</p>
+<pre><code>const Expanded({
+    Key key,
+    int flex = 1,
+    @required Widget child,
+  }) </code></pre><h3 id="层叠布局"><a href="#层叠布局" class="headerlink" title="层叠布局"></a>层叠布局</h3><p>层叠布局能够将子控件层叠排列。Flutter中Stack允许子控件堆叠，而positioned用于根据Stack的四个角来确定子组件的位置</p>
+<h4 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h4><pre><code>  Stack({
+    Key key,
+    this.alignment = AlignmentDirectional.topStart, // 对齐方式
+    this.textDirection,
+    this.fit = StackFit.loose, // 如何占满Stack
+    this.overflow = Overflow.clip, // 超出部分的显示
+    List&lt;Widget&gt; children = const &lt;Widget&gt;[],
+  })</code></pre><h4 id="Positioned"><a href="#Positioned" class="headerlink" title="Positioned"></a>Positioned</h4><p>分别表示离Stack的 上下左右的的间距， 以及指定元素的大小</p>
+<pre><code>const Positioned({
+    Key key,
+    this.left,
+    this.top,
+    this.right,
+    this.bottom,
+    this.width,
+    this.height,
+    @required Widget child,
+  })</code></pre>]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>flutter之基础组件</title>
+    <url>/flutter-zhi-ji-chu-zu-jian.html</url>
+    <content><![CDATA[<h3 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a>Widget</h3><h4 id="什么是widget"><a href="#什么是widget" class="headerlink" title="什么是widget"></a>什么是widget</h4><p>一切皆是widget，是flutter应用用户界面的基本构建单元，每个widget都与最终的用户界面有密切相关</p>
+<ul>
+<li>抽象类继承了可诊断树(DiagnosticableTree)</li>
+<li>一个常量构造函数，可选参数key</li>
+<li>抽象方法createElement</li>
+<li>静态方法canUpdate，通过runtimeType和key判断</li>
+</ul>
+<h4 id="一个widget的定义如下"><a href="#一个widget的定义如下" class="headerlink" title="一个widget的定义如下"></a>一个widget的定义如下</h4><ul>
+<li>一个结构元素(按钮，菜单)</li>
+<li>一个风格元素(字体，配色方案等)</li>
+<li>布局(padding)</li>
+<li>等等</li>
+</ul>
+<h4 id="widget的分类"><a href="#widget的分类" class="headerlink" title="widget的分类"></a>widget的分类</h4><p>主要需要了解的是StatelessWidget和StatefullWidget</p>
+<ul>
+<li>StatelessWidget:无状态的，AssetImage,Text…</li>
+<li>StatefulWidget:有状态的，Scrollable,Animatable..</li>
+<li>Widget的介绍<ul>
+<li>用于描述Element的配置</li>
+<li>Widge他作为用户界面的一部分是不会改变的，被加载进Element(控制底层的渲染树)</li>
+<li>Widget本身不包含状态或者可变数据，通过StatefulWidget.createState可以关联一个State</li>
+<li>一个Widget可以被多次插入视图树中，并被加载进Element中</li>
+<li>变量key和runtimeType用来判断Widget是否改变，是则重新加载</li>
+</ul>
+</li>
+<li>构建 widget 的过程并不耗费资源，因为 Wiget 只是用来保存属性的容器。</li>
+<li>无法获取Widget在屏幕上的位置和大小，因为Widget就是一张蓝图，他只是描述了底层渲染对象应该具有的属性</li>
+</ul>
+<h4 id="StatelessWidget"><a href="#StatelessWidget" class="headerlink" title="StatelessWidget"></a>StatelessWidget</h4><ul>
+<li>继承自Widget的抽象类</li>
+<li>重写了createElement方法名创建了StatelessElement对象</li>
+<li>一个build方法，创建一个Widget</li>
+<li>内部没有保存状态，UI界面创建后不会发生改变</li>
+</ul>
+<h4 id="StatefulWidget"><a href="#StatefulWidget" class="headerlink" title="StatefulWidget"></a>StatefulWidget</h4><ul>
+<li>继承自Widget的抽象类</li>
+<li>重写了createElement方法名创建了StatefulElement对象</li>
+<li>一个createState方法，创建一个State</li>
+<li>内部保存状态，调用setState方法，变更UI</li>
+</ul>
+<h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><ul>
+<li>泛型抽象类 T extend StatefulWidget</li>
+<li>State的流程<ul>
+<li>launch-&gt;initState-&gt;didChangeDependencies-&gt;build-&gt;deactive-&gt;dispose-&gt;destroy</li>
+<li>didUpdateWidget-&gt;build</li>
+<li>initState：被插入到Widget树中被调用一次</li>
+<li>didChangeDependencies:当state的依赖对象发生变化时调用</li>
+<li>build:构建Widget时调用</li>
+<li>didUpdateWidget:Widget重新构建时调用</li>
+<li>deactive:当state对象被从树中移除调用</li>
+<li>dispose:当state对象从树中被永久移除时调用，一般在此回调时释放资源</li>
+</ul>
+</li>
+</ul>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><ul>
+<li>Element是控件树上的实例</li>
+<li>Element 通过 mount 方法插入到 Element Tree 中，创建了RenderObject对象</li>
+<li></li>
+</ul>
+<h4 id="树-Widget-Tree-Element-Tree-RenderObject-Tree"><a href="#树-Widget-Tree-Element-Tree-RenderObject-Tree" class="headerlink" title="树 Widget Tree, Element Tree ,RenderObject Tree"></a>树 Widget Tree, Element Tree ,RenderObject Tree</h4><ul>
+<li>Widget Tree -(createElement)&gt; Element Tree -(createRenderObject)&gt; RenderObject Tree</li>
+<li>Widget是为了描述Element需要的配置，负责创建Element,决定Element是否需要被更新</li>
+<li>Element表示Widget配置树的特定位置的一个实例，同时持有Widget和RenderObject，负责管理Widget的配置和RenderObject的渲染。Widget发生改变，didUpdateWidget-&gt;build不会重建E，Element，只会更新</li>
+<li>RenderObject表示渲染树的一个对象，负责真正的渲染工作，比如测量大小，位置绘制等都是由RendeObject完成</li>
+</ul>
+<h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><ul>
+<li>使用Key可以控制框架在Widget重建时与哪些其他Widget进行匹配</li>
+<li>包含有LocalKey和globalKey<ul>
+<li>LocalKey：ObjectKey，UniqueKey，ValueKey(PageStrageKey)</li>
+<li>GlobalKey:LabeledGlobalKey,GlobalObjectKey</li>
+</ul>
+</li>
+</ul>
+<h3 id="MaterialApp"><a href="#MaterialApp" class="headerlink" title="MaterialApp"></a>MaterialApp</h3><p>Material应用是以MaterialApp Widget开始，主要封装了应用程序实现Material Design所需要的配置</p>
+<ul>
+<li>构造函数<ul>
+<li>路由</li>
+<li>主题</li>
+<li>本地化</li>
+<li>性能监控，调试</li>
+</ul>
+</li>
+</ul>
+<h4 id="Scaffold（脚手架）"><a href="#Scaffold（脚手架）" class="headerlink" title="Scaffold（脚手架）"></a>Scaffold（脚手架）</h4><p>在构造函数中，可以看出有App头布局，body内容,抽屉栏等元素控件，与原生Android有相似</p>
+<pre><code>const Scaffold({
+    Key key,
+    this.appBar,
+    this.body,
+    this.floatingActionButton,
+    this.floatingActionButtonLocation,
+    this.floatingActionButtonAnimator,
+    this.persistentFooterButtons,
+    this.drawer,
+    this.endDrawer,
+    this.bottomNavigationBar,
+    this.bottomSheet,
+    this.backgroundColor,
+    this.resizeToAvoidBottomPadding,
+    this.resizeToAvoidBottomInset,
+    this.primary = true,
+    this.drawerDragStartBehavior = DragStartBehavior.start,
+    this.extendBody = false,
+    this.extendBodyBehindAppBar = false,
+    this.drawerScrimColor,
+    this.drawerEdgeDragWidth,
+  })</code></pre><h4 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h4><pre><code>const Text(
+    this.data, { // 必要参数
+    Key key,
+    this.style,  // 文字样式
+    this.strutStyle,
+    this.textAlign, // 文字居中
+    this.textDirection,
+    this.locale,
+    this.softWrap,
+    this.overflow,
+    this.textScaleFactor,
+    this.maxLines,  // 最初
+    this.semanticsLabel,
+    this.textWidthBasis,
+  })</code></pre><h4 id="TextField"><a href="#TextField" class="headerlink" title="TextField"></a>TextField</h4><p>表单操作，输入用户名密码</p>
+<pre><code>const TextField({
+    Key key,
+    this.controller,
+    this.focusNode,  // 焦点
+    this.decoration = const InputDecoration(), // 设置输入样式
+    TextInputType keyboardType,
+    this.textInputAction,
+    this.textCapitalization = TextCapitalization.none,
+    this.style,
+    this.strutStyle,
+    this.textAlign = TextAlign.start,
+    this.textAlignVertical,
+    this.textDirection,
+    this.readOnly = false,
+    ToolbarOptions toolbarOptions,
+    this.showCursor,
+    this.autofocus = false,
+    this.obscureText = false,  // 密码输入
+    this.autocorrect = true,
+    this.enableSuggestions = true,
+    this.maxLines = 1,
+    this.minLines,
+    this.expands = false,
+    this.maxLength,
+    this.maxLengthEnforced = true,
+    this.onChanged,
+    this.onEditingComplete,
+    this.onSubmitted,
+    this.inputFormatters,  // 输入限制，手机号，数字 11位等
+    this.enabled,
+    this.cursorWidth = 2.0,
+    this.cursorRadius,
+    this.cursorColor,
+    this.keyboardAppearance,
+    this.scrollPadding = const EdgeInsets.all(20.0),
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.enableInteractiveSelection = true,
+    this.onTap,
+    this.buildCounter,
+    this.scrollController,
+    this.scrollPhysics,
+  }) </code></pre><h4 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h4><ul>
+<li>AssetsImage:需要配置pubspec.yaml</li>
+</ul>
+<h4 id="BoxFit"><a href="#BoxFit" class="headerlink" title="BoxFit"></a>BoxFit</h4><p>图片的拉伸，填充控制</p>
+<h4 id="Icon"><a href="#Icon" class="headerlink" title="Icon"></a>Icon</h4><pre><code>  const Icon(
+    this.icon, {  // 设置Icons.add 系统提供
+    Key key,
+    this.size,
+    this.color,
+    this.semanticLabel,
+    this.textDirection,
+  })</code></pre>]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dart基本语法</title>
+    <url>/dart-ji-ben-yu-fa.html</url>
+    <content><![CDATA[<h3 id="Dart的开发环境安装"><a href="#Dart的开发环境安装" class="headerlink" title="Dart的开发环境安装"></a>Dart的开发环境安装</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ol>
+<li>Dart可以用来开发移动应用，web应用，开发命令行应用和服务端应用，主要有以下IDE可供选择</li>
+<li>VS Code:在其中安装Dart插件进行开发</li>
+<li>Android Studio：主要用于移动开发</li>
+<li>Web Storm,IntelliJ, DartPad在线运行</li>
+</ol>
+<h4 id="Dart-SDK概要"><a href="#Dart-SDK概要" class="headerlink" title="Dart SDK概要"></a>Dart SDK概要</h4><ol>
+<li>Dart SDK包含开发web，命令行和服务端应用所需要的库和命令行工具。如果是需要开发移动应用，只需要安装flutter即可</li>
+</ol>
+<h4 id="Dart-SDK安装（homebrew）"><a href="#Dart-SDK安装（homebrew）" class="headerlink" title="Dart SDK安装（homebrew）"></a>Dart SDK安装（homebrew）</h4><ol>
+<li>install<pre><code>brew tap dart-lang/dart
+brew install dart</code></pre></li>
+</ol>
+<h4 id="Dart-SDK升级"><a href="#Dart-SDK升级" class="headerlink" title="Dart SDK升级"></a>Dart SDK升级</h4><ol>
+<li>update<pre><code>brew upgrade dart</code></pre></li>
+<li>检查是否安装成功<pre><code>dart --version</code></pre></li>
+</ol>
+<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><pre><code>vi .bash_profile
+
+// click e 进入编辑模式
+export Path=${PATH}:dart的安装目录</code></pre><h4 id="VS-Code的开发环境"><a href="#VS-Code的开发环境" class="headerlink" title="VS Code的开发环境"></a>VS Code的开发环境</h4><ol>
+<li>VS Code的下载进行安装</li>
+<li>Dart的环境配置,在VS extesion中搜索并下载dart插件</li>
+</ol>
+<h4 id="DartPad-在线运行"><a href="#DartPad-在线运行" class="headerlink" title="DartPad 在线运行"></a>DartPad 在线运行</h4><ol>
+<li>打开dartpad.cn可以直接运行代码，但是如果有外部包导入，则需要VS Code</li>
+</ol>
+<h3 id="Dart基本概念"><a href="#Dart基本概念" class="headerlink" title="Dart基本概念"></a>Dart基本概念</h3><h4 id="样例程序"><a href="#样例程序" class="headerlink" title="样例程序"></a>样例程序</h4><pre><code>// 定义一个函数
+printInteger(int aNumber){
+  print(&#39;The number is $aNumber&#39;);
+}
+
+// Dart 程序从 main()函数开始执行
+void main(){
+  var number = 42; // 声明并初始化一个变量
+  printInteger(number); // 调用一个函数
+}</code></pre><ol>
+<li>// 表示注释</li>
+<li>int 表示数据类型</li>
+<li>main 顶级函数，应用程序的入口</li>
+<li>var 用于定义变量，可以不指定变量类型</li>
+</ol>
+<h4 id="重要概念"><a href="#重要概念" class="headerlink" title="重要概念"></a>重要概念</h4><ol>
+<li>一切皆对象：所有变量引用的都是对象，数字，函数，null都是对象，都继承字Object类</li>
+<li>Dart声明变量类型可选：Dart可以进行类型推断，dynamic可以声明一个不确定的类型</li>
+<li>Dart支持泛型：List<int>或者List<dynaamic>(由任何类型对象组成的列表)</dynaamic></int></li>
+<li>Dart支持顶级函数，支持属于类或者对象的函数，支持嵌套函数：main</li>
+<li>Dart支持顶级变量，支持属于类或者对象的变量</li>
+<li>标识符下划线开头表示库内私有：_number,_name()</li>
+<li>标识符字母，数字，下划线，由字母或者下划线开头</li>
+<li>Dart表达式有值，语句没有值</li>
+<li>Dart工具可以显示警告和错误两种类型</li>
+</ol>
+<h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><p>分为1，2，3</p>
+<ul>
+<li>1表示上下文关键字，在特定的场合才有用</li>
+<li>2表示内置关键符</li>
+<li>3是1.0之后支持异步的关键字</li>
+</ul>
+<h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ol>
+<li>变量仅存储对象的引用</li>
+<li>变量声明的时候可以不指定类型</li>
+<li>未初始化的变量内容都为null</li>
+<li>可以使用关键字final或者const修饰变量 final只能赋值一次，const为编译时常量，顶层的final变量或者类的final变量在其第一次使用的时候初始化</li>
+</ol>
+<h3 id="Dart内置类型"><a href="#Dart内置类型" class="headerlink" title="Dart内置类型"></a>Dart内置类型</h3><h4 id="int"><a href="#int" class="headerlink" title="int"></a>int</h4><ul>
+<li>长度不超过64位，具体取值范围依赖于不同的平台。在DartVM上其取值位于-2^63至2^63-1.编译吃JavaScript的Dart使用JavaScript数字，范围是-2^53~2^53-1之间</li>
+</ul>
+<h4 id="double"><a href="#double" class="headerlink" title="double"></a>double</h4><h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li><p>Dart字符串是UTF-16编码的字符序列。可以使用单引号或者双引号创建字符串</p>
+</li>
+<li><p>可以使用+运算拼接字符串</p>
+</li>
+<li><p>使用三个单引号或者三个双引号穿件多行字符串</p>
+</li>
+<li><p>字符串前加上r作为前缀创建“raw”字符串（不会被做任何处理）</p>
+<pre><code>
+var s1 = &quot;dsadsa&quot;;
+var s2 = &#39;dadasd&#39;;
+
+var s3 = &#39;dasda\&#39;&#39;;
+
+var s4 = &quot;ab&quot; + &quot;cd&quot;;
+
+var s5 = &quot;dsad&quot;&quot;dasda&quot;;
+
+var s6 =&#39;&#39;&#39;
+dasfsa
+dsadas
+&#39;&#39;&#39;;
+
+var s8 = &quot;dasdas is $a&quot;;
+
+const s10 = &quot;a const&quot;;</code></pre></li>
+</ul>
+<h4 id="Booleans"><a href="#Booleans" class="headerlink" title="Booleans"></a>Booleans</h4><ul>
+<li>bool关键字表示布尔类型，布尔类型只有true和false，是编译时常量</li>
+<li>Dart的类型安全不允许使用1,0做代码判断</li>
+</ul>
+<h4 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h4><ul>
+<li><p>Dart中数组由List对象表示的</p>
+</li>
+<li><p>下标从0开始</p>
+</li>
+<li><p>List list = List();//固定长度为数组，无参表示可变长度</p>
+<pre><code>var list = [1,2,3];
+List list1 = new List();
+List list2 = List();
+list2.addAll(list);
+
+var temp = list2[0];
+
+var list3 = [0, ...list2];
+
+var list4 = [0, ...?list3];
+
+const list5 = [0,1,2]; 
+
+// list5[1] = 1; //  不能修改</code></pre></li>
+</ul>
+<h4 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h4><ul>
+<li><p>Dart中使用sets表示元素无序，唯一的值</p>
+</li>
+<li><p>支持Set字面量以及Set类型两种形式的set</p>
+</li>
+<li><p>Set字面量是在Dart2.2中加入的</p>
+<pre><code>var set1 = {&#39;1&#39;};
+var set2 = &lt;int&gt;{}; // 空的set， 不指定类型可用&lt;dynamic&gt;{}
+Set&lt;int&gt; set3 = Set();
+
+const set4 = {&#39;a&#39;};a</code></pre></li>
+</ul>
+<h4 id="Maps"><a href="#Maps" class="headerlink" title="Maps"></a>Maps</h4><ul>
+<li><p>Dart中的Map通过map字面量和map类型来实现</p>
+</li>
+<li><p>每个键只能出现一次，但是值可能出现重复</p>
+<pre><code>var map = {1:&quot;a&quot;, 2:&quot;b&quot;};
+Map map1 = Map();
+
+Map&lt;int, String&gt; map2 = Map();
+
+map2[0]; //0 是可以不是下标
+
+final  map3 = const {1:&quot;a&quot;, 2:&quot;b&quot;};</code></pre></li>
+</ul>
+<h4 id="Runes"><a href="#Runes" class="headerlink" title="Runes"></a>Runes</h4><ul>
+<li>dart使用Runes来标识UTF-32编码的字符串</li>
+<li>String类中的codeUniteAt和codeUnite属性返回16位代码单元。Runes属性可以获取字符串的Runes</li>
+</ul>
+<h4 id="Symbols"><a href="#Symbols" class="headerlink" title="Symbols"></a>Symbols</h4><ul>
+<li>Symbols表示Dart中声明的操作符或者标识符，该类型的对象几乎不会被使用到</li>
+<li>可以使用在标识符前面加#来获取Symbols</li>
+<li>Symbols字面量是编译时的常量</li>
+</ul>
+<h3 id="Dart方法"><a href="#Dart方法" class="headerlink" title="Dart方法"></a>Dart方法</h3><p> Dart是一种真正的面向对象的语言，所以函数也是对象并且类型为Function，这意味着函数可以被赋值给变量或者作为其他函数的参数。可以像调用函数一样调用Dart类的实例</p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><ul>
+<li>函数可以有两张形式的参数；必要参数和可选参数</li>
+<li>必要参数定义在参数列表的前面</li>
+<li>可选参数定义在必要参数的后面</li>
+<li>可选参数<ul>
+<li>可选参数分为命名参数和位置参数</li>
+<li>可选参数列表中任选其一使用，不能混用</li>
+</ul>
+</li>
+</ul>
+<pre><code>int a(int a, int b,{int c, int d = 0, int f}){
+  return a+b;
+}
+
+void main(){
+  int c = a(2,3, c:4, d: 6);
+}
+// 使用参数名:参数值，的形式来指定命名参数
+// 使用大括号的来指定命名参数
+// 可以提供默认值
+// @required注解来标识一个命名参数是必须的
+
+
+int a(int a, int b,[int c, int d = 0, int f]){
+  return a+b;
+}
+// 使用中括号将一系列参数包裹起来作为位置参数
+// 可以使用=为函数的位置参数设置默认值，默认值必须是常量默认是null
+</code></pre><h4 id="main-函数"><a href="#main-函数" class="headerlink" title="main()函数"></a>main()函数</h4><ul>
+<li>每个Dart程序都必须有一个main()顶级函数作为程序入口</li>
+</ul>
+<h4 id="函数作为一级对象"><a href="#函数作为一级对象" class="headerlink" title="函数作为一级对象"></a>函数作为一级对象</h4><ul>
+<li>可以将函数作为参数传递给另一个函数</li>
+<li>可以将函数赋值给另一个变量</li>
+</ul>
+<pre><code>var f=  printE;
+  var a = (e) =&gt; &quot;dsada &quot;; // 胖箭头语法
+
+  var b = (e){
+    return &quot;xxx&quot;;
+  };
+</code></pre><h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h4><ul>
+<li>没有名字的函数<pre><code>([[类型] 参数[,..]]){
+  函数体;
+}</code></pre></li>
+</ul>
+<h4 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h4><ul>
+<li>变量的作用于在写代码的时候就确定了</li>
+<li>大括号内定义的变量只能在大括号内使用</li>
+</ul>
+<h4 id="词法闭包"><a href="#词法闭包" class="headerlink" title="词法闭包"></a>词法闭包</h4><ul>
+<li>闭包即一个函数对象，即使函数对象的调用在它原始作用于范围之外，依然可以访问在它词法作用域内的变量</li>
+</ul>
+<h4 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h4><ul>
+<li>所有函数都有返回值</li>
+<li>没哟显示返回语句的函数，默认返回 return null</li>
+</ul>
+<h4 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h4><h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><h4 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h4><ul>
+<li>if else</li>
+<li>三目运算 a == null? “guest”: a;</li>
+<li>a ?? “guest”</li>
+</ul>
+<h4 id="for-循环语句"><a href="#for-循环语句" class="headerlink" title="for 循环语句"></a>for 循环语句</h4><pre><code>  var listaa =[&#39;a&#39;, &#39;q&#39;, &#39;f&#39;];
+
+  for (var item in listaa) {
+
+  }
+
+  for (var i = 0; i &lt; listaa.length; i++) {
+
+  }
+
+  listaa.forEach((f){
+
+  });</code></pre><h4 id="while-do-while"><a href="#while-do-while" class="headerlink" title="while /do while"></a>while /do while</h4><h4 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h4><h4 id="break-continue"><a href="#break-continue" class="headerlink" title="break continue"></a>break continue</h4><h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><ul>
+<li>Dart能够Throw和catch异常，</li>
+<li>Dart中的所有异常为非检查异常，方法不一定声明他们所抛出的异常，并且你也不需要捕获异常</li>
+<li>Dart提供了Exception和Error类型，以及一些子类，也可以实现自己的异常类型</li>
+</ul>
+<h4 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h4><pre><code>throw FormatException(&quot;Excepted at least 1 selection&quot;);
+
+// 任意类型的异常对象
+throw &quot;out of IIams&quot;;</code></pre><h4 id="捕获异常"><a href="#捕获异常" class="headerlink" title="捕获异常"></a>捕获异常</h4><pre><code>try {
+
+} on XXXException {
+
+} on Exception catch(e) {
+
+} catch(e, s) {
+
+} finally {
+
+}</code></pre><h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>Dart是一个面向对象的编程语言，同时支持基于mixin的继承机制。每个对象都是一个类的实例，所有的累都继承Object。基于Mixin的继承意味着每个类都只有一个超类，一个类的代码可以在其他多个类继承<br>中重复使用</p>
+<h4 id="使用类的成员"><a href="#使用类的成员" class="headerlink" title="使用类的成员"></a>使用类的成员</h4><ul>
+<li>对象的成员由函数和数据（即方法和实例变量）组成，使用(.)来访问对象的实例变量或者方法</li>
+</ul>
+<h4 id="使用构造函数"><a href="#使用构造函数" class="headerlink" title="使用构造函数"></a>使用构造函数</h4><ul>
+<li>可以使用构造函数来创建一个对象。构造函数的命名方式可以为类名或者类名.标识符的形式</li>
+</ul>
+<pre><code>  var p = Point();
+  var p2 = Point.fromJson({&#39;x&#39;: 1, &#39;y&#39;: 2});
+  p.x = 3; // 使用x的setter方法</code></pre><h4 id="实例变量"><a href="#实例变量" class="headerlink" title="实例变量"></a>实例变量</h4><pre><code>class Point{
+  int x; //声明变量x并初始化为null
+  int y;
+  num z = 0; //声明变量z并初始化为0
+}
+
+void main(){
+  var p = Point();
+  // var p2 = Point.fromJson({&#39;x&#39;: 1, &#39;y&#39;: 2});
+
+  p.x = 3; // 使用x的setter方法
+
+  assert(p.x == 3);// 使用x的getter方法
+  assert(p.y == null); //默认值为null
+}</code></pre><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><ul>
+<li><p>声明一个与类名一样的函数，即可声明一个构造函数</p>
+</li>
+<li><p>对于大多数编程语言来说在构造函数中为变量赋值的的过程都类似，而Dart则提供了一种特殊的语法糖简化该步骤</p>
+<pre><code>class Point{
+int x; //声明变量x并初始化为null
+int y;
+num z = 0; //声明变量z并初始化为0
+
+// Point(int x, int y){
+//   this.x = x;
+//   this.y = y;
+// }
+
+// this.x,this.y, Dart特殊的语法糖构造函数赋值
+Point(this.x, this.y);
+}</code></pre></li>
+<li><p>默认构造函数：如果没有声明构造函数，Dart会自动生成一个无参的构造函数，并且该构造函数会自动调用其父类的无参构造函数</p>
+</li>
+<li><p>构造函数不会被继承：子类不会继承父类的构造函数</p>
+</li>
+<li><p>命名式构造函数：可以为一个类声明多个命名式的构造函数来表达更明确的意图</p>
+<pre><code>class Point{
+int x; //声明变量x并初始化为null
+int y;
+num z = 0; //声明变量z并初始化为0
+
+// 命名式构造函数
+Point.origin(){
+  this.x = 0;
+  this.y = 0;
+}
+}</code></pre></li>
+<li><p>重定向构造函数:有时候类中的构造函数会调用类中其他的构造函数，该重定向构造函数没有函数体，只需要在函数签名后面使用（:）指定需要重定向到的其他构造函数既可以</p>
+<pre><code>// 委托实现给主构造函数
+Point.alongXAxis(int x):this(x, 0);</code></pre></li>
+<li><p>常量构造函数：如果类生成的对象都是不变的，那么可以在生成这些对象时就将其变为编译时常量，你可以在类的构造函数前加上 const 关键字并确保所有实例均为final来实现该功能</p>
+<pre><code>class ImmutablePoint{
+static final ImmutablePoint point = const ImmutablePoint(0, 0);
+final int x, y;
+const ImmutablePoint(this.x, this.y);
+}</code></pre></li>
+<li><p>工厂构造函数: 使用factory关键字表示类的构造函数将会令该构造函数变为工厂构造函数，这将意味着使用该构造函数构造类的实例时并非总是先返回新的实例对象</p>
+<pre><code>class Logger {
+final String name;
+
+static final Map&lt;String, Logger&gt; _cache = &lt;String, Logger&gt;{};
+factory Logger(String name){
+  return _cache.putIfAbsent(name, () =&gt; Logger._internal(name));
+}
+
+static Logger _internal(String name){
+  return Logger(name);
+}
+}</code></pre></li>
+</ul>
+<h4 id="初始化列表"><a href="#初始化列表" class="headerlink" title="初始化列表"></a>初始化列表</h4><ul>
+<li>在构造函数体执行之前初始化实例变量<pre><code>Point.fromJson(Map&lt;String, int&gt; json){
+  x = json[&#39;x&#39;];
+  y = json[&#39;y&#39;];
+  print(&quot;fromJson(): ($x, $y)&quot; );
+}</code></pre></li>
+</ul>
+<h4 id="调用父类构造函数"><a href="#调用父类构造函数" class="headerlink" title="调用父类构造函数"></a>调用父类构造函数</h4><ul>
+<li>构造函数调用顺序<ul>
+<li>初始化列表</li>
+<li>父类的无参构造函数</li>
+<li>当前类的构造函数</li>
+</ul>
+</li>
+<li>如果父类无无参构造函数，那么子类必须调用父类的其中一个构造函数，为子类的构造函数指定父类的构造函数只需要在构造函数体前使用(:)指定</li>
+</ul>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
+<li>实例方法：实例方法可以访问实例的变量和this</li>
+<li>getter和setter的方法</li>
+<li>抽象方法：定义一个借口方法而不去做具体的实现让实现他的类去实现该方法，抽象方法只能存在与抽象类中</li>
+</ul>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><ul>
+<li>使用关键字abstract标识的类让类成为抽象类，抽象类将无法被实例化。抽象类常用于声明接口方法，有时候也会有具体的实现方法</li>
+<li>抽象类尝尝会包含抽象方法</li>
+</ul>
+<h4 id="扩展类"><a href="#扩展类" class="headerlink" title="扩展类"></a>扩展类</h4><ul>
+<li>继承 extend</li>
+<li>子类可以重写父类的实例方法，getter,setter方法</li>
+</ul>
+<h4 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h4><p>是一种特殊的类型，用于存储一些固定数量的常量</p>
+<ul>
+<li>使用关键字 enum</li>
+<li>每一个枚举值都有一个名为index成员变量的getter方法</li>
+<li>使用枚举类的values方法获取一个包含所有枚举值的列表</li>
+<li>switch中使用枚举</li>
+</ul>
+<h4 id="使用mixin为类添加功能"><a href="#使用mixin为类添加功能" class="headerlink" title="使用mixin为类添加功能"></a>使用mixin为类添加功能</h4><p>mixin是一种在多继承中复用某各类中代码的方法模式</p>
+<ul>
+<li>定义一个类继承自Object并且不为该类定义构造函数，这个类就是Mixin类，通过关键字mixin替换class让其成为一个单纯的Mixin类</li>
+<li>使用with关键字并在其后面跟上Mixin类的名字来使用Mixin模式</li>
+</ul>
+<h4 id="静态变量和方法"><a href="#静态变量和方法" class="headerlink" title="静态变量和方法"></a>静态变量和方法</h4><p>static 关键字修饰</p>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><h4 id="为什么使用功能泛型"><a href="#为什么使用功能泛型" class="headerlink" title="为什么使用功能泛型"></a>为什么使用功能泛型</h4><ul>
+<li>正确使用泛型可以生成更好的代码</li>
+<li>使用泛型减少重复代码</li>
+<li>构造方法时也可以使用泛型，在类名后用尖括号&lt;..&gt;将一个或多个类型包裹<pre><code>var nameSet = Set&lt;String&gt;.from(names);
+var views = Map&lt;int, View&gt;();</code></pre></li>
+<li>Dart的泛型类型是固化的，这意味着即便在运行时也会保持类的信息（java中的泛型是类型擦拭的）</li>
+</ul>
+<h4 id="限制参数化类型"><a href="#限制参数化类型" class="headerlink" title="限制参数化类型"></a>限制参数化类型</h4><ul>
+<li>使用extends关键字限制</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>Dart</tag>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java编程入门</title>
+    <url>/java-bian-cheng-ru-men.html</url>
+    <content><![CDATA[<h5 id="认识Java"><a href="#认识Java" class="headerlink" title="认识Java"></a>认识Java</h5><ol>
 <li>Java的起源是SUM公司开发的，后来被oracle收购</li>
 <li>Java的开发开发有三种<ul>
 <li>JAVA SE 桌面应用开发</li>
@@ -106,7 +1471,166 @@
 </li>
 <li>使用原则： 如果是描述数字首选int,double；如果要进行数据传输或者文字编码选择byte(二进制处理)；处理中文char;描述内存或者文件大小，表的主键列long</li>
 <li>内存溢出：如果数值的操作超出了数值类型的范围就会陷入循环的现象，通过使用范围更大的数值类型解决</li>
+<li>浮点型数据，都是有小数点的。float 变量相乘会出现多出4位小数的历史bug</li>
+<li>整形数据进行相除，会得到整数部分，10/2 = 2,  除非进行转型</li>
+<li>字符类型char和整形int可以相互转换, 可以获取char字符在系统中的编码。大写字母 A(65)<del>Z(90)，小写字母a(97)</del>z(112),大小写之间相差32位，数字范围‘0’(48)~’9’(57)</li>
+<li>java可以保存中文是因为Java使用的是Unicode 16进制的编码</li>
+<li>布尔类型，只有true和false</li>
+<li>字符串。在Java中范围大的数据类型与范围小的数据类型操作，所有小的数据类型会自动转型为数据范围大的数据类型</li>
 </ul>
+<h4 id="运算符简介"><a href="#运算符简介" class="headerlink" title="运算符简介"></a>运算符简介</h4><ul>
+<li>数学运算符： 加减乘除</li>
+<li>关系运算符：大小的比较，基本数据类型之间支持自动转型，字符类型可以转成int</li>
+<li>逻辑运算符：三目(赋值)运算</li>
+<li>位运算：二进制数的计算处理，(&amp;与) (|或者) (^异或) (~反码)<ul>
+<li>&amp; | 在进行逻辑运算的时候所有的条件都会执行</li>
+<li>&amp;&amp; || 若干个条件判断的时候，前面的返回来false 或者 true，后面的条件判断就不再执行</li>
+</ul>
+</li>
+</ul>
+<h4 id="IF分支结构"><a href="#IF分支结构" class="headerlink" title="IF分支结构"></a>IF分支结构</h4><p>针对关系表达式进行判断处理的的分支操作，关键字为if,else,,在多条件else if判断时需写上else</p>
+<h4 id="switch分支语句"><a href="#switch分支语句" class="headerlink" title="switch分支语句"></a>switch分支语句</h4><p>是一个开关语句，它主要根据内容进行判断,支持String.注意添加break关键字，否则会继续执行。注意添加default关键字</p>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><p>for(定义循环的初始化数值；循环判断；修改循环数值){<br>    循环执行；<br>}</p>
+<ul>
+<li>在明确循环次数的情况下优先选择for循环</li>
+<li>在不知道循环次数，但知道循坏条件下选择while</li>
+</ul>
+<h4 id="循坏控制"><a href="#循坏控制" class="headerlink" title="循坏控制"></a>循坏控制</h4><p>break：退出整个循坏的结构<br>continue： 在当前的语句之后中的代码不在执行，而直接执行后续的判断处理</p>
+<h4 id="方法的定义"><a href="#方法的定义" class="headerlink" title="方法的定义"></a>方法的定义</h4><ul>
+<li>方法的命名规则</li>
+<li>是一段可以被重复调用的代码块</li>
+</ul>
+<h4 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h4><p>当方法名相同的时候，参数类型或者个数不同的时候就称为方法的重载。</p>
+<ul>
+<li>同一个方法名称，可以根据我们调用时传递的参数类型及个数实现不同方法体的调用</li>
+<li>方法的重载建议其返回值相同</li>
+</ul>
+<h4 id="方法的递归调用"><a href="#方法的递归调用" class="headerlink" title="方法的递归调用"></a>方法的递归调用</h4><ul>
+<li>方法递归调用的结束条件</li>
+<li>每次调用的过程中一定要修改传递的参数条件</li>
+<li>递归操作虽然可以简化的调用，但是在实际开发中很少出现。容易栈溢出</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java 面向对象编程</title>
+    <url>/java-mian-xiang-dui-xiang-bian-cheng.html</url>
+    <content><![CDATA[<h4 id="面向对象的简介"><a href="#面向对象的简介" class="headerlink" title="面向对象的简介"></a>面向对象的简介</h4><ul>
+<li>面向对象是以标准的模块化设计，并且可以重用特征，</li>
+<li>面向过程对于一个问题的解决方案不会考虑重用的设计</li>
+<li>面向对象设计的三大特征<ul>
+<li>封装性：内部的操作对外部而言不可见，限制访问的安全</li>
+<li>继承性：在已有结构的的基础上进行功能的扩充</li>
+<li>多态性：在继承性的基础上扩充而来的概念，指的是类型的转换处理</li>
+</ul>
+</li>
+<li>面向对象的开发步骤<ul>
+<li>OOA：面向对象分析</li>
+<li>OOD: 面向对象的设计</li>
+<li>OOP: 面向对象的编程</li>
+</ul>
+</li>
+</ul>
+<h4 id="类与对象的简介"><a href="#类与对象的简介" class="headerlink" title="类与对象的简介"></a>类与对象的简介</h4><ul>
+<li>类是对某一类事物的共性的抽象概念，而对象描述的是一个具体的产物</li>
+<li>类的组成<ul>
+<li>成员属性：年龄，名字等</li>
+<li>操作方法：定义对象具有的处理行为</li>
+</ul>
+</li>
+</ul>
+<h4 id="类与对象的定义"><a href="#类与对象的定义" class="headerlink" title="类与对象的定义"></a>类与对象的定义</h4><ul>
+<li>类是一个独立的结构体，所以需要使用class来进行定义，主要由方法和属性所组成</li>
+<li>产生对象步骤<ul>
+<li>声明对象</li>
+<li>实例化对象</li>
+</ul>
+</li>
+</ul>
+<h4 id="对象内存分析"><a href="#对象内存分析" class="headerlink" title="对象内存分析"></a>对象内存分析</h4><p>Person per = new Person();</p>
+<ul>
+<li>堆内存：保存的是对象实例的具体信息，在程序中堆内存的开辟是通过new完成的</li>
+<li>栈内存：保存的是一块堆内存的地址。通过地址找到堆内存，而后找到对象信息</li>
+<li>所有的对象在调用属性和方法之前必须进行实例化，否则无法使用报空指针NullPointException</li>
+</ul>
+<h4 id="对象引用分析"><a href="#对象引用分析" class="headerlink" title="对象引用分析"></a>对象引用分析</h4><ul>
+<li>类是引用数据类型</li>
+<li>存在引用传递，当两个引用变量指向同一个对象实例时，修改会对两个变量都生效</li>
+</ul>
+<h4 id="引用与垃圾产生分析"><a href="#引用与垃圾产生分析" class="headerlink" title="引用与垃圾产生分析"></a>引用与垃圾产生分析</h4><ul>
+<li>垃圾的产生是没有任何栈内存所指向的堆内存空间</li>
+<li>一个栈内存只能保存一个堆内存的的地址数据，如果发生修改，则原保存的地址数据将彻底消失</li>
+</ul>
+<h4 id="成员属性的封装"><a href="#成员属性的封装" class="headerlink" title="成员属性的封装"></a>成员属性的封装</h4><p>对属性进行private的私有使用保护，不被外部程序随意修改数据</p>
+<h4 id="构造方法和匿名对象"><a href="#构造方法和匿名对象" class="headerlink" title="构造方法和匿名对象"></a>构造方法和匿名对象</h4><ul>
+<li>构造方法名称必须与类名称保持一致</li>
+<li>构造方法不允许设置任何返回值类型，无返回值</li>
+<li>构造方法在使用new关键字自动调用</li>
+<li>一个类至少存在有一个构造函数，永恒存在</li>
+<li>区分普通方法，两者对的调用时机不同</li>
+<li>匿名对象没有引用，调用结束就会进行回收</li>
+</ul>
+<h4 id="this关键字调用本类属性"><a href="#this关键字调用本类属性" class="headerlink" title="this关键字调用本类属性"></a>this关键字调用本类属性</h4><ul>
+<li>当前类中的属性：this.属性</li>
+<li>当前类的构造方法，普通方法</li>
+<li>描述当前对象</li>
+</ul>
+<h4 id="this调用方法"><a href="#this调用方法" class="headerlink" title="this调用方法"></a>this调用方法</h4><ul>
+<li>构造方法在new实例化对象的时候调用</li>
+<li>普通方法在实例化对象后才可以调用</li>
+<li>评价一个代码的好坏<ul>
+<li>代码结构可以重用，提供的是一个中间独立的支持</li>
+<li>我们的目标是没有重复</li>
+</ul>
+</li>
+<li>this()必须放在首行，必须保留程序出口避免死循环</li>
+</ul>
+<h4 id="声明static属性"><a href="#声明static属性" class="headerlink" title="声明static属性"></a>声明static属性</h4><ul>
+<li>定义公共属性，通过类去修改属性值</li>
+<li>static 属性值虽然定义在类中，但是其并不受类实例对象的控制</li>
+<li>在进行类设计首选非static属性（95%），而考虑到公共属性则考虑</li>
+</ul>
+<h4 id="声明static的方法"><a href="#声明static的方法" class="headerlink" title="声明static的方法"></a>声明static的方法</h4><ul>
+<li>通过类名调用</li>
+<li>不能加this</li>
+<li>static 方法只允许调用static属性和方法</li>
+<li>非static方法允许调用static属性和方法</li>
+<li>所有的static属性和方法都可以在没有实例化对象的前提下使用，而非static则必须实例化后使用</li>
+</ul>
+<h4 id="普通代码块"><a href="#普通代码块" class="headerlink" title="普通代码块"></a>普通代码块</h4><ul>
+<li>定义在方法中的代码块</li>
+<li>可以对方法进行一些结构的拆分，以防止相同变量名称所带来的的影响</li>
+</ul>
+<h4 id="构造块"><a href="#构造块" class="headerlink" title="构造块"></a>构造块</h4><p>构造块会有限于构造方法执行，并且每次实例化的时候都会调用构造块的代码</p>
+<h4 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h4><p>主要指通过static关键字定义的代码块</p>
+<ul>
+<li>静态代码块优先于构造代码块，并且不管有多少个实例对象，都只会执行一次。</li>
+<li>父类的代码块优先子类执行</li>
+</ul>
+<h4 id="数组的基本定义"><a href="#数组的基本定义" class="headerlink" title="数组的基本定义"></a>数组的基本定义</h4><ul>
+<li>大量引用类型数据的创建</li>
+<li>数组的动态初始化，元素默认值为数据类型的默认值</li>
+<li>数组的静态初始化</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java系列</title>
+    <url>/chong-xue-java.html</url>
+    <content><![CDATA[<h2 id="阿里云Java学习路线"><a href="#阿里云Java学习路线" class="headerlink" title="阿里云Java学习路线"></a><a href="https://developer.aliyun.com/learning/roadmap/java?source=5176.11533457&userCode=r3yteowb&type=copy&spm=5176.12901015.0.i12901015.510b525c9IzVPf" target="_blank" rel="noopener">阿里云Java学习路线</a></h2><h3 id><a href="#" class="headerlink" title></a><a href="/java-bian-cheng-ru-men.html" title="Java编程入门">Java编程入门</a></h3><p>主要讲解JavaSE的发展历史，JDK开发环境的搭建，CLASSPATH属性作用，Java程序基本结构、基本数据类型的划分及使用、程序结构、方法的定义与使用。</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title></a><a href="/java-mian-xiang-dui-xiang-bian-cheng.html" title="Java面向对象编程">Java面向对象编程</a></h3><p>面向对象是Java语言之中最为重要的特征，也是进一步学习Java的重要知识体系。在本课程之中将为读者详细的讲解面向对象的定义、类与对象的组成、内存分析、封装性、继承性、多态性等概念的全面分析</p>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -1533,8 +3057,8 @@ apply plugin: &#39;maven&#39;
         <category>日记</category>
       </categories>
       <tags>
-        <tag>UML</tag>
         <tag>AOP</tag>
+        <tag>UML</tag>
       </tags>
   </entry>
   <entry>
