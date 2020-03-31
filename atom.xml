@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yangxin.online/"/>
-  <updated>2020-03-31T22:04:22.617Z</updated>
+  <updated>2020-03-31T22:27:56.457Z</updated>
   <id>http://yangxin.online/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跟我学：LeetCode刷题大法</title>
+    <link href="http://yangxin.online/gen-wo-xue-leetcode-shua-ti-da-fa.html"/>
+    <id>http://yangxin.online/gen-wo-xue-leetcode-shua-ti-da-fa.html</id>
+    <published>2020-03-31T22:22:00.000Z</published>
+    <updated>2020-03-31T22:27:56.457Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="闲聊"><a href="#闲聊" class="headerlink" title="闲聊"></a>闲聊</h3><p>不想赘述算法与数据结构本身存在的重要性以及对工作面试的重要性。我只想谈谈如何通过解决一道道算法题，慢慢的改变自己对算法的态度，并且从算法中获得自信，如果以下论述我们产生了些许共鸣！请关注我，让我们一起努力，一起刷爆leetcode吧。</p><h3 id="坚定想法"><a href="#坚定想法" class="headerlink" title="坚定想法"></a>坚定想法</h3><p>曾几何时，在无数个瞬间。可曾遇到过这些情况</p><ul><li>算法很重要，我要刷一刷算法；</li><li>背了几题，但不刷刷算法我还是慌的；</li><li>算法虽很重要，但我工作上没怎么用上；</li><li>我刷过了，但面试我怎么打不出来；</li><li>刷了几题，太难了，我放弃；</li><li>….</li></ul><p><img src="http://p9.pstatp.com/large/dfic-imagehandler/2ddb935a-9d24-4b0e-b9aa-b2972a4dec56" alt="跟我学：LeetCode刷题大法"></p><p>放弃的理由千千万万</p><p>讲真放弃的理由千千往往，坚持的理由我觉得只有兴趣和生存。只要是抱着生存的理由，那放弃的理由分分钟淹没他，除非真的找不到工作活不下去，就算如此，还能转行，直接逃避……，说这些就是想让自己和大家认清本质，坚定一下刷算法的的信念，走出第一步告诉自己：我需要刷题，我要刷题！</p><h3 id="如何刷题到自信"><a href="#如何刷题到自信" class="headerlink" title="如何刷题到自信"></a>如何刷题到自信</h3><p>当看到这里，我相信刷过题的人都有过类似经验</p><ol><li>第一次平静的打开某算法库官网(这个主要是LeetCode)，</li><li>然后打开第一个题，看了题目有点思路，一写代码结果各种输入判断，代码编译上的错误都会遇到</li><li>千辛万苦ac后发现只打败了30%的人。完全没有考虑过时间复杂度，空间复杂度，不过好歹过了</li><li>然后继续刷，没过多久就遇到了一题懵逼或者死磕磕不出的题，然后看题解</li><li>看懂的题解我们会惊呼怎么想到的，没看懂的题解会沮丧这也太难了，半天看不懂的题解完全就打击到了自信心</li><li>最终刷题结束，然后可能没有然后了，或者过几天再来挣扎一下。</li><li>那些挣扎过并坚持下来的人，我相信算法面试稳了但不一定自信，除非养成了刷题的习惯</li></ol><hr><p>这经历完全是自我打击的过程，说到底还是打开的姿势不对。没有找准<strong>刷题的基本思想和步骤，试试下面的刷题步骤</strong></p><ol><li>打开一题算法，先看题目，5-10分钟毫无思绪或者无法解决，</li><li>直接看题解，题解一般会有多种解法，找最优解看懂了背下来</li><li>然后不看题解去解题，ac后不急，多默写几遍ac几遍，直到相信自己明天起床也能稳稳的ac</li><li>接着可以再去看题解，去比较其他解法，分析他们的时间复杂度和空间复杂度，看最优解做的优化</li><li>通过比较，肯定是可以加深最优解的印象。<strong>最后重新打开这道题</strong></li><li>看题，思考给出各种解法的思路以及复杂度，最后选出最优解，把它写下来。</li><li>ac的那一刻，你的自信就来了。</li><li>当隔了一星期，你再来解这道题一次ac，稳如狗就更自信了。否则也不会沮丧，只是查漏补缺而已，几分钟后依旧ac。</li></ol><p><img src="http://p3.pstatp.com/large/dfic-imagehandler/cb0f3594-fa4d-4164-8340-9a598e976a65" alt="跟我学：LeetCode刷题大法"></p><h3 id="技巧与心得"><a href="#技巧与心得" class="headerlink" title="技巧与心得"></a>技巧与心得</h3><ol><li>遇到不会的题不要慌，看题解</li><li>文字类的表述不如视图类的直观，尽量找图文并茂精选图解，或者看leetcode国际站的大牛题解</li><li>图解依旧看着吃力，可以在哔哩哔哩或者YouTube上，通过leecode + 题号，搜索高收视率的视频观看</li><li>反复研读观看，相信我你最终会懂的</li></ol><h3 id="最后的最后"><a href="#最后的最后" class="headerlink" title="最后的最后"></a>最后的最后</h3><p>我想说且是重点的，未来我将带领各位盆友一起刷算法题，后续我会通过视频+图文的方式来分享每一题的思路和多种解法代码。同时教会大家更方便，高效的刷题。</p><p>我是Yangcy，该吃吃该喝喝，该学还得学，我们一起加油！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;闲聊&quot;&gt;&lt;a href=&quot;#闲聊&quot; class=&quot;headerlink&quot; title=&quot;闲聊&quot;&gt;&lt;/a&gt;闲聊&lt;/h3&gt;&lt;p&gt;不想赘述算法与数据结构本身存在的重要性以及对工作面试的重要性。我只想谈谈如何通过解决一道道算法题，慢慢的改变自己对算法的态度，并且从算法中获
+      
+    
+    </summary>
+    
+      <category term="Algorithm" scheme="http://yangxin.online/categories/Algorithm/"/>
+    
+    
+      <category term="Leetcode" scheme="http://yangxin.online/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>跟我学：LeetCode刷题之1.两数之和</title>
@@ -95,15 +120,15 @@
     <link href="http://yangxin.online/algorithm-xi-lie.html"/>
     <id>http://yangxin.online/algorithm-xi-lie.html</id>
     <published>2020-03-03T06:11:28.000Z</published>
-    <updated>2020-03-31T22:06:49.950Z</updated>
+    <updated>2020-03-31T22:26:31.404Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="算法的学习"><a href="#算法的学习" class="headerlink" title="算法的学习"></a>算法的学习</h3><h4 id><a href="#" class="headerlink" title></a><a href="/shi-me-shi-suan-fa.html" title="什么是算法">什么是算法</a></h4><h4 id="-1"><a href="#-1" class="headerlink" title></a><a href="/suan-fa-mian-shi-zhun-bei.html" title="算法面试准备">算法面试准备</a></h4><h3 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h3><h4 id="自己的LeetCode代码库"><a href="#自己的LeetCode代码库" class="headerlink" title="自己的LeetCode代码库"></a><a href="https://github.com/ZhengYangxin/LeetCode" target="_blank" rel="noopener">自己的LeetCode代码库</a></h4><h4 id="比较好的算法总结"><a href="#比较好的算法总结" class="headerlink" title="比较好的算法总结"></a><a href="https://github.com/labuladong/fucking-algorithm" target="_blank" rel="noopener">比较好的算法总结</a></h4><h3 id="题目索引"><a href="#题目索引" class="headerlink" title="题目索引"></a>题目索引</h3><h4 id="-2"><a href="#-2" class="headerlink" title></a><a href="/gen-wo-xue-leetcode-shua-ti-zhi-1-liang-shu-zhi-he.html" title="跟我学：LeetCode刷题之1.两数之和">跟我学：LeetCode刷题之1.两数之和</a></h4>]]></content>
+    <content type="html"><![CDATA[<h3 id="算法的学习"><a href="#算法的学习" class="headerlink" title="算法的学习"></a>算法的学习</h3><h4 id><a href="#" class="headerlink" title></a><a href="/gen-wo-xue-leetcode-shua-ti-da-fa.html" title="跟我学：LeetCode刷题大法">跟我学：LeetCode刷题大法</a></h4><h4 id="-1"><a href="#-1" class="headerlink" title></a><a href="/shi-me-shi-suan-fa.html" title="什么是算法">什么是算法</a></h4><h4 id="-2"><a href="#-2" class="headerlink" title></a><a href="/suan-fa-mian-shi-zhun-bei.html" title="算法面试准备">算法面试准备</a></h4><h3 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h3><h4 id="自己的LeetCode代码库"><a href="#自己的LeetCode代码库" class="headerlink" title="自己的LeetCode代码库"></a><a href="https://github.com/ZhengYangxin/LeetCode" target="_blank" rel="noopener">自己的LeetCode代码库</a></h4><h4 id="比较好的算法总结"><a href="#比较好的算法总结" class="headerlink" title="比较好的算法总结"></a><a href="https://github.com/labuladong/fucking-algorithm" target="_blank" rel="noopener">比较好的算法总结</a></h4><h3 id="题目索引"><a href="#题目索引" class="headerlink" title="题目索引"></a>题目索引</h3><h4 id="-3"><a href="#-3" class="headerlink" title></a><a href="/gen-wo-xue-leetcode-shua-ti-zhi-1-liang-shu-zhi-he.html" title="跟我学：LeetCode刷题之1.两数之和">跟我学：LeetCode刷题之1.两数之和</a></h4>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;算法的学习&quot;&gt;&lt;a href=&quot;#算法的学习&quot; class=&quot;headerlink&quot; title=&quot;算法的学习&quot;&gt;&lt;/a&gt;算法的学习&lt;/h3&gt;&lt;h4 id&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title&gt;&lt;/a&gt;&lt;a href=&quot;/shi
+        &lt;h3 id=&quot;算法的学习&quot;&gt;&lt;a href=&quot;#算法的学习&quot; class=&quot;headerlink&quot; title=&quot;算法的学习&quot;&gt;&lt;/a&gt;算法的学习&lt;/h3&gt;&lt;h4 id&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title&gt;&lt;/a&gt;&lt;a href=&quot;/gen
       
     
     </summary>
@@ -518,33 +543,6 @@
       <category term="AOP" scheme="http://yangxin.online/tags/AOP/"/>
     
       <category term="Android" scheme="http://yangxin.online/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据库学习</title>
-    <link href="http://yangxin.online/shu-ju-ku-xue-xi.html"/>
-    <id>http://yangxin.online/shu-ju-ku-xue-xi.html</id>
-    <published>2019-10-31T14:21:36.000Z</published>
-    <updated>2019-11-06T03:30:47.408Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="数据库设计的三大范式"><a href="#数据库设计的三大范式" class="headerlink" title="数据库设计的三大范式"></a>数据库设计的三大范式</h3><ol><li>第一：原子性， 即不可拆分</li><li>第二：唯一性， id</li><li>第三：避免冗余性</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;数据库设计的三大范式&quot;&gt;&lt;a href=&quot;#数据库设计的三大范式&quot; class=&quot;headerlink&quot; title=&quot;数据库设计的三大范式&quot;&gt;&lt;/a&gt;数据库设计的三大范式&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;第一：原子性， 即不可拆分&lt;/li&gt;
-&lt;li&gt;第二：唯一性， i
-      
-    
-    </summary>
-    
-      <category term="Android" scheme="http://yangxin.online/categories/Android/"/>
-    
-    
-      <category term="数据库" scheme="http://yangxin.online/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
