@@ -12,6 +12,8 @@ category: Algorithm
 
 ### 算法的学习
 
+#### {% post_link 跟我学：LeetCode刷题大法%}
+
 #### {% post_link 什么是算法%}
 
 #### {% post_link 算法面试准备%}
