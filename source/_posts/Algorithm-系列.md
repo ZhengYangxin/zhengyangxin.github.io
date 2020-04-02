@@ -30,7 +30,7 @@ category: Algorithm
 
 #### {% post_link 跟我学：LeetCode刷题之2-两数相加%}
 
-#### {% post_link 跟我学：跟我学：LeetCode刷题之3-无重复字符的最长子串%}
+#### {% post_link 跟我学：LeetCode刷题之3-无重复字符的最长子串%}
 
 
 
