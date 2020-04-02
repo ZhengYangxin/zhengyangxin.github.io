@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="flutter之路由, Fighting！">
     <meta name="description" content="路由，页面跳转">
@@ -26,7 +26,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -586,7 +586,7 @@
 <pre><code>
 #### 路由传值
 * Navigator.push()返回Flutter对象，用以接收新路由出栈时的返回数据
-* Navigator.pop()将栈顶路由出栈，参数Result为页面关闭时返回给上一个页面的数据</code></pre><p> Scaffold(<br>      appBar: AppBar(<br>        title: Text(“SendRoute route”),<br>      ),<br>      body: Center(<br>        child: Column(<br>          children: <widget>[<br>            Text(arg),<br>            RaisedButton(<br>              child: Text(<br>                “go back”,<br>              ),<br>              onPressed: () {<br>                Navigator.pop(context, “hello world”);<br>              },<br>            ),<br>          ],<br>        ),<br>      ),<br>    );</widget></p>
+* Navigator.pop()将栈顶路由出栈，参数Result为页面关闭时返回给上一个页面的数据</code></pre><p> Scaffold(<br>      appBar: AppBar(<br>        title: Text(“SendRoute route”),<br>      ),<br>      body: Center(<br>        child: Column(<br>          children: <Widget>[<br>            Text(arg),<br>            RaisedButton(<br>              child: Text(<br>                “go back”,<br>              ),<br>              onPressed: () {<br>                Navigator.pop(context, “hello world”);<br>              },<br>            ),<br>          ],<br>        ),<br>      ),<br>    );</p>
 <pre><code>
 #### 命名路由
 * 注册路由表
@@ -598,7 +598,7 @@
 <pre><code>
 #### 路由动画
 * MaterialPageRoute：继承自PageRoute，是MaterIAL组件库提供的组件，它可以针对不同的平台，实现与平台页面切换动画一致的路由切换动画
-* PageRouteBuilder</code></pre><p>  Navigator.push(context, PageRouteBuilder(<br>    transitionDuration: Duration(milliseconds: 800),<br>    pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation){<br>      return FadeTransition(opacity: animation, child: SecondRoute5(),);<br>    }<br>  ));</double></double></p>
+* PageRouteBuilder</code></pre><p>  Navigator.push(context, PageRouteBuilder(<br>    transitionDuration: Duration(milliseconds: 800),<br>    pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation){<br>      return FadeTransition(opacity: animation, child: SecondRoute5(),);<br>    }<br>  ));</p>
 <pre><code></code></pre>
             </div>
             <hr/>

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="protocol buffer 使用和原理, Fighting！">
     <meta name="description" content="Protocol Buffer是什么，在Android中怎么使用，为什么轻便高效的原理">
@@ -26,7 +26,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -536,7 +536,7 @@
                                 <span class="chip bg-color">Android</span>
                             </a>
                         
-                            <a href="/tags/数据存储/">
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
                                 <span class="chip bg-color">数据存储</span>
                             </a>
                         
@@ -649,9 +649,9 @@ message test {
      int32     opt = 3;  //optional field
 }
 </code></pre><h4 id="Studio-自动生成代码"><a href="#Studio-自动生成代码" class="headerlink" title="Studio 自动生成代码"></a>Studio 自动生成代码</h4><p>通过Android Studio build，Protobuf插件会帮助我们自动生成TestProto类，类结构如下</p>
-<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/proto_generate_code.png" alt></p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/proto_generate_code.png" alt=""></p>
 <p>Protobuf帮助我们自动生成了testOrBuilder接口，主要定义了个字段的get，set方法，并生成了test类，核心逻辑，通过writeTo（CodedOutputStream）接口序列化到CodedOutputStream，通过parseFrom(InputStream) 接口从InputStream中反序列化</p>
-<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/protobuffer_struct.png" alt></p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/protobuffer_struct.png" alt=""></p>
 <h3 id="ProtoBuffer-原理"><a href="#ProtoBuffer-原理" class="headerlink" title="ProtoBuffer 原理"></a>ProtoBuffer 原理</h3><p>ProtoBuffer不管在时间还是空间上更加高效，是怎么做到的？</p>
 <p>消息经过ProtoBuffer序列化后会成为二进制数据流，通过key-Value组成方式写入到二进制数据流。</p>
 <h4 id="编码机制"><a href="#编码机制" class="headerlink" title="编码机制"></a>编码机制</h4><h5 id="Base-128-Varints"><a href="#Base-128-Varints" class="headerlink" title="Base 128 Varints"></a>Base 128 Varints</h5><p>是一种可变字节序列化整形的方法</p>
@@ -822,7 +822,7 @@ e 则为65 ..
                                     <span class="chip bg-color">Android</span>
                                 </a>
                             
-                                <a href="/tags/数据存储/">
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
                                     <span class="chip bg-color">数据存储</span>
                                 </a>
                             

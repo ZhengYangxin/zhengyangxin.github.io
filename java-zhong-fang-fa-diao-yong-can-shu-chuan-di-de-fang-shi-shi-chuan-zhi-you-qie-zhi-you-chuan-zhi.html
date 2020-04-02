@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Java中方法调用参数传递的方式是传值，有且只有传值, Fighting！">
     <meta name="description" content="Java中方法调用参数传递的方式是传值，尽管传的是引用的值而不是对象的值。（Does Java pass by refrence or pass by value）基本数据类型与引用数据类型
@@ -30,7 +30,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -536,7 +536,7 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java基础/">
+                            <a href="/tags/Java%E5%9F%BA%E7%A1%80/">
                                 <span class="chip bg-color">Java基础</span>
                             </a>
                         
@@ -627,12 +627,12 @@ public static void main(String [] args)
 X: 0 Y: 0  
 X: 100 Y: 100  
 X: 0 Y: 0  </code></pre><p>这个方法成功地改变了pnt1的值，但pnt1和pnt2的交换却失败了！这是Java参数传递机制里最让人迷惑的地方。在main()中，pnt1和pnt2是Point对象的引用，当将pnt1和pnt2传递给tricky()时，Java使用的正是传值的方式，将这两个引用的传给了﻿﻿arg1和arg2。也就是说arg1和arg2正是pnt1和pnt2的复制，他们所指向的对象是相同的。详情可见下面的图示：</p>
-<div align="center">
+<div align=center>
 ![Alt text](http://images.techhive.com/images/idge/imported/article/jvw/2000/05/03-qa-0512-pass1-100158781-orig.gif "Optional title")
 在作为参数传递后，对象至少有两个引用指向自己
 </div>
 在main()中，引用被复制并以传值的方式进行传递，对象本身并不会被传递。因此，tricky()方法中pnt1所指向的对象发生了变化。因为传递的是引用的复制，因此引用的交换既不能引起对象的交换，更不会使原始引用发生变化。如图2所示，tricky()交换了arg1与arg2，但不会影响pnt1和pnt2。因此若想交换原始引用pnt1和pnt2，那么不能通过调用方法的方式来实现。
-<div align="center">
+<div align=center>
 ![Alt text](http://hi.csdn.net/attachment/201201/31/0_13279907114A2K.gif "Optional title")
 在作为参数传递后，对象至少有两个引用指向自己
 </div>
@@ -705,7 +705,7 @@ X: 0 Y: 0  </code></pre><p>这个方法成功地改变了pnt1的值，但pnt1和
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java基础/">
+                                <a href="/tags/Java%E5%9F%BA%E7%A1%80/">
                                     <span class="chip bg-color">Java基础</span>
                                 </a>
                             
@@ -926,7 +926,7 @@ Branch master set up to track remote branch dev2.2 fr
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/开发工具/" class="post-category">
+                            <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" class="post-category">
                                     开发工具
                                 </a>
                             
@@ -985,7 +985,7 @@ Branch master set up to track remote branch dev2.2 fr
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java基础/">
+                    <a href="/tags/Java%E5%9F%BA%E7%A1%80/">
                         <span class="chip bg-color">Java基础</span>
                     </a>
                     

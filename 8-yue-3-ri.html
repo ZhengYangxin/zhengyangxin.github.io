@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="8月3日, Fighting！">
     <meta name="description" content="Https的用途和工作模式用Http协议看新闻没什么问题，但换到严肃的场景中就存在安全风向了，如支付，使用普通的Http协议就会被黑客盯上。通过拦截请求假装自己是服务器，让你输入密码等。解决这种问题的思路是对数据加密，加密方式分两种：
@@ -27,7 +27,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -537,7 +537,7 @@
                                 <span class="chip bg-color">Https</span>
                             </a>
                         
-                            <a href="/tags/日记/">
+                            <a href="/tags/%E6%97%A5%E8%AE%B0/">
                                 <span class="chip bg-color">日记</span>
                             </a>
                         
@@ -549,7 +549,7 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/日记/" class="post-category">
+                            <a href="/categories/%E6%97%A5%E8%AE%B0/" class="post-category">
                                 日记
                             </a>
                         
@@ -595,7 +595,7 @@
 <ul>
 <li>如何鉴别别人发给你的公钥是对的，而不是冒充的<br>通过权威机构(CA)部门的证书，证书里面包括公钥还要发布者的信息及发布机构，证书有效期等，如身份证一样的存在。证书的签名算法即ＣＡ的私钥,给公司的公钥加密。所有用户在网站上得到的是一个证书，你只要得到ＣＡ的公钥去解密签名就能得到公司的公钥了。关于ＣＡ公钥的可靠性，则需要更加权威的机构证实。</li>
 </ul>
-<h4 id="Https的工作模式"><a href="#Https的工作模式" class="headerlink" title="Https的工作模式"></a>Https的工作模式</h4><p>非对称加密性能不及对称加密，通过非对称加密只对对称加密的秘钥进行加密码，而真正通讯的传输数据则通过对称加密的秘钥进行加解密。过程<br><img width="200" src="/images/lADPDgQ9q4pv-gfNBLbNAuA_736_1206.jpg"></p>
+<h4 id="Https的工作模式"><a href="#Https的工作模式" class="headerlink" title="Https的工作模式"></a>Https的工作模式</h4><p>非对称加密性能不及对称加密，通过非对称加密只对对称加密的秘钥进行加密码，而真正通讯的传输数据则通过对称加密的秘钥进行加解密。过程<br><img width=200 src="/images/lADPDgQ9q4pv-gfNBLbNAuA_736_1206.jpg" ></p>
 <ol>
 <li>客户端发送Client Hello 到服务器,会以明文传输TLS版本信息，加密套件候选列表，压缩算法列表等信息，还有一个随机数，在协商对称秘钥的时候使用</li>
 <li>服务器返回Server Hello消息，告诉客户端服务器所选的协议版本，加密套件和压缩算法等，还有一个随机数，用于后续秘钥协商</li>
@@ -700,7 +700,7 @@
                                     <span class="chip bg-color">Https</span>
                                 </a>
                             
-                                <a href="/tags/日记/">
+                                <a href="/tags/%E6%97%A5%E8%AE%B0/">
                                     <span class="chip bg-color">日记</span>
                                 </a>
                             
@@ -920,7 +920,7 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/日记/" class="post-category">
+                            <a href="/categories/%E6%97%A5%E8%AE%B0/" class="post-category">
                                     日记
                                 </a>
                             
@@ -935,7 +935,7 @@
                         <span class="chip bg-color">Alpha</span>
                     </a>
                     
-                    <a href="/tags/启动优化/">
+                    <a href="/tags/%E5%90%AF%E5%8A%A8%E4%BC%98%E5%8C%96/">
                         <span class="chip bg-color">启动优化</span>
                     </a>
                     

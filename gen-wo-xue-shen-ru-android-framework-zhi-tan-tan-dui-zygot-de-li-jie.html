@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="跟我学：深入Android Framework之谈谈对Zygote的理解, Fighting！">
     <meta name="description" content="谈谈对Zygote的理解，深入分析从Zygote的作用，启动流程到工作原理">
@@ -26,7 +26,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -575,7 +575,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Zygote我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习！</p>
-<img src="/images/image-F8C39DF903A8-1.png" style="zoom:14%;">
+<img src="/images/image-F8C39DF903A8-1.png" style="zoom:14%;" />
 
 <h3 id="谈谈对Zygote的理解"><a href="#谈谈对Zygote的理解" class="headerlink" title="谈谈对Zygote的理解"></a>谈谈对Zygote的理解</h3><p>当遇到这样一道面试题，我们应该分析面试官想考察的是什么？</p>
 <ul>
@@ -662,9 +662,9 @@ env-&gt;CallStaticVoidMethod(startClass, startMeth, strArray);//调用main函数
 <h3 id="要注意的细节"><a href="#要注意的细节" class="headerlink" title="要注意的细节"></a>要注意的细节</h3><p>Zygote fork要单线程进行，在fork时Zygote会将除主进程外的所有线程都停了成功后重启，因为对于新创建的子进程而言只有主线程，避免多线程的死锁问题</p>
 <p>Zygote的IPC没有采用binder，而是本地Socket</p>
 <h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>看到最后，我相信你一定对Zygote有一定了解了吧。回头看看第一部分的考查内容讲讲呗，对于每一个点的重点我都细心的为你做了高亮。还有纸上得来终觉浅，绝知此事要躬行。本文参考了Android api28的源码，希望你也去踩着点过一遍源码，肯定能加深理解！</p>
-<img src="/images/follow_end_blog.jpg" style="zoom:30%;">
+<img src="/images/follow_end_blog.jpg" style="zoom:30%;" />
 
-<h3 id><a href="#" class="headerlink" title></a></h3>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
             </div>
             <hr/>
 
@@ -958,7 +958,7 @@ env-&gt;CallStaticVoidMethod(startClass, startMeth, strArray);//调用main函数
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Leetcode，两数之和/">
+                    <a href="/tags/Leetcode%EF%BC%8C%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
                         <span class="chip bg-color">Leetcode，两数之和</span>
                     </a>
                     

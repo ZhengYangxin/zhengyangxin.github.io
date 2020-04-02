@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="flutter之动画, Fighting！">
     <meta name="description" content="Flutter动画的基本概念和动画结构">
@@ -26,7 +26,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -733,8 +733,8 @@ Widget build(BuildContext context) {
 }
 </code></pre></li>
 </ul>
-<p>class StaggerF extends StatefulWidget {<br>  @override<br>  State<statefulwidget> createState() {<br>    // TODO: implement createState<br>    return StaggerS();<br>  }<br>}</statefulwidget></p>
-<p>class StaggerS extends State<staggerf> with TickerProviderStateMixin {<br>  AnimationController _controller;</staggerf></p>
+<p>class StaggerF extends StatefulWidget {<br>  @override<br>  State<StatefulWidget> createState() {<br>    // TODO: implement createState<br>    return StaggerS();<br>  }<br>}</p>
+<p>class StaggerS extends State<StaggerF> with TickerProviderStateMixin {<br>  AnimationController _controller;</p>
 <p>  _play() async {<br>    await _controller.forward().orCancel;<br>    await _controller.reverse().orCancel;<br>  }</p>
 <p>  @override<br>  void initState() {<br>    super.initState();<br>    _controller =<br>        AnimationController(duration: Duration(seconds: 10), vsync: this);<br>    _controller.addStatusListener((status) {<br>      switch (status) {<br>        case AnimationStatus.dismissed:<br>          _controller.forward();<br>          break;<br>        case AnimationStatus.completed:<br>          _controller.reverse();<br>          break;<br>        case AnimationStatus.forward:<br>        case AnimationStatus.reverse:<br>          break;<br>      }<br>    });<br>  }</p>
 <p>  @override<br>  Widget build(BuildContext context) {<br>    // TODO: implement build<br>    return Scaffold(<br>      body: GestureDetector(<br>        onTap: () {<br>          _play();<br>        },<br>        child: Center(<br>          child: Container(<br>            width: 300,<br>            height: 300,<br>            color: Colors.yellow,<br>            child: Stagger(<br>              controller: _controller,<br>            ),<br>          ),<br>        ),<br>      ),<br>    );<br>  }<br>}</p>

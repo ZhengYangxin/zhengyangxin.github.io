@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Bit Manipulation, Fighting！">
     <meta name="description" content="Bit Manipulation(位运算)：一共五种运算：与，或，异或，左移，右移。
@@ -27,7 +27,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -537,7 +537,7 @@
                                 <span class="chip bg-color">leetCode</span>
                             </a>
                         
-                            <a href="/tags/算法/">
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
@@ -549,7 +549,7 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/算法/" class="post-category">
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
                                 算法
                             </a>
                         
@@ -582,7 +582,7 @@
                 <h3 id="Bit-Manipulation-位运算-："><a href="#Bit-Manipulation-位运算-：" class="headerlink" title="Bit Manipulation(位运算)："></a>Bit Manipulation(位运算)：</h3><p>一共五种运算：与，或，异或，左移，右移。</p>
 <h4 id="常用技巧："><a href="#常用技巧：" class="headerlink" title="常用技巧："></a>常用技巧：</h4><p>（1） n &amp; （n-1）能够消灭n中最低位中的1。<br>（2） 右移：除以2， 左移：乘以2。<br>（3） 异或性质：交换律，0^a=a, a^a=0;<br>（3） 将常用字符、数字等均转为按位运算，可以节约空间。</p>
 <a id="more"></a>
-<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="Number-of-1-Bits"><a href="#Number-of-1-Bits" class="headerlink" title="Number of 1 Bits"></a><a href="https://leetcode.com/problems/number-of-1-bits/description/" title="Optional title" target="_blank" rel="noopener">Number of 1 Bits</a></h4><p>使用右移。<br>使用n&amp;(n-1)可以消灭一个1的性质来求解。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><h4 id="Number-of-1-Bits"><a href="#Number-of-1-Bits" class="headerlink" title="Number of 1 Bits"></a><a href="https://leetcode.com/problems/number-of-1-bits/description/" target="_blank" rel="noopener" title="Optional title">Number of 1 Bits</a></h4><p>使用右移。<br>使用n&amp;(n-1)可以消灭一个1的性质来求解。</p>
 <pre><code>public static int hammingWeight(int n) {
     int cnt = 0;
     while (n &gt; 0) {
@@ -590,7 +590,7 @@
         n &gt;&gt;= 1;
     }
     return cnt;
-}</code></pre><h4 id="Missing-Number"><a href="#Missing-Number" class="headerlink" title="Missing Number"></a><a href="https://leetcode.com/problems/missing-number/description/" title="Optional title" target="_blank" rel="noopener">Missing Number</a></h4><p>这道题给我们n个数字，是0到n之间的数但是有一个数字去掉了，让我们寻找这个数字，要求线性的时间复杂度和常数级的空间复杂度。<br><strong>解法一:</strong>最直观的一个方法是用等差数列的求和公式求出0到n之间所有的数字之和，然后再遍历数组算出给定数字的累积和，然后做减法，差值就是丢失的那个数字</p>
+}</code></pre><h4 id="Missing-Number"><a href="#Missing-Number" class="headerlink" title="Missing Number"></a><a href="https://leetcode.com/problems/missing-number/description/" target="_blank" rel="noopener" title="Optional title">Missing Number</a></h4><p>这道题给我们n个数字，是0到n之间的数但是有一个数字去掉了，让我们寻找这个数字，要求线性的时间复杂度和常数级的空间复杂度。<br><strong>解法一:</strong>最直观的一个方法是用等差数列的求和公式求出0到n之间所有的数字之和，然后再遍历数组算出给定数字的累积和，然后做减法，差值就是丢失的那个数字</p>
 <pre><code>public static int missingNumber(int[] nums) {
     int sum = 0;
     int n = nums.length;
@@ -621,7 +621,7 @@
         }
     }
     return low;
-}</code></pre><h4 id="Power-of-Two"><a href="#Power-of-Two" class="headerlink" title="Power of Two"></a><a href="https://leetcode.com/problems/power-of-two/description/" title="Optional title" target="_blank" rel="noopener">Power of Two</a></h4><p>使用n&amp;(n-1）=0来判断。<br>注意0和负数的情况。<br>这道题让我们判断一个数是否为2的次方数，而且要求时间和空间复杂度都为常数<br><strong>解法一：</strong>那么我们很容易看出来2的次方数都只有一个1，剩下的都是0，所以我们的解题思路就有了，我们只要每次判断最低位是否为1，然后向右移位，最后统计1的个数即可判断是否是2的次方数</p>
+}</code></pre><h4 id="Power-of-Two"><a href="#Power-of-Two" class="headerlink" title="Power of Two"></a><a href="https://leetcode.com/problems/power-of-two/description/" target="_blank" rel="noopener" title="Optional title">Power of Two</a></h4><p>使用n&amp;(n-1）=0来判断。<br>注意0和负数的情况。<br>这道题让我们判断一个数是否为2的次方数，而且要求时间和空间复杂度都为常数<br><strong>解法一：</strong>那么我们很容易看出来2的次方数都只有一个1，剩下的都是0，所以我们的解题思路就有了，我们只要每次判断最低位是否为1，然后向右移位，最后统计1的个数即可判断是否是2的次方数</p>
 <pre><code>public static boolean isPowerOfTwo(int n) {
     int cnt = 0;
     while (n &gt; 0) {
@@ -704,7 +704,7 @@
                                     <span class="chip bg-color">leetCode</span>
                                 </a>
                             
-                                <a href="/tags/算法/">
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
@@ -970,7 +970,7 @@ android 进程通过fork创建，线程通过pthread.creat创建
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/经验/" class="post-category">
+                            <a href="/categories/%E7%BB%8F%E9%AA%8C/" class="post-category">
                                     经验
                                 </a>
                             
@@ -981,7 +981,7 @@ android 进程通过fork创建，线程通过pthread.creat创建
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/经验/">
+                    <a href="/tags/%E7%BB%8F%E9%AA%8C/">
                         <span class="chip bg-color">经验</span>
                     </a>
                     

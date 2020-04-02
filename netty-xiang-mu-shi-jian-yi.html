@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Netty项目实践（一）, Fighting！">
     <meta name="description" content="为什么要学需要要做一个中间件，接受由硬件通过wifi和手机反复传递过来的数据（温湿度），然后再通过中间件将数据写入数据库。由于数据是时时接收的，所以用普通的http请求难以完全实现，所以考虑建立长链接实现功能。
@@ -27,7 +27,7 @@ Netty的使用场景非常吻合">
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -549,7 +549,7 @@ Netty的使用场景非常吻合">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/项目实践/" class="post-category">
+                            <a href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/" class="post-category">
                                 项目实践
                             </a>
                         
@@ -579,7 +579,7 @@ Netty的使用场景非常吻合">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="为什么要学"><a href="#为什么要学" class="headerlink" title="为什么要学"></a>为什么要学</h3><p>需要要做一个中间件，接受由硬件通过wifi和手机反复传递过来的数据（温湿度），然后再通过中间件将数据写入数据库。由于数据是时时接收的，所以用普通的http请求难以完全实现，所以考虑建立长链接实现功能。<br></p>
+                <h3 id="为什么要学"><a href="#为什么要学" class="headerlink" title="为什么要学"></a>为什么要学</h3><p>需要要做一个中间件，接受由硬件通过wifi和手机反复传递过来的数据（温湿度），然后再通过中间件将数据写入数据库。由于数据是时时接收的，所以用普通的http请求难以完全实现，所以考虑建立长链接实现功能。</br></p>
 <h4 id="Netty的使用场景非常吻合："><a href="#Netty的使用场景非常吻合：" class="headerlink" title="Netty的使用场景非常吻合："></a>Netty的使用场景非常吻合：</h4><ul>
 <li>构建高性能、低时延的各种Java中间件，例如MQ、分布式服务框架、ESB消息总线等，Netty主要作为基础通信框架提供高性能、低时延的通信服务；</li>
 <li>公有或者私有协议栈的基础通信框架，例如可以基于Netty构建异步、高性能的WebSocket协议栈；</li>
@@ -637,21 +637,21 @@ Netty的使用场景非常吻合">
 <dependencies>
         <!--是一个能够将Java bean/map/collection/Java array/xml转换成JSON并且反过来将JSON转换成java对象的类库-->
         <dependency>
-            <groupid>net.sf.json-lib</groupid>
-            <artifactid>json-lib</artifactid>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
             <version>2.4</version>
             <classifier>jdk15</classifier>
         </dependency>
         <!--Netty包-->
         <dependency>
-            <groupid>io.netty</groupid>
-            <artifactid>netty-all</artifactid>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
             <version>5.0.0.Alpha2</version>
         </dependency>
         <!--Apache的开源项目log4j是一个功能强大的日志组件,提供方便的日志记录-->
         <dependency>
-            <groupid>log4j</groupid>
-            <artifactid>log4j</artifactid>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
 </dependencies>
@@ -1214,7 +1214,7 @@ public class DataPacket {
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/辅助工具/" class="post-category">
+                            <a href="/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/" class="post-category">
                                     辅助工具
                                 </a>
                             

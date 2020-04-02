@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="阿里云Centos7搭建Git服务器仓库, Fighting！">
     <meta name="description" content="阿里云Centos7 搭建Git服务器仓库，记录过程
@@ -28,7 +28,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -576,7 +576,7 @@
 3.AuthorizedKeysFile  .ssh/authorized_keys</code></pre><p>这里我们可以看到公钥存放在.ssh/authorized_keys文件中。所以我们在/home/git下创建.ssh目录，然后创建authorized_keys文件，并将刚生成的公钥导入进去。<br>创建文件夹 mkdir 路径/文件夹名<br>创建文件 vi 路径/文件名<br>然后再次clone的时候，或者是之后push的时候，就不需要再输入密码了：</p>
 <h2 id="7-禁用git用户的shell登陆"><a href="#7-禁用git用户的shell登陆" class="headerlink" title="7.禁用git用户的shell登陆"></a>7.禁用git用户的shell登陆</h2><p>出于安全考虑，第二步创建的git用户不允许登录shell，这可以通过编辑/etc/passwd文件完成。找到类似下面的一行：</p>
 <pre><code>git:x:1001:1001:,,,:/home/git:/bin/bash </code></pre><p>最后一个冒号后改为：<br><img src="http://img.blog.csdn.net/20170209185636959?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuZ3hpbjExMTM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<pre><code>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell  </code></pre><p> git clone <a href="mailto:git@42.96.150.57" target="_blank" rel="noopener">git@42.96.150.57</a>: /usr/local/tomcat7/webapps/baby/</p>
+<pre><code>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell  </code></pre><p> git clone <a href="mailto:git@42.96.150.57">git@42.96.150.57</a>: /usr/local/tomcat7/webapps/baby/</p>
 <h2 id="8-客户端基本操作"><a href="#8-客户端基本操作" class="headerlink" title="8. 客户端基本操作"></a>8. 客户端基本操作</h2><p>git add .<br>git commit<br>git push</p>
 <h2 id="9-服务器自动更新部署"><a href="#9-服务器自动更新部署" class="headerlink" title="9.服务器自动更新部署"></a>9.服务器自动更新部署</h2><ol>
 <li>进入到  /usr/local/tomcat7/webapps/baby/.git 文件夹中，会发现 .git/hook 文件夹在里面，进入到 hook 中，里面有很多的 sample 脚本，这里我们只需要用到 post-update。<br>post-update脚本</li>
@@ -867,7 +867,7 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/辅助工具/" class="post-category">
+                            <a href="/categories/%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7/" class="post-category">
                                     辅助工具
                                 </a>
                             

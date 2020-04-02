@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Android 面向切面编程详解, Fighting！">
     <meta name="description" content="这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要">
@@ -26,7 +26,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -597,7 +597,7 @@
 <li>OOP解决了竖向的问题，AOP则解决了横向的问题，有了AOP对程序的监控将更加简单清晰</li>
 </ul>
 <h4 id="使用的业务场景"><a href="#使用的业务场景" class="headerlink" title="使用的业务场景"></a>使用的业务场景</h4><p>日志记录，性能统计，安全控制，事务处理，异常处理等等</p>
-<h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><p><img src="/images/20171016213933903.png" alt></p>
+<h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><p><img src="/images/20171016213933903.png" alt=""></p>
 <a id="more"></a>
 <p>现在实现上图的业务，1.为所有的方法做参数校验，2.添加前置日志，后置日志。</p>
 <ul>
@@ -651,7 +651,7 @@
 </tbody></table>
 <h3 id="实现方式及使用"><a href="#实现方式及使用" class="headerlink" title="实现方式及使用"></a>实现方式及使用</h3><h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><h4 id="APT（Annotation-Processing-Tool）"><a href="#APT（Annotation-Processing-Tool）" class="headerlink" title="APT（Annotation Processing Tool）"></a>APT（Annotation Processing Tool）</h4><p>是一种编译器注解技术。他通过定义注解和处理器来实现编译期生成代码的功能，并且将生成的代码和源代码一起编译成.class文件。通过APT技术我们可以将横切关注点封装到注解处理器中，从而实现横向切面和业务主体的分离。</p>
 <h5 id="在使用APT之前我们需要了解他的一些相关知识"><a href="#在使用APT之前我们需要了解他的一些相关知识" class="headerlink" title="在使用APT之前我们需要了解他的一些相关知识"></a>在使用APT之前我们需要了解他的一些相关知识</h5><ol>
-<li><p>Element<br>Element是一种在编译期间描述.java文件静态结构的一种类型，它可能表示一个package，一个class，一个filed，一个method。Element的比较应该使用equals，因为编译器间同一个Element可能会用两个对象表示.<br><img src="/images/169dd37cf73b8b6c.png" alt><br>我们通过Element便可以获取所有需要的类结构中的所有信息，十分有用的方法：</p>
+<li><p>Element<br>Element是一种在编译期间描述.java文件静态结构的一种类型，它可能表示一个package，一个class，一个filed，一个method。Element的比较应该使用equals，因为编译器间同一个Element可能会用两个对象表示.<br><img src="/images/169dd37cf73b8b6c.png" alt=""><br>我们通过Element便可以获取所有需要的类结构中的所有信息，十分有用的方法：</p>
 <pre><code>public interface Element extends AnnotatedConstruct {
  //获取父Element
  Element getEnclosingElement();
@@ -1258,7 +1258,7 @@ public class ParamaterCheckApt extends AbstractProcessor {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数据库/">
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
                         <span class="chip bg-color">数据库</span>
                     </a>
                     
