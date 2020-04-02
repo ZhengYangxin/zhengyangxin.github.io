@@ -10,9 +10,13 @@ summary: Android 知识的汇总分类
 category: Android
 ---
 
-{% post_link  protocol-buffer-使用和原理%}
+#### {% post_link  protocol-buffer-使用和原理%}
 
 ### 深入学习Android Framework
 
-{% post_link  跟我学：深入Android-Framework之谈谈对Zygot的理解%}
+#### {% post_link  跟我学：深入Android-Framework之谈谈对Zygot的理解%}
+
+#### {% post_link  跟我学：Android高级面试之说说Android系统的启动流程%}
+
+
 
