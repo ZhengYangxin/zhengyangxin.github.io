@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="跟我学：Android高级面试之说说Android系统的启动流程, Fighting！">
-    <meta name="description" content="导读本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Zygote我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋">
+    <meta name="description" content="导读本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Android系统的启动流程我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -561,7 +561,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Zygote我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习，可以关注我，收藏文章进一步沟通学习！</p>
+                <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Android系统的启动流程我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习，可以关注我，收藏文章进一步沟通学习！</p>
 <p><img src="http://p1.pstatp.com/large/pgc-image/09c554f2e27f45639de7b22005dc7389" alt="跟我学：Android高级面试之说说Android系统的启动流程"></p>
 <h3 id="说说Android系统的启动流程"><a href="#说说Android系统的启动流程" class="headerlink" title="说说Android系统的启动流程"></a>说说Android系统的启动流程</h3><p>面对这道面试题，面试官试想考察什么呢？</p>
 <ul>
@@ -611,7 +611,7 @@ run方法中主要以下几件事
 <li>分阶段启动：在每个阶段去启动相应需要的服务</li>
 </ul>
 <h3 id="桌面启动"><a href="#桌面启动" class="headerlink" title="桌面启动"></a>桌面启动</h3><p>当AMS等其他服务都启动完毕，会调用mActivityManagerService.systemReady(()，在这里面会通过startHomeActivityLocked(currentUserId, “systemReady”);启动桌面应用的activity， Launcher.java。启动后会通过PMS查找所有的已安装的应用，然后显示在界面上</p>
-<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>看到最后，我相信你一定对Zygote有一定了解了吧。回头看看第一部分的考查内容讲讲呗，对于每一个点的重点我都细心的为你做了高亮。还有纸上得来终觉浅，绝知此事要躬行。本文参考了Android api28的源码，希望你也去踩着点过一遍源码，肯定能加深理解！</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>看到最后，我相信你一定对Android系统的启动流程有一定了解了吧。回头看看第一部分的考查内容讲讲呗，对于每一个点的重点我都细心的为你做了高亮。还有纸上得来终觉浅，绝知此事要躬行。本文参考了Android api28的源码，希望你也去踩着点过一遍源码，肯定能加深理解！</p>
 <p>我是Yangcy，该吃吃该喝喝，该学还得学，我们一起加油！</p>
 
             </div>
@@ -865,39 +865,49 @@ run方法中主要以下几件事
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/gen-wo-xue-android-gao-ji-mian-shi-zhi-shuo-shuo-android-xi-tong-de-qi-dong-liu-cheng.html">
+                <a href="/gen-wo-xue-she-ji-mo-shi-zhi-mian-xiang-dui-xiang-de-liu-da-yuan-ze.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="跟我学：Android高级面试之说说Android系统的启动流程">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="跟我学：设计模式之谈谈对面向对象的六大原则的理解">
                         
-                        <span class="card-title">跟我学：Android高级面试之说说Android系统的启动流程</span>
+                        <span class="card-title">跟我学：设计模式之谈谈对面向对象的六大原则的理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            导读本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Zygote我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋
+                            谈谈对Java面向对象设计原则，及实战
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Yangcy
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8E%9F%E5%88%99/">
+                        <span class="chip bg-color">面向对象的原则</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
