@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<p>hello word</p>]]></content>
       
       
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -24,6 +30,12 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -36,6 +48,12 @@
       
         <content type="html"><![CDATA[<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>2020年，真的是特殊的的一年无论是对个人，国家，甚至全球。我们经历了难以想象的疫情，全国封禁宅家，停工停学，降薪裁员，这场疫情真的改变改变了很多人的命运，同样还有我。这一年，利用疫情全身心的投入跳槽换工作的准备，历时3个月，面了小影，有赞，快手，滴滴，字节，还投递了钉钉无反应。。。面过的都是拿到了书面或者口头offer最终选择去了字节哈。</p><h3 id="面试准备"><a href="#面试准备" class="headerlink" title="面试准备"></a>面试准备</h3><ol><li>一份清晰的能展示自己的简历</li><li>扎实的基础知识</li><li>有调理和深度的项目经历</li><li>扎实的算法数据结构及代码设计能力</li></ol><h3 id="如何一步步进入想入的公司"><a href="#如何一步步进入想入的公司" class="headerlink" title="如何一步步进入想入的公司"></a>如何一步步进入想入的公司</h3><p>明确自己的目标公司后，首先还是要问问自己有没有把握一次命中。没有，则需要沉淀自己，通过选择备选公司去打磨自己，目的是</p><ol><li>打磨自己的简历，查漏补缺</li><li>在面试中学习，沟通过程中会有很多idea，可以展示在下一场面试</li><li>做到熟背简历，提高语言表达能力</li><li>多拿几个offer，是其他公司的谈判筹码</li></ol><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>坦诚清晰的沟通，对自己的未来有明确的规划，有上进心，有责任心，要能看出潜力，不卑不亢，自信但不要自负。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
       
       
     </entry>
@@ -52,7 +70,7 @@
       
       <categories>
           
-          <category> 设计模式 </category>
+          <category> Java </category>
           
       </categories>
       
@@ -75,6 +93,12 @@
         <content type="html"><![CDATA[<h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Android系统的启动流程我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习，可以关注我，收藏文章进一步沟通学习！</p><p><img src="http://p1.pstatp.com/large/pgc-image/09c554f2e27f45639de7b22005dc7389" alt="跟我学：Android高级面试之说说Android系统的启动流程"></p><h3 id="说说Android系统的启动流程"><a href="#说说Android系统的启动流程" class="headerlink" title="说说Android系统的启动流程"></a>说说Android系统的启动流程</h3><p>面对这道面试题，面试官试想考察什么呢？</p><ul><li>Android中有哪些主要的系统进程</li><li>这些系统进程是怎么启动的</li><li>进程启动之后主要做了什么事</li></ul><h3 id="系统进程"><a href="#系统进程" class="headerlink" title="系统进程"></a>系统进程</h3><p>Android中有哪些系统进程，具体我们可以在init.rc的配置找到相应的启动代码</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start zygote</span><br><span class="line">start servicemanager</span><br><span class="line">start surfaceflinger</span><br><span class="line">....</span><br></pre></td></tr></table></figure><p>上面几个熟悉的服务进程都是通过init单独创建启动的，还有 一个我们熟悉的SystemServer，这个服务进程是通过Zygote进程创建而不是init进程。</p><h3 id="Zygote的启动流程"><a href="#Zygote的启动流程" class="headerlink" title="Zygote的启动流程"></a>Zygote的启动流程</h3><p>关于Zygote的的相关知识可以参考<a href="https://www.toutiao.com/i6810136009775251975/?group_id=6810136009775251975">跟我学：Android面试之深入Android Framework谈谈对Zygot的理解</a></p><p>它的启动流程是</p><ol><li>init进程fork出zygote进程</li><li>zygote创建虚拟机，注册jni函数</li><li>预加载系统资源</li><li>启动SystemServer</li><li>进入 Socket LOOP循环（工作原理）</li></ol><h3 id="SystemServer的启动"><a href="#SystemServer的启动" class="headerlink" title="SystemServer的启动"></a>SystemServer的启动</h3><p>在ZygoteInit.java的代码逻辑中，可以看到启动的关键代码</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int pid = Zygote.forkSystemServer(...) // 通过Zygote创建子线程</span><br><span class="line">handleSystemServerProcess(...)  // 然后初始化SystemServer</span><br><span class="line">ZygoteInit.zygoteInit(...)</span><br><span class="line">ZygoteInit.nativeZygoteInit(...); // 这里面会启动启动binder机制，创建了Binder线程</span><br><span class="line">RuntimeInit.applicationInit(...) // 调用SystemServer.java类的入口函数main。内部基于反射实现</span><br><span class="line">       </span><br><span class="line">// SystemServer的main方法</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        new SystemServer().run();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run方法中主要以下几件事</span><br><span class="line">1. Looper.prepareMainLooper(); // 为主线程创建loop</span><br><span class="line">2. System.loadLibrary(&quot;android_servers&quot;); // 加载android的共享库，native层的代码</span><br><span class="line">3. createSystemContext(); // 创建系统上下文</span><br><span class="line">4. 分批启动服务startBootstrapServices();startCoreServices();startOtherServices();</span><br><span class="line">5. Looper.loop(); // 进入loop循环，主线程不会退出</span><br></pre></td></tr></table></figure><h3 id="系统服务的启动"><a href="#系统服务的启动" class="headerlink" title="系统服务的启动"></a>系统服务的启动</h3><p>系统服务的启动指startBootstrapServices();startCoreServices();startOtherServices();内部的服务启动。启动startBootstrapServices()中包括了熟悉的AMS，PMS，StartPowerManager等等。startCoreServices()包含了BatteryService，UsageStatsService，WebViewUpdateService等等。以及startOtherServices()中的其他服务。</p><h4 id="系统服务如何房补，让应用程序可见"><a href="#系统服务如何房补，让应用程序可见" class="headerlink" title="系统服务如何房补，让应用程序可见"></a>系统服务如何房补，让应用程序可见</h4><p>通过源码的阅读，我们可以发现最终服务是通过ServiceManager.addService(…) 将服务进行注册，然后才可以可被其他进程可见和使用</p><h4 id="系统服务运行在什么线程中？"><a href="#系统服务运行在什么线程中？" class="headerlink" title="系统服务运行在什么线程中？"></a>系统服务运行在什么线程中？</h4><p>主线程：并没有找到哪个系统服务是在主线程的中的</p><p>工作线程： AMS，PMS运行在自己的工作线程，或者在公用的工作线程DisplayThread，FgThread, IoThread, UiThread。</p><p>Binder线程：应用在跨进程调用时肯定是在binder线程里的，然后再去切换线程</p><h3 id="如何解决系统服务启动的相互依赖"><a href="#如何解决系统服务启动的相互依赖" class="headerlink" title="如何解决系统服务启动的相互依赖"></a>如何解决系统服务启动的相互依赖</h3><p>从上小结的startBootstrapServices();startCoreServices();startOtherServices();我们可以看出解决方式为</p><ul><li>分批启动：先启动AMS，PMS等，因为很多其他service都需要依赖他们</li><li>分阶段启动：在每个阶段去启动相应需要的服务</li></ul><h3 id="桌面启动"><a href="#桌面启动" class="headerlink" title="桌面启动"></a>桌面启动</h3><p>当AMS等其他服务都启动完毕，会调用mActivityManagerService.systemReady(()，在这里面会通过startHomeActivityLocked(currentUserId, “systemReady”);启动桌面应用的activity， Launcher.java。启动后会通过PMS查找所有的已安装的应用，然后显示在界面上</p><h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>看到最后，我相信你一定对Android系统的启动流程有一定了解了吧。回头看看第一部分的考查内容讲讲呗，对于每一个点的重点我都细心的为你做了高亮。还有纸上得来终觉浅，绝知此事要躬行。本文参考了Android api28的源码，希望你也去踩着点过一遍源码，肯定能加深理解！</p><p>我是Yangcy，该吃吃该喝喝，该学还得学，我们一起加油！</p>]]></content>
       
       
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -90,7 +114,7 @@
       
       <categories>
           
-          <category> Algorithm </category>
+          <category> 算法 </category>
           
       </categories>
       
@@ -115,7 +139,7 @@
       
       <categories>
           
-          <category> Algorithm </category>
+          <category> 算法 </category>
           
       </categories>
       
@@ -140,7 +164,7 @@
       
       <categories>
           
-          <category> Algorithm </category>
+          <category> 算法 </category>
           
       </categories>
       
@@ -165,7 +189,7 @@
       
       <categories>
           
-          <category> Algorithm </category>
+          <category> 算法 </category>
           
       </categories>
       
@@ -190,7 +214,7 @@
       
       <categories>
           
-          <category> Framework </category>
+          <category> Android </category>
           
       </categories>
       
@@ -213,6 +237,12 @@
         <content type="html"><![CDATA[<h4 id="OSI-七层网络模型"><a href="#OSI-七层网络模型" class="headerlink" title="OSI 七层网络模型"></a>OSI 七层网络模型</h4><ol><li>应用层： 为用户进程提供网络服务</li><li>表示层：负责数据的转化，数据的压缩/解压，数据的加密/解密等</li><li>会话层：负责会话的建立，管理，销毁等服务</li><li>传输层：基于TCP/UDP进行 端口对端口的传输</li><li>IP层：数据打包成IP数据报，在路由器/交换机上传输</li><li>数据链路层: </li><li>物理层：</li></ol><h4 id="TCP-IP-网络模型"><a href="#TCP-IP-网络模型" class="headerlink" title="TCP/IP 网络模型"></a>TCP/IP 网络模型</h4><ol><li>应用层</li><li>传输层</li><li>IP层</li><li>数据链路层</li></ol><h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><h4 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h4><h4 id="HTTPDNS优化"><a href="#HTTPDNS优化" class="headerlink" title="HTTPDNS优化"></a>HTTPDNS优化</h4><h3 id="HTTP-的版本区别"><a href="#HTTP-的版本区别" class="headerlink" title="HTTP 的版本区别"></a>HTTP 的版本区别</h3><h5 id="HTTP1-0与-HTTP1-1"><a href="#HTTP1-0与-HTTP1-1" class="headerlink" title="HTTP1.0与 HTTP1.1"></a>HTTP1.0与 HTTP1.1</h5><ol><li>缓存优化</li><li>网络带宽及网络连接都优化</li><li>host请求头添加</li><li>支持长连接（串行单线程处理请求，可以同时发起多个请求，但必须等待前一个请求处理完，才会处理新的请求，否则只能被阻塞）</li></ol><h5 id="HTTP1-1与HTTP2-0"><a href="#HTTP1-1与HTTP2-0" class="headerlink" title="HTTP1.1与HTTP2.0"></a>HTTP1.1与HTTP2.0</h5><ol><li>新的二进制文件</li><li>多路复用（多个请求可以在一个连接上并行执行，某个请求耗时严重，不会影响到其他连接的正常执行）<ol><li>做到了延迟的优化，TCP连接是慢启动，因此突发性和短时性的http连接不高效，通过复用连接可以更有效的使用TCP</li></ol></li><li>Header压缩 （一个页面有100个资源要加载，而每次请求都有1kb的消息头，则至少要消耗100kb获取请求头，http2.0，维护了一个字典，用以差量更新http头部）</li><li>服务端推送（服务端会主动把客户端所需要的资源一起发给客户端）</li></ol><h3 id="TCP-与UDP"><a href="#TCP-与UDP" class="headerlink" title="TCP 与UDP"></a>TCP 与UDP</h3><p>TCP 是面向连接的，可靠，慢，占用头部字节20多</p><p>UDP是无连接的，尽最大交付，快，占用头部字节少8</p><h4 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h4><h4 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h4><h4 id="TCP与UDP比较"><a href="#TCP与UDP比较" class="headerlink" title="TCP与UDP比较"></a>TCP与UDP比较</h4>]]></content>
       
       
+      <categories>
+          
+          <category> 后端 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -228,7 +258,7 @@
       
       <categories>
           
-          <category> Algorithm </category>
+          <category> 算法 </category>
           
       </categories>
       
@@ -514,9 +544,9 @@
       
         <tags>
             
-            <tag> Dart </tag>
-            
             <tag> Flutter </tag>
+            
+            <tag> Dart </tag>
             
         </tags>
       
@@ -1025,7 +1055,7 @@
       
       <categories>
           
-          <category> 技能 </category>
+          <category> 工具 </category>
           
       </categories>
       
@@ -1073,6 +1103,12 @@
         <content type="html"><![CDATA[<h3 id="VirtualAPK"><a href="#VirtualAPK" class="headerlink" title="VirtualAPK"></a>VirtualAPK</h3><p>是滴滴开源的插件化项目，实现动态加载和运行apk的功能。<br>支持任何class的加载，资源的加载及四大组件<br><img src="https://github.com/didi/VirtualAPK/raw/master/imgs/va.png" alt="架构图"><br>android 插件化框架VitualAPK解析</p>]]></content>
       
       
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -1088,7 +1124,7 @@
       
       <categories>
           
-          <category> 日记 </category>
+          <category> 随笔 </category>
           
       </categories>
       
@@ -1111,6 +1147,12 @@
         <content type="html"><![CDATA[<h4 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h4><ol><li>事件分发的对象是MotionEvent,通过触摸屏幕和点击按键产生</li><li>事件分发的组件包括Activity，ViewGroup，View以及硬件驱动。</li><li>事件传递的方法，Native通过监听，读取dev/input/eventX文件产生新事件，发送给Java层。经过上面提到的组件，主要通过dispatchTouchEvent(),onInterceptTouchEvent(),onTouchEvent()三个方法传递，拦截和消费</li><li>Activity和View没有OnInterceptTouchEvent方法，无需拦截事件</li><li>在调用子View的dispatchTouchEvent时会判断是否设置了onTouchListener，会回调onTouch方法，返回true则为已经消费了,就不会调用onTouchEvent()的方法及内部的OnClick()方法</li><li>处理滑动冲突的方式1.外部拦截：由重写父View在onInterceptTouchEvent()根据业务来判断move事件是否要拦截事件，down和up事件不拦截。2. 内部拦截，父View除了down事件都拦截，然后由子View通过requesDisallowInterceptTouchEvent()来控制父类是否要拦截，或者交给子View处理 </li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -1130,6 +1172,12 @@
         <content type="html"><![CDATA[<h4 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h4><p>模板方法模式：在模板类中定义算法或任务执行的流程框架，将一些具体步骤延迟到子类中去实现。即可定义出不同的表现类。</p><h4 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h4><p>在项目中订单类型往往很多，订单的处理方式也是别有不同。现在介绍一个用户扫码点餐后，收银接受订单消息的处理流程。首先看一下流程</p><ol><li>用户下单：下单来源：支付宝，微信，口碑等，订单类型：堂食，自提，外卖</li><li>服务端收到下单请求，定义与之对应的消息推送给收银机</li><li>商户在收银机上收到下单消息，进行处理</li><li>服务端收到收银的处理结果，推送消息给用户</li><li>用户收到消息<br>上面流程在自动审核消息里就是一个通用的过程，因此可以多这个过程制定一个步骤，具体实现由开发者定义。</li></ol><p>整个流程中收银机处理的就是订单消息。由于订单的来源及订单类型的多种多样，也就意味着存在两方面的不同。1. 订单数据：基础数据+扩展数据 2.业务处理不同，不同的订单类型需要有不同的UI透出和额外的特殊操作。因此我们可以定义一个基础的UI操作类，定义出，获取订单数据，填充数据等</p>]]></content>
       
       
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -1143,6 +1191,12 @@
         <content type="html"><![CDATA[<h4 id="四大引用"><a href="#四大引用" class="headerlink" title="四大引用"></a>四大引用</h4><p>垃圾回收机制在回收对象的时候，会判断是否有引用指向对象</p><ol><li>强引用</li></ol><ul><li>程序中大部分的对象都是强引用，如果一个对象具有一个强引用指向它，那垃圾回收器是不会回收他的，在内存不足的情况，系统宁愿报outOfMemery也不会回收这些对象</li></ul><ol start="2"><li>软引用</li></ol><ul><li>如果一个对象只具有软引用，那内存充足的情况是不会被回收的，但在系统内存不足的情况，垃圾回收器还是会回收的。在未被回收之前，程序能正常使用该对象。软引用和一个引用队列管理，若软应用被回收，就会将软应用加入的引用队列中</li></ul><ol start="3"><li>弱引用<br>弱引用和软引用的区别在于，只具有弱引用的对象具有更短的生命周期，当垃圾回收器扫描到弱引用对象时，就会回收掉该对象。无论内存是否充足。回收后同样会将该引用加入到相关联的引用队列中</li><li>虚引用</li></ol><ul><li>虚引用顾名思义就是形同虚设，对对象的生命周期毫无影响。一个对象被虚引用指引，就和没有引用一下。会被回收。与软引用和虚引用的区别在于：他必须和引用队列联合使用。唯一目的就是对象被回收的时候收到一个系统通知</li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -1155,6 +1209,12 @@
       
         <content type="html"><![CDATA[<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><ol><li>HashMap是线程不安全的</li><li>允许key和value为null</li><li>不保证存储的有序性</li><li>影响HashMap性能的两个变量，init capacity(16)和loadFactor(0.75),load链表长度，减少Hash</li><li>faile-fast机制，不允许迭代遍历时remove，add</li><li>1.7和1.8jdk版本的数据存储结构.Entry,数组+链表。Node，数组+链表/红黑树</li><li>扩容大小2倍，容量为2次幂，方便获取捅数组位置提高效率</li><li>HashSet基于HashMap实现，value为object对象</li></ol><h4 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h4><ol><li>线程安全，synchronize修饰方法</li><li>key，value不为null</li><li>不保证有序性</li><li>initcapcity(11) loadFactor 0.75</li><li>扩容大小2倍+1，容量为奇数或者素数，使哈希更加均匀</li></ol><h4 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h4><ol><li>并发容器，多线程下更加高效</li><li>key或者value不为null</li><li>cas无所操作。inittable初始化.SIZECTl，synchronnize</li><li>扩容，rehash</li></ol>]]></content>
       
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
       
       
         <tags>
@@ -1175,6 +1235,12 @@
         <content type="html"><![CDATA[<h3 id="Android中使用ProtoBuf"><a href="#Android中使用ProtoBuf" class="headerlink" title="Android中使用ProtoBuf"></a>Android中使用ProtoBuf</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Protobuf是一种Google开发的一种格式，这种格式与开发语言无关，与运行平台无关，用于序列化数据结构，并且很容易扩展，可用于通讯协议和数据存储等，类似于XML，json，但是序列化，反序列化，和数据的大小都远远高于其他数据结构。因为他会将具备可读性的key值的信息都进行过滤，转化更加精简的数据。</p><h5 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h5><ol><li>数据更加精简</li><li>数据大小是json数据的3~10倍</li><li>压缩性能是可以提升20~100倍</li><li>数据歧义少</li><li>代码自动生成<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5>数据大小的减少是。对key值的特殊定义，及数据都转成了16进制。<br>性能的提升，主要针对整形，浮点型的优化处理。字符型相对提升</li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -1194,6 +1260,12 @@
         <content type="html"><![CDATA[<h3 id="Android打包流程"><a href="#Android打包流程" class="headerlink" title="Android打包流程"></a>Android打包流程</h3><p>打包流程包括包含四步骤</p><ol><li>通过aapt工具打包res资源文件，生成R.java,resources.arsc和res文件</li><li>处理.aidl文件，生成对应的java接口文件</li><li>通过java compiler编译R.java, java接口文件，java源文件，生成.class文件</li><li>通过dex命令，将.class文件和第三方库的.class文件处理称classes.dex</li><li>通过apkbuilder工具，将Dex文件，res资源合并成一个APK</li><li>通过jarsinger工具，为APK进行签名</li><li>通过zipalign工具进行apk的对齐优化</li></ol><h3 id="自定义Gradle插件"><a href="#自定义Gradle插件" class="headerlink" title="自定义Gradle插件"></a>自定义Gradle插件</h3><ol><li>创建一个module，无论phone还是Android Library，因为后面会删掉大部分文件</li><li>删除module下的文件及文件夹，只保留空的src/main目录及build.gradle文件</li><li>创建groovy文件夹，定义包名。如java项目一样</li><li>创建一个类MyPlugin.groovy</li><li>在build.build中加入groovy引用和用于上传的maven的引用<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;groovy&#x27;</span><br><span class="line">apply plugin: &#x27;maven&#x27;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    //gradle sdk</span><br><span class="line">    compile gradleApi()</span><br><span class="line">    //groovy sdk</span><br><span class="line">    compile localGroovy()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line">group = &#x27;com.zyx.plugin&#x27; </span><br><span class="line">version = &#x27;1.0.0&#x27;</span><br><span class="line"></span><br><span class="line">uploadArchives &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        mavenDeployer &#123;</span><br><span class="line">            //提交到远程服务器：</span><br><span class="line">            // repository(url: &quot;http://www.xxx.com/repos&quot;) &#123;</span><br><span class="line">            //    authentication(userName: &quot;admin&quot;, password: &quot;admin&quot;)</span><br><span class="line">            // &#125;</span><br><span class="line">            //本地的Maven地址设置为D:/repos</span><br><span class="line">            repository(url: uri(&#x27;/Users/zhengyangxin/StudioProjects/myProject/LibraryCollection/pluginrepos&#x27;))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li>插件已经编好，接着需要告诉gradle我们定义了哪个插件，需要创建文件src/main/resources/META-INF/gradle-plugins/XXXX.properties, 这里的XXXX就是外部module引用的名称，在这里我们定义为com.zyx.plugin.properties<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.zyx.plugin&#x27;</span><br></pre></td></tr></table></figure></li><li>然后在XXXX.properties指明我们定义的插件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation-class=com.hc.plugin.MyPlugin</span><br></pre></td></tr></table></figure></li><li>最后可以进行打包一个plugin在本地，通过定义的uploadArchives Task</li><li>在需要的modlue中引用自定义的plugin<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.zyx.plugin&#x27;</span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;//本地Maven仓库地址</span><br><span class="line">            url uri(&#x27;/Users/zhengyangxin/StudioProjects/myProject/LibraryCollection/pluginrepos&#x27;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        //格式为--&gt;group:module:version</span><br><span class="line">        classpath &#x27;com.zyx.plugin:plugin:1.0.0&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -1206,6 +1278,12 @@
       
         <content type="html"><![CDATA[<h3 id="Android开源框架-Aoppermission"><a href="#Android开源框架-Aoppermission" class="headerlink" title="Android开源框架 Aoppermission"></a>Android开源框架 Aoppermission</h3><p>Aoppermission是基于Aspect实现。实现过程及原理分析。Android的常用Aop有两种方式1.通过JNI Hook，2.静态织入</p><h4 id="Acpect基础知识"><a href="#Acpect基础知识" class="headerlink" title="Acpect基础知识"></a>Acpect基础知识</h4><ol><li>注解@Aspect，申明切面标记类</li><li>@Pointcut, 定义切点，标记方法</li><li>@Befeore 前置通知，切点前执行</li><li>@Around 围绕切点执行</li><li>@after 后置通知，切点后执行</li><li>@AfterReturening,返回返回值，切点返回值</li><li>@AfterThrowing ，异常通知，切点抛出异常</li><li>首先需要依赖com.hujiang.aspectjx:gradle-android-plugin-aspectjx，配置好了所需的环境</li><li>通过定义注解，包括NeedPermission,PermissionCanceled,PermissionDenied，三个注解对应这申请权限的三种情况。通过源码看他们的作用域都是Method，保留时间都是一直到运行时期，那就意味着，我们可以通过反射的技术实现想做的，而本项目也恰恰是基于反射和Aspect实现</li></ol><h4 id="摘录"><a href="#摘录" class="headerlink" title="摘录"></a>摘录</h4><p>纵向关系OOP，横向关系AOP</p><ol><li>OOP是面向对象编程，按照单一职责原则会将会定义一个个类，每个类只负责一个责任。当我们要使用这个时会引用他，使他分散在个个模块，到处都有。如日志，埋点等。从对象组织角度来讲，采用的分类方式是类似生物学的方式，以继承为主线</li><li>AOP是面向切面编程，我们从横向的的角度去观察这些对象，无需到处调用。这些需要打印日志的地方就是一个切点，AOp会在适当的时机打印<br>OOP是将问题划分到某个单个模块里去，而AOP是将把涉及到众多模块的某一类问题进行统一管理。AOP是将这些功能集中起来放到一个地方进行管理。是与业务逻辑进行隔离解耦</li></ol><h4 id="实现特定方法的前后执行"><a href="#实现特定方法的前后执行" class="headerlink" title="实现特定方法的前后执行"></a>实现特定方法的前后执行</h4><ol><li>硬编码，在执行方法前添加额外的执行方法</li><li>静态织入，通过AspectJ，通过扫描文件分析代码，找到切点JoinPoint，通过自动生成代码获取方法的各种信息，</li><li>JDK动态代理是对接口的代理，CGLib是对类的代理，把被代理的对象的class加载起来修改字节码，修改其字节码生成一个继承被代理对象的子类.通过子类增强功能</li></ol>]]></content>
       
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
       
       
     </entry>
@@ -1222,7 +1300,7 @@
       
       <categories>
           
-          <category> “日记” </category>
+          <category> Android </category>
           
       </categories>
       
@@ -1247,16 +1325,16 @@
       
       <categories>
           
-          <category> 日记 </category>
+          <category> Android </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> AOP </tag>
-            
             <tag> UML </tag>
+            
+            <tag> AOP </tag>
             
         </tags>
       
@@ -1274,7 +1352,7 @@
       
       <categories>
           
-          <category> 日记 </category>
+          <category> Android </category>
           
       </categories>
       
@@ -1301,7 +1379,7 @@
       
       <categories>
           
-          <category> 日记 </category>
+          <category> Android </category>
           
       </categories>
       
@@ -1326,6 +1404,12 @@
         <content type="html"><![CDATA[<h4 id="什么是Gradle"><a href="#什么是Gradle" class="headerlink" title="什么是Gradle"></a>什么是Gradle</h4><p>Gradle是一个开源的，非常灵活的自动化构建工具，具有以下几大特点：</p><ol><li>高性能:只执行定义的任务，可以复用任务的输入输出，避免不必要的执行</li><li>基于JVM:可以利用java，Kotlin,Groovy等编译器支持的语言</li><li>定制了基础框架，便于构建</li><li>扩展性：可以自定义任务</li><li>编辑器的支持</li></ol><h4 id="设计Gradle插件"><a href="#设计Gradle插件" class="headerlink" title="设计Gradle插件"></a>设计Gradle插件</h4><h5 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h5><ol><li>提取可用的逻辑编写成二进制插件</li><li>插件对性能的影响</li><li>定制规范，减少配置</li><li>将功能与规范隔离</li></ol><h5 id="2-技术"><a href="#2-技术" class="headerlink" title="2. 技术"></a>2. 技术</h5><ol><li>使用静态语言编写插件</li><li>尽量通过Gradle内部的ApI实现插件</li><li>3 减少外部依赖</li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -1338,6 +1422,12 @@
       
         <content type="html"><![CDATA[<h4 id="一-曾经的网络框架"><a href="#一-曾经的网络框架" class="headerlink" title="一. 曾经的网络框架"></a>一. 曾经的网络框架</h4><h5 id="Android的网络框架有四种"><a href="#Android的网络框架有四种" class="headerlink" title="Android的网络框架有四种"></a>Android的网络框架有四种</h5><ol><li>HttpClient ： 2.2版本以下存在bug，所以2.3之后建议使用HttpUrlConnection</li><li>HttpUrlConnection 2.3+， 官方推荐</li><li>Volley，谷歌开发，简单的网络任务框架，底层兼容2.3以前版本使用了HttpClient，2.3+使用的是HttpUrlConnection，功能拓展性弱</li><li>Okhttp，从Android4.4开始HttpURLConnection的底层实现采用的是okHttp.</li></ol><h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><p><img src="/image/compare.png" alt=""><br>通过上面的比较，在Android发展的每个阶段，他们有各自存在的意义，只是时过境迁，被种种原因被替换或者废弃。<br>这个过程是一个框架发展的过程，从重量级繁杂且难以维护，到轻量级易扩展，到过度版本新老版本的兼容，最后取长补短完善自己的网络框架。<br>化繁为简，然后又能包容万象的过程</p><h5 id="网络框架应该有的功能"><a href="#网络框架应该有的功能" class="headerlink" title="网络框架应该有的功能"></a>网络框架应该有的功能</h5><ol><li>自定义请求的Header</li><li>GET，POST</li><li>支持文件上传下载</li><li>图片加载</li><li>支持多任务网络请求操作</li><li>支持缓存</li><li>支持回调</li><li>支持session</li><li>…..</li></ol><h4 id="二-OkHttp简介"><a href="#二-OkHttp简介" class="headerlink" title="二. OkHttp简介"></a>二. OkHttp简介</h4><p>一张图了解OkHttp的整个过程<br><img src="/images/OkHttp.jpg" alt=""><br>在OkHttp中真正核心的东西是Interceptor，他不仅负责拦截请求进行额外的处理(入cookie)，实际上他还会把实际的网络请求，缓存，透明压缩等功能都统一起来，每一个功能都只是一个Interceptor，它们在连接成一个Interceptor.Chain,环环相扣最终完成一次网络请求，从getResponseWithInterceptorChain函数中我们可以看到Interceptor.Chain的分布情况依次是：</p><ol><li>在配置OkHttpClinet时设置的interceptors</li><li>负责失败重试和重定向的RetryAndFollowUpInterceptor</li><li>负责把用户构造的请求转化为发送到服务器的请求，把服务器返回的响应转化为用户友好的响应BridgeInterceptor</li><li>负责读取缓存直接返回，更新缓存的CacheInterceptor</li><li>负责和服务器建立连接的ConnectInterceptor</li><li>配置OkHttpClient时设置的NetworkInterceptor</li><li>负责向服务器发送请求数据，从服务器读取响应数据的CallServerInterceptor</li></ol><p>在这里位置决定了功能，最后一个一定是CallServerInterceptor，其他的在这之前。责任链模式在Interceptor中得到了很好的实践。对于request变成response对象，每个interceptor都能完成这件事，也由各自的inteceptor决定是否要交给下个interceptor。</p><h4 id="三-Interceptor分析"><a href="#三-Interceptor分析" class="headerlink" title="三. Interceptor分析"></a>三. Interceptor分析</h4><p>首先看分析ConnectInterceptor和CallServerInterceptor，这两个interceptor实现了和服务器进行通信的核心</p><h5 id="1-ConnectInterceptor建立连接"><a href="#1-ConnectInterceptor建立连接" class="headerlink" title="1. ConnectInterceptor建立连接"></a>1. ConnectInterceptor建立连接</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/** Opens a connection to the target server and proceeds to the next interceptor. */</span><br><span class="line"></span><br><span class="line">  @Override </span><br><span class="line">  public Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">    RealInterceptorChain realChain = (RealInterceptorChain) chain;</span><br><span class="line">    Request request = realChain.request();</span><br><span class="line">    Transmitter transmitter = realChain.transmitter();</span><br><span class="line"></span><br><span class="line">    // We need the network to satisfy this request. Possibly for validating a conditional GET.</span><br><span class="line">    boolean doExtensiveHealthChecks = !request.method().equals(&quot;GET&quot;);</span><br><span class="line">    Exchange exchange = transmitter.newExchange(chain, doExtensiveHealthChecks);</span><br><span class="line"></span><br><span class="line">    return realChain.proceed(request, transmitter, exchange);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>通过创建一个Exchange对象，他将在后面使用。他的内部是对http，https请求的实现，内部都是利用Okio对Socket的读写操作进行了封装.在内部是对java.io和java.nio进行了封装，内部创建了一个主要的RealConnectionn对象，利用RealConnectionn进行读写</p><h5 id="2-CallServerInterceptor-发送和接受数据"><a href="#2-CallServerInterceptor-发送和接受数据" class="headerlink" title="2. CallServerInterceptor 发送和接受数据"></a>2. CallServerInterceptor 发送和接受数据</h5><p>主要过程：</p><ol><li>向服务器发送request header</li><li>如果有request body,就向服务器发送</li><li>读取response header, 构造response 对象</li><li>如果有response body,则创建一个带body的response对象</li></ol><h5 id="3-CacheIntercepter-缓存"><a href="#3-CacheIntercepter-缓存" class="headerlink" title="3. CacheIntercepter 缓存"></a>3. CacheIntercepter 缓存</h5><p>在建立连接，和服务器通讯之前就是CacheIntercepter，我们需要检查响应是否已经本地缓存了，如果缓存了则直接返回，否则进行后面的流程，并把返回的数据写入缓存</p><ol><li>获取本地缓存cacheCandidate</li><li>如果本地缓存可用则直接返回CacheCandidate，从而打断interceptor链</li><li>走剩下的interceptor获取nnetworkResponse</li><li>networkResponse、cacheResponse构造新的response</li><li>根据新的response里的header定制缓存策略，存入缓存中（method 为get）</li></ol><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>创建一个单例的OkHttpClient，创建请求对象request，初始化请求方式，请求url，请求header，请求body，然后通过client的newcall（request）构建真正的请求对象realcall。有realcall的execute方法和qnqueue方法区分是同步请求还是异步请求，异步请求依赖线程池dispatcher，最终会调用getResponseWithInterceptorsChain方法返回返回response。内部通过这种拦截器对request请求数据和response响应数据进行处理，每个拦截器直接通过realinterceptchain对象的process连接起来（责任链模式）</p>]]></content>
       
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
       
       
         <tags>
@@ -1360,7 +1450,7 @@
       
       <categories>
           
-          <category> 二维火 </category>
+          <category> Android </category>
           
       </categories>
       
@@ -1385,6 +1475,12 @@
         <content type="html"><![CDATA[<h3 id="Android跨进程通讯的几种方式"><a href="#Android跨进程通讯的几种方式" class="headerlink" title="Android跨进程通讯的几种方式"></a>Android跨进程通讯的几种方式</h3><h4 id="Bundle"><a href="#Bundle" class="headerlink" title="Bundle"></a>Bundle</h4><p>  Bundle实现了Parcelable，方便在进程中传输数据。主要在activity、service、receiver中Intent中应用，</p><h4 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h4><p>Android基于Linux，对文件的读写没有限制。存在的问题就是并发读写的问题<br>sp存在缓存策略，内存中存在备份，导致多进程不可靠</p><h4 id="使用messenger信使"><a href="#使用messenger信使" class="headerlink" title="使用messenger信使"></a>使用messenger信使</h4><ol><li>Messenger可以在不同的进程中传递Message对象，轻松实现数据的跨进程通讯。</li><li>它的底层实现是AIDl，内部一次只做一次处理，因此服务端不用考虑线程同步的问题</li><li>缺点是只能用来简单的信息传递，并发请求不大合适且无法不支持跨进程的方法的调用<br><img src="http://opd2n5pxb.bkt.clouddn.com/Messenger%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="Alt text" title="Messenger 工作原理图"></li></ol>]]></content>
       
       
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -1405,6 +1501,12 @@
       
         <content type="html"><![CDATA[<h3 id="基于Rxjava-2-1-10版本源码分析"><a href="#基于Rxjava-2-1-10版本源码分析" class="headerlink" title="基于Rxjava-2.1.10版本源码分析"></a>基于Rxjava-2.1.10版本源码分析</h3><p>从开源文档范例开始分析</p><h4 id="范例一-Flowable-just输出HelloWord"><a href="#范例一-Flowable-just输出HelloWord" class="headerlink" title="范例一.Flowable.just输出HelloWord"></a>范例一.Flowable.just输出HelloWord</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Flowable.just(&quot;Hello world&quot;).subscribe(new Consumer&lt;String&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void accept(String s) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>1.从just方法开始,首先可以看到三个注解方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@CheckReturnValue  //检查返回值</span><br><span class="line">@BackpressureSupport(BackpressureKind.FULL)  //支持的背压方式</span><br><span class="line">@SchedulerSupport(SchedulerSupport.NONE) //调度方式,即处理事件的方式IO数据流，新开一个线程等。</span><br><span class="line">public static &lt;T&gt; Flowable&lt;T&gt; just(T item) &#123; //方法参数是个泛型，</span><br><span class="line">    ObjectHelper.requireNonNull(item, &quot;item is null&quot;);</span><br><span class="line">    //返回值是个Flowable对象</span><br><span class="line">    return RxJavaPlugins.onAssembly(new FlowableJust&lt;T&gt;(item)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><span id="more"></span><p>2.方法第一行是判空操作在很多地方都使用到了，查看方法不为空则返回原对象，否则，抛出异常NullPointerException</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;T&gt; T requireNonNull(T object, String message) &#123;</span><br><span class="line">        if (object == null) &#123;</span><br><span class="line">            throw new NullPointerException(message);</span><br><span class="line">        &#125;</span><br><span class="line">        return object;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>3.方法第三行中的看new FlowableJust<T>(item)创建的实例对象</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public final class FlowableJust&lt;T&gt; extends Flowable&lt;T&gt; implements ScalarCallable&lt;T&gt; &#123;</span><br><span class="line">    private final T value; //final变量，赋值后不能改变</span><br><span class="line">    public FlowableJust(final T value) &#123;</span><br><span class="line">        this.value = value;</span><br><span class="line">    &#125;</span><br><span class="line">    //重写了Flowable的subscribeActual方法，传入了观察者与发射内容构造一个订阅对象</span><br><span class="line">    //由观察者去订阅这个对象</span><br><span class="line">    @Override</span><br><span class="line">    protected void subscribeActual(Subscriber&lt;? super T&gt; s) &#123;</span><br><span class="line">        s.onSubscribe(new ScalarSubscription&lt;T&gt;(s, value));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public T call() &#123;</span><br><span class="line">        return value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4.然后看RxJavaPlugins.onAssembly()方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SuppressWarnings(&#123; &quot;rawtypes&quot;, &quot;unchecked&quot; &#125;)</span><br><span class="line">    @NonNull</span><br><span class="line">    public static &lt;T&gt; Flowable&lt;T&gt; onAssembly(@NonNull Flowable&lt;T&gt; source) &#123;</span><br><span class="line">        //在这里钩子函数为null，即直接返回source</span><br><span class="line">        Function&lt;? super Flowable, ? extends Flowable&gt; f = onFlowableAssembly;</span><br><span class="line">        if (f != null) &#123;</span><br><span class="line">            return apply(f, source);</span><br><span class="line">        &#125;</span><br><span class="line">        return source;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>5.所以Flowable.just(“Hello world”)只是生成了一个Flowable对象。接着看subscribe()方法。实现了Consumer接口</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public interface Consumer&lt;T&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * 回调函数accept去消费这个传入值，</span><br><span class="line">     * Consume the given value.</span><br><span class="line">     * @param t the value</span><br><span class="line">     * @throws Exception on error</span><br><span class="line">     */</span><br><span class="line">    void accept(T t) throws Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>6.接着看subscribe()方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@CheckReturnValue</span><br><span class="line">@BackpressureSupport(BackpressureKind.UNBOUNDED_IN)</span><br><span class="line">@SchedulerSupport(SchedulerSupport.NONE)</span><br><span class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext) &#123;</span><br><span class="line">    //onNext即要去消费的接口对象</span><br><span class="line">    //其他传入参数为默认的onError，onComplete接口回调，和最大数量的订阅对象</span><br><span class="line">    return subscribe(onNext, Functions.ON_ERROR_MISSING,</span><br><span class="line">            Functions.EMPTY_ACTION, FlowableInternalHelper.RequestMax.INSTANCE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>7.然后去看第二个subscribe()内部方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@CheckReturnValue</span><br><span class="line">@BackpressureSupport(BackpressureKind.SPECIAL)</span><br><span class="line">@SchedulerSupport(SchedulerSupport.NONE)</span><br><span class="line">public final Disposable subscribe(Consumer&lt;? super T&gt; onNext, Consumer&lt;? super Throwable&gt; onError,</span><br><span class="line">        Action onComplete, Consumer&lt;? super Subscription&gt; onSubscribe) &#123;</span><br><span class="line">    ObjectHelper.requireNonNull(onNext, &quot;onNext is null&quot;);</span><br><span class="line">    ObjectHelper.requireNonNull(onError, &quot;onError is null&quot;);</span><br><span class="line">    ObjectHelper.requireNonNull(onComplete, &quot;onComplete is null&quot;);</span><br><span class="line">    ObjectHelper.requireNonNull(onSubscribe, &quot;onSubscribe is null&quot;);</span><br><span class="line"></span><br><span class="line">    //上面一系列的判空操作之后，将传入参数组合成一个LambdaSubscriber</span><br><span class="line">    LambdaSubscriber&lt;T&gt; ls = new LambdaSubscriber&lt;T&gt;(onNext, onError, onComplete, onSubscribe);</span><br><span class="line"></span><br><span class="line">    //调用了第三个subscribe方法</span><br><span class="line">    subscribe(ls);</span><br><span class="line"></span><br><span class="line">    return ls;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>8、先来看一下LambdaSubscriber对象，除了对传入参数赋值之外，内部重写了熟悉的onSubscribe、onNext()、onError()、onComplete()三个方法。从6.可以看出在这四个方法中除了onNext()是我们传入的，其他都是框架默认的。源码过长，不copy了。<br>9.接着继续看第三个subscribe(ls)方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@BackpressureSupport(BackpressureKind.SPECIAL)</span><br><span class="line">@SchedulerSupport(SchedulerSupport.NONE)</span><br><span class="line">@Beta</span><br><span class="line">public final void subscribe(FlowableSubscriber&lt;? super T&gt; s) &#123;</span><br><span class="line">    ObjectHelper.requireNonNull(s, &quot;s is null&quot;);</span><br><span class="line">    try &#123;</span><br><span class="line">        // 传入当前要观察的对象和处理方法对象构建了一个观察者对象</span><br><span class="line">        Subscriber&lt;? super T&gt; z = RxJavaPlugins.onSubscribe(this, s);</span><br><span class="line"></span><br><span class="line">        ObjectHelper.requireNonNull(z, &quot;Plugin returned null Subscriber&quot;);</span><br><span class="line"></span><br><span class="line">        //在这传入一个观察者对象</span><br><span class="line">        subscribeActual(z);</span><br><span class="line">    &#125; catch (NullPointerException e) &#123; // NOPMD</span><br><span class="line">        throw e;</span><br><span class="line">    &#125; catch (Throwable e) &#123;</span><br><span class="line">        Exceptions.throwIfFatal(e);</span><br><span class="line">        // can&#x27;t call onError because no way to know if a Subscription has been set or not</span><br><span class="line">        // can&#x27;t call onSubscribe because the call might have set a Subscription already</span><br><span class="line">        RxJavaPlugins.onError(e);</span><br><span class="line"></span><br><span class="line">        NullPointerException npe = new NullPointerException(&quot;Actually not, but can&#x27;t throw other exceptions due to RS&quot;);</span><br><span class="line">        npe.initCause(e);</span><br><span class="line">        throw npe;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>10.接着看subscribeActual(),似曾相识在3.中FlowableJust重写了父类的subscribeActual()方法，所以最后有回来了</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void subscribeActual(Subscriber&lt;? super T&gt; s) &#123;</span><br><span class="line">    //1.传入观察者对象和要发射的值创建了一个标量的订阅对象</span><br><span class="line">    //2.观察者对象订阅了这个标量的订阅对象</span><br><span class="line">    s.onSubscribe(new ScalarSubscription&lt;T&gt;(s, value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>11.先看ScalarSubscription方法，可以看到当调用了request(n)的方法时onNext方法就会被调用,</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public ScalarSubscription(Subscriber&lt;? super T&gt; subscriber, T value) &#123;</span><br><span class="line">    this.subscriber = subscriber;</span><br><span class="line">    this.value = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void request(long n) &#123;</span><br><span class="line">    if (!SubscriptionHelper.validate(n)) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if (compareAndSet(NO_REQUEST, REQUESTED)) &#123;</span><br><span class="line">        Subscriber&lt;? super T&gt; s = subscriber;</span><br><span class="line">        //这里就是LambdaSubscriber中的onNext，也是我们传入的onNext会去回调的地方</span><br><span class="line">        s.onNext(value);</span><br><span class="line">        if (get() != CANCELLED) &#123;</span><br><span class="line">            s.onComplete();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>12.所以我们要看request()在哪里调用，接着看继续看s.onSubscribe()方法，它就是LambdaSubscriber中的onSubscribe()方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onSubscribe(Subscription s) &#123;</span><br><span class="line">    if (SubscriptionHelper.setOnce(this, s)) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //onSubscribe对象是在3.中传入的FlowableInternalHelper.RequestMax.INSTANCE，并调用了accept方法</span><br><span class="line">            onSubscribe.accept(this);</span><br><span class="line">        &#125; catch (Throwable ex) &#123;</span><br><span class="line">            Exceptions.throwIfFatal(ex);</span><br><span class="line">            s.cancel();</span><br><span class="line">            onError(ex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>13.接着继续看FlowableInternalHelper.RequestMax.INSTANCE。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public enum RequestMax implements Consumer&lt;Subscription&gt; &#123;</span><br><span class="line">    //枚举法创建的单例</span><br><span class="line">    INSTANCE;</span><br><span class="line">    @Override</span><br><span class="line">    public void accept(Subscription t) throws Exception &#123;</span><br><span class="line">        //可以看到在这里调用了request方法</span><br><span class="line">        t.request(Long.MAX_VALUE);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>14.接着可以回到11.ScalarSubscription类中，在request方法中就调用了LambdaSubscriber的onNext*()方法并传入了value值<br>15.接着再去看LambdaSubscriber类中的onNext方法</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public void onNext(T t) &#123;</span><br><span class="line">        if (!isDisposed()) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                //在这里回调了我们当初我们传入的实现对象onNext的accept方法，</span><br><span class="line">                onNext.accept(t);</span><br><span class="line">            &#125; catch (Throwable e) &#123;</span><br><span class="line">                Exceptions.throwIfFatal(e);</span><br><span class="line">                get().cancel();</span><br><span class="line">                onError(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>16.走完onNext方法后，继续看11.它会继续走s.onComplete()方法，这个方法也是默认的Functions.EMPTY_ACTION</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">static final class EmptyAction implements Action &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123; </span><br><span class="line">            //空方法</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public String toString() &#123;</span><br><span class="line">            return &quot;EmptyAction&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>17.至于onError方法会14.在onNext()发生异常时去调用，且在这里也是默认传入的Functions.ON_ERROR_MISSING</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">static final class OnErrorMissingConsumer implements Consumer&lt;Throwable&gt; &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void accept(Throwable error) &#123;</span><br><span class="line">        RxJavaPlugins.onError(new OnErrorNotImplementedException(error));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="最后范例一just的整个流程就是这样，从流程看出just操作符是真的很简单的，只是实现了一个对象的传递，内部也只是对我们要实现的onNext-进行了回调处理，因此其实对其他onError和onComplete我们也可以自定义处理方式"><a href="#最后范例一just的整个流程就是这样，从流程看出just操作符是真的很简单的，只是实现了一个对象的传递，内部也只是对我们要实现的onNext-进行了回调处理，因此其实对其他onError和onComplete我们也可以自定义处理方式" class="headerlink" title="最后范例一just的整个流程就是这样，从流程看出just操作符是真的很简单的，只是实现了一个对象的传递，内部也只是对我们要实现的onNext()进行了回调处理，因此其实对其他onError和onComplete我们也可以自定义处理方式"></a>最后范例一just的整个流程就是这样，从流程看出just操作符是真的很简单的，只是实现了一个对象的传递，内部也只是对我们要实现的onNext()进行了回调处理，因此其实对其他onError和onComplete我们也可以自定义处理方式</h4>]]></content>
       
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
       
       
         <tags>
@@ -1500,6 +1602,12 @@
         <content type="html"><![CDATA[<h3 id="线程和线程安全"><a href="#线程和线程安全" class="headerlink" title="线程和线程安全"></a>线程和线程安全</h3><h4 id="线程是什么"><a href="#线程是什么" class="headerlink" title="线程是什么"></a>线程是什么</h4><ol><li>线程为进程的一个实体</li><li>轻量级进程</li><li>是CPU调度和分配的基本单位</li><li>可与同一进程内的线程共享进程内的全部资源</li><li>android 进程通过fork创建，线程通过pthread.creat创建</li></ol><h4 id="并发的优势促使多线程的出现"><a href="#并发的优势促使多线程的出现" class="headerlink" title="并发的优势促使多线程的出现"></a>并发的优势促使多线程的出现</h4><ol><li>资源利用率 ，提高</li><li>公平性，共享资源</li><li>便利性，多任务并发执行比单任务更容易执行</li></ol><h4 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h4><p>多线程的引入意味着引入了线程安全。当单线程能正确运行的代码，在多线程访问的情况下，不管线程以何种顺序访问，并不添加同步代码都能正确表现行为，则称它为线程安全的</p><h3 id="并发的三大要素"><a href="#并发的三大要素" class="headerlink" title="并发的三大要素"></a>并发的三大要素</h3><h4 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h4><p>指的是一个或者多个不能再被分割的操作<br>value = 1; //院子操作<br>value++; //复合操作</p><h4 id="数据竞争"><a href="#数据竞争" class="headerlink" title="数据竞争"></a>数据竞争</h4><p>指多进程访问共享资源，不做同步</p><h4 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h4><h4 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h4><p>当一个线程对某个变量做出修改时，其他线程可以立刻读取修改后的值</p><h4 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h4><ol><li>是一种稍弱的同步机制，用来确保变量更新操作同步到其他线程，虚拟机不会指令重排</li><li>锁与volatile不同，锁具有两个特性：互斥性和可见性</li></ol><h3 id="内置锁"><a href="#内置锁" class="headerlink" title="内置锁"></a>内置锁</h3><h4 id="Sychronized关键字"><a href="#Sychronized关键字" class="headerlink" title="Sychronized关键字"></a>Sychronized关键字</h4><p>可作用于class和java对象</p><h4 id="锁的原理"><a href="#锁的原理" class="headerlink" title="锁的原理"></a>锁的原理</h4><ol><li>锁实现了内存可见性和操作原子性</li><li>释放锁时，该线程的本地内存中的共享变量会被刷新到内存中</li><li>锁不会被继承</li><li>同步代码块是使用monitorenter和monitorexit指令实现的，同步方法是通过ACC_SYNCHRONIZED标识符实现</li></ol><h4 id="锁的使用原则"><a href="#锁的使用原则" class="headerlink" title="锁的使用原则"></a>锁的使用原则</h4><ol><li>可能被多个线程同时访问的可变变量，在访问它时都需要持有一个锁，变量由这个锁保护</li><li>每个可变变量都只有一个锁来保护，知道锁的范围</li><li>当锁作用于多个变量时，对每个变量的操作都应该由同一个恶锁保护</li><li>在Android中，工作线程尽量不要和UI线程做同步</li></ol><h4 id="重入"><a href="#重入" class="headerlink" title="重入"></a>重入</h4><h4 id="锁优化"><a href="#锁优化" class="headerlink" title="锁优化"></a>锁优化</h4><h4 id="显示锁"><a href="#显示锁" class="headerlink" title="显示锁"></a>显示锁</h4><p>reentrantLock<br>semaphore<br>countDownLatch<br>CyclicBarrier<br>FutureTask</p><h3 id="原子变量和非阻塞算法"><a href="#原子变量和非阻塞算法" class="headerlink" title="原子变量和非阻塞算法"></a>原子变量和非阻塞算法</h3><p>Atomic<br>cas非阻塞算法<br>性能比较</p><p><a href="https://segmentfault.com/l/1500000012849264/play">https://segmentfault.com/l/1500000012849264/play</a></p>]]></content>
       
       
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -1542,7 +1650,7 @@
       
       <categories>
           
-          <category> 经验 </category>
+          <category> 随笔 </category>
           
       </categories>
       
@@ -1591,6 +1699,12 @@
       
         <content type="html"><![CDATA[<p>在二维火工作收集的经典语句！</p><span id="more"></span><p><strong>不要起个大早，赶个晚集</strong><br>无法快速落地的“点子”都属于“忽悠”。趋势、潮流瞬息万变，竞争对手如狼似虎。再好的点子，如果只是挂在嘴上，不执行、不落实，等于把机会拱手送给别人。</p><p><strong>清空自己</strong><br>用户都很懒，并且时间宝贵，面对陌生的功能需要快速做出决定。所以在设计每一个细节时，尽量清空自己，忘掉身份，忘掉流程，让自己变成一个小白。最终呈现给用户的内容才是浅显易懂的。</p><p><strong>不要被用户牵着鼻子走</strong><br>与用户聊需求时，要挖掘其背后真实的目的。用户不会替我们考虑灵活性、普遍性、规范性。个性化的需求如何落实到通用的产品中区，需要思考，不能被用户带到沟里去。</p><p><strong>切记习以为常</strong><br>习惯一个人，习惯一件事，会让自己变得麻木，忽视其中存在的问题。我们的产品对大部分用户来说是陌生的，用户可能会卡在一些我们倒背如流的节点上，设计和使用自己的产品时需要保持敏感</p><p><strong>定期回顾</strong><br>行业在发展，技术在进步，客户的认知在变化，我们自己也在成长。长时间不用的东西，定期去回顾，会发现很多问题。有些功能用的很少，可能设计过时了，或者流程出问题了。</p><p><strong>产品能解决的事不要靠人去解决</strong><br>“这个功能给店家培训一下就好”，这句话是不负责任的，一个功能点做一次培训，一家店做一次培训，一千个功能点和十万店家需要多少人去培训多少次？人力成本的投入是巨大的，要用好的设计去引导用户，而不是靠人力去解决问题。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
       
       
         <tags>
@@ -1680,7 +1794,7 @@
       
       <categories>
           
-          <category> 经验 </category>
+          <category> 工具 </category>
           
       </categories>
       
@@ -1705,7 +1819,7 @@
       
       <categories>
           
-          <category> 读书 </category>
+          <category> 随笔 </category>
           
       </categories>
       
@@ -1784,7 +1898,7 @@
       
       <categories>
           
-          <category> 开发工具 </category>
+          <category> 工具 </category>
           
       </categories>
       
@@ -1909,7 +2023,7 @@
       
       <categories>
           
-          <category> 开发工具 </category>
+          <category> 工具 </category>
           
       </categories>
       
@@ -2067,7 +2181,7 @@
       
       <categories>
           
-          <category> 安全 </category>
+          <category> Android </category>
           
       </categories>
       
@@ -2142,7 +2256,7 @@
       
       <categories>
           
-          <category> 总结 </category>
+          <category> 随笔 </category>
           
       </categories>
       
@@ -2193,7 +2307,7 @@
       
       <categories>
           
-          <category> 项目实践 </category>
+          <category> 后端 </category>
           
       </categories>
       
@@ -2220,7 +2334,7 @@
       
       <categories>
           
-          <category> 辅助工具 </category>
+          <category> 工具 </category>
           
       </categories>
       
