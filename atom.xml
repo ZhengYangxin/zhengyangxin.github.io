@@ -6,7 +6,7 @@
   <link href="https://yancy.website/atom.xml" rel="self"/>
   
   <link href="https://yancy.website/"/>
-  <updated>2026-02-02T06:54:32.197Z</updated>
+  <updated>2026-02-02T07:27:15.042Z</updated>
   <id>https://yancy.website/</id>
   
   <author>
@@ -21,8 +21,16 @@
     <link href="https://yancy.website/wen-zhang-biao-ti.html"/>
     <id>https://yancy.website/wen-zhang-biao-ti.html</id>
     <published>2026-02-02T06:54:32.000Z</published>
-    <updated>2026-02-02T06:54:32.197Z</updated>
+    <updated>2026-02-02T07:27:15.042Z</updated>
     
+    <content type="html"><![CDATA[<p>hello word</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;hello word&lt;/p&gt;
+</summary>
+      
     
     
     
