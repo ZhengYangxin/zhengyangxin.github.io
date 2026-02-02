@@ -2,7 +2,7 @@
 title: Plus One
 date: 2017-11-11 10:35:02
 tags: [leetCode,算法]
-category: "算法"
+category: 算法
 ---
 题目链接 [Plus One](https://leetcode.com/problems/plus-one/description/ "Optional title")
 

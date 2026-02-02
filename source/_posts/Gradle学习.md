@@ -3,7 +3,7 @@ title: Gradle学习
 copyright: true
 date: 2019-08-02 09:23:14
 tags:
-category:
+category: 工具
 ---
 #### 什么是Gradle
 Gradle是一个开源的，非常灵活的自动化构建工具，具有以下几大特点：

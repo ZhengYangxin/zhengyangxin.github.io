@@ -3,7 +3,7 @@ title: Java集合类分析理解
 copyright: true
 date: 2018-01-25 17:32:12
 tags: ["集合"]
-category: "Java"
+category: Java
 ---
 [Java集合面试总结](http://blog.csdn.net/csdn_terence/article/details/78379878 "Optional title")
 ## Collecton 和 Map

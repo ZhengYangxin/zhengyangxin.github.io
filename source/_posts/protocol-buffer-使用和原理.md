@@ -3,7 +3,7 @@ title: protocol buffer 使用和原理
 copyright: true
 date: 2020-03-01 19:08:10
 tags: [数据存储, Protocol Buff, Android]
-category: [Android]
+category: Android
 img: https://cn.bing.com/th?id=OHR.SeussianLandscape_ZH-CN0785428057_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp
 summary: Protocol Buffer是什么，在Android中怎么使用，为什么轻便高效的原理
 ---

@@ -3,7 +3,7 @@ title: 自定义UI之Paint
 copyright: true
 date: 2019-09-26 12:24:40
 tags: [自定义UI, shader, colorFilter, xfermode]
-category: "Android"
+category: Android
 ---
 #### Paint画笔
 画笔的实现内部都是调用native方法的，画笔的基础Api

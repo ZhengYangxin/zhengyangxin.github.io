@@ -3,7 +3,7 @@ title: OkHttp的学习
 copyright: true
 date: 2019-10-29 21:34:11
 tags: [OkHttp]
-category: "Android"
+category: Android
 ---
 ### 学习大纲
 1. OSI七层模型介绍，TCP/IP模型介绍，Http协议的格式介绍

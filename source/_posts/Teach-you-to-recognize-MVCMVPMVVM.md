@@ -2,7 +2,7 @@
 title: Teach you to recognize MVC, MVP and MVVM
 date: 2017-03-26 16:12:29
 tags: [模式、Android]
-category: "总结"
+category: 随笔
 ---
 ### Teach you to recognize MVC, MVP AND MVVM
 I believe we are no stranger to MVC, MVP and MVVM, as the three most familiar Android framework. Their applications can be very extensive, but for some novice, it can be difficult to distinguish between them three.

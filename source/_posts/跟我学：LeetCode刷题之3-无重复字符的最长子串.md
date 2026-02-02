@@ -5,7 +5,7 @@ date: 2020-04-03 06:28:50
 tags: [Leetcode，无重复字符的最长子串]
 author: Yangcy
 summary: 无重复字符的最长子串、多解法分析
-category: Algorithm
+category: 算法
 ---
 
 ### 导读

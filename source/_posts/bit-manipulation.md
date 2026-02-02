@@ -3,7 +3,7 @@ title: Bit Manipulation
 copyright: true
 date: 2017-12-04 15:41:37
 tags: [leetCode, "算法"]
-category: "算法"
+category: 算法
 ---
 ### Bit Manipulation(位运算)：
 一共五种运算：与，或，异或，左移，右移。

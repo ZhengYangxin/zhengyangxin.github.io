@@ -3,7 +3,7 @@ title: Handler解析
 copyright: true
 date: 2019-10-19 21:27:32
 tags: [Handler, 源码分析]
-category: "Android"
+category: Android
 ---
 #### Handler的几个问题
 1. Handler内存泄漏的测试

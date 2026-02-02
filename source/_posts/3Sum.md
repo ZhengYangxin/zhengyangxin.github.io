@@ -2,7 +2,7 @@
 title: 3Sum
 date: 2017-11-20 15:03:24
 tags: [leetCode, 算法]
-category: "算法"
+category: 算法
 copyright: true
 ---
 题目链接：[3Sum](https://leetcode.com/problems/3sum/discuss/ "Optional title")

@@ -5,7 +5,7 @@ date: 2020-04-01 05:56:50
 tags: [Leetcode，两数之和]
 author: Yangcy
 summary: 两数之和、多解法分析
-category: Algorithm
+category: 算法
 ---
 
 ### 导读

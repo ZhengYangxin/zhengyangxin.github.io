@@ -3,7 +3,7 @@ title: android 线程那些事
 copyright: true
 date: 2018-01-20 22:55:58
 tags:
-category:
+category: Android
 ---
 ### 线程和线程安全
 #### 线程是什么

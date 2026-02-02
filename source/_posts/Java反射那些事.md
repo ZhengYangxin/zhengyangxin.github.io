@@ -3,7 +3,7 @@ title: Java反射那些事
 copyright: true
 date: 2018-01-29 11:05:10
 tags: 【反射机制】
-category: "Java"
+category: Java
 ---
 ## 反射机制的定义
 在运行状态期间，能过动态的知道一个类的属性和方法，能够动态的调用一个对象的属性和方法的功能。

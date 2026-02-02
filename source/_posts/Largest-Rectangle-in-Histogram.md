@@ -3,7 +3,7 @@ title: Largest Rectangle in Histogram and Maximal Rectangle
 copyright: true
 date: 2017-11-28 09:52:03
 tags: [leetCode, 算法]
-category: "算法"
+category: 算法
 ---
 题目链接：
 [Largest Rectangle in Histogram](https://leetcode.com/problems/largest-rectangle-in-histogram/description/ "Optional title")

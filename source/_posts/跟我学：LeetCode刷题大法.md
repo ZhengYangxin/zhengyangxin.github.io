@@ -5,7 +5,7 @@ date: 2020-04-01 06:22:00
 tags: [Leetcode]
 author: Yangcy
 summary: 刷题技巧，方法
-category: Algorithm
+category: 算法
 ---
 
 ### 闲聊

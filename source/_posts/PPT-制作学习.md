@@ -3,7 +3,7 @@ title: PPT 制作学习
 copyright: true
 date: 2019-09-25 21:00:18
 tags: [PPT制作]
-category: "技能"
+category: 工具
 ---
 ##### PPT的学习记录
 

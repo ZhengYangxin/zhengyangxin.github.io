@@ -3,7 +3,7 @@ title: Android IPC
 copyright: true
 date: 2018-03-31 10:39:30
 tags: [Android, 进程通讯]
-category:
+category: Android
 ---
 ### Android跨进程通讯的几种方式
 #### Bundle

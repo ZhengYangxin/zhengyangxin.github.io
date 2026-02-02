@@ -2,7 +2,7 @@
 title: git相关操作
 date: 2017-08-02 22:40:20
 tags: [git]
-category: "开发工具"
+category: 工具
 ---
 ### 一. git关联本地与远程分支
 

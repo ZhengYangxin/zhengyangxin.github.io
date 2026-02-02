@@ -3,7 +3,7 @@ title: 跟我学：深入Android Framework之谈谈对Zygote的理解
 copyright: true
 date: 2020-03-31 12:59:49
 tags: [Zygote]
-category: Framework
+category: Android
 author: Yangcy
 summary: 谈谈对Zygote的理解，深入分析从Zygote的作用，启动流程到工作原理
 ---

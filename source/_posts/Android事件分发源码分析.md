@@ -3,7 +3,7 @@ title: Android事件分发源码分析
 copyright: true
 date: 2019-09-29 13:18:15
 tags: [源码分析及架构]
-category: "Android"
+category: Android
 ---
 ### 源码分析
 #### 事件分发的类型

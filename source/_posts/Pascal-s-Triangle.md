@@ -3,7 +3,7 @@ layout: pot
 title: Pascal's Triangle
 date: 2017-11-13 10:22:56
 tags: [leetCode,算法]
-category: "算法"
+category: 算法
 ---
 题目链接:[Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/description/ "Optional title")
 

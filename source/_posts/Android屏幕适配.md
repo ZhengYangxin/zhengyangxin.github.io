@@ -3,7 +3,7 @@ title: Android屏幕适配
 copyright: true
 date: 2019-09-30 14:33:56
 tags: [屏幕适配]
-category: “Android”
+category: Android
 ---
 ### Android的碎片化
 android的碎片化严重，屏幕尺寸不同，分辨率密度，决定了做适配的重要性

@@ -3,7 +3,7 @@ title: Android架构MVX
 copyright: true
 date: 2019-10-18 22:40:23
 tags: [MVC, MVP, MVVM]
-category: "Android"
+category: Android
 ---
 
 ### MVC架构设计

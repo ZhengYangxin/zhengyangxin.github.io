@@ -3,7 +3,7 @@ title: 自定义UI之Canvas
 copyright: true
 date: 2019-09-27 12:12:26
 tags: [canvas]
-category: "Android"
+category: Android
 ---
 #### Canvas绘制几何图形，文本，位图等
 1. drawBitmap() 在指定坐标绘制位图

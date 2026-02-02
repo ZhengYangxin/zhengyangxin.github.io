@@ -3,7 +3,7 @@ title: Binder的学习
 copyright: true
 date: 2019-10-20 00:02:11
 tags: [Binder]
-category: "Android"
+category: Android
 ---
 ### 进程通讯的方式
 1. 管道，耗性能

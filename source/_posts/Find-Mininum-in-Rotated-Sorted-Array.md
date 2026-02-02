@@ -3,7 +3,7 @@ title: Find Mininum in Rotated Sorted Array I and II
 copyright: true
 date: 2017-11-24 10:04:15
 tags: [leetCode, 算法]
-category: "算法"
+category: 算法
 ---
 题目链接:
 [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/ "Optional title")

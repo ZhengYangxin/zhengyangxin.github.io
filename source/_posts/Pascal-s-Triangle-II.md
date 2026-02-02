@@ -2,7 +2,7 @@
 title: Pascal's Triangle II
 date: 2017-11-14 14:13:06
 tags: [leetCode, 算法]
-category: "算法"
+category: 算法
 ---
 题目链接: [Pascal's Triangle II](https://leetcode.com/problems/pascals-triangle-ii/description/ "Optional title")
 Given an index k, return the kth row of the Pascal's triangle.

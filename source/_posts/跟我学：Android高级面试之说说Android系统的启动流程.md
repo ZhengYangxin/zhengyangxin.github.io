@@ -3,7 +3,7 @@ title: 跟我学：Android高级面试之说说Android系统的启动流程
 copyright: true
 date: 2020-04-03 06:31:29
 tags:
-category:
+category: Android
 ---
 
 ### 导读

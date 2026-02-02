@@ -2,7 +2,7 @@
 title: Android Studio修改包名
 date: 2017-03-28 19:52:24
 tags: [包名修改]
-category: "Android"
+category: Android
 ---
 ### Android Studio修改包名
 1. 修改包显示方式

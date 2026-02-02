@@ -1,7 +1,7 @@
 ---
 title: Subline3下的两款Markdown插件
 date: 2017-03-18 22:38:01
-category: "辅助工具" 
+category: 工具 
 tags: [Subline,Markdown]
 ---
 ### MarkdownEditing

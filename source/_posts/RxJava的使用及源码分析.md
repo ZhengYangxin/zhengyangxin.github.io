@@ -3,7 +3,7 @@ title: RxJava的使用及源码分析
 copyright: true
 date: 2018-03-18 15:25:44
 tags: [RxJava]
-category:
+category: Android
 ---
 
 ### 基于Rxjava-2.1.10版本源码分析

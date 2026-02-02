@@ -7,7 +7,7 @@ author: Yangcy
 top: true
 img: https://cn.bing.com/th?id=OHR.RainierClouds_ENUS_SS1021697089_1920x1080_HD_ZH-CN170801398.jpg&rf=LaDigue_1920x1080.jpg&pid=hp
 summary: 算法的学习，刷题记录，算法总结
-category: Algorithm
+category: 算法
 ---
 
 ### 算法的学习

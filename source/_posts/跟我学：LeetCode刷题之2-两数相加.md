@@ -5,7 +5,7 @@ date: 2020-04-03 06:23:47
 tags: [Leetcode，两数相加]
 author: Yangcy
 summary: 两数相加、多解法分析
-category: Algorithm
+category: 算法
 ---
 
 ### 导读
