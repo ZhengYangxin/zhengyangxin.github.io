@@ -75,9 +75,9 @@
     
     <category term="MySQL" scheme="https://yancy.website/tags/MySQL/"/>
     
-    <category term="数据库" scheme="https://yancy.website/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
     <category term="性能优化" scheme="https://yancy.website/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="数据库" scheme="https://yancy.website/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -129,9 +129,9 @@
     
     <category term="MySQL" scheme="https://yancy.website/tags/MySQL/"/>
     
-    <category term="EXPLAIN" scheme="https://yancy.website/tags/EXPLAIN/"/>
-    
     <category term="数据库" scheme="https://yancy.website/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    <category term="EXPLAIN" scheme="https://yancy.website/tags/EXPLAIN/"/>
     
   </entry>
   
@@ -329,7 +329,7 @@
     <link href="https://yancy.website/wang-luo-zhi-shi.html"/>
     <id>https://yancy.website/wang-luo-zhi-shi.html</id>
     <published>2020-03-09T05:04:47.000Z</published>
-    <updated>2026-02-02T08:38:46.023Z</updated>
+    <updated>2026-02-02T08:39:14.168Z</updated>
     
     <content type="html"><![CDATA[<h4 id="OSI-七层网络模型"><a href="#OSI-七层网络模型" class="headerlink" title="OSI 七层网络模型"></a>OSI 七层网络模型</h4><ol><li>应用层： 为用户进程提供网络服务</li><li>表示层：负责数据的转化，数据的压缩/解压，数据的加密/解密等</li><li>会话层：负责会话的建立，管理，销毁等服务</li><li>传输层：基于TCP/UDP进行 端口对端口的传输</li><li>IP层：数据打包成IP数据报，在路由器/交换机上传输</li><li>数据链路层: </li><li>物理层：</li></ol><h4 id="TCP-IP-网络模型"><a href="#TCP-IP-网络模型" class="headerlink" title="TCP/IP 网络模型"></a>TCP/IP 网络模型</h4><ol><li>应用层</li><li>传输层</li><li>IP层</li><li>数据链路层</li></ol><h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><h4 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h4><h4 id="HTTPDNS优化"><a href="#HTTPDNS优化" class="headerlink" title="HTTPDNS优化"></a>HTTPDNS优化</h4><h3 id="HTTP-的版本区别"><a href="#HTTP-的版本区别" class="headerlink" title="HTTP 的版本区别"></a>HTTP 的版本区别</h3><h5 id="HTTP1-0与-HTTP1-1"><a href="#HTTP1-0与-HTTP1-1" class="headerlink" title="HTTP1.0与 HTTP1.1"></a>HTTP1.0与 HTTP1.1</h5><ol><li>缓存优化</li><li>网络带宽及网络连接都优化</li><li>host请求头添加</li><li>支持长连接（串行单线程处理请求，可以同时发起多个请求，但必须等待前一个请求处理完，才会处理新的请求，否则只能被阻塞）</li></ol><h5 id="HTTP1-1与HTTP2-0"><a href="#HTTP1-1与HTTP2-0" class="headerlink" title="HTTP1.1与HTTP2.0"></a>HTTP1.1与HTTP2.0</h5><ol><li>新的二进制文件</li><li>多路复用（多个请求可以在一个连接上并行执行，某个请求耗时严重，不会影响到其他连接的正常执行）<ol><li>做到了延迟的优化，TCP连接是慢启动，因此突发性和短时性的http连接不高效，通过复用连接可以更有效的使用TCP</li></ol></li><li>Header压缩 （一个页面有100个资源要加载，而每次请求都有1kb的消息头，则至少要消耗100kb获取请求头，http2.0，维护了一个字典，用以差量更新http头部）</li><li>服务端推送（服务端会主动把客户端所需要的资源一起发给客户端）</li></ol><h3 id="TCP-与UDP"><a href="#TCP-与UDP" class="headerlink" title="TCP 与UDP"></a>TCP 与UDP</h3><p>TCP 是面向连接的，可靠，慢，占用头部字节20多</p><p>UDP是无连接的，尽最大交付，快，占用头部字节少8</p><h4 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h4><h4 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h4><h4 id="TCP与UDP比较"><a href="#TCP与UDP比较" class="headerlink" title="TCP与UDP比较"></a>TCP与UDP比较</h4>]]></content>
     
