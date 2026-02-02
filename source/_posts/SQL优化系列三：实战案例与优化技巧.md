@@ -1,9 +1,9 @@
 ---
 title: SQL优化系列（三）：实战案例与优化技巧
 copyright: true
-date: 2020-05-16 10:30:00
+date: 2020-05-10 10:30:00
 tags: [SQL优化, MySQL, 性能优化, 数据库]
-category: 后端
+category: 数据库
 ---
 
 ### 前言
@@ -280,4 +280,3 @@ SELECT * FROM users u WHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.i
 
 - MySQL官方文档
 - 《高性能MySQL》
-- 极客时间《后端工程师的高阶面经》
