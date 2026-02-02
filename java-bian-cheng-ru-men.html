@@ -1,37 +1,522 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="认识Java Java的起源是SUM公司开发的，后来被oracle收购 Java的开发开发有三种 JAVA SE 桌面应用开发 JAVA ME 嵌入是开发  JAVA EE 企业平台开发，即互联网平台开发    Java语言特点 Java是半开源的项目，可以接触底层代码 Java是一种编程语言，面向对象的编程思想并且一直在拓展扩充 提供有方便的内存回收机制 避免了复杂的指针问题，使用更加简单的引用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java编程入门">
+<meta property="og:url" content="https://yancy.website/java-bian-cheng-ru-men.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="认识Java Java的起源是SUM公司开发的，后来被oracle收购 Java的开发开发有三种 JAVA SE 桌面应用开发 JAVA ME 嵌入是开发  JAVA EE 企业平台开发，即互联网平台开发    Java语言特点 Java是半开源的项目，可以接触底层代码 Java是一种编程语言，面向对象的编程思想并且一直在拓展扩充 提供有方便的内存回收机制 避免了复杂的指针问题，使用更加简单的引用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-12T12:53:00.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.516Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/java-bian-cheng-ru-men.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/java-bian-cheng-ru-men.html","path":"java-bian-cheng-ru-men.html","title":"Java编程入门"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java编程入门 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86Java"><span class="nav-number">1.</span> <span class="nav-text">认识Java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E8%AF%AD%E8%A8%80%E7%89%B9%E7%82%B9"><span class="nav-number">2.</span> <span class="nav-text">Java语言特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E7%9A%84%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">Java的可移植性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Java%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">3.1.</span> <span class="nav-text">Java程序运行机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM"><span class="nav-number">4.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">5.</span> <span class="nav-text">JDK的介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">6.</span> <span class="nav-text">JDK的安装与配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E7%BC%96%E7%A8%8B%E8%B5%B7%E6%AD%A5"><span class="nav-number">7.</span> <span class="nav-text">Java编程起步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ClASSPATH%E7%8E%AF%E5%A2%83%E5%B1%9E%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">ClASSPATH环境属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">9.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E8%AF%86%E7%AC%A6%E5%92%8C%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">10.</span> <span class="nav-text">标识符和关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">11.</span> <span class="nav-text">Java数据类型简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E7%AE%80%E4%BB%8B"><span class="nav-number">12.</span> <span class="nav-text">运算符简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IF%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="nav-number">13.</span> <span class="nav-text">IF分支结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switch%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5"><span class="nav-number">14.</span> <span class="nav-text">switch分支语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while%E5%BE%AA%E7%8E%AF"><span class="nav-number">15.</span> <span class="nav-text">while循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF"><span class="nav-number">16.</span> <span class="nav-text">for循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E5%9D%8F%E6%8E%A7%E5%88%B6"><span class="nav-number">17.</span> <span class="nav-text">循坏控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="nav-number">18.</span> <span class="nav-text">方法的定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="nav-number">19.</span> <span class="nav-text">方法的重载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E9%80%92%E5%BD%92%E8%B0%83%E7%94%A8"><span class="nav-number">20.</span> <span class="nav-text">方法的递归调用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/java-bian-cheng-ru-men.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java编程入门 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java编程入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-12 20:53:00" itemprop="dateCreated datePublished" datetime="2020-01-12T20:53:00+08:00">2020-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h5 id="认识Java"><a href="#认识Java" class="headerlink" title="认识Java"></a>认识Java</h5><ol>
+<li>Java的起源是SUM公司开发的，后来被oracle收购</li>
+<li>Java的开发开发有三种<ul>
+<li>JAVA SE 桌面应用开发</li>
+<li>JAVA ME 嵌入是开发 </li>
+<li>JAVA EE 企业平台开发，即互联网平台开发</li>
+</ul>
+</li>
+</ol>
+<h4 id="Java语言特点"><a href="#Java语言特点" class="headerlink" title="Java语言特点"></a>Java语言特点</h4><ol>
+<li>Java是半开源的项目，可以接触底层代码</li>
+<li>Java是一种编程语言，面向对象的编程思想并且一直在拓展扩充</li>
+<li>提供有方便的内存回收机制</li>
+<li>避免了复杂的指针问题，使用更加简单的引用来代替指针</li>
+<li>Java是支持多线程开发的语言，使得在单位时间内的提升了处理能力</li>
+<li>Java提供了高效的网络处理能力，基于NIO实现了更加高效的网络传输能力</li>
+<li>Java具有良好的可移植性</li>
+<li>足够简单</li>
+</ol>
+<h4 id="Java的可移植性"><a href="#Java的可移植性" class="headerlink" title="Java的可移植性"></a>Java的可移植性</h4><p>在于同一个程序可以在不同的操作系统中执行部署，减少开发难度。依赖于Java虚拟机JVM，不同操作系统拥有不同版本的JVM，实现了移植性。</p>
+<h5 id="Java程序运行机制"><a href="#Java程序运行机制" class="headerlink" title="Java程序运行机制"></a>Java程序运行机制</h5><ul>
+<li>编译型，解释型。Java是两种高级编程语言的结合，先编译成.class文件，再解释成计算机识别的机器指令</li>
+<li>编译命令：Javac.exe</li>
+<li>解释命令：Java.exe</li>
+<li>Java程序的组成：Java源文件，字节码文件，机器码指令</li>
+</ul>
+<h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><ul>
+<li>一台模拟的计算机，可以读取并处理经编译过的与平台无关的字节码class文件</li>
+<li>java编译器针对JVM产生class文件，因此独立于平台</li>
+<li>Java解释器负责将JVM的代码在特定的平台上运行</li>
+</ul>
+<h4 id="JDK的介绍"><a href="#JDK的介绍" class="headerlink" title="JDK的介绍"></a>JDK的介绍</h4><p>是Java的开发工具包,主要版本迭代，其中JRE是运行环境，只提供解释功能不提供程序的开发功能</p>
+<ul>
+<li>1995.05.23，JDK1.0发布， 1996年提供对外</li>
+<li>1998.12.04 JDK1.2，更名为Java2</li>
+<li>2005.05.23 十周年大会，JDK1.5 ，带来了新特性，决定了未来10的核心技术</li>
+<li>2014 JDK1.8，支持了Lambda，可以函数式编程</li>
+<li>2017 JDK1.9,提高了1.8稳定性</li>
+<li>2018 JDK1.10,属于1.9的稳定版</li>
+</ul>
+<h4 id="JDK的安装与配置"><a href="#JDK的安装与配置" class="headerlink" title="JDK的安装与配置"></a>JDK的安装与配置</h4><h4 id="Java编程起步"><a href="#Java编程起步" class="headerlink" title="Java编程起步"></a>Java编程起步</h4><p>创建HelloWorld.java文件，编写源文件，编写输出HelloWord的程序。Java程序是需要经过两次处理之后才能正常执行的</p>
+<ul>
+<li>对源代码进行编译：Javac xxx/HelloWord.java，会出现一个HelloWord.class的字节码文件，利用JVM进行编译，编译出一套与平台无关的字节码文件(*.class)</li>
+<li>在JVM上进行程序的解释执行Java xxx/HelloWord。解释的就是字节码文件，字节码文件的后缀是不需要编写的</li>
+<li>类的定义有两种形式，public class 类名， class 类名。第一种文件名必须与类名一致，第二种可以不一致，生成的*.class文件名与类名一致。一般情况是一个class并且以public修饰，类名是驼峰式</li>
+<li>main方法，程序运行入口主方法</li>
+</ul>
+<h4 id="ClASSPATH环境属性"><a href="#ClASSPATH环境属性" class="headerlink" title="ClASSPATH环境属性"></a>ClASSPATH环境属性</h4><ul>
+<li>PATH: 是操作系统提供的路径配置，定义所有可执行程序的路径</li>
+<li>CLASSPATH: 是JRE提供的，用于定义Java程序解释时类加载路径，默认是源文件的目录</li>
+</ul>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
+<li>单行注释 //</li>
+<li>多行注释 /* …. */</li>
+<li>文档注释 /** …. */</li>
+</ul>
+<h4 id="标识符和关键字"><a href="#标识符和关键字" class="headerlink" title="标识符和关键字"></a>标识符和关键字</h4><ul>
+<li>Java语言中有不同的结构：类，方法，变量结构等，对于结构的说明实际上就是标识符，是有命名规则的。</li>
+<li>关键字，是系统对于一些结构的的描述处理，有着特殊含义，public static final 等等</li>
+</ul>
+<h4 id="Java数据类型简介"><a href="#Java数据类型简介" class="headerlink" title="Java数据类型简介"></a>Java数据类型简介</h4><ul>
+<li>数据分类：基本数据类型(数字单元)分三大类，数值型，浮点型，字符型，引用数据类型(内存关系的使用)分数组，类，接口<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>包括</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基本数据类型</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>整型</td>
+<td>byte,short,int,long</td>
+<td>0</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>float，double</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>布尔型</td>
+<td>boolea</td>
+<td>false</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>char</td>
+<td>‘\u0000’</td>
+</tr>
+<tr>
+<td>引用类型</td>
+<td>数组，类，接口</td>
+<td>null</td>
+</tr>
+</tbody></table>
+</li>
+<li>使用原则： 如果是描述数字首选int,double；如果要进行数据传输或者文字编码选择byte(二进制处理)；处理中文char;描述内存或者文件大小，表的主键列long</li>
+<li>内存溢出：如果数值的操作超出了数值类型的范围就会陷入循环的现象，通过使用范围更大的数值类型解决</li>
+<li>浮点型数据，都是有小数点的。float 变量相乘会出现多出4位小数的历史bug</li>
+<li>整形数据进行相除，会得到整数部分，10/2 = 2,  除非进行转型</li>
+<li>字符类型char和整形int可以相互转换, 可以获取char字符在系统中的编码。大写字母 A(65)<del>Z(90)，小写字母a(97)</del>z(112),大小写之间相差32位，数字范围‘0’(48)~’9’(57)</li>
+<li>java可以保存中文是因为Java使用的是Unicode 16进制的编码</li>
+<li>布尔类型，只有true和false</li>
+<li>字符串。在Java中范围大的数据类型与范围小的数据类型操作，所有小的数据类型会自动转型为数据范围大的数据类型</li>
+</ul>
+<h4 id="运算符简介"><a href="#运算符简介" class="headerlink" title="运算符简介"></a>运算符简介</h4><ul>
+<li>数学运算符： 加减乘除</li>
+<li>关系运算符：大小的比较，基本数据类型之间支持自动转型，字符类型可以转成int</li>
+<li>逻辑运算符：三目(赋值)运算</li>
+<li>位运算：二进制数的计算处理，(&amp;与) (|或者) (^异或) (~反码)<ul>
+<li>&amp; | 在进行逻辑运算的时候所有的条件都会执行</li>
+<li>&amp;&amp; || 若干个条件判断的时候，前面的返回来false 或者 true，后面的条件判断就不再执行</li>
+</ul>
+</li>
+</ul>
+<h4 id="IF分支结构"><a href="#IF分支结构" class="headerlink" title="IF分支结构"></a>IF分支结构</h4><p>针对关系表达式进行判断处理的的分支操作，关键字为if,else,,在多条件else if判断时需写上else</p>
+<h4 id="switch分支语句"><a href="#switch分支语句" class="headerlink" title="switch分支语句"></a>switch分支语句</h4><p>是一个开关语句，它主要根据内容进行判断,支持String.注意添加break关键字，否则会继续执行。注意添加default关键字</p>
+<h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><p>for(定义循环的初始化数值；循环判断；修改循环数值){<br>    循环执行；<br>}</p>
+<ul>
+<li>在明确循环次数的情况下优先选择for循环</li>
+<li>在不知道循环次数，但知道循坏条件下选择while</li>
+</ul>
+<h4 id="循坏控制"><a href="#循坏控制" class="headerlink" title="循坏控制"></a>循坏控制</h4><p>break：退出整个循坏的结构<br>continue： 在当前的语句之后中的代码不在执行，而直接执行后续的判断处理</p>
+<h4 id="方法的定义"><a href="#方法的定义" class="headerlink" title="方法的定义"></a>方法的定义</h4><ul>
+<li>方法的命名规则</li>
+<li>是一段可以被重复调用的代码块</li>
+</ul>
+<h4 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h4><p>当方法名相同的时候，参数类型或者个数不同的时候就称为方法的重载。</p>
+<ul>
+<li>同一个方法名称，可以根据我们调用时传递的参数类型及个数实现不同方法体的调用</li>
+<li>方法的重载建议其返回值相同</li>
+</ul>
+<h4 id="方法的递归调用"><a href="#方法的递归调用" class="headerlink" title="方法的递归调用"></a>方法的递归调用</h4><ul>
+<li>方法递归调用的结束条件</li>
+<li>每次调用的过程中一定要修改传递的参数条件</li>
+<li>递归操作虽然可以简化的调用，但是在实际开发中很少出现。容易栈溢出</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/java-mian-xiang-dui-xiang-bian-cheng.html" rel="prev" title="Java 面向对象编程">
+                  <i class="fa fa-angle-left"></i> Java 面向对象编程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/dart-ji-ben-yu-fa.html" rel="next" title="dart基本语法">
+                  dart基本语法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

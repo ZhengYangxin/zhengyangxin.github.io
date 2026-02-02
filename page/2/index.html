@@ -1,23 +1,1288 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+<link rel="stylesheet" href="/css/main.css">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Fighting！">
+<meta property="og:url" content="https://yancy.website/page/2/index.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Yangcy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yancy.website/page/2/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Fighting！</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/gen-wo-xue-leetcode-shua-ti-zhi-1-liang-shu-zhi-he.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/gen-wo-xue-leetcode-shua-ti-zhi-1-liang-shu-zhi-he.html" class="post-title-link" itemprop="url">跟我学：LeetCode刷题之1.两数之和</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-01 05:56:50" itemprop="dateCreated datePublished" datetime="2020-04-01T05:56:50+08:00">2020-04-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>该题是leetcode的第一题，也是简单题。但无论题目简单难否，答案却是各式各样。有些题解代码精简明了，有些却是又臭又长；有些题解另辟蹊径，有些却是奇技淫巧，前者代码是需要我们学习，而后者是我们需要知道然后避免的。在本文我将为大家讲解该题前者代码的几种解法，后者代码解法大家充分理解本题后可以去官网逛逛评论或者题解，没准能博君一笑。这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习。</p>
+<p><img src="http://pb3.pstatp.com/large/pgc-image/fe2040e1de044c21aa76abf10e084544" alt="img"></p>
+<h4 id="看题总结"><a href="#看题总结" class="headerlink" title="看题总结"></a>看题总结</h4><p>给定一个<strong>整数数组 nums</strong> 和一个目标值 target，请你在该数组中找出和<strong>为目标值的那 两个 整数</strong>，并返回他们的<strong>数组下标</strong>。</p>
+<p><strong>你可以假设每种输入只会对应一个答案</strong>。但是，你<strong>不能重复利用</strong>这个数组中同样的元素。</p>
+<p><strong>示例:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定 nums = [2, 7, 11, 15], target = 9</span><br><span class="line"></span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure>
+
+<p>Related Topics</p>
+<p>数组</p>
+<p>哈希表</p>
+<p>通过对题目的阅读，我们可以得出以下几个结论</p>
+<ol>
+<li>题目类型是数组类型</li>
+<li>题意在数组中找到和为目标值的两个元素，并返回数组下标。例如num[i] + nums[j] = target。</li>
+<li>每种输入都会有对应的一个答案，意味着输入数组nums肯定是有效的，输入是合法的</li>
+<li>不能重复利用数组中的元素，即满足条件的量元素数组下标不同 i != j，输出要排除i==j的答案</li>
+</ol>
+<h3 id="多解法及复杂度分析"><a href="#多解法及复杂度分析" class="headerlink" title="多解法及复杂度分析"></a>多解法及复杂度分析</h3><h4 id="解法一：暴力法：双重循环"><a href="#解法一：暴力法：双重循环" class="headerlink" title="解法一：暴力法：双重循环"></a>解法一：暴力法：双重循环</h4><p>从题意分析得出的结论,我们只需要在数组中找到下标i，j两个元素。最简单直接的方法就是通过双重循坏，第一重循环确定元素nums[i], 第二重循坏在[i+1, nums.length)中找num[j], 符合条件为nums[j] = target - nums[i];<strong>别忘了i ！= j因为j的最大值是nums.length-1, 所以i的最大值为num.length-2</strong></p>
+<p>针对下面的模板代码<strong>墙裂建议</strong>理解背诵默写，能通过双重循环暴力法解决的题目都可以套用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; nums.length - 1; i++) &#123;</span><br><span class="line">  for (int j = i + 1; j &lt; nums.length; j++) &#123;</span><br><span class="line">    // 条件</span><br><span class="line">    .....</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">  if (nums == null || nums.length &lt; 2) &#123;</span><br><span class="line">    return new int[0];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (int i = 0; i &lt; nums.length - 1; i++) &#123;</span><br><span class="line">    for (int j = i + 1; j &lt; nums.length; j++) &#123;</span><br><span class="line">      int num = target - nums[i];</span><br><span class="line">      if (num == nums[j]) &#123;</span><br><span class="line">        return new int[]&#123;i, nums[j]&#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return new int[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析：</strong></p>
+<p>时间复杂度为O(n^2)：对于每个元素，我们试图通过遍历数组的其余部分来寻找它所对应的目标元素，这将耗费 O(n)O(n) 的时间。</p>
+<p>空间复杂度为O(1)：没有使用辅助空间</p>
+<hr>
+<h4 id="解法二：哈希表-双指针"><a href="#解法二：哈希表-双指针" class="headerlink" title="解法二：哈希表 + 双指针"></a>解法二：哈希表 + 双指针</h4><p>针对这种方法只要哈希表和双指针各自的作用</p>
+<ol>
+<li>哈希表，该题通过Map&lt;Integer, List<Integer>&gt; map存储key为元素值，value为元素值相同的数组下标的集合。</li>
+<li>双指针，针对<strong>有序数组</strong>，定义左右头尾指针left = 0，right = nums.length - 1。通过条件nums[left] + nums[right] 与 target的比较大小，因为是有序数组，若nums[left] + nums[right] &lt; target则left++，否则right–。直到两者相等则存在解。</li>
+<li>因为双指针的是针对有序组求目标值， 所以我们需要对输入数组排序，排序后的元素下标会发生改变，所以我们需要提前用哈希表记录元素下标，元素可能相同所以需要用集合存储。</li>
+</ol>
+<p>理解了上面步骤代码遍不难写出</p>
+<p>哈希表部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, List&lt;Integer&gt;&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">  if (map.containsKey(nums[i])) &#123;</span><br><span class="line">    map.get(nums[i]).add(i);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">    list.add(i);</span><br><span class="line">    map.put(nums[i], list);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>双指针部分，划个重点双指针代码<strong>墙裂建议背诵默写</strong>，数组问题必备结题法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(nums);</span><br><span class="line">int left = 0, right = nums.length - 1;</span><br><span class="line">while (left &lt; right) &#123;</span><br><span class="line">    if (nums[left] + nums[right] == target) &#123;</span><br><span class="line">        return new int[]&#123;map.get(nums[left]).get(0), nums[left] == nums[right] ? map.get(nums[right]).get(1) : map.get(nums[right]).get(0)&#125;;</span><br><span class="line">    &#125; else if (nums[left] + nums[right] &gt; target) &#123;</span><br><span class="line">        right--;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        left++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复杂度分析：</p>
+<p>时间复杂度O(nlogn)：双指针是基于有序数组从两端查找结果时间复杂度为O(n)，<strong>在这里需要注意</strong>数组的排序是通过Arrays.sort(nums)内部会根据数据大小选择插入排序或者双轴快速排序实现，具体可参考源码，也就是说在某些条件下,可以按线性时间对数据进行排序时间复杂度为O(nlogn)，因此最最终的时间复杂度为O(nlogn)</p>
+<p>空间复杂度O(m)：使用了额外的map辅助空间，其中m为nums数组中不同元素的数量。</p>
+<hr>
+<h4 id="解答三：一次遍历哈希表"><a href="#解答三：一次遍历哈希表" class="headerlink" title="解答三：一次遍历哈希表"></a>解答三：一次遍历哈希表</h4><p>该方法为本题的最优解，<strong>需多记多背。</strong>思路很简单很实用，类似于签到找人。如在大型网恋线下见面会上，到场的男男女女第一步是先问一下前台签到人员：我的网恋对象到了吗？前台签到人员查了下签到表，发现他的网恋对象到了则由工作人员带他到对方处，找人成功，否则进行签到安排就做。当他的对象到了就能直接通过签到表由工作人员直接带到他面前。</p>
+<p>签到表即为哈希表用于记录，遍历元素，int num = target - nums[i];若num在map表中则找人成功，否则加入哈希表map.put(nums[i], i);</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">    if (nums == null || nums.length &lt; 2) &#123;</span><br><span class="line">        return new int[0];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map&lt;Integer, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">        int num = target - nums[i];</span><br><span class="line">        if (map.containsKey(num)) &#123;</span><br><span class="line">            return new int[]&#123;map.get(num), i&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(nums[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    return new int[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复杂度分析</p>
+<p>时间复杂度O(n)：针对n长度的数组只进行了一次遍历，且在表中进行的每次查找只花费O(1) 的时间。</p>
+<p>空间复杂度O(n)：所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储 n 个元素。</p>
+<h3 id="同类题相关"><a href="#同类题相关" class="headerlink" title="同类题相关"></a>同类题相关</h3><p>若你反复AC，且充分理解了本题的3种解法，我敢保证下面三题解出来只是时间长短问题。</p>
+<p>在这里还是提醒刷题的朋友，多看几次本文<a href="https://www.toutiao.com/i6809940499399442956/?group_id=6809940499399442956">跟我学：LeetCode刷题大法</a></p>
+<p>LeetCode 15. 三数之和</p>
+<p>LeetCode 16. 最接近的三树之和</p>
+<p>LeetCode 18. 四数之和</p>
+<h3 id="技巧与心得"><a href="#技巧与心得" class="headerlink" title="技巧与心得"></a>技巧与心得</h3><p>开一个github仓库用来记录各种题解，例如本人的<a href="https://github.com/ZhengYangxin/LeetCode">https://github.com/ZhengYangxin/LeetCode</a></p>
+<p>刷题不建议直接在网页上刷，在idea或者vscode中都提供了leecode的插件，谁用谁知道</p>
+<p>遇到不会的题不要慌，直接看题解</p>
+<p>文字类的表述不如视图类的直观，尽量找图文并茂精选图解，或者看leetcode国际站的大牛题解</p>
+<p>图解依旧看着吃力，可以在哔哩哔哩或者YouTube上，通过leecode + 题号，搜索高收视率的视频观看</p>
+<p>反复研读观看，相信我你最终会懂的</p>
+<h3 id="最后的最后"><a href="#最后的最后" class="headerlink" title="最后的最后"></a>最后的最后</h3><p>看到最后，我相信你对本题应该有不一样的感受了吧！come on 动起来，就是干！在此若有不对之处或建议等，留言告诉我；若有疑惑或者不一样的看法，也请告诉我，我们可以一起探讨学习！</p>
+<p>我是Yangcy，该吃吃该喝喝，该学还得学，我们一起加油！</p>
+<img src="/images/follow_end_blog.jpg" style="zoom:30%;" />
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/gen-wo-xue-shen-ru-android-framework-zhi-tan-tan-dui-zygot-de-li-jie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/gen-wo-xue-shen-ru-android-framework-zhi-tan-tan-dui-zygot-de-li-jie.html" class="post-title-link" itemprop="url">跟我学：深入Android Framework之谈谈对Zygote的理解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-31 12:59:49" itemprop="dateCreated datePublished" datetime="2020-03-31T12:59:49+08:00">2020-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Framework/" itemprop="url" rel="index"><span itemprop="name">Framework</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Zygote我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习！</p>
+<img src="/images/image-F8C39DF903A8-1.png" style="zoom:14%;" />
+
+<h3 id="谈谈对Zygote的理解"><a href="#谈谈对Zygote的理解" class="headerlink" title="谈谈对Zygote的理解"></a>谈谈对Zygote的理解</h3><p>当遇到这样一道面试题，我们应该分析面试官想考察的是什么？</p>
+<ul>
+<li>了解Zygote的作用，初级的要求，答出来后方能深入</li>
+<li>熟悉Zygote的启动流程，中级要求，主要是启动中做的事有哪些关键步骤</li>
+<li>深刻理解Zygote的工作原理，高级要求，主要是怎么启动进程的，怎么与其他进程通讯</li>
+</ul>
+<h3 id="Zygote的作用"><a href="#Zygote的作用" class="headerlink" title="Zygote的作用"></a>Zygote的作用</h3><p>他的作用非常简单就两点</p>
+<ul>
+<li>启动SystemServer</li>
+<li>孵化应用进程</li>
+</ul>
+<p>如果答出了这两点那就是及格了。但可能大部分朋友只知道第二点，第一点就不是那么清楚。其实SystemServer也是Zygote启动的，因为SystemServer需要用到Zygote准备好的系统资源：包括我们常用的一些类、注册的JNI函数、主题资源及一些共享库等等，直接从Zygote继承过来自己就不需要重新加载过来，那么对性能将会有很大的提升。</p>
+<h3 id="Zygote的启动流程"><a href="#Zygote的启动流程" class="headerlink" title="Zygote的启动流程"></a>Zygote的启动流程</h3><p>在说Zygote启动流程之前，我们可以明确一个概念：<strong>启动三段式</strong>，这个可以理解为Android中进程启动的常用套路，分为三步骤</p>
+<ol>
+<li>进程启动</li>
+<li>准备工作</li>
+<li>LOOP循环</li>
+</ol>
+<p>其中LOOP作用是<strong>不停的接受消息，处理消息</strong>，消息的来源可以是Soket、MessageQueue、Binder驱动发过来的消息，但无论消息从哪里来，它总的流程都是去接受消息，处理消息。</p>
+<p>这个启动三段式，他不光是Zygote进程是这样的，只要是有独立进程的，比如说系统服务进程，自己的应用进程都是这样的。</p>
+<h4 id="Zygote进程是怎么启动的？"><a href="#Zygote进程是怎么启动的？" class="headerlink" title="Zygote进程是怎么启动的？"></a>Zygote进程是怎么启动的？</h4><p>Zygote进程的启动，得感谢init进程。init进程是它是linux启动之后用户空间的第一个进程。下面看一下<strong>启动流程</strong></p>
+<ol>
+<li>linux启动init进程</li>
+<li>加载init.rc配置文件</li>
+<li>启动配置文件中定义的系统服务，其中Zygote服务就是定义在配置中的</li>
+<li>init进程通过fork + execve 系统调用启动Zygote</li>
+</ol>
+<p>在分析具体系统源码实现之前，我分享一个看源码很方便网站Android社区：<a href="http://www.androidos.net.cn">www.androidos.net.cn</a></p>
+<p>下面列举了本文需要阅读的源码文件路径，供大家方便查找。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">platform/system/core/rootdir/init.zygoteXX.rc</span><br><span class="line">platform/system/core/rootdir/init.rc</span><br><span class="line">platform/frameworks/base/cmds/app_process/app_main.cpp</span><br><span class="line">platform/frameworks/base/core/jni/AndroidRuntime.cpp</span><br><span class="line">platform/libnativehelper/JniInvocation.cpp</span><br><span class="line">platform/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java</span><br></pre></td></tr></table></figure>
+
+<h4 id="加载Zygot的启动配置"><a href="#加载Zygot的启动配置" class="headerlink" title="加载Zygot的启动配置"></a>加载Zygot的启动配置</h4><p>在init.rc 文件中会import /init.${ro.zygote}.rc，init.zygoteXX,XX指的是32或者64，对我们没差我们直接看init.zygote32.rc即可。配置文件比较长，我这里做了截取保留了Zygot相关的部分。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server</span><br><span class="line">    class main</span><br><span class="line">    socket zygote stream 660 root system</span><br><span class="line">    onrestart write /sys/android_power/request_state wake</span><br><span class="line">    onrestart write /sys/power/state on</span><br><span class="line">    onrestart restart audioserver</span><br><span class="line">    writepid /dev/cpuset/foreground/tasks</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>service zygote：是进程名称， </li>
+<li>/system/bin/app_process：可执行程序的路径，用于init进程fork，execve调用</li>
+<li>-Xzygote /system/bin –zygote –start-system-server 为它的参数</li>
+</ul>
+<h4 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h4><p>获取到启动配置后才会进行正式启动，启动方式有两种</p>
+<ul>
+<li>fork + handle </li>
+<li>fork + execve</li>
+</ul>
+<p>首先都会调用fork创建新的进程，比较奇特的是它会返回两次。</p>
+<ul>
+<li>子进程一次，返回的pid是0 父进程一次，返回的pid是子进程的pid</li>
+<li>对于handle默认的情况，子进程会继承父进程的所有资源，但当通过execve去加载二进制程序时，那父进程的资源则会被清除</li>
+</ul>
+<h4 id="信号处理-SIGCHLD。"><a href="#信号处理-SIGCHLD。" class="headerlink" title="信号处理-SIGCHLD。"></a>信号处理-SIGCHLD。</h4><p>当父进程fork子进程后，父进程需要关注这个信号。当子进程挂了，父进程就会收到SIGCHLD，这时候父进程就可以做一些处理。例如Zygote进程如果挂了，那父进程init进程就会收到信号将Zygote进程重启</p>
+<h4 id="Zygote进程启动后做了什么"><a href="#Zygote进程启动后做了什么" class="headerlink" title="Zygote进程启动后做了什么"></a>Zygote进程启动后做了什么</h4><p>主要分为两部分Native层处理和Java层处理。</p>
+<p>先来看一下Native层的处理</p>
+<ul>
+<li>启动Android虚拟机</li>
+<li>注册Android的JNI函数</li>
+<li>进入Java层</li>
+</ul>
+<p>在app_main.cpp文件，AndroidRuntime.cpp文件。我们可以找到几个主要函数名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JNI_CreateJavaVM   // 创建启动虚拟机</span><br><span class="line">jniRegisterNativeMethods(env, &quot;com/android/internal/os/ZygoteInit&quot;,</span><br><span class="line">        methods, NELEM(methods)) // 通过反射获取ZygoteInit对象</span><br><span class="line">env-&gt;CallStaticVoidMethod(startClass, startMeth, strArray);//调用main函数,进入Java层</span><br></pre></td></tr></table></figure>
+
+<p>在应用进程中并不需要创建虚拟机，因为应用进程是Zygote进程孵化出来的，继承了父进程的拥有虚拟机，只需要重置数据即可。</p>
+<p>接着看一下Java层的处理，具体可参考ZygoteInit文件的main方法</p>
+<ul>
+<li>预加载资源，常用类库、主题资源及一些共享库等</li>
+<li>启动SystemServer进程</li>
+<li>进入Socket 的Loop循环 会看到的ZygoteServer.runSelectLoop(…)调用</li>
+</ul>
+<h3 id="Zygote的工作原理"><a href="#Zygote的工作原理" class="headerlink" title="Zygote的工作原理"></a>Zygote的工作原理</h3><p>Zygote的LOOP循环会一直监听Socket中的内容，所以Zygote与其他进程的通信是通过Socket的，工作原理举个例子</p>
+<ol>
+<li>桌面应用点击某应用图标，若应用没有启动进程</li>
+<li>AMS会通过Socket通知Zygote进程</li>
+<li>Zygote进程接受到消息后fork出一个应用进程</li>
+<li>执行应用进程的ActivityThread的main方法</li>
+</ol>
+<h3 id="要注意的细节"><a href="#要注意的细节" class="headerlink" title="要注意的细节"></a>要注意的细节</h3><p>Zygote fork要单线程进行，在fork时Zygote会将除主进程外的所有线程都停了成功后重启，因为对于新创建的子进程而言只有主线程，避免多线程的死锁问题</p>
+<p>Zygote的IPC没有采用binder，而是本地Socket</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>看到最后，我相信你一定对Zygote有一定了解了吧。回头看看第一部分的考查内容讲讲呗，对于每一个点的重点我都细心的为你做了高亮。还有纸上得来终觉浅，绝知此事要躬行。本文参考了Android api28的源码，希望你也去踩着点过一遍源码，肯定能加深理解！</p>
+<img src="/images/follow_end_blog.jpg" style="zoom:30%;" />
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/wang-luo-zhi-shi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/wang-luo-zhi-shi.html" class="post-title-link" itemprop="url">网络知识</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-09 13:04:47" itemprop="dateCreated datePublished" datetime="2020-03-09T13:04:47+08:00">2020-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="OSI-七层网络模型"><a href="#OSI-七层网络模型" class="headerlink" title="OSI 七层网络模型"></a>OSI 七层网络模型</h4><ol>
+<li>应用层： 为用户进程提供网络服务</li>
+<li>表示层：负责数据的转化，数据的压缩/解压，数据的加密/解密等</li>
+<li>会话层：负责会话的建立，管理，销毁等服务</li>
+<li>传输层：基于TCP/UDP进行 端口对端口的传输</li>
+<li>IP层：数据打包成IP数据报，在路由器/交换机上传输</li>
+<li>数据链路层: </li>
+<li>物理层：</li>
+</ol>
+<h4 id="TCP-IP-网络模型"><a href="#TCP-IP-网络模型" class="headerlink" title="TCP/IP 网络模型"></a>TCP/IP 网络模型</h4><ol>
+<li>应用层</li>
+<li>传输层</li>
+<li>IP层</li>
+<li>数据链路层</li>
+</ol>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><h4 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h4><h4 id="HTTPDNS优化"><a href="#HTTPDNS优化" class="headerlink" title="HTTPDNS优化"></a>HTTPDNS优化</h4><h3 id="HTTP-的版本区别"><a href="#HTTP-的版本区别" class="headerlink" title="HTTP 的版本区别"></a>HTTP 的版本区别</h3><h5 id="HTTP1-0与-HTTP1-1"><a href="#HTTP1-0与-HTTP1-1" class="headerlink" title="HTTP1.0与 HTTP1.1"></a>HTTP1.0与 HTTP1.1</h5><ol>
+<li>缓存优化</li>
+<li>网络带宽及网络连接都优化</li>
+<li>host请求头添加</li>
+<li>支持长连接（串行单线程处理请求，可以同时发起多个请求，但必须等待前一个请求处理完，才会处理新的请求，否则只能被阻塞）</li>
+</ol>
+<h5 id="HTTP1-1与HTTP2-0"><a href="#HTTP1-1与HTTP2-0" class="headerlink" title="HTTP1.1与HTTP2.0"></a>HTTP1.1与HTTP2.0</h5><ol>
+<li>新的二进制文件</li>
+<li>多路复用（多个请求可以在一个连接上并行执行，某个请求耗时严重，不会影响到其他连接的正常执行）<ol>
+<li>做到了延迟的优化，TCP连接是慢启动，因此突发性和短时性的http连接不高效，通过复用连接可以更有效的使用TCP</li>
+</ol>
+</li>
+<li>Header压缩 （一个页面有100个资源要加载，而每次请求都有1kb的消息头，则至少要消耗100kb获取请求头，http2.0，维护了一个字典，用以差量更新http头部）</li>
+<li>服务端推送（服务端会主动把客户端所需要的资源一起发给客户端）</li>
+</ol>
+<h3 id="TCP-与UDP"><a href="#TCP-与UDP" class="headerlink" title="TCP 与UDP"></a>TCP 与UDP</h3><p>TCP 是面向连接的，可靠，慢，占用头部字节20多</p>
+<p>UDP是无连接的，尽最大交付，快，占用头部字节少8</p>
+<h4 id="TCP三次握手"><a href="#TCP三次握手" class="headerlink" title="TCP三次握手"></a>TCP三次握手</h4><h4 id="TCP四次挥手"><a href="#TCP四次挥手" class="headerlink" title="TCP四次挥手"></a>TCP四次挥手</h4><h4 id="TCP与UDP比较"><a href="#TCP与UDP比较" class="headerlink" title="TCP与UDP比较"></a>TCP与UDP比较</h4>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/algorithm-xi-lie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/algorithm-xi-lie.html" class="post-title-link" itemprop="url">Algorithm 系列</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-03 14:11:28" itemprop="dateCreated datePublished" datetime="2020-03-03T14:11:28+08:00">2020-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="算法的学习"><a href="#算法的学习" class="headerlink" title="算法的学习"></a>算法的学习</h3><h4 id=""><a href="#" class="headerlink" title=""></a><a href="/gen-wo-xue-leetcode-shua-ti-da-fa.html" title="跟我学：LeetCode刷题大法">跟我学：LeetCode刷题大法</a></h4><h4 id="-1"><a href="#-1" class="headerlink" title=""></a><a href="/shi-me-shi-suan-fa.html" title="什么是算法">什么是算法</a></h4><h4 id="-2"><a href="#-2" class="headerlink" title=""></a><a href="/suan-fa-mian-shi-zhun-bei.html" title="算法面试准备">算法面试准备</a></h4><h3 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h3><h4 id="自己的LeetCode代码库"><a href="#自己的LeetCode代码库" class="headerlink" title="自己的LeetCode代码库"></a><a href="https://github.com/ZhengYangxin/LeetCode">自己的LeetCode代码库</a></h4><h4 id="比较好的算法总结"><a href="#比较好的算法总结" class="headerlink" title="比较好的算法总结"></a><a href="https://github.com/labuladong/fucking-algorithm">比较好的算法总结</a></h4><h3 id="题目索引"><a href="#题目索引" class="headerlink" title="题目索引"></a>题目索引</h3><h4 id="-3"><a href="#-3" class="headerlink" title=""></a><a href="/gen-wo-xue-leetcode-shua-ti-zhi-1-liang-shu-zhi-he.html" title="跟我学：LeetCode刷题之1.两数之和">跟我学：LeetCode刷题之1.两数之和</a></h4><h4 id="-4"><a href="#-4" class="headerlink" title=""></a><a href="/gen-wo-xue-leetcode-shua-ti-zhi-2-liang-shu-xiang-jia.html" title="跟我学：LeetCode刷题之2.两数相加">跟我学：LeetCode刷题之2.两数相加</a></h4><h4 id="-5"><a href="#-5" class="headerlink" title=""></a><a href="/gen-wo-xue-leetcode-shua-ti-zhi-3-wu-chong-fu-zi-fu-de-zui-chang-zi-chuan.html" title="跟我学：LeetCode刷题之3. 无重复字符的最长子串">跟我学：LeetCode刷题之3. 无重复字符的最长子串</a></h4>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-xi-lie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/android-xi-lie.html" class="post-title-link" itemprop="url">Android系列</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-03 13:58:57" itemprop="dateCreated datePublished" datetime="2020-03-03T13:58:57+08:00">2020-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id=""><a href="#" class="headerlink" title=""></a><a href="/protocol-buffer-shi-yong-he-yuan-li.html" title="protocol buffer 使用和原理">protocol buffer 使用和原理</a></h4><h3 id="深入学习Android-Framework"><a href="#深入学习Android-Framework" class="headerlink" title="深入学习Android Framework"></a>深入学习Android Framework</h3><h4 id="-1"><a href="#-1" class="headerlink" title=""></a><a href="/gen-wo-xue-shen-ru-android-framework-zhi-tan-tan-dui-zygot-de-li-jie.html" title="跟我学：深入Android Framework之谈谈对Zygote的理解">跟我学：深入Android Framework之谈谈对Zygote的理解</a></h4><h4 id="-2"><a href="#-2" class="headerlink" title=""></a><a href="/gen-wo-xue-android-gao-ji-mian-shi-zhi-shuo-shuo-android-xi-tong-de-qi-dong-liu-cheng.html" title="跟我学：Android高级面试之说说Android系统的启动流程">跟我学：Android高级面试之说说Android系统的启动流程</a></h4>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/protocol-buffer-shi-yong-he-yuan-li.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/protocol-buffer-shi-yong-he-yuan-li.html" class="post-title-link" itemprop="url">protocol buffer 使用和原理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-01 19:08:10" itemprop="dateCreated datePublished" datetime="2020-03-01T19:08:10+08:00">2020-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Protocol-Buffer-介绍"><a href="#Protocol-Buffer-介绍" class="headerlink" title="Protocol Buffer 介绍"></a>Protocol Buffer 介绍</h3><p>Protocol Buffer 是一种轻便高效的结构化数据格式，可以用于结构化数据的序列号，适合做数据存储和RPC数据交换格式，他是平台无关，语言无关，可扩展的序列号结构数据格式</p>
+<h4 id="结构化数据格式"><a href="#结构化数据格式" class="headerlink" title="结构化数据格式"></a>结构化数据格式</h4><ol>
+<li>XML, 通过标签定义的</li>
+<li>JSON，通过键值对定义的</li>
+<li>DB，数据库</li>
+</ol>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><ol>
+<li>Serilizable</li>
+<li>Parseable</li>
+</ol>
+<h4 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h4><ol>
+<li>RPC数据交换格式 即网络通讯</li>
+<li>数据存储</li>
+</ol>
+<h4 id="跨平台，语言"><a href="#跨平台，语言" class="headerlink" title="跨平台，语言"></a>跨平台，语言</h4><p>如json，不限操作平台和编程语言同可以使用json</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>序列化后的体积相比json和xml很小，适合网络传输  40M的json数据  17M Protobuffer</li>
+<li>支持跨平台，多语言</li>
+<li>消息格式升级和兼容性不错</li>
+<li>序列化反序列化快   40M的json数据  10s, Protobuffer 0.8s</li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Android studio 环境配置</p>
+<h4 id="配置应用build"><a href="#配置应用build" class="headerlink" title="配置应用build"></a>配置应用build</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &#x27;com.android.tools.build:gradle:3.1.0&#x27;</span><br><span class="line">        classpath &#x27;com.google.protobuf:protobuf-gradle-plugin:0.8.10&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="配置module-build-gradle"><a href="#配置module-build-gradle" class="headerlink" title="配置module build.gradle"></a>配置module build.gradle</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.android.application&#x27;</span><br><span class="line">apply plugin: &#x27;com.google.protobuf&#x27;</span><br><span class="line">protobuf &#123;</span><br><span class="line">    protoc &#123;</span><br><span class="line">        artifact = &#x27;com.google.protobuf:protoc:3.8.0&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">    generateProtoTasks &#123;</span><br><span class="line">        all().each &#123; task -&gt;</span><br><span class="line">            task.builtins &#123;</span><br><span class="line">                java &#123;</span><br><span class="line">                    option &quot;lite&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(dir: &#x27;libs&#x27;, include: [&#x27;*.jar&#x27;])</span><br><span class="line">    implementation &#x27;com.google.protobuf:protobuf-javalite:3.9.1&#x27;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="构建消息"><a href="#构建消息" class="headerlink" title="构建消息"></a>构建消息</h4><p>消息由至少一个字段组合而成：字段 = 字段修饰符 + 字段类型 + 字段名 + 标识符<br>标识符TAG：每个字段的唯一标识数字，用于说明二进制文件的对应关系，不能修改，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">syntax = &quot;proto3&quot;;</span><br><span class="line"></span><br><span class="line">//option java_package = &quot;www.dcf.com.vo&quot;;</span><br><span class="line">package tutorial;</span><br><span class="line"></span><br><span class="line">option java_package = &quot;com.zyx.proto&quot;;</span><br><span class="line">option java_outer_classname = &quot;TestProto&quot;;</span><br><span class="line"></span><br><span class="line">message test &#123;</span><br><span class="line">     int32     id = 1;  // ID</span><br><span class="line">     string    str = 2;  // str</span><br><span class="line">     int32     opt = 3;  //optional field</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="Studio-自动生成代码"><a href="#Studio-自动生成代码" class="headerlink" title="Studio 自动生成代码"></a>Studio 自动生成代码</h4><p>通过Android Studio build，Protobuf插件会帮助我们自动生成TestProto类，类结构如下</p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/proto_generate_code.png" alt=""></p>
+<p>Protobuf帮助我们自动生成了testOrBuilder接口，主要定义了个字段的get，set方法，并生成了test类，核心逻辑，通过writeTo（CodedOutputStream）接口序列化到CodedOutputStream，通过parseFrom(InputStream) 接口从InputStream中反序列化</p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/protobuffer_struct.png" alt=""></p>
+<h3 id="ProtoBuffer-原理"><a href="#ProtoBuffer-原理" class="headerlink" title="ProtoBuffer 原理"></a>ProtoBuffer 原理</h3><p>ProtoBuffer不管在时间还是空间上更加高效，是怎么做到的？</p>
+<p>消息经过ProtoBuffer序列化后会成为二进制数据流，通过key-Value组成方式写入到二进制数据流。</p>
+<h4 id="编码机制"><a href="#编码机制" class="headerlink" title="编码机制"></a>编码机制</h4><h5 id="Base-128-Varints"><a href="#Base-128-Varints" class="headerlink" title="Base 128 Varints"></a>Base 128 Varints</h5><p>是一种可变字节序列化整形的方法</p>
+<ol>
+<li>每个byte的最高位是标志位(msb), 如果是1，则表示后面还有byte，否则为结束byte</li>
+<li>每个byte的低7位用来存储数值的位</li>
+<li>Varints方法用Litte-Endian(小端)字节序列</li>
+</ol>
+<h4 id="消息结构"><a href="#消息结构" class="headerlink" title="消息结构"></a>消息结构</h4><h5 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h5><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Meaning</th>
+<th align="center">Used For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">Varint</td>
+<td align="center">int32,int64,uinit32,uint64,sint32,sint64,bool,enum</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">64-bit</td>
+<td align="center">fixed64,sfixed64,double</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Length-delimited</td>
+<td align="center">string,bytes,embedded messages</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">32-bit</td>
+<td align="center">fixed32,sfixed32,float</td>
+</tr>
+</tbody></table>
+<h5 id="key"><a href="#key" class="headerlink" title="key"></a>key</h5><p>key的具体值为   (field_number &lt;&lt; 3) | wire_type，</p>
+<p>以上面的例子来说，如字段id定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int32 id = 2; // 150</span><br></pre></td></tr></table></figure>
+
+<p>在序列化时，并不会把字段id写进二进制流中，而是把<code>field_number=2</code>通过上述<code>Key</code>的定义计算后写进二进制流中，这就是Protobuf可读性差的原因，也是其高效的主要原因。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">key = (field_number &lt;&lt; 3) | wire_type = 2 &lt;&lt; 3 | 0 = 10000 |0 = 16  = 0x10</span><br><span class="line">value 150 二进制位1001 0110  </span><br><span class="line">最高位 为msb，将它分为一个一组</span><br><span class="line">1 0010110 进行补齐 0000001 0010110</span><br><span class="line">小端序存储则为0010110  0000001</span><br><span class="line">补齐 表示为msb   10010110 00000001 = 0x96  0x01</span><br><span class="line">则最后的存储为 10 96 01</span><br><span class="line"></span><br><span class="line">如果value 300 二进制为 100101100</span><br><span class="line">最高位为msb， 进行7位一组分组</span><br><span class="line">10  0101100  进行补齐0000010 0101100</span><br><span class="line">小端序存储 10101100 00000010  = 0xac 0x2</span><br><span class="line">则最后存储为 10 ac 02</span><br></pre></td></tr></table></figure>
+
+<p>key的范围：wire_type只有六种类型，用3bit表示，在一个byte里，去掉mbs，以及3bit的wire_type,只剩下4bit来表示field_number,因此一个Byte里，field_number只能表达0-15，超过15个需要多个byte表示</p>
+<h5 id="负数"><a href="#负数" class="headerlink" title="负数"></a>负数</h5><p>所谓ZigZag编码即将负数转换成正数，而所有正数都乘2，如0编码成0，-1编码成1，1编码成2，-2编码成3，以此类推，因而它对负数的编码依然保持比较高的效率。</p>
+<h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>Varint适用于表达比较小的整形，当数字很大时，采用定长编码类型(64bit,32bit)</li>
+<li>不利于表达负数，负数采用补码表示，会占用更多字节，确定出现负数用sint32,sint64,他会采用ZigZig编码将负数映射成整数，之后再使用Varint编码</li>
+</ul>
+<p>Length-delimited</p>
+<ul>
+<li><p>Length-delimited编码格式会将数据的length也编码进最终的数据，编码格式有string，bytes，自定义消息</p>
+</li>
+<li><p>在消息中将str = “testing”, </p>
+<p>序列化的打印结果 为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> private void test() &#123;</span><br><span class="line">        TestProto.test.Builder test = TestProto.test.newBuilder();</span><br><span class="line">        TestProto.test test1 = test.setStr(&quot;testing&quot;).build();</span><br><span class="line">        // 序列化</span><br><span class="line">        byte[] bytes = test1.toByteArray();</span><br><span class="line"></span><br><span class="line">        for (byte aByte : bytes) &#123;</span><br><span class="line">            System.out.print(aByte +&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 18 7 116 101 115 116 105 110 103</span><br><span class="line">str 的field_number = 2; str = &quot;testing&quot;</span><br><span class="line">key = (field &lt;&lt; 3) | wire_type = 2 &lt;&lt; 3 | 2 = 10000 | 10 = (十进制) 18 = (16进制)0x12</span><br><span class="line">7 为 value的长度testing长度为7</span><br><span class="line">然后计算value的每个字母 t 在ASCII中的 十进制数是 116， e 为101， s为115 以此类推</span><br><span class="line">发现每个byte存储的是计算后的10进制数字，和网上说16进制 byte存储方式不一致 12 07 74 65 73 74 69 6e 67</span><br><span class="line">现在按照16进制存储计算</span><br><span class="line">key = 12 已经确定</span><br><span class="line">t 的二进制为 0111 0100 16 进制为74</span><br><span class="line">e 则为65 ..</span><br><span class="line">所以string的转换方式是 key的16进制 + 字符串长度16进制 + 字符串的每个字母的16进制</span><br></pre></td></tr></table></figure>
+
+<h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><p>通过原理破解，在通过观察源码Protobuffer的序列化和反序列化同时通过几个位运算实现的，所以他的效率高，体积小</p>
+</li>
+</ul>
+<h4 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h4><ul>
+<li>尽量不要修改tag</li>
+<li>字段数量不要超过16个，否则会采用2个字节编码, (1个字节最大值为128， key的计算会通过field_number &lt;&lt; 3 | wire_type, 当field_number 为16时刚好使用了1个字节计算，否则就需要两个字节计算)</li>
+<li>如果确定使用负数，采用sint32/sint64</li>
+</ul>
+<h3 id="FastJson对比"><a href="#FastJson对比" class="headerlink" title="FastJson对比"></a>FastJson对比</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html">Google Protocol Buffer 的使用和原理</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/flutter-zhi-xing-neng-ce-shi-he-li-lun.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/flutter-zhi-xing-neng-ce-shi-he-li-lun.html" class="post-title-link" itemprop="url">flutter之性能测试和理论</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-28 15:07:54" itemprop="dateCreated datePublished" datetime="2020-01-28T15:07:54+08:00">2020-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="Flutter的渲染阶段"><a href="#Flutter的渲染阶段" class="headerlink" title="Flutter的渲染阶段"></a>Flutter的渲染阶段</h4><p><strong>VSync-&gt;Animation-&gt;Build-&gt;Layout-&gt;Paint-&gt;Display List(GPU)</strong></p>
+<ul>
+<li>Build ： Widget，Element树</li>
+<li>Layout，Paint： RenderObject树的创建</li>
+<li>Display List(GPU)，是对Layer图层的创建</li>
+</ul>
+<h4 id="检查Flutter的渲染"><a href="#检查Flutter的渲染" class="headerlink" title="检查Flutter的渲染"></a>检查Flutter的渲染</h4><p>Debug模式和最终的生产模式，有很大的性能特点，所以在做真实的测量之前都用Profile模式</p>
+<ul>
+<li>Debug模式</li>
+<li>Profile模式</li>
+</ul>
+<h4 id="RenderObject"><a href="#RenderObject" class="headerlink" title="RenderObject"></a>RenderObject</h4><p>它不是一个顶层Api，并且充分利用了组合的性质，所以他的公共方法比Android的View少</p>
+<ul>
+<li>是Flutter的UI单位，有很长的生命周期和状态</li>
+<li>主要方法<ul>
+<li>createRenderObject、updateRenderObject</li>
+<li>performLayout</li>
+<li>paint</li>
+</ul>
+</li>
+</ul>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><ul>
+<li>ComponentElement，主要是做组合的，不直接参与布局绘制<ul>
+<li>StatelessElement</li>
+<li>StatefulElement</li>
+</ul>
+</li>
+<li>RenderObjectElement，会对RenderObject树上的RenderObject做连接</li>
+</ul>
+<h4 id="同类型更新"><a href="#同类型更新" class="headerlink" title="同类型更新"></a>同类型更新</h4><p>修改某个Text的值</p>
+<ul>
+<li>Build<ul>
+<li>在Flutter中Widget树是不可改变的，这也包括树节点之间的父子关系</li>
+<li>在开始build时，会创造一个新的树</li>
+<li>遍历Element，通过Element.updateChild(),观察子节点，若子节点类型发生改变，则会扔掉老节点，创造一个新的节点</li>
+<li>更新过程中，若Element是Component则build即可，若是RenderObjectElement则会updateRenderObject</li>
+<li>若内容发生改变会进行标脏处理</li>
+</ul>
+</li>
+</ul>
+<h4 id="Buid性能测试工具"><a href="#Buid性能测试工具" class="headerlink" title="Buid性能测试工具"></a>Buid性能测试工具</h4><ul>
+<li>观望台，TimeLine，类似安卓的systrace,设置debugProfileBuildsEnable = true,检查build过程的性能损耗</li>
+<li>遍历的触发 <ul>
+<li>setState方法</li>
+<li>依赖了InHeritedWidget,当InHeritedWidget发生改变会影响其他</li>
+<li>热重载，所有节点都会被更新</li>
+</ul>
+</li>
+<li>提高build效率<ul>
+<li>通过Extra单独的Widget，减少遍历的节点</li>
+<li>停止遍历</li>
+</ul>
+</li>
+</ul>
+<h4 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h4><p>在工程完成后会对RenderObject的某些节点进行标脏，让他重新绘制。<br>debugProfileBuildsEnabled = true;<br>debugProfilePaintsEnabled = true;<br>debugPaintLayerBordersEnabled = true;</p>
+<ul>
+<li>如何知道多少其他节点需要跟被标脏的树一起被更新呢？<ul>
+<li>基于图层树Layer</li>
+<li>更新指定图层</li>
+</ul>
+</li>
+<li>Layer种类<ul>
+<li>PictureLayer</li>
+<li>ContainerLayer:主要用于做PictureLayer的连接</li>
+</ul>
+</li>
+</ul>
+<p>yum -y install wget<br>wget -N –no-check-certificate <a href="https://softs.fun/Bash/ssr.sh">https://softs.fun/Bash/ssr.sh</a> &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/flutter-zhi-ping-tai-ji-cheng.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/flutter-zhi-ping-tai-ji-cheng.html" class="post-title-link" itemprop="url">flutter之平台集成</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-26 18:37:22" itemprop="dateCreated datePublished" datetime="2020-01-26T18:37:22+08:00">2020-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

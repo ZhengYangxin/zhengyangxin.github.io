@@ -1,23 +1,1065 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+<link rel="stylesheet" href="/css/main.css">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Fighting！">
+<meta property="og:url" content="https://yancy.website/page/6/index.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Yangcy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yancy.website/page/6/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/6/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Fighting！</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/cha-jian-hua-xue-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/cha-jian-hua-xue-xi.html" class="post-title-link" itemprop="url">插件化学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-26 17:03:34" itemprop="dateCreated datePublished" datetime="2019-09-26T17:03:34+08:00">2019-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="插件化的目的"><a href="#插件化的目的" class="headerlink" title="插件化的目的"></a>插件化的目的</h4><ol>
+<li><p>自解耦</p>
+</li>
+<li><p>免安装</p>
+</li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/zi-ding-yi-ui.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/zi-ding-yi-ui.html" class="post-title-link" itemprop="url">自定义UI之Paint</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-26 12:24:40" itemprop="dateCreated datePublished" datetime="2019-09-26T12:24:40+08:00">2019-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="Paint画笔"><a href="#Paint画笔" class="headerlink" title="Paint画笔"></a>Paint画笔</h4><p>画笔的实现内部都是调用native方法的，画笔的基础Api</p>
+<ol>
+<li>setColor(Color.RED)</li>
+<li>setARGB(),setAlpha  设置颜色及透明度</li>
+<li>setAntiAlias(true) 抗锯齿</li>
+<li>setStyle() Paint.Style.STROKE/FILL/FILL_AND_STROKE  描边，填充效果</li>
+<li>setStrokeWidth() 描边宽度</li>
+<li>setStrokeCap() Paint.Cap.BUTT/ROUND/SQUARE  线尾部形状 默认BUTT,round圆角效果，方形</li>
+<li>setStrokeJoin() 拐角效果，MITER/ROUND/BEVEL 默认MITER尖角，圆角，折角</li>
+<li>setShader(Shader shader) 设置环形渲染器</li>
+<li>setXfermode() 设置图层混合模式</li>
+<li>setColorFilter()设置颜色过滤器</li>
+<li>setFilterBitmap(true) 设置双线性过滤，使图片更加平滑</li>
+<li>setMaskFilter() 设置画笔的遮罩滤镜</li>
+<li>setTextScalX(2) 设置缩放文本倍数</li>
+<li>setTextSize(38) 设置文本字体大小</li>
+<li>setTextAlign() 对齐方式</li>
+<li>setUnderLineText(true) 设置下划线</li>
+<li>getTextBounds(str, 0, str.length(), rect) 测量文本大小，将文本大小信息存放在rect中</li>
+<li>measureText(str) 测量文本的宽</li>
+<li>getFontMetrics()获取字体度量对象, 变量包括ascent,descent,top,bottom,leading ,字体的高度为descent - ascennt, leading为行间距是当前字的ascent - 上一个字的descent</li>
+</ol>
+<h4 id="setShader-Shader-shader-设置环形渲染器-着色器"><a href="#setShader-Shader-shader-设置环形渲染器-着色器" class="headerlink" title="setShader(Shader shader) 设置环形渲染器(着色器)"></a>setShader(Shader shader) 设置环形渲染器(着色器)</h4><ol>
+<li>LinearGradient 线性渲染</li>
+<li>RadilGradient 环形渲染</li>
+<li>SweepGradient 扫描渲染</li>
+<li>BitmapGradient 位图渲染</li>
+</ol>
+<h5 id="TileMode-平铺模式"><a href="#TileMode-平铺模式" class="headerlink" title="TileMode 平铺模式"></a>TileMode 平铺模式</h5><ol>
+<li>CLAMP 超出后 以最后像素拉升填充  </li>
+<li>REPEAT 超出后重复平铺</li>
+<li>MIRROR 镜像填充</li>
+</ol>
+<h4 id="组合渲染器，图层混合模式Xfermode"><a href="#组合渲染器，图层混合模式Xfermode" class="headerlink" title="组合渲染器，图层混合模式Xfermode"></a>组合渲染器，图层混合模式Xfermode</h4><p><strong>PortorDuff.Mode</strong></p>
+<ol>
+<li>使用场景<ul>
+<li>ComposeShader 组合渲染器</li>
+<li>Paint.setXfermode()</li>
+<li>porterDuffColorFilter 颜色过滤器</li>
+</ul>
+</li>
+<li>使用注意<ul>
+<li>静止硬件加速，14之后图层混合不支持硬件加速，但系统是默认打开的setLayerType(View.LAYER_SOFTWARE, null)</li>
+<li>离屏绘制，去除背景等其他干扰,保证xfermode不会出现错误结果saveLayer  ,restoreToCount,<h4 id="setColorFilter"><a href="#setColorFilter" class="headerlink" title="setColorFilter"></a>setColorFilter</h4></li>
+</ul>
+</li>
+</ol>
+<p><strong>LightColorFilter</strong><br>颜色过滤器，可以过滤掉指定颜色<br><strong>PorterDuffFilter</strong><br>颜色和其他的图层混合<br><strong>颜色矩阵ColorMatrixColorFilter</strong><br>通过修改颜色矩阵Matrix数组中的值</p>
+<h4 id="画笔滤镜总结"><a href="#画笔滤镜总结" class="headerlink" title="画笔滤镜总结"></a>画笔滤镜总结</h4><ol>
+<li>简单的模拟光照效果，可以使用LightColorFilter</li>
+<li>图像与颜色的，图层混合的实现，PorterDuffColorFilter</li>
+<li>颜色数组及颜色举证实现滤镜效果</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/ppt-zhi-zuo-xue-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/ppt-zhi-zuo-xue-xi.html" class="post-title-link" itemprop="url">PPT 制作学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-25 21:00:18" itemprop="dateCreated datePublished" datetime="2019-09-25T21:00:18+08:00">2019-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">技能</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h5 id="PPT的学习记录"><a href="#PPT的学习记录" class="headerlink" title="PPT的学习记录"></a>PPT的学习记录</h5><h4 id="PPT学习之剪切"><a href="#PPT学习之剪切" class="headerlink" title="PPT学习之剪切"></a>PPT学习之剪切</h4><p>通过剪切可以得到一组图片，作为PPT的背景样式即板式，做到风格统一</p>
+<h4 id="PPT之基本四步骤"><a href="#PPT之基本四步骤" class="headerlink" title="PPT之基本四步骤"></a>PPT之基本四步骤</h4><ol>
+<li>字体统一</li>
+<li>突出标题</li>
+<li>颜色取巧</li>
+<li>配图</li>
+</ol>
+<h4 id="PPT之四大技能"><a href="#PPT之四大技能" class="headerlink" title="PPT之四大技能"></a>PPT之四大技能</h4><ol>
+<li>复制</li>
+<li>清除格式</li>
+<li>更改图片</li>
+<li>PPT草稿</li>
+</ol>
+<h4 id="PPT之人物图片处理"><a href="#PPT之人物图片处理" class="headerlink" title="PPT之人物图片处理"></a>PPT之人物图片处理</h4><ol>
+<li>聚焦脸部</li>
+<li>圆形剪裁</li>
+<li>图片装饰</li>
+<li>去掉颜色</li>
+</ol>
+<h4 id="PPT之风格迥异的处理"><a href="#PPT之风格迥异的处理" class="headerlink" title="PPT之风格迥异的处理"></a>PPT之风格迥异的处理</h4><ol>
+<li>调节大小，基准线</li>
+<li>等比裁剪</li>
+<li>横向分布</li>
+<li>更换背景</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/androidui-jia-zai-he-hui-zhi-liu-cheng.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/androidui-jia-zai-he-hui-zhi-liu-cheng.html" class="post-title-link" itemprop="url">AndroidUI 加载和绘制流程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-25 13:24:26" itemprop="dateCreated datePublished" datetime="2019-09-25T13:24:26+08:00">2019-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="源码总结"><a href="#源码总结" class="headerlink" title="源码总结"></a>源码总结</h3><h4 id="View是如何被添加到屏幕窗口上去的"><a href="#View是如何被添加到屏幕窗口上去的" class="headerlink" title="View是如何被添加到屏幕窗口上去的"></a>View是如何被添加到屏幕窗口上去的</h4><ol>
+<li>在Activity的onCreate方法中调用setContentView将我们的布局传入</li>
+<li>内部调用了Window的唯一实例对象PhoneWindow的setContentView方法</li>
+<li>内部创建了顶层布局容器DecorView</li>
+<li>在DecorView中加载了基础布局ViewGroup(主题布局)，</li>
+<li>将我们的布局添加到基础布局的FrameLayout中 </li>
+</ol>
+<h4 id="View的绘制流程"><a href="#View的绘制流程" class="headerlink" title="View的绘制流程"></a>View的绘制流程</h4><ol>
+<li>绘制入口<ul>
+<li>ActivityThread.handlerResumeActivity</li>
+<li>WindowManagerImpl.addView(decorView, layoutParams)</li>
+<li>WindowManagerGlobal.addView()</li>
+</ul>
+</li>
+<li>绘制的类及方法<ul>
+<li>ViewRootImpl.addView(decorView, layoutParams, parentView)</li>
+<li>ViewRootImpl.requestLayout()-&gt;scheduleTraversals()-&gt;doTraversals()-&gt;performTraversals()</li>
+</ul>
+</li>
+<li>绘制流程的三大步骤<ul>
+<li>ViewRootImpl.performMeasure()</li>
+<li>ViewRootImpl.performLayout()</li>
+<li>ViewRootImpl.performDraw</li>
+</ul>
+</li>
+<li>绘制中的测量<ul>
+<li>MeasureSpec的确定及计算: 顶层DecoView和其他View</li>
+<li>DecorView通过窗口大小和DecoView本身大小确定</li>
+<li>其他View通过父View的MeasureSpec和本身的大小确定</li>
+</ul>
+</li>
+<li>绘制中的布局<ul>
+<li>view.layout的方法确定自身的位置</li>
+<li>若是ViewGroup类型，需要调用onLayout的方法确定子View的位置</li>
+</ul>
+</li>
+<li>绘制中的绘制<ul>
+<li>绘制背景drawableBackground</li>
+<li>绘制自己onDraw</li>
+<li>绘制子View  dispatchDraw</li>
+<li>绘制前景，滚动条装等饰</li>
+</ul>
+</li>
+</ol>
+<h4 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h4><p>onMeasure -&gt; onLayout(ViewGroup要实现) -&gt; onDraw(可选，系统控件不用实现)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/cha-jian-hua.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/cha-jian-hua.html" class="post-title-link" itemprop="url">插件化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-21 10:33:35" itemprop="dateCreated datePublished" datetime="2019-09-21T10:33:35+08:00">2019-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="VirtualAPK"><a href="#VirtualAPK" class="headerlink" title="VirtualAPK"></a>VirtualAPK</h3><p>是滴滴开源的插件化项目，实现动态加载和运行apk的功能。<br>支持任何class的加载，资源的加载及四大组件<br><img src="https://github.com/didi/VirtualAPK/raw/master/imgs/va.png" alt="架构图"><br>android 插件化框架VitualAPK解析</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/a-li-jing-xiang.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/a-li-jing-xiang.html" class="post-title-link" itemprop="url">阿里镜像</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-17 21:26:11" itemprop="dateCreated datePublished" datetime="2019-09-17T21:26:11+08:00">2019-09-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">日记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="阿里镜像"><a href="#阿里镜像" class="headerlink" title="阿里镜像"></a>阿里镜像</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    ext.kotlin_version = &#x27;1.2.71&#x27;</span><br><span class="line">    repositories &#123;</span><br><span class="line">    	// 以下四行代码为阿里gradle 源</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/google&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/gradle-plugin&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/public&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/jcenter&#x27;&#125;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &#x27;com.android.tools.build:gradle:3.2.0&#x27;</span><br><span class="line">        classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">    	// 所有的model 都优先使用阿里源</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/google&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/gradle-plugin&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/public&#x27;&#125;</span><br><span class="line">        maven&#123; url &#x27;https://maven.aliyun.com/repository/jcenter&#x27;&#125;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/8-yue-25-ri.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/8-yue-25-ri.html" class="post-title-link" itemprop="url">8月25日</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-25 16:46:06" itemprop="dateCreated datePublished" datetime="2019-08-25T16:46:06+08:00">2019-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="事件分发"><a href="#事件分发" class="headerlink" title="事件分发"></a>事件分发</h4><ol>
+<li>事件分发的对象是MotionEvent,通过触摸屏幕和点击按键产生</li>
+<li>事件分发的组件包括Activity，ViewGroup，View以及硬件驱动。</li>
+<li>事件传递的方法，Native通过监听，读取dev/input/eventX文件产生新事件，发送给Java层。经过上面提到的组件，主要通过dispatchTouchEvent(),onInterceptTouchEvent(),onTouchEvent()三个方法传递，拦截和消费</li>
+<li>Activity和View没有OnInterceptTouchEvent方法，无需拦截事件</li>
+<li>在调用子View的dispatchTouchEvent时会判断是否设置了onTouchListener，会回调onTouch方法，返回true则为已经消费了,就不会调用onTouchEvent()的方法及内部的OnClick()方法</li>
+<li>处理滑动冲突的方式1.外部拦截：由重写父View在onInterceptTouchEvent()根据业务来判断move事件是否要拦截事件，down和up事件不拦截。2. 内部拦截，父View除了down事件都拦截，然后由子View通过requesDisallowInterceptTouchEvent()来控制父类是否要拦截，或者交给子View处理 </li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/8-yue-21-ri.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/8-yue-21-ri.html" class="post-title-link" itemprop="url">8月21日</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-21 22:20:58" itemprop="dateCreated datePublished" datetime="2019-08-21T22:20:58+08:00">2019-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h4><p>模板方法模式：在模板类中定义算法或任务执行的流程框架，将一些具体步骤延迟到子类中去实现。即可定义出不同的表现类。</p>
+<h4 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h4><p>在项目中订单类型往往很多，订单的处理方式也是别有不同。现在介绍一个用户扫码点餐后，收银接受订单消息的处理流程。首先看一下流程</p>
+<ol>
+<li>用户下单：下单来源：支付宝，微信，口碑等，订单类型：堂食，自提，外卖</li>
+<li>服务端收到下单请求，定义与之对应的消息推送给收银机</li>
+<li>商户在收银机上收到下单消息，进行处理</li>
+<li>服务端收到收银的处理结果，推送消息给用户</li>
+<li>用户收到消息<br>上面流程在自动审核消息里就是一个通用的过程，因此可以多这个过程制定一个步骤，具体实现由开发者定义。</li>
+</ol>
+<p>整个流程中收银机处理的就是订单消息。由于订单的来源及订单类型的多种多样，也就意味着存在两方面的不同。1. 订单数据：基础数据+扩展数据 2.业务处理不同，不同的订单类型需要有不同的UI透出和额外的特殊操作。因此我们可以定义一个基础的UI操作类，定义出，获取订单数据，填充数据等</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

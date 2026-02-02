@@ -1,23 +1,1147 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+<link rel="stylesheet" href="/css/main.css">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Fighting！">
+<meta property="og:url" content="https://yancy.website/page/12/index.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Yangcy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yancy.website/page/12/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/12/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Fighting！</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/shi-me-shi-suan-fa.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/shi-me-shi-suan-fa.html" class="post-title-link" itemprop="url">什么是算法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-06-14 22:31:05" itemprop="dateCreated datePublished" datetime="2017-06-14T22:31:05+08:00">2017-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h4><ul>
+<li>算法是模型分析的一组可行的、确定的和有穷的规则（广泛）</li>
+<li>算法是解决实际问题的一种精确的描述方法</li>
+<li>算法是对特定问题的求解步骤的一种精确描述方法</li>
+</ul>
+<h4 id="算法的特性"><a href="#算法的特性" class="headerlink" title="算法的特性"></a>算法的特性</h4><ul>
+<li>有穷性：算法的指令或者执行步骤是有限的</li>
+<li>确切的：算法的每一个指令和步骤都必须有明确的定义和描述</li>
+<li>输入：一个算法应该有的输入条件，用于初始化</li>
+<li>输出：一个算法应该有个名明确的结果输出</li>
+<li>可行性：执行步骤的可行，且有可以在有限时间内完成</li>
+</ul>
+<h4 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h4><ul>
+<li>按照应用来分类<ul>
+<li>基础算法、数据结构、几何、加密、查询、排序等等 </li>
+</ul>
+</li>
+<li>按照确定性来分类<ul>
+<li>确定性算法：有限时间内完成，结果唯一</li>
+<li>非确定性算法：有限时间内完成，结果往往不唯一</li>
+</ul>
+</li>
+<li>按照算法思路<ul>
+<li>递推、递归、穷举、贪婪、分治、动态规划、迭代等算法 </li>
+</ul>
+</li>
+</ul>
+<h4 id="算法概念"><a href="#算法概念" class="headerlink" title="算法概念"></a>算法概念</h4><ul>
+<li>数据结构+算法+程序设计语言 = 程序</li>
+<li>数据结构表示处理对象，算法是计算和处理的核心方法，程序设计语言是算法的实现方法。这几者综合便构成了一个程序</li>
+</ul>
+<h4 id="算法的表示"><a href="#算法的表示" class="headerlink" title="算法的表示"></a>算法的表示</h4><ul>
+<li>自然语言表示</li>
+<li>流程图</li>
+<li>N-S图</li>
+<li>伪代码表示</li>
+</ul>
+<h4 id="算法性能评价"><a href="#算法性能评价" class="headerlink" title="算法性能评价"></a>算法性能评价</h4><ul>
+<li>时间复杂度：算法执行所消耗的时间，时间越短，性能越好,算法越好。<ul>
+<li>与每条语句执行的数量有关</li>
+<li>与问题的规模有关</li>
+</ul>
+</li>
+<li>空间复杂度：算法执行所消耗的存储空间，消耗越小，算法越好。<ul>
+<li>程序保存所需要的存储空间，程序的大小</li>
+<li>程序执行过程中所需消耗的存储空间（变量等）</li>
+</ul>
+</li>
+</ul>
+<h4 id="算法实例"><a href="#算法实例" class="headerlink" title="算法实例"></a>算法实例</h4><p>一个班级学生档案集中查找某一个学生的档案<br>伪代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">变量 x = 输入需要查找的数据</span><br><span class="line">变量 arr = 随机生产数组数据</span><br><span class="line">for 1到20&#123;</span><br><span class="line">    if(arr[i] ==)&#123;</span><br><span class="line">    找到数据</span><br><span class="line">    break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">输出该数据的位置</span><br><span class="line">程序结束</span><br></pre></td></tr></table></figure>
+<p>Code</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public Class Test1&#123;</span><br><span class="line">    static int N = 20;</span><br><span class="line">    public static void main(String args[])&#123;</span><br><span class="line">    int arr[] = new int[N];</span><br><span class="line">    int x;</span><br><span class="line">    int pos = -1;</span><br><span class="line">    Random r= new Random();</span><br><span class="line">    for(int i=0; i&lt;N; i++)&#123;</span><br><span class="line">        arr[i] = r.nextInt(100);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(&quot;生成随机数序列&quot;)</span><br><span class="line">    for(int i=0; i&lt;N; i++)&#123;</span><br><span class="line">        System.out.print(arr[i]+&quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    System.out.print(&quot;输入要查找的整数&quot;);</span><br><span class="line">    Scanner input = new Scanner(System.in);</span><br><span class="line">    x = input.getInt();</span><br><span class="line">    for(int i=0; i&lt;N; i++)&#123;</span><br><span class="line">        if(arr[i] == x)&#123;</span><br><span class="line">            pos = i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(f&lt;0)&#123;</span><br><span class="line">        System.out.print(&quot;未找到数据&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        System.out.print(x+&quot;数据位于&quot;+pos+&quot;位置，是数组的第&quot;+(pos+1)+&quot;个元素&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/di-san-fang-deng-lu-de-zhu-yi-yu-keng.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/di-san-fang-deng-lu-de-zhu-yi-yu-keng.html" class="post-title-link" itemprop="url">第三方登录的注意与坑</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-30 00:00:23" itemprop="dateCreated datePublished" datetime="2017-04-30T00:00:23+08:00">2017-04-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="三方登录实多平台快捷方现方式"><a href="#三方登录实多平台快捷方现方式" class="headerlink" title="三方登录实多平台快捷方现方式"></a>三方登录实多平台快捷方现方式</h3><p>Mob平台 集成开发 三方登录和分享<br>ShareSdk.xml 配置<br>AndroidManifest.xml 配置</p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
+<li>微信平台<br>  包名千万不要写错<br>  数字签名 是MD5 非 SHA1(大部分平台都是SHA1)<br>  测试签名和发行签名区分或统一。</li>
+<li>QQ 平台<br>  添加测试账号</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/shu-ju-chuan-shu-jia-mi-fei-dui-cheng-jia-mi-suan-fa-rsa-dui-cheng-suan-fa-aes.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/shu-ju-chuan-shu-jia-mi-fei-dui-cheng-jia-mi-suan-fa-rsa-dui-cheng-suan-fa-aes.html" class="post-title-link" itemprop="url">数据传输加密——非对称加密算法RSA+对称算法AES</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-29 23:52:12" itemprop="dateCreated datePublished" datetime="2017-04-29T23:52:12+08:00">2017-04-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">安全</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="数据传输加密"><a href="#数据传输加密" class="headerlink" title="数据传输加密"></a>数据传输加密</h3><p>&emsp;&emsp;在开发应用过程中，客户端与服务端经常需要进行数据传输，涉及到重要隐私信息时，开发者自然会想到对其进行加密，即使传输过程中被“有心人”截取，也不会将信息泄露。对于加密算法，相信不少开发者也有所耳闻，比如MD5加密，Base64加密，DES加密，AES加密，RSA加密等等。在这里我主要向大家介绍一下我在开发过程中使用到的加密算法，RSA加密算法+AES加密算法。简单地介绍一下这两种算法吧。</p>
+<h3 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h3><p>&emsp;&emsp;之所以叫RSA算法，是因为算法的三位发明者RSA是目前最有影响力的公钥加密算法，它能够抵抗到目前为止已知的绝大多数密码攻击，已被ISO推荐为公钥数据加密标准，主要的算法原理就不多加介绍，如果对此感兴趣的话，建议去百度一下RSA算法。需要了解的是RSA算法属于非对称加密算法，非对称加密算法需要两个密钥：公开密钥（publickey）和私有密钥（privatekey）。公开密钥与私有密钥是一对，如果用公开密钥对数据进行加密，只有用对应的私有密钥才能解密；如果用私有密钥对数据进行加密，那么只有用对应的公开密钥才能解密。因为加密和解密使用的是两个不同的密钥，所以这种算法叫作非对称加密算法。简单的说是“公钥加密，私钥解密；私钥加密，公钥解密”。</p>
+<h3 id="AES"><a href="#AES" class="headerlink" title="AES"></a>AES</h3><p> &emsp;&emsp;高级加密标准（英语：Advanced Encryption Standard，缩写：AES），在密码学中又称Rijndael加密法，是美国联邦政府采用的一种区块加密标准。这个标准用来替代原先的DES，已经被多方分析且广为全世界所使用。经过五年的甄选流程，高级加密标准由美国国家标准与技术研究院（NIST）于2001年11月26日发布于FIPS PUB 197，并在2002年5月26日成为有效的标准。2006年，高级加密标准已然成为对称密钥加密中最流行的算法之一。</p>
+<h3 id="为什么要结合使用这两种算法"><a href="#为什么要结合使用这两种算法" class="headerlink" title="为什么要结合使用这两种算法"></a>为什么要结合使用这两种算法</h3><p>&emsp;&emsp;如果不清楚非对称算法和对称算法，也许你会问，为什么要结合使用这两种算法，单纯使用一种算法不行吗？这就要结合不同的场景和需求了。</p>
+<p>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息不需加密的情况<br>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息不需加密，例如绑定银行卡的时候，需要传递用户的银行卡号，手机号等重要信息，客户端这边就需要对这些重要信息进行加密，使用RSA公钥加密，服务端使用RSA解密，然后返回一些普通信息，比如状态码code,提示信息msg,提示操作是成功还是失败。这种场景下，仅仅使用RSA加密是可以的。</p>
+<p>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息需加密的情况<br>&emsp;&emsp;客户端传输重要信息给服务端，服务端返回的信息需加密,例如客户端登录的时候，传递用户名和密码等资料，需要进行加密，服务端验证登录信息后，返回令牌token需要进行加密，客户端解密后保存。此时就需要结合这两种算法了。至于整个流程是怎样的，在下面会慢慢通过例子向你介绍，因为如果一开始就这么多文字类的操作，可能会让读者感到一头雾水。</p>
+<h3 id="使用RSA加密和解密"><a href="#使用RSA加密和解密" class="headerlink" title="使用RSA加密和解密"></a>使用RSA加密和解密</h3><p>产生公钥和私钥：产生RSA公钥和密钥的方法有很多，在这里我直接使用我封装好的方法产生，都最后我会将两个算法的工具类赠送给大家。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 生成公钥和私钥</span><br><span class="line"> * </span><br><span class="line"> * @throws Exception</span><br><span class="line"> * </span><br><span class="line"> */</span><br><span class="line">public static void getKeys() throws Exception &#123;</span><br><span class="line">    KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(&quot;RSA&quot;);</span><br><span class="line">    keyPairGen.initialize(1024);</span><br><span class="line">    KeyPair keyPair = keyPairGen.generateKeyPair();</span><br><span class="line">    RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();</span><br><span class="line">    RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();</span><br><span class="line"></span><br><span class="line">    String publicKeyStr = getPublicKeyStr(publicKey);</span><br><span class="line">    String privateKeyStr = getPrivateKeyStr(privateKey);</span><br><span class="line"></span><br><span class="line">    System.out.println(&quot;公钥\r\n&quot; + publicKeyStr);</span><br><span class="line">    System.out.println(&quot;私钥\r\n&quot; + privateKeyStr);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static String getPrivateKeyStr(PrivateKey privateKey)</span><br><span class="line">        throws Exception &#123;</span><br><span class="line">    return new String(Base64Utils.encode(privateKey.getEncoded()));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public static String getPublicKeyStr(PublicKey publicKey) throws Exception &#123;</span><br><span class="line">    return new String(Base64Utils.encode(publicKey.getEncoded()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>公匙</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCRQZ5O/AOAjeYAaSFf6Rjhqovws78I716I9oGF7WxCIPmcaUa1YuyLOncCCuPsaw69+RMWjdbOBp8hd4PPM/d4mKTOVEYUE0SfxhhDTZaM5CzQEUXUyXy7icQTGR5wBjrbjU1yHCKOf5PJJZZQWB06husSFZ40TdL7FdlBpZ1u1QIDAQAB</span><br></pre></td></tr></table></figure>
+<p>私钥</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJFBnk78A4CN5gBpIV/pGOGqi/CzvwjvXoj2gYXtbEIg+ZxpRrVi7Is6dwIK4+xrDr35ExaN1s4GnyF3g88z93iYpM5URhQTRJ/GGENNlozkLNARRdTJfLuJxBMZHnAGOtuNTXIcIo5/k8klllBYHTqG6xIVnjRN0vsV2UGlnW7VAgMBAAECgYBMoT9xD8aRNUrXgJ7YyFIWCzEUZN8tSYqn2tPt4ZkxMdA9UdS5sFx1/vv1meUwPjJiylnlliJyQlAFCdYBo7qzmib8+3Q8EU3MDP9bNlpxxC1go57/q/TbaymWyOk3pK2VXaX+8vQmllgRZMQRi2JFBHVoep1f1x7lSsf2TpipgQJBANJlO+UDmync9X/1YdrVaDOi4o7g3w9u1eVq9B01+WklAP3bvxIoBRI97HlDPKHx+CZXeODx1xj0xPOK3HUz5FECQQCwvdagPPtWHhHx0boPF/s4ZrTUIH04afuePUuwKTQQRijnl0eb2idBe0z2VAH1utPps/p4SpuT3HI3PJJ8MlVFAkAFypuXdj3zLQ3k89A5wd4Ybcdmv3HkbtyccBFALJgs+MPKOR5NVaSuF95GiD9HBe4awBWnu4B8Q2CYg54F6+PBAkBKNgvukGyARnQGc6eKOumTTxzSjSnHDElIsjgbqdFgm/UE+TJqMHmXNyyjqbaA9YeRc67R35HfzgpvQxHG8GN5AkEAxSKOlfACUCQ/CZJovETMmaUDas463hbrUznp71uRMk8RP7DY/lBnGGMeUeeZLIVK5X2Ngcp9nJQSKWCGtpnfLQ==</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;很明显，公钥字符串长度比较短，私钥的比较长。生成完密钥后，公钥可以存放在客户端，即使被别人知道公钥，也是没有问题的；私钥则一定要保存在服务端。如果到时公司面临人事变动，避免私钥被离职人员泄露，可以重新生成公钥和密钥。</p>
+<p>使用公钥加密，私钥解密<br><img src="http://i.imgur.com/EzSYTst.png" alt="Alt text" title="Optional title"><br>这里在客户端模拟加密的情况，对字符串”Beyond黄家驹”使用RSA加密，调用RSAUtils的encryptByPublicKey()方法，输出结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">密文: BRFjf3tUqRqlwuP5JtzxZinf7lp+AHuHM9JSabM5BNFDxuUe9+uuO6RpCHVH5PibifqQHzGNsyZn1G9QcIENT9Tbm+PZwAbNUlMPZRDBU1FSnOtY8dBdeW/lJdnY9sJVwNvIBnOLQk66hxRh6R2149dwlgdsGUpWMOMBzcP3vsU=</span><br></pre></td></tr></table></figure>
+<p>在服务端，可以使用RSAUtils的decryptByPrivateKey()方法进行解密，现在模拟服务端解密<br><img src="http://i.imgur.com/oNox5Ma.png" alt="Alt text" title="Optional title"><br>&emsp;&emsp;在这里虽然没有完全模拟数据传输过程，比如说客户端发起一个网络请求，传递参数给服务端，服务端接收参数并进行处理，也是为了让大家可以更加容易明白，所以这里只是进行简单的模拟。可以看到Android客户端端和Java服务端的RSA加密解密算法是可以互通的，原因是他们所使用到的base64加密类是一致的，所以才可以实现加密和解密的算法互通。<br><img src="http://i.imgur.com/lLgQbab.png" alt="Alt text" title="Optional title"><br><img src="http://i.imgur.com/lLgQbab.png" alt="Alt text" title="Optional title"><br>&emsp;&emsp;使用到的jar包都是javabase64-1.3.1.jar,相信不少人都知道，java中有自带的Base64算法类，但是安卓中却没有，之前出现的情况是，使用的Base64类不统一，比如在安卓客户端开发使用的Base64算法是使用第三方提供的jar包，而java服务端中使用的是JDK自带的Base64,导致从客户端传过来的密文，服务端解析出错。</p>
+<p>&emsp;&emsp;上面的例子展示了客户端使用公钥加密，服务端使用私钥解密的过程。也许你会这么想，既然可以如此，那服务端那边信息也可以通过RSA加密后，传递加密信息过来，客户端进行解密。但是，这样做，显示是不安全的。原因是，由于客户端并没有保存私钥，只有公钥，只可以服务端进行私钥加密，客户端进行公钥解密，但由于公钥是公开，别人也可以获取到公钥，如果信息被他们截取，他们同样可以通过公钥进行解密，那么这样子加密，就毫无意义了，所以这个时候，就要结合对称算法，实现客户端与服务端之前的安全通信了。</p>
+<p>使用AES加密解密<br>加密<br><img src="http://i.imgur.com/WgX5ss7.png" alt="Alt text" title="Optional title"><br>模拟客户端进行AES加密，我们通过调用AESUtils中的generateKey()方法，随机产生一个密钥，用于对数据进行加密。输出的结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">密钥: 6446c69c0f914a57</span><br><span class="line">密文: GECDQOsc22yV48hdJENTMg==</span><br></pre></td></tr></table></figure>
+
+<p>解密<br>&emsp;&emsp;模拟服务端进行AES解密，由于AES属于对称算法，加密和解密需要使用同一把密钥，所以，服务端要解密传递过来的内容，就需要密钥 + 密文。这里模拟一下服务端解密。<br><img src="http://i.imgur.com/NXLPGwG.png" alt="Alt text" title="Optional title"><br>&emsp;&emsp;到这里也许你会问，客户端使用AES进行加密，服务端要进行解密的话，需要用到产生的密钥，那密钥必须从客户端传输到服务端，如果不对密钥进行加密，那加密就没有意义了。所以这里终于谈到了重点，RSA算法+AES算法结合使用。</p>
+<p>RSA算法+AES算法的使用<br>&emsp;&emsp;举一个简单的例子来说明一下吧，例如实名认证功能，需要传递用户真实姓名和身份证号，对于这种重要信息，需要进行加密处理。</p>
+<p>客户端使用RSA + AES对重要信息进行加密<br>客户端加密过程主要分为以下三个步骤：</p>
+<ol>
+<li><p>客户端随机产生AES的密钥；</p>
+</li>
+<li><p>对身份证信息（重要信息）进行AES加密；</p>
+</li>
+<li><p>通过使用RSA对AES密钥进行公钥加密。<br><img src="http://i.imgur.com/8c2YKWN.png" alt="Alt text" title="Optional title"></p>
+</li>
+</ol>
+<p>&emsp;&emsp;这样在传输的过程中，即时加密后的AES密钥被别人截取，对其也无济于事，因为他并不知道RSA的私钥，无法解密得到原本的AES密钥，就无法解密用AES加密后的重要信息。</p>
+<p>服务端使用RSA + AES对重要信息进行解密</p>
+<p>服务端解密过程主要分为以下两个步骤：</p>
+<ol>
+<li><p>对加密后的AES密钥进行RSA私钥解密，拿到密钥原文；</p>
+</li>
+<li><p>对加密后的重要信息进行AES解密，拿到原始内容。<br><img src="http://i.imgur.com/kVrEvsu.png" alt="Alt text" title="Optional title"></p>
+</li>
+</ol>
+<p>&emsp;&emsp;现实开发中，服务端有时也需要向客户端传递重要信息，比如登录的时候，返回token给客户端，作为令牌，这个令牌就需要进行加密，原理也是差不多的，比上面多一个步骤而已，就是将解密后的AES密钥，对将要传递给客户端的数据token进行AES加密，返回给客户端，由于客户端和服务端都已经拿到同一把AES钥匙，所以客户端可以解密服务端返回的加密后的数据。如果客户端想要将令牌进行保存，则需要使用自己定义的默认的AES密钥进行加密后保存，需要使用的时候传入默认密钥和密文，解密后得到原token。</p>
+<p>&emsp;&emsp;上面提及到客户端加密，服务端返回数据不加密的情况，上面说到仅仅使用RSA是可以，但是还是建议同时使用这两种算法，即产生一个AES密钥，使用RSA对该密钥进行公钥加密，对重要信息进行AES加密，服务端通过RSA私钥解密拿到AES密钥，再对加密后的重要信息进行解密。如果仅仅使用RSA，服务端只通过RSA解密，这样会对于性能会有所影响，原因是RSA的解密耗时约等于AES解密耗时的100倍，所以如果每个重要信息都只通过RSA加密和解密，则会影响服务端系统的性能，所以建议两种算法一起使用。</p>
+<p>同时还有相应的JS版RSA和AES算法，使用方式也差不多，在这里简单演示一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;RSA+AES.html&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;meta name=&quot;keywords&quot; content=&quot;keyword1,keyword2,keyword3&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;description&quot; content=&quot;this is my page&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;./js/rsa.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;./js/aes.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        var key = getKey();//随机产生AES密钥</span><br><span class="line">        var encryptKey = RSA(key);//对AES密钥进行RSA加密</span><br><span class="line">        console.log(&quot;encryptKey: &quot; + encryptKey);</span><br><span class="line"></span><br><span class="line">        //测试AES加密和解密</span><br><span class="line">        var cipherText = AESEnc(key,&quot;123456&quot;);</span><br><span class="line">        var plainText = AESDec(key,cipherText);</span><br><span class="line">        console.log(&quot;密文: &quot; + cipherText);</span><br><span class="line">        console.log(&quot;明文: &quot; + plainText);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line"></span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    This is my HTML page. &lt;br&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>打开页面后，查看控制台输出：<br><img src="http://i.imgur.com/PyU0b3r.png" alt="Alt text" title="Optional title"><br>同时，模拟服务端解密，运行结果如下：<br><img src="http://i.imgur.com/3VrRv3d.png" alt="Alt text" title="Optional title"></p>
+<p>需要注意的是:</p>
+<p>1.RSAUtils中配置公钥和密钥，可以使用getKeys()方法产生。如果是客户端，则无须配置私钥，把没有私钥的RSAUtils放到客户端，因为仅需要用到公钥加密的方法。</p>
+<p>2.AESUtils中配置偏移量IV_STRING；</p>
+<p>3.rsa.js中最底部配置公钥，须和上面RSAUtils配置的公钥一致；</p>
+<p>4.aes.js中的底部var iv = CryptoJS.enc.Utf8.parse(“16-Bytes–String”); //加密向量中，替换里面的字符串，加密向量须和<br>是上面的AESUtils中的偏移量一致。</p>
+<p>各种语言的加密的处理方式有所差异，所以我们需要因地制宜。了解此加密的思想方法即可</p>
+<ol>
+<li><a href="http://blog.csdn.net/treesky/article/details/49422645">php 和 java RSA 对称加密互通的问题</a></li>
+<li><a href="http://www.cnblogs.com/yipu/articles/3871576.html">php与java通用AES加密解密算法</a></li>
+<li><a href="http://blog.csdn.net/pbm863521/article/details/54023009">Android错误解决：java.lang.NoSuchMethodError: No static method encodeBase64String</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-studio-xiu-gai-bao-ming.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/android-studio-xiu-gai-bao-ming.html" class="post-title-link" itemprop="url">Android Studio修改包名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-28 19:52:24" itemprop="dateCreated datePublished" datetime="2017-03-28T19:52:24+08:00">2017-03-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Android-Studio修改包名"><a href="#Android-Studio修改包名" class="headerlink" title="Android Studio修改包名"></a>Android Studio修改包名</h3><ol>
+<li>修改包显示方式</li>
+</ol>
+<p><img src="http://img2.tuicool.com/BBBR3qN.png!web" alt="Alt text" title="修改包显示方式"></p>
+<p>通过修改包显示方式，我们可以更方便的修改包名。</p>
+<ol start="2">
+<li>修改包名</li>
+</ol>
+<p><img src="http://www.itnose.net/img/20150709/10391686.png" alt="Alt text" title="修改包名"></p>
+<ol start="3">
+<li>改build.gradle(module：APP名字)文件中的 applicationId</li>
+</ol>
+<p><img src="http://www.itnose.net/img/20150709/10391688.png" alt="Alt text" title="改build.gradle("></p>
+<ol start="4">
+<li>clean和rebuild project</li>
+</ol>
+<p><img src="http://www.itnose.net/img/20150709/10391689.png" alt="Alt text" title="clean和rebuild project"></p>
+<ol start="5">
+<li>关闭android studio重启(可选)</li>
+</ol>
+<p>亲测有效，完美~</p>
+<h3 id="简易操作，全局替换"><a href="#简易操作，全局替换" class="headerlink" title="简易操作，全局替换"></a>简易操作，全局替换</h3><p>ctr+shift+r</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/shi-jian-chuan-di-ji-zhi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/shi-jian-chuan-di-ji-zhi.html" class="post-title-link" itemprop="url">事件传递机制</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-27 15:07:55" itemprop="dateCreated datePublished" datetime="2017-03-27T15:07:55+08:00">2017-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Touch事件传递机制"><a href="#Touch事件传递机制" class="headerlink" title="Touch事件传递机制"></a>Touch事件传递机制</h3><p>其中Activity和View控件（TextView）拥有分派和处理事件方法，View容器（LinearLayout）具有分派，拦截，处理事件方法。这里也有个比喻：领导都会把任务向下分派，一旦下面的人把事情做不好，就不会再把后续的任务交给下面的人来做了，只能自己亲自做，如果自己也做不了，就只能告诉上级不能完成任务，上级又会重复他的过程。另外，领导都有权利拦截任务，对下级隐瞒该任务，而直接自己去做，如果做不成，也只能向上级报告不能完成任务。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//分派事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span></span><br><span class="line"><span class="comment">//拦截事件 </span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onInterceptTouchEvent</span><span class="params">(MotionEvent ev)</span></span><br><span class="line"><span class="comment">//处理事件</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onTouchEvent</span><span class="params">(MotionEvent event)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="http://static.open-open.com/lib/uploadImg/20150128/20150128145842_296.png" alt="Alt text" title="Optional title"></p>
+<p><img src="http://www.codeceo.com/wp-content/uploads/2015/01/touch-event-5.png" alt="Alt text" title="Optional title"></p>
+<p>从上面两张事件传递图我们的出来一些结论：</p>
+<ol>
+<li><p>事件是先有dispatchTouchEvent分派给下一级</p>
+</li>
+<li><p>要经过onInterceptTouchEvent是否需要拦截，不拦截传递给下一级，最终传递给view控件，</p>
+</li>
+<li><p>onTouchEvent方法中，在处理事件中，如果返回True，则表示能处理，传递将会终止。反着，不能，如果不能的话，这会返回上一级的onTouchEvent方法中，如果还是false，会一直到到上一层的onTouchEvent方法中。</p>
+</li>
+</ol>
+<p>好奇的我们会发现一个问题：图二中的黄色线，没有像红色线那样，先传递到最底层，然后再回滚回去，这是为什么呢？</p>
+<p>答：就如我们故事中，他都知道了，底下人都不会去做了，那么他干嘛还分派给他呢，他就会自己做了，直接给onTouchEvent ，这就是事件传递中的“记忆”功能。我们是手指点击蓝色区域，Touch事件有两个，第一个ACTION_DOWN，第二个ACTION_UP，第一个 ACTION_DOWN事件向下传递到某View，它把事件继续传递交给它的子View，它会记录该事件是否被它下面的View给处理成功了，（怎么能知 道呢？如果该事件会再次被向上传递到我这里来由我的onTouchEvent来处理，那就说明下面的View都没能成功处理该事件）；当第二个 ACTION_UP事件向下传递到该View，该View的dispatchTouchEvent方法机会判断，若上次的事件由下面的view成功处理 了，那么这次的事件就继续交给下面的来处理，若上次的事件没有被下面的处理成功，那么这次的事件就不会向下传递了，该View直接调用自己的 onTouchEvent方法来处理该事件。</p>
+<p>PS：关于这“记忆”功能的信息只在一系列事件完成之前有效，也就是从ACTION_DOWN事件开始，直到后续事件 ACTION_MOVE，ACTION_UP结束后，“记忆”的信息就会清除。也就是说如果某View处理ACTION_DOWN事件失败了 （onTouchEvent()返回false），那么后续的ACTION_MOVE,ACTION_UP等事件就不会再传递到该View了，由其父 View自己来处理。在下一次发生ACTION_DOWN事件的时候，还是会传递到该View的。</p>
+<p>补充说明：</p>
+<p>-》若在向下传递的过程中被拦截了，即onInterceptTouchEvent方法返回true，则事件将停止向下传递，直接由当前的onTouchEvent方法来处理，若处理成功则OK，若处理不成功，则事件会向上传递。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/teach-you-to-recognize-mvcmvpmvvm.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/teach-you-to-recognize-mvcmvpmvvm.html" class="post-title-link" itemprop="url">Teach you to recognize MVC, MVP and MVVM</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-26 16:12:29" itemprop="dateCreated datePublished" datetime="2017-03-26T16:12:29+08:00">2017-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Teach-you-to-recognize-MVC-MVP-AND-MVVM"><a href="#Teach-you-to-recognize-MVC-MVP-AND-MVVM" class="headerlink" title="Teach you to recognize MVC, MVP AND MVVM"></a>Teach you to recognize MVC, MVP AND MVVM</h3><p>I believe we are no stranger to MVC, MVP and MVVM, as the three most familiar Android framework. Their applications can be very extensive, but for some novice, it can be difficult to distinguish between them three.</p>
+<h3 id="Article-focus"><a href="#Article-focus" class="headerlink" title="Article focus:"></a>Article focus:</h3><ol>
+<li>Learn and distinguish between MVC, MVP and MVVM.</li>
+<li>Know how these three models in the use of Android.</li>
+<li>Out of the DataBinding errors.</li>
+<li>Understand the development model of MVP data binding.</li>
+</ol>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC means Model View Controller, is the most common framework in the software architecture, simply through the control of controller to operate the modle layer of data, and return to view layer display.</p>
+<p><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvc.png" alt="Alt text" title="Optional title"></p>
+<p>Use the traditional MVC, which View, corresponding to a variety of layout files, but these layout files are not as powerful as the Web Side, can do very limited. Controller correspods to the Activity, but Activity has the function of operating UI. We in the actual project will hava a lot of UI operations, and also do a lot of View should be dong in the layer</p>
+<p>MVC there is an important flaw, we look at the picture above, view layer and the model layer is mutual konw, which means that there is coupling between the two layers. The Coupling is very fatal for large program, beacuse it means that development, testing, maintenance need to spend a lot of energy.</p>
+<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><p>MVP as MVC evolution, to solve a lot of MVC shortcommings. For Android, MVP model layer relative to the MVC is the same, but activity and fragment is no longer the controller layer, but the pure view layer.And all fordwarding of user events is handled by the presenter layer.<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvp.png" alt="Alt text" title="Optional title"></p>
+<p>It can be seen from the figure that the most obvious difference is that the view and model layer are no longer mutual konw and complete descoupling. Instead of the precenter layer acts as bridge, the events used to manipulate the view layer are passed to the presenter layer, the presenter layer to mainpulate the model layer, and the data is returned to the view layer. the view layer and the model layer are completely unconnected throughout the process.</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM最早是由微软提出的<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvvm.png" alt="Alt text" title="Optional title"></p>
+<p>From the figure to see that it is similiar to MVP, but the presenter layer<br>be replaced by ViewModel layer. And the view layer and the viewmodel are bound to each other, the means that when you update the data of the viewmodel layer, the view layer changes accordingly ui. </p>
+<h3 id="Last-MVP-Databinding"><a href="#Last-MVP-Databinding" class="headerlink" title="Last: MVP + Databinding"></a>Last: MVP + Databinding</h3><p>We use the data binding framework to save similar findViewById and data binding time, and the use of presenter to separate the business logic and view layer.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/xing-neng-you-hua-zhi-bu-ju.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/xing-neng-you-hua-zhi-bu-ju.html" class="post-title-link" itemprop="url">性能优化之布局</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-21 23:34:46" itemprop="dateCreated datePublished" datetime="2017-03-21T23:34:46+08:00">2017-03-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li>性能优化之布局<br></include>重用<br></merger>减少视图层级<br></ViewStub>需要时加载，懒加载布局<br>使用工具：Hierarchy View</li>
+<li>Android 性能优化方法<br>使用Dalvik提供的 dalvik.system.VMRuntime类来设置最小堆内存为例:</li>
+<li>bitmap 设置图片尺寸<br>避免 内存溢出 OutOfMemoryError的优化方法<br>options.inSampleSize = 2;//图片宽高都为原来的二分之一，即图片为原来的四分之一</li>
+<li>Android 还有一些性能优化的方法：<br>首先内存方面，可以参考 Android堆内存也可自己定义大小 和 优化Dalvik虚拟机的堆内存分配<br>基础类型上，因为Java没有实际的指针，在敏感运算方面还是要借助NDK来完成。这点比较有意思的是Google 推出NDK可能是帮助游戏开发人员，比如OpenGL ES的支持有明显的改观，本地代码操作图形界面是很必要的。<br>图形对象优化，这里要说的是Android上的Bitmap对象销毁，可以借助recycle()方法显示让GC回收一个Bitmap对象，通常对一个不用的Bitmap可以使用下面的方式。</li>
+<li><a href="http://mobile.51cto.com/abased-410791.htm">从代码角度进行优化</a><br>静态变量引起内存泄露<br>使用Application的Context<br>及时关闭资源<br>使用Bitmap及时调用recycle()<br>对Adapter进行优化<br>代码“微优化”</li>
+<li><a href="http://mobile.51cto.com/abased-410795.htm">使用软引用和弱引用</a></li>
+<li><a href="http://www.cnblogs.com/kest/p/5141817.html">Android 中的Activity、Window、View之间的关系</a><br>Activity在onCreate时调用attach方法，在attach方法中会创建window对象。window对象创建时并没有创建 DocerView 对象。用户在Activity中调用setContentView,然后调用window的setContentView，这时会检查DecorView是否存在，如果不存在则创建DecorView对象，然后把用户自己的 View  添加到 DecorView 中。</li>
+<li><a href="http://www.tuicool.com/articles/iIf6BbV">Activity的几种LaunchMode及使用场景</a><br><a href="http://blog.csdn.net/linmiansheng/article/details/24297375">Android关于Task的一些实践</a></li>
+<li><a href="http://www.cnblogs.com/liqw/p/4175325.html">Android 设计模式之MVC模式</a><br>MVC模式下，系统框架的类库被划分为3种：模型（Model）、视图（View）、控制器（Controller）。模型对象负责建立数据结构和相应的行为操作处理。视图对象负责在屏幕上渲染出相应的图形信息展示给用户看。控制器对象负责截获用户的按键和屏幕触摸等事件，协调Model对象和View对象。<br>　　用户与视图交互，视图接收并反馈用户的动作；视图把用户的请求传给相应的控制器，由控制器决定调用哪个模型，然后由模型调用相应的业务逻辑对用户请求进行加工处理，如果需要返回数据，模型会把相应的数据返回给控制器，由控制器调用相应的视图，最终由视图格式化和渲染返回的数据，对于返回的数据完全可以增加用户体验效果展现给用户。</li>
+<li><a href="http://zjutkz.net/2016/04/13/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC%EF%BC%8CMVP%E5%92%8CMVVM/">教你认清MVC，MVP和MVVM</a><br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0301/4018.html">如何设计MVP中的Presentation层</a><br><a href="http://www.jianshu.com/p/ce1b447efc4f">google 官方mvp实例的实践之mvp-databinding-Rxjava（一）</a></li>
+<li><a href="https://jiangchunyu.github.io/2016/08/28/Netty-4-0%E5%9C%A8Android-%E4%B8%8A%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%96%AD%E7%BA%BF%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E/">Netty 4.0在Android 上的使用，长连接断线自动重连</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-xi-tong-jia-gou-yi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/android-xi-tong-jia-gou-yi.html" class="post-title-link" itemprop="url">android系统架构(一)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-20 18:59:49" itemprop="dateCreated datePublished" datetime="2017-03-20T18:59:49+08:00">2017-03-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="出发点"><a href="#出发点" class="headerlink" title="出发点"></a>出发点</h3><p>&emsp;&emsp;由于在学习Android的时候并没有很系统地进行学习，知识点比较零碎，所以需要将自己的知识点进行系统的整理，那么首要的我需要将android的系统架构搞清楚，这样才能分清楚我所了解的知识点附属于哪个层面，是内核还是应用层，可以进行怎样的扩展，在哪些场景去运用。</p>
+<h3 id="Android架构解析"><a href="#Android架构解析" class="headerlink" title="Android架构解析"></a>Android架构解析</h3><p><a href="http://mobile.51cto.com/android-235496.htm">Google工程师多图详解Android系统架构</a><br><a href="https://my.oschina.net/fhd/blog/349830">Android基础之Android系统架构</a><br><a href="https://zh.wikipedia.org/wiki/Android#Linux.E6.A0.B8.E5.BF.83">Android维基百科</a><br><a href="http://tech.it168.com/a2011/0805/1228/000001228471.shtml">Android对Linux内核的增强</a><br><a href="http://www.tuicool.com/articles/EN7nuiN">Android系统架构详解(2)–Android Runtime</a></p>
+<p>以上是我在这个课题下的一些参考博客或者网页链接。里面有对于android架构的一些较好的分析理解，接下来是阅读后自己的一些整理。</p>
+<p>Android采用层次化系统架构，官方公布的标准架构如下图所示。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Android-System-Architecture.svg/1000px-Android-System-Architecture.svg.png" alt="Alt text" title="Optional title"></p>
+<p>Android由底层往上分为4个主要功能层，分别是Linux内核层（Linux Kernel），系统运行时库层（Libraries和Android Runtime），应用程序架构层（Application Framework）和应用程序层（Applications）。</p>
+<p>接下来对这几个层面进行逐个分析：</p>
+<h4 id="Linux内核层"><a href="#Linux内核层" class="headerlink" title="Linux内核层"></a>Linux内核层</h4><p>&emsp;&emsp;Android以Linux操作系统内核为基础，借助Linux内核服务实现硬件设备驱动，进程和内存管理，网络协议栈，电源管理，无线通信等核心功能。Android4.0版本之前基于Linux2.6系列内核，4.0及之后的版本使用更新的Linux3.X内核，并且两个开源项目开始有了互通。Linux3.3内核中正式包括一些Android代码，可以直接引导进入Android。Linux3.4增添了电源管理等更多功能，以增加与Android的硬件兼容性，使Android在更多设备上得到支持。直到现在最新的android6.0仍然继续延用着linux3.4.0，而linux最新的版本已经到了4.3系列，那么为什么android没有继续去更新Linuxkernel的版本也是一个值得探讨的课题。 </p>
+<p>&emsp;&emsp;Android内核 对Linux内核进行了增强，增加了一些面向移动计算的特有功能。例如，低内存管理器LMK（Low Memory Keller），匿名共享内存（Ashmem）,以及轻量级的进程间通信Binder机制等。这些内核的增强使Android在继承Linux内核安全机制的同时，进一步提升了内存管理，进程间通信等方面的安全性。</p>
+<h4 id="硬件抽象层"><a href="#硬件抽象层" class="headerlink" title="硬件抽象层"></a>硬件抽象层</h4><p>&emsp;&emsp;内核驱动和用户软件之间还存在所谓的硬件抽象层（Hardware Abstract Layer,HAL），它是对硬件设备的具体实现加以抽象。HAL没有在Android官方系统架构图中标明，下图标出了硬件抽象层在android系统中的位置：</p>
+<p><img src="http://static.oschina.net/uploads/space/2014/1128/125552_hnZu_168814.jpg" alt="Alt text" title="Optional title"></p>
+<p>&emsp;&emsp;鉴于许多硬件设备厂商不希望公开其设备驱动的源代码，如果能将android的应用框架层与linux系统内核的设备驱动隔离，使应用程序框架的开发尽量独立于具体的驱动程序，则android将减少对Linux内核的依赖。HAL由此而生，它是对Linux内核驱动程序进行的封装，将硬件抽象化，屏蔽掉了底层的实现细节。HAL规定了一套应用层对硬件层读写和配置的统一接口，本质上就是将硬件的驱动分为用户空间和内核空间两个层面；Linux内核驱动程序运行于内核空间，硬件抽象层运行于用户空间。</p>
+<h4 id="系统运行库层"><a href="#系统运行库层" class="headerlink" title="系统运行库层"></a>系统运行库层</h4><p>&emsp;&emsp;官方的系统架构图中，位于Linux内核层之上的系统运行库层是应用程序框架的支撑，为Android系统中的各个组件提供服务。系统运行库层由系统类库和Android运行时构成。</p>
+<ul>
+<li>系统类库<br>系统类库大部分由C/C++编写，所提供的功能通过Android应用程序框架为开发者所使用。例如SQlite,WebKit,SSL都在会在日常开发中有用到</li>
+</ul>
+<p><img src="http://images.51cto.com/files/uploadimg/20101129/1011272.png" alt="Alt text" title="Optional title"></p>
+<ul>
+<li>运行时<br>Android运行时包含核心库和Dalvik虚拟机两部分。<ul>
+<li>核心库：核心库提供了Java5 se API的多数功能，并提供Android的核心API，如android.os，android.net，android.media等。</li>
+<li>Dalvik虚拟机：Dalvik虚拟机是基于apache的java虚拟机，并被改进以适应低内存，低处理器速度的移动设备环境。Dalvik虚拟机依赖于Linux内核，实现进程隔离与线程调试管理，安全和异常管理，垃圾回收等重要功能。</li>
+</ul>
+</li>
+</ul>
+<p>Dalvik和标准Java虚拟机有以下主要区别：</p>
+<ul>
+<li>Dalvik基于寄存器，而JVM基于栈。一般认为，基于寄存器的实现虽然更多依赖于具体的CPU结构，硬件通用性稍差，但其使用等长指令，在效率速度上较传统JVM更有优势。</li>
+<li>Dalvik经过优化，允许在有限的内存中同时高效地运行多个虚拟机的实例，并且每一个Dalvik应用作为一个独立的Linux进程执行，都拥有一个独立的Dalvik虚拟机实例。Android这种基于Linux的进程“沙箱”机制，是整个安全设计的基础之一。</li>
+<li>Dalvik虚拟机从DEX（Dalvik Executable）格式的文件中读取指令与数据，进行解释运行。DEX文件由传统的，编译产生的CLASS文件，经dx工具软件处理后生成。</li>
+<li>Dalvik的DEX文件还可以进一步优化，提高运行性能。通常，OEM的应用程序可以在系统编译后，直接生成优化文件（.ODEX）； 第三方的应用程序则可在运行时在缓存中优化与保存，优化后的格式为DEY（.dey文件）。</li>
+</ul>
+<p>&emsp;&emsp;这部分内容，即从android4.4开始就出现了ART（android runtime），但是这个ART并不是指这一节的主题，而是一种用来代替Dalvik的新型运行环境。当然在4.4的正式环境中用的还是Dalvik，真正开始用ART取代Dalvik是从android5.0开始的。（todo:针对这个改动，楼主会专门另开一个篇幅的文章去探究ART和Dalvik之间的区别）</p>
+<p>另外这一节中有提到NDK,相信对于开发者而言SDK和NDK都是必要要接触和了解的东西，那么先从下图来看看sdk和ndk的关系。</p>
+<p><img src="http://img.blog.csdn.net/20160107235017221" alt="Alt text" title="Optional title"></p>
+<p>&emsp;&emsp;很显然地，ndk可以通过native code跨过使用dalvik runtime,直接调用到android内核资源，而sdk则需要在dalvik runtime环境下才能调用到内核资源。然而两者并不是各司其职，各不相关。android提供了JNI(Java native interface)使两者可以进行相互调用和通信。</p>
+<h4 id="应用程序框架层"><a href="#应用程序框架层" class="headerlink" title="应用程序框架层"></a>应用程序框架层</h4><p>&emsp;&emsp;应用程序框架层提供开发Android应用程序所需的一系列类库，使开发人员可以进行快速的应用程序开发，方便重用组件，也可以通过继承实现个性化的扩展。</p>
+<p><img src="http://images.51cto.com/files/uploadimg/20101129/1011271.png" alt="Alt text" title="Optional title"></p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>&emsp;&emsp;Android平台的应用层上包括各类与用户直接交互的应用程序，或由java语言编写的运行于后台的服务程序。例如，智能手机上实现的常见基本功能 程序，诸如SMS短信，电话拨号，图片浏览器，日历，游戏，地图，web浏览器等程序，以及开发人员开发的其他应用程序。</p>
+<p>&emsp;&emsp;将android的基本架构进行了一个总体的分析和罗列，我们可以发现，平时开发中最常接触和用到的一定是application层，但是我们也不难发现，一些application层应用到的东西都能在系统层找到对应的踪迹，例如sqlite,webkit,甚至alarm。他们是怎么从底层到达application层供我们日常开发所用，这个也是需要去了解和研究的。本篇文章的目的在开篇已经阐述过，是为了能更好地将自己的知识对号入座，并且去补充一些自己在某些层面上缺乏的知识，最终可以将自己的知识形成一个整体的体系结构。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/13/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

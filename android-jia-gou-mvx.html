@@ -1,37 +1,436 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="MVC架构设计流程关系 View接受用户交互事件 View将用户的操作，交给Controller Controller完成具体业务逻辑 得到封装好的Model,再进行View的更新  缺点Controller是作为媒介，处于Model和View之前，Model和View之间有紧密的联系，耦合性强Controller做的事情过多，违反了面向对象的单一职责原则  MVP架构设计流程关系 View接受用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android架构MVX">
+<meta property="og:url" content="https://yancy.website/android-jia-gou-mvx.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="MVC架构设计流程关系 View接受用户交互事件 View将用户的操作，交给Controller Controller完成具体业务逻辑 得到封装好的Model,再进行View的更新  缺点Controller是作为媒介，处于Model和View之前，Model和View之间有紧密的联系，耦合性强Controller做的事情过多，违反了面向对象的单一职责原则  MVP架构设计流程关系 View接受用">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-18T14:40:23.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.514Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="MVC">
+<meta property="article:tag" content="MVP">
+<meta property="article:tag" content="MVVM">
+<meta name="twitter:card" content="summary">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/android-jia-gou-mvx.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/android-jia-gou-mvx.html","path":"android-jia-gou-mvx.html","title":"Android架构MVX"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android架构MVX | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">MVC架构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.</span> <span class="nav-text">流程关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVP%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">MVP架构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%85%B3%E7%B3%BB-1"><span class="nav-number">2.1.</span> <span class="nav-text">流程关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MVVM%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">MVVM架构设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%85%B3%E7%B3%BB-2"><span class="nav-number">2.4.</span> <span class="nav-text">流程关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9-1"><span class="nav-number">2.5.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dataBinding%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.6.</span> <span class="nav-text">dataBinding的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">2.7.</span> <span class="nav-text">源码分析</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-jia-gou-mvx.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android架构MVX | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android架构MVX
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-10-18 22:40:23" itemprop="dateCreated datePublished" datetime="2019-10-18T22:40:23+08:00">2019-10-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="MVC架构设计"><a href="#MVC架构设计" class="headerlink" title="MVC架构设计"></a>MVC架构设计</h3><h4 id="流程关系"><a href="#流程关系" class="headerlink" title="流程关系"></a>流程关系</h4><ol>
+<li>View接受用户交互事件</li>
+<li>View将用户的操作，交给Controller</li>
+<li>Controller完成具体业务逻辑</li>
+<li>得到封装好的Model,再进行View的更新</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>Controller是作为媒介，处于Model和View之前，Model和View之间有紧密的联系，耦合性强<br>Controller做的事情过多，违反了面向对象的单一职责原则 </p>
+<h3 id="MVP架构设计"><a href="#MVP架构设计" class="headerlink" title="MVP架构设计"></a>MVP架构设计</h3><h4 id="流程关系-1"><a href="#流程关系-1" class="headerlink" title="流程关系"></a>流程关系</h4><ol>
+<li>View接受用户交互事件</li>
+<li>View把用户的操作交给了Presenter</li>
+<li>presenter控制Model进行业务逻辑的处理</li>
+<li>presenter处理完毕后，数据封装进Model</li>
+<li>presenter收到通知后，再更新数据</li>
+</ol>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>双向通信方式</p>
+<ol>
+<li>View层与Model层完全解耦</li>
+<li>所有的逻辑都交给Presenter处理</li>
+<li>MVP分层较为严谨</li>
+</ol>
+<h4 id="MVVM架构设计"><a href="#MVVM架构设计" class="headerlink" title="MVVM架构设计"></a>MVVM架构设计</h4><h4 id="流程关系-2"><a href="#流程关系-2" class="headerlink" title="流程关系"></a>流程关系</h4><ol>
+<li>View接受用户数据</li>
+<li>View把用户的操作交给了ViewModel</li>
+<li>ViewModel控制Model进行业务处理</li>
+<li>ViewModel处理完毕后，数据封装进Model，刷新View</li>
+</ol>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>降低耦合度：一个ViewModel层可以绑定不同的View层，当Model变化时View可以不变</li>
+<li>可以把一些视图逻辑放在ViewModel层中，让很多View可以重用这些视图逻辑</li>
+</ol>
+<h4 id="dataBinding的使用"><a href="#dataBinding的使用" class="headerlink" title="dataBinding的使用"></a>dataBinding的使用</h4><p>1.gradle文件添加，支持</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 添加DataBinding依赖</span><br><span class="line">    dataBinding&#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>布局文件中，添加最外层layout根布局<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;layout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;&lt;/layout&gt;</span><br></pre></td></tr></table></figure></li>
+<li>添加定义data标签，定义数据及数据来源<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 定义该View（布局）需要绑定的数据来源 --&gt;</span><br><span class="line">   &lt;data&gt;</span><br><span class="line">       &lt;variable</span><br><span class="line">               name=&quot;user&quot;</span><br><span class="line">               type=&quot;com.zyx.cherish.mvp.bean.UserInfo&quot; /&gt;</span><br><span class="line">   &lt;/data&gt;</span><br></pre></td></tr></table></figure></li>
+<li>在正常布局中用data中定义的name去使用“@=”是为了实现双向绑定（v -&gt; model）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;EditText</span><br><span class="line">                android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">                android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">                android:text=&quot;@=&#123;user.name&#125;&quot; /&gt;</span><br></pre></td></tr></table></figure></li>
+<li>build之后在activity中通过DatabindinngUtils绑定类与布局,然后就可以设置数据<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ActivityLoginLayoutBinding viewDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_login_layout);</span><br><span class="line"></span><br><span class="line">viewDataBinding.setUser(userInfo);</span><br></pre></td></tr></table></figure>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4></li>
+</ol>
+<p><strong>内存消耗的缺点</strong></p>
+<ol>
+<li>会生成大量的object的对象，用到了数组保存数组</li>
+<li>每个View会监听数据变化，创建了线程</li>
+<li>在刷新时会轮训发送handler消息<br>在定义布局后通过rebuild，会生成额外的文件，这个是系统通过APT生成的<br>主要有</li>
+<li>activity_login_layout-layout.xml 配置文件，可以让dataBing方便查找View</li>
+<li>activity_login_layout 为每个View添加了Tag如binding_1</li>
+<li>DataBinderMapperImpl 这个是具体实现绑定类</li>
+<li>在DataBindingUtil.setContentView(this, R.layout.activity_login_layout)后会对布局中的控件进行绑定</li>
+<li>线程 mRebindRunnable  控件会对M数据修改做监听，来更新V的数据</li>
+<li>InverseBindingListener 控件自身数据修改即V数据修改，会更新M的数据</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MVC/" rel="tag"><i class="fa fa-tag"></i> MVC</a>
+              <a href="/tags/MVP/" rel="tag"><i class="fa fa-tag"></i> MVP</a>
+              <a href="/tags/MVVM/" rel="tag"><i class="fa fa-tag"></i> MVVM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/qie-mian-bian-cheng.html" rel="prev" title="切面编程">
+                  <i class="fa fa-angle-left"></i> 切面编程
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/handler-jie-xi.html" rel="next" title="Handler解析">
+                  Handler解析 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

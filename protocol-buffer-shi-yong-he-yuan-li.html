@@ -1,37 +1,495 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Protocol Buffer 介绍Protocol Buffer 是一种轻便高效的结构化数据格式，可以用于结构化数据的序列号，适合做数据存储和RPC数据交换格式，他是平台无关，语言无关，可扩展的序列号结构数据格式 结构化数据格式 XML, 通过标签定义的 JSON，通过键值对定义的 DB，数据库  序列化 Serilizable Parseable  用途 RPC数据交换格式 即网络通讯 数据存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="protocol buffer 使用和原理">
+<meta property="og:url" content="https://yancy.website/protocol-buffer-shi-yong-he-yuan-li.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="Protocol Buffer 介绍Protocol Buffer 是一种轻便高效的结构化数据格式，可以用于结构化数据的序列号，适合做数据存储和RPC数据交换格式，他是平台无关，语言无关，可扩展的序列号结构数据格式 结构化数据格式 XML, 通过标签定义的 JSON，通过键值对定义的 DB，数据库  序列化 Serilizable Parseable  用途 RPC数据交换格式 即网络通讯 数据存">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yancy.website/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/proto_generate_code.png">
+<meta property="og:image" content="https://yancy.website/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/protobuffer_struct.png">
+<meta property="article:published_time" content="2020-03-01T11:08:10.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.524Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="Protocol Buff">
+<meta property="article:tag" content="数据存储">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yancy.website/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/proto_generate_code.png">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/protocol-buffer-shi-yong-he-yuan-li.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/protocol-buffer-shi-yong-he-yuan-li.html","path":"protocol-buffer-shi-yong-he-yuan-li.html","title":"protocol buffer 使用和原理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>protocol buffer 使用和原理 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Protocol-Buffer-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Protocol Buffer 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">结构化数据格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%A8%E9%80%94"><span class="nav-number">1.3.</span> <span class="nav-text">用途</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%A8%E5%B9%B3%E5%8F%B0%EF%BC%8C%E8%AF%AD%E8%A8%80"><span class="nav-number">1.4.</span> <span class="nav-text">跨平台，语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.5.</span> <span class="nav-text">优点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%BA%94%E7%94%A8build"><span class="nav-number">2.1.</span> <span class="nav-text">配置应用build</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEmodule-build-gradle"><span class="nav-number">2.2.</span> <span class="nav-text">配置module build.gradle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E6%B6%88%E6%81%AF"><span class="nav-number">2.3.</span> <span class="nav-text">构建消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Studio-%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%BB%A3%E7%A0%81"><span class="nav-number">2.4.</span> <span class="nav-text">Studio 自动生成代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ProtoBuffer-%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">ProtoBuffer 原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E6%9C%BA%E5%88%B6"><span class="nav-number">3.1.</span> <span class="nav-text">编码机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Base-128-Varints"><span class="nav-number">3.1.1.</span> <span class="nav-text">Base 128 Varints</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E6%81%AF%E7%BB%93%E6%9E%84"><span class="nav-number">3.2.</span> <span class="nav-text">消息结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.1.</span> <span class="nav-text">编码类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#key"><span class="nav-number">3.2.2.</span> <span class="nav-text">key</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B4%9F%E6%95%B0"><span class="nav-number">3.2.3.</span> <span class="nav-text">负数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">3.2.4.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">3.2.5.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="nav-number">3.3.</span> <span class="nav-text">使用指南</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FastJson%E5%AF%B9%E6%AF%94"><span class="nav-number">4.</span> <span class="nav-text">FastJson对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/protocol-buffer-shi-yong-he-yuan-li.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="protocol buffer 使用和原理 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          protocol buffer 使用和原理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-01 19:08:10" itemprop="dateCreated datePublished" datetime="2020-03-01T19:08:10+08:00">2020-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="Protocol-Buffer-介绍"><a href="#Protocol-Buffer-介绍" class="headerlink" title="Protocol Buffer 介绍"></a>Protocol Buffer 介绍</h3><p>Protocol Buffer 是一种轻便高效的结构化数据格式，可以用于结构化数据的序列号，适合做数据存储和RPC数据交换格式，他是平台无关，语言无关，可扩展的序列号结构数据格式</p>
+<h4 id="结构化数据格式"><a href="#结构化数据格式" class="headerlink" title="结构化数据格式"></a>结构化数据格式</h4><ol>
+<li>XML, 通过标签定义的</li>
+<li>JSON，通过键值对定义的</li>
+<li>DB，数据库</li>
+</ol>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><ol>
+<li>Serilizable</li>
+<li>Parseable</li>
+</ol>
+<h4 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h4><ol>
+<li>RPC数据交换格式 即网络通讯</li>
+<li>数据存储</li>
+</ol>
+<h4 id="跨平台，语言"><a href="#跨平台，语言" class="headerlink" title="跨平台，语言"></a>跨平台，语言</h4><p>如json，不限操作平台和编程语言同可以使用json</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>序列化后的体积相比json和xml很小，适合网络传输  40M的json数据  17M Protobuffer</li>
+<li>支持跨平台，多语言</li>
+<li>消息格式升级和兼容性不错</li>
+<li>序列化反序列化快   40M的json数据  10s, Protobuffer 0.8s</li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>Android studio 环境配置</p>
+<h4 id="配置应用build"><a href="#配置应用build" class="headerlink" title="配置应用build"></a>配置应用build</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &#x27;com.android.tools.build:gradle:3.1.0&#x27;</span><br><span class="line">        classpath &#x27;com.google.protobuf:protobuf-gradle-plugin:0.8.10&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="配置module-build-gradle"><a href="#配置module-build-gradle" class="headerlink" title="配置module build.gradle"></a>配置module build.gradle</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &#x27;com.android.application&#x27;</span><br><span class="line">apply plugin: &#x27;com.google.protobuf&#x27;</span><br><span class="line">protobuf &#123;</span><br><span class="line">    protoc &#123;</span><br><span class="line">        artifact = &#x27;com.google.protobuf:protoc:3.8.0&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">    generateProtoTasks &#123;</span><br><span class="line">        all().each &#123; task -&gt;</span><br><span class="line">            task.builtins &#123;</span><br><span class="line">                java &#123;</span><br><span class="line">                    option &quot;lite&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation fileTree(dir: &#x27;libs&#x27;, include: [&#x27;*.jar&#x27;])</span><br><span class="line">    implementation &#x27;com.google.protobuf:protobuf-javalite:3.9.1&#x27;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="构建消息"><a href="#构建消息" class="headerlink" title="构建消息"></a>构建消息</h4><p>消息由至少一个字段组合而成：字段 = 字段修饰符 + 字段类型 + 字段名 + 标识符<br>标识符TAG：每个字段的唯一标识数字，用于说明二进制文件的对应关系，不能修改，</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">syntax = &quot;proto3&quot;;</span><br><span class="line"></span><br><span class="line">//option java_package = &quot;www.dcf.com.vo&quot;;</span><br><span class="line">package tutorial;</span><br><span class="line"></span><br><span class="line">option java_package = &quot;com.zyx.proto&quot;;</span><br><span class="line">option java_outer_classname = &quot;TestProto&quot;;</span><br><span class="line"></span><br><span class="line">message test &#123;</span><br><span class="line">     int32     id = 1;  // ID</span><br><span class="line">     string    str = 2;  // str</span><br><span class="line">     int32     opt = 3;  //optional field</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="Studio-自动生成代码"><a href="#Studio-自动生成代码" class="headerlink" title="Studio 自动生成代码"></a>Studio 自动生成代码</h4><p>通过Android Studio build，Protobuf插件会帮助我们自动生成TestProto类，类结构如下</p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/proto_generate_code.png" alt=""></p>
+<p>Protobuf帮助我们自动生成了testOrBuilder接口，主要定义了个字段的get，set方法，并生成了test类，核心逻辑，通过writeTo（CodedOutputStream）接口序列化到CodedOutputStream，通过parseFrom(InputStream) 接口从InputStream中反序列化</p>
+<p><img src="/Users/zhengyangxin/Documents/Blog/zhengyangxin.github.io/source/images/protobuffer_struct.png" alt=""></p>
+<h3 id="ProtoBuffer-原理"><a href="#ProtoBuffer-原理" class="headerlink" title="ProtoBuffer 原理"></a>ProtoBuffer 原理</h3><p>ProtoBuffer不管在时间还是空间上更加高效，是怎么做到的？</p>
+<p>消息经过ProtoBuffer序列化后会成为二进制数据流，通过key-Value组成方式写入到二进制数据流。</p>
+<h4 id="编码机制"><a href="#编码机制" class="headerlink" title="编码机制"></a>编码机制</h4><h5 id="Base-128-Varints"><a href="#Base-128-Varints" class="headerlink" title="Base 128 Varints"></a>Base 128 Varints</h5><p>是一种可变字节序列化整形的方法</p>
+<ol>
+<li>每个byte的最高位是标志位(msb), 如果是1，则表示后面还有byte，否则为结束byte</li>
+<li>每个byte的低7位用来存储数值的位</li>
+<li>Varints方法用Litte-Endian(小端)字节序列</li>
+</ol>
+<h4 id="消息结构"><a href="#消息结构" class="headerlink" title="消息结构"></a>消息结构</h4><h5 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h5><table>
+<thead>
+<tr>
+<th align="center">Type</th>
+<th align="center">Meaning</th>
+<th align="center">Used For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">Varint</td>
+<td align="center">int32,int64,uinit32,uint64,sint32,sint64,bool,enum</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">64-bit</td>
+<td align="center">fixed64,sfixed64,double</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Length-delimited</td>
+<td align="center">string,bytes,embedded messages</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">32-bit</td>
+<td align="center">fixed32,sfixed32,float</td>
+</tr>
+</tbody></table>
+<h5 id="key"><a href="#key" class="headerlink" title="key"></a>key</h5><p>key的具体值为   (field_number &lt;&lt; 3) | wire_type，</p>
+<p>以上面的例子来说，如字段id定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int32 id = 2; // 150</span><br></pre></td></tr></table></figure>
+
+<p>在序列化时，并不会把字段id写进二进制流中，而是把<code>field_number=2</code>通过上述<code>Key</code>的定义计算后写进二进制流中，这就是Protobuf可读性差的原因，也是其高效的主要原因。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">key = (field_number &lt;&lt; 3) | wire_type = 2 &lt;&lt; 3 | 0 = 10000 |0 = 16  = 0x10</span><br><span class="line">value 150 二进制位1001 0110  </span><br><span class="line">最高位 为msb，将它分为一个一组</span><br><span class="line">1 0010110 进行补齐 0000001 0010110</span><br><span class="line">小端序存储则为0010110  0000001</span><br><span class="line">补齐 表示为msb   10010110 00000001 = 0x96  0x01</span><br><span class="line">则最后的存储为 10 96 01</span><br><span class="line"></span><br><span class="line">如果value 300 二进制为 100101100</span><br><span class="line">最高位为msb， 进行7位一组分组</span><br><span class="line">10  0101100  进行补齐0000010 0101100</span><br><span class="line">小端序存储 10101100 00000010  = 0xac 0x2</span><br><span class="line">则最后存储为 10 ac 02</span><br></pre></td></tr></table></figure>
+
+<p>key的范围：wire_type只有六种类型，用3bit表示，在一个byte里，去掉mbs，以及3bit的wire_type,只剩下4bit来表示field_number,因此一个Byte里，field_number只能表达0-15，超过15个需要多个byte表示</p>
+<h5 id="负数"><a href="#负数" class="headerlink" title="负数"></a>负数</h5><p>所谓ZigZag编码即将负数转换成正数，而所有正数都乘2，如0编码成0，-1编码成1，1编码成2，-2编码成3，以此类推，因而它对负数的编码依然保持比较高的效率。</p>
+<h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><ul>
+<li>Varint适用于表达比较小的整形，当数字很大时，采用定长编码类型(64bit,32bit)</li>
+<li>不利于表达负数，负数采用补码表示，会占用更多字节，确定出现负数用sint32,sint64,他会采用ZigZig编码将负数映射成整数，之后再使用Varint编码</li>
+</ul>
+<p>Length-delimited</p>
+<ul>
+<li><p>Length-delimited编码格式会将数据的length也编码进最终的数据，编码格式有string，bytes，自定义消息</p>
+</li>
+<li><p>在消息中将str = “testing”, </p>
+<p>序列化的打印结果 为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> private void test() &#123;</span><br><span class="line">        TestProto.test.Builder test = TestProto.test.newBuilder();</span><br><span class="line">        TestProto.test test1 = test.setStr(&quot;testing&quot;).build();</span><br><span class="line">        // 序列化</span><br><span class="line">        byte[] bytes = test1.toByteArray();</span><br><span class="line"></span><br><span class="line">        for (byte aByte : bytes) &#123;</span><br><span class="line">            System.out.print(aByte +&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 18 7 116 101 115 116 105 110 103</span><br><span class="line">str 的field_number = 2; str = &quot;testing&quot;</span><br><span class="line">key = (field &lt;&lt; 3) | wire_type = 2 &lt;&lt; 3 | 2 = 10000 | 10 = (十进制) 18 = (16进制)0x12</span><br><span class="line">7 为 value的长度testing长度为7</span><br><span class="line">然后计算value的每个字母 t 在ASCII中的 十进制数是 116， e 为101， s为115 以此类推</span><br><span class="line">发现每个byte存储的是计算后的10进制数字，和网上说16进制 byte存储方式不一致 12 07 74 65 73 74 69 6e 67</span><br><span class="line">现在按照16进制存储计算</span><br><span class="line">key = 12 已经确定</span><br><span class="line">t 的二进制为 0111 0100 16 进制为74</span><br><span class="line">e 则为65 ..</span><br><span class="line">所以string的转换方式是 key的16进制 + 字符串长度16进制 + 字符串的每个字母的16进制</span><br></pre></td></tr></table></figure>
+
+<h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><p>通过原理破解，在通过观察源码Protobuffer的序列化和反序列化同时通过几个位运算实现的，所以他的效率高，体积小</p>
+</li>
+</ul>
+<h4 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h4><ul>
+<li>尽量不要修改tag</li>
+<li>字段数量不要超过16个，否则会采用2个字节编码, (1个字节最大值为128， key的计算会通过field_number &lt;&lt; 3 | wire_type, 当field_number 为16时刚好使用了1个字节计算，否则就需要两个字节计算)</li>
+<li>如果确定使用负数，采用sint32/sint64</li>
+</ul>
+<h3 id="FastJson对比"><a href="#FastJson对比" class="headerlink" title="FastJson对比"></a>FastJson对比</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-gpb/index.html">Google Protocol Buffer 的使用和原理</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" rel="tag"><i class="fa fa-tag"></i> 数据存储</a>
+              <a href="/tags/Protocol-Buff/" rel="tag"><i class="fa fa-tag"></i> Protocol Buff</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/flutter-zhi-xing-neng-ce-shi-he-li-lun.html" rel="prev" title="flutter之性能测试和理论">
+                  <i class="fa fa-angle-left"></i> flutter之性能测试和理论
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/android-xi-lie.html" rel="next" title="Android系列">
+                  Android系列 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

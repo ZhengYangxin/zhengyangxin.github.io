@@ -1,37 +1,448 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Flutter的渲染阶段VSync-&gt;Animation-&gt;Build-&gt;Layout-&gt;Paint-&gt;Display List(GPU)  Build ： Widget，Element树 Layout，Paint： RenderObject树的创建 Display List(GPU)，是对Layer图层的创建  检查Flutter的渲染Debug模式和最终的生产模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter之性能测试和理论">
+<meta property="og:url" content="https://yancy.website/flutter-zhi-xing-neng-ce-shi-he-li-lun.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="Flutter的渲染阶段VSync-&gt;Animation-&gt;Build-&gt;Layout-&gt;Paint-&gt;Display List(GPU)  Build ： Widget，Element树 Layout，Paint： RenderObject树的创建 Display List(GPU)，是对Layer图层的创建  检查Flutter的渲染Debug模式和最终的生产模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-28T07:07:54.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.523Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/flutter-zhi-xing-neng-ce-shi-he-li-lun.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/flutter-zhi-xing-neng-ce-shi-he-li-lun.html","path":"flutter-zhi-xing-neng-ce-shi-he-li-lun.html","title":"flutter之性能测试和理论"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>flutter之性能测试和理论 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Flutter%E7%9A%84%E6%B8%B2%E6%9F%93%E9%98%B6%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text">Flutter的渲染阶段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5Flutter%E7%9A%84%E6%B8%B2%E6%9F%93"><span class="nav-number">2.</span> <span class="nav-text">检查Flutter的渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RenderObject"><span class="nav-number">3.</span> <span class="nav-text">RenderObject</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element"><span class="nav-number">4.</span> <span class="nav-text">Element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E7%B1%BB%E5%9E%8B%E6%9B%B4%E6%96%B0"><span class="nav-number">5.</span> <span class="nav-text">同类型更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Buid%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">6.</span> <span class="nav-text">Buid性能测试工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Paint"><span class="nav-number">7.</span> <span class="nav-text">Paint</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/flutter-zhi-xing-neng-ce-shi-he-li-lun.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="flutter之性能测试和理论 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          flutter之性能测试和理论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-28 15:07:54" itemprop="dateCreated datePublished" datetime="2020-01-28T15:07:54+08:00">2020-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="Flutter的渲染阶段"><a href="#Flutter的渲染阶段" class="headerlink" title="Flutter的渲染阶段"></a>Flutter的渲染阶段</h4><p><strong>VSync-&gt;Animation-&gt;Build-&gt;Layout-&gt;Paint-&gt;Display List(GPU)</strong></p>
+<ul>
+<li>Build ： Widget，Element树</li>
+<li>Layout，Paint： RenderObject树的创建</li>
+<li>Display List(GPU)，是对Layer图层的创建</li>
+</ul>
+<h4 id="检查Flutter的渲染"><a href="#检查Flutter的渲染" class="headerlink" title="检查Flutter的渲染"></a>检查Flutter的渲染</h4><p>Debug模式和最终的生产模式，有很大的性能特点，所以在做真实的测量之前都用Profile模式</p>
+<ul>
+<li>Debug模式</li>
+<li>Profile模式</li>
+</ul>
+<h4 id="RenderObject"><a href="#RenderObject" class="headerlink" title="RenderObject"></a>RenderObject</h4><p>它不是一个顶层Api，并且充分利用了组合的性质，所以他的公共方法比Android的View少</p>
+<ul>
+<li>是Flutter的UI单位，有很长的生命周期和状态</li>
+<li>主要方法<ul>
+<li>createRenderObject、updateRenderObject</li>
+<li>performLayout</li>
+<li>paint</li>
+</ul>
+</li>
+</ul>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><ul>
+<li>ComponentElement，主要是做组合的，不直接参与布局绘制<ul>
+<li>StatelessElement</li>
+<li>StatefulElement</li>
+</ul>
+</li>
+<li>RenderObjectElement，会对RenderObject树上的RenderObject做连接</li>
+</ul>
+<h4 id="同类型更新"><a href="#同类型更新" class="headerlink" title="同类型更新"></a>同类型更新</h4><p>修改某个Text的值</p>
+<ul>
+<li>Build<ul>
+<li>在Flutter中Widget树是不可改变的，这也包括树节点之间的父子关系</li>
+<li>在开始build时，会创造一个新的树</li>
+<li>遍历Element，通过Element.updateChild(),观察子节点，若子节点类型发生改变，则会扔掉老节点，创造一个新的节点</li>
+<li>更新过程中，若Element是Component则build即可，若是RenderObjectElement则会updateRenderObject</li>
+<li>若内容发生改变会进行标脏处理</li>
+</ul>
+</li>
+</ul>
+<h4 id="Buid性能测试工具"><a href="#Buid性能测试工具" class="headerlink" title="Buid性能测试工具"></a>Buid性能测试工具</h4><ul>
+<li>观望台，TimeLine，类似安卓的systrace,设置debugProfileBuildsEnable = true,检查build过程的性能损耗</li>
+<li>遍历的触发 <ul>
+<li>setState方法</li>
+<li>依赖了InHeritedWidget,当InHeritedWidget发生改变会影响其他</li>
+<li>热重载，所有节点都会被更新</li>
+</ul>
+</li>
+<li>提高build效率<ul>
+<li>通过Extra单独的Widget，减少遍历的节点</li>
+<li>停止遍历</li>
+</ul>
+</li>
+</ul>
+<h4 id="Paint"><a href="#Paint" class="headerlink" title="Paint"></a>Paint</h4><p>在工程完成后会对RenderObject的某些节点进行标脏，让他重新绘制。<br>debugProfileBuildsEnabled = true;<br>debugProfilePaintsEnabled = true;<br>debugPaintLayerBordersEnabled = true;</p>
+<ul>
+<li>如何知道多少其他节点需要跟被标脏的树一起被更新呢？<ul>
+<li>基于图层树Layer</li>
+<li>更新指定图层</li>
+</ul>
+</li>
+<li>Layer种类<ul>
+<li>PictureLayer</li>
+<li>ContainerLayer:主要用于做PictureLayer的连接</li>
+</ul>
+</li>
+</ul>
+<p>yum -y install wget<br>wget -N –no-check-certificate <a href="https://softs.fun/Bash/ssr.sh">https://softs.fun/Bash/ssr.sh</a> &amp;&amp; chmod +x ssr.sh &amp;&amp; bash ssr.sh</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"><i class="fa fa-tag"></i> Flutter</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/flutter-zhi-ping-tai-ji-cheng.html" rel="prev" title="flutter之平台集成">
+                  <i class="fa fa-angle-left"></i> flutter之平台集成
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/protocol-buffer-shi-yong-he-yuan-li.html" rel="next" title="protocol buffer 使用和原理">
+                  protocol buffer 使用和原理 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

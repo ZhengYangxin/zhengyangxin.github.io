@@ -1,37 +1,438 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Https的用途和工作模式用Http协议看新闻没什么问题，但换到严肃的场景中就存在安全风向了，如支付，使用普通的Http协议就会被黑客盯上。通过拦截请求假装自己是服务器，让你输入密码等。解决这种问题的思路是对数据加密，加密方式分两种： 对称加密在对称加密中，加密解密都使用相同的秘钥，因此秘钥的保密工作需要做好，只能给使用的人知道,存在问题  秘钥的约定时机，秘钥通过互联网传输一样会被黑客截获  非">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8月3日">
+<meta property="og:url" content="https://yancy.website/8-yue-3-ri.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="Https的用途和工作模式用Http协议看新闻没什么问题，但换到严肃的场景中就存在安全风向了，如支付，使用普通的Http协议就会被黑客盯上。通过拦截请求假装自己是服务器，让你输入密码等。解决这种问题的思路是对数据加密，加密方式分两种： 对称加密在对称加密中，加密解密都使用相同的秘钥，因此秘钥的保密工作需要做好，只能给使用的人知道,存在问题  秘钥的约定时机，秘钥通过互联网传输一样会被黑客截获  非">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yancy.website/images/lADPDgQ9q4pv-gfNBLbNAuA_736_1206.jpg">
+<meta property="article:published_time" content="2019-08-03T01:20:18.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.511Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="Https">
+<meta property="article:tag" content="日记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yancy.website/images/lADPDgQ9q4pv-gfNBLbNAuA_736_1206.jpg">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/8-yue-3-ri.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/8-yue-3-ri.html","path":"8-yue-3-ri.html","title":"8月3日"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>8月3日 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Https%E7%9A%84%E7%94%A8%E9%80%94%E5%92%8C%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">Https的用途和工作模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">1.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83"><span class="nav-number">1.3.</span> <span class="nav-text">比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="nav-number">1.4.</span> <span class="nav-text">数字证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Https%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">Https的工作模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">1.6.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AEAlpha%E5%90%AF%E5%8A%A8%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">阿里开源项目Alpha启动框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#PERT"><span class="nav-number">2.1.</span> <span class="nav-text">PERT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="nav-number">2.1.1.</span> <span class="nav-text">四个概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="nav-number">2.1.2.</span> <span class="nav-text">基本要求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">2.1.3.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E8%BB%9F%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">在軟件设计的应用</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/8-yue-3-ri.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="8月3日 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          8月3日
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-03 09:20:18" itemprop="dateCreated datePublished" datetime="2019-08-03T09:20:18+08:00">2019-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">日记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="Https的用途和工作模式"><a href="#Https的用途和工作模式" class="headerlink" title="Https的用途和工作模式"></a>Https的用途和工作模式</h3><p>用Http协议看新闻没什么问题，但换到严肃的场景中就存在安全风向了，如支付，使用普通的Http协议就会被黑客盯上。通过拦截请求假装自己是服务器，让你输入密码等。解决这种问题的思路是对数据加密，加密方式分两种：</p>
+<h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>在对称加密中，加密解密都使用相同的秘钥，因此秘钥的保密工作需要做好，只能给使用的人知道,存在问题</p>
+<ul>
+<li>秘钥的约定时机，秘钥通过互联网传输一样会被黑客截获</li>
+</ul>
+<h4 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h4><p>加密和解密使用的秘钥不相同。分公钥和私钥，且公钥加密只能私钥解密，反之亦然。对称加密会存在秘钥约定十几的问题，所以需要非对称加密介入。将非对称加密的公钥公开，私钥自己保留。同样存在问题</p>
+<ul>
+<li>服务器的回复数据，黑客可以通过公钥解密，且黑客也可以模拟发送请求，所以一对公钥私钥不够，客户端同样需要有自己的公钥和私钥，并且客户端的公钥给服务端<span id="more"></span>
+
+</li>
+</ul>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><p>对称加密的算法比分对称加密的算法效率高性能也好，大多数场景都是用对称加密</p>
+<h4 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h4><p>非对称加密也存在同样的问题，如何将不对称的公钥给对方。一种是放在公网地址上，让对方下载；二是建立链接的时候传给对方。存在问题：</p>
+<ul>
+<li>如何鉴别别人发给你的公钥是对的，而不是冒充的<br>通过权威机构(CA)部门的证书，证书里面包括公钥还要发布者的信息及发布机构，证书有效期等，如身份证一样的存在。证书的签名算法即ＣＡ的私钥,给公司的公钥加密。所有用户在网站上得到的是一个证书，你只要得到ＣＡ的公钥去解密签名就能得到公司的公钥了。关于ＣＡ公钥的可靠性，则需要更加权威的机构证实。</li>
+</ul>
+<h4 id="Https的工作模式"><a href="#Https的工作模式" class="headerlink" title="Https的工作模式"></a>Https的工作模式</h4><p>非对称加密性能不及对称加密，通过非对称加密只对对称加密的秘钥进行加密码，而真正通讯的传输数据则通过对称加密的秘钥进行加解密。过程<br><img width=200 src="/images/lADPDgQ9q4pv-gfNBLbNAuA_736_1206.jpg" ></p>
+<ol>
+<li>客户端发送Client Hello 到服务器,会以明文传输TLS版本信息，加密套件候选列表，压缩算法列表等信息，还有一个随机数，在协商对称秘钥的时候使用</li>
+<li>服务器返回Server Hello消息，告诉客户端服务器所选的协议版本，加密套件和压缩算法等，还有一个随机数，用于后续秘钥协商</li>
+<li>服务器发送证书</li>
+<li>客户端从CA仓库里的公钥去解密证书，成功则可信任获得了服务器的公钥。最后客户端产生一个随机数，用服务器公钥加密发送给服务端</li>
+<li>客户端接收到Client Key Exchange,通过私钥解密。最后协商出对称加密的秘钥为客户端的随机数+服务端的随机数+Pre-master产生与客户端相同的对称秘钥</li>
+<li>客户端和服务端通过协商的对称秘钥进行通讯</li>
+</ol>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ul>
+<li>对称加密的效率比非对称加密高，但无法解决了秘钥传输的问题。非对称加密可以解决这个问题，但是效率不高</li>
+<li>非对称加密需要通过证书合权威机构来验证公钥的合法性</li>
+<li>Https是综合了对称加密合非对称加密算法的Http协议，既保证传输安全，有保证了传输效</li>
+</ul>
+<h3 id="阿里开源项目Alpha启动框架"><a href="#阿里开源项目Alpha启动框架" class="headerlink" title="阿里开源项目Alpha启动框架"></a>阿里开源项目Alpha启动框架</h3><p>是一个基于PERT图构建的异步启动框架，使用简单，高效。<br>在应用启动的时候，我们通常会做很多工作需要，为了提高启动速度，我们尽可能的让这些工作并发进行。但这些工作可能存在前后依赖关系，所以我们需要想办法保证执行顺序的正确性。</p>
+<h4 id="PERT"><a href="#PERT" class="headerlink" title="PERT"></a>PERT</h4><p>即计划评审技术，利用网络分析制定计划以及对计划予以评价的技术。它能调整计划的各道工序，合理安排资源，加速计划进度.</p>
+<h5 id="四个概念"><a href="#四个概念" class="headerlink" title="四个概念"></a>四个概念</h5><ol>
+<li>事件：表示主要活动结束的哪一点</li>
+<li>活动：表示从一个事件到另一个事件之间的过程</li>
+<li>松弛事件：不影响完工前提下可能被推迟完成的最大时间</li>
+<li>关键路线：是PERT中花费时间最长的事件和活动序列</li>
+</ol>
+<h5 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h5><ol>
+<li>构建一个清晰精确的事件活动网络，其中包括时间和资源</li>
+<li>对时间活动进行逻辑排序以确定关键路线</li>
+<li>确定“不确定性”</li>
+<li>计算关键路线和宽裕时间</li>
+</ol>
+<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ol>
+<li>标识出项目的关键路径，以明确项目活动的重点</li>
+<li>对关键步骤进行资源调度及优化</li>
+<li>资源发生矛盾时，通过调度非关键路径资源，保证项目进度</li>
+<li>通过PERT网络分析法可大大缩短项目完成的时间</li>
+</ol>
+<h4 id="在軟件设计的应用"><a href="#在軟件设计的应用" class="headerlink" title="在軟件设计的应用"></a>在軟件设计的应用</h4><ol>
+<li>软件的模块化，不同业务线并行开发</li>
+<li>应用插件化，使宿主与插件分开编译，提高编译速度</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Https/" rel="tag"><i class="fa fa-tag"></i> Https</a>
+              <a href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 日记</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/gradle-xue-xi.html" rel="prev" title="Gradle学习">
+                  <i class="fa fa-angle-left"></i> Gradle学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/8-yue-4-ri.html" rel="next" title="8月4日">
+                  8月4日 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

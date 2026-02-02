@@ -1,37 +1,412 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to&#x3D;origin&#x2F;dev2.2 masterBranch master set up to track remote branch dev2.2 from origin. 远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。 二.查看所有分支（本地、远程）123456$ git branch -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git相关操作">
+<meta property="og:url" content="https://yancy.website/git-xiang-guan-cao-zuo.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="一. git关联本地与远程分支12$ git branch --set-upstream-to&#x3D;origin&#x2F;dev2.2 masterBranch master set up to track remote branch dev2.2 from origin. 远程分支在前，本地分支在后。关联之后就可以正常的pull代码了。 二.查看所有分支（本地、远程）123456$ git branch -">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.blog.csdn.net/20150811134840627">
+<meta property="article:published_time" content="2017-08-02T14:40:20.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.524Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20150811134840627">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/git-xiang-guan-cao-zuo.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/git-xiang-guan-cao-zuo.html","path":"git-xiang-guan-cao-zuo.html","title":"git相关操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>git相关操作 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-git%E5%85%B3%E8%81%94%E6%9C%AC%E5%9C%B0%E4%B8%8E%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="nav-number">1.</span> <span class="nav-text">一. git关联本地与远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%88%86%E6%94%AF%EF%BC%88%E6%9C%AC%E5%9C%B0%E3%80%81%E8%BF%9C%E7%A8%8B%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">二.查看所有分支（本地、远程）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-%E5%BD%93%E5%89%8D%E5%85%B3%E8%81%94%E7%9A%84%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF"><span class="nav-number">3.</span> <span class="nav-text">三.当前关联的远程分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B-git-merge-%E5%92%8C-git-merge-%E2%80%93no-ff"><span class="nav-number">4.</span> <span class="nav-text">四.git merge 和 git merge –no-ff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94-merge-%E4%B8%8E-rebase-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">5.</span> <span class="nav-text">五.merge 与 rebase 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD-%E7%BD%91%E4%B8%8A%E6%8E%A8%E8%8D%90%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E4%B8%80%E8%88%AC%E6%98%AF%E7%94%A8fetch-rebase-%E7%9B%B8%E6%AF%94pull-merge%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%9B%B4%E5%B9%B2%E5%87%80%EF%BC%8C%E4%B8%8D%E5%AE%B9%E6%98%93%E5%87%BA%E9%94%99"><span class="nav-number">6.</span> <span class="nav-text">六.网上推荐的工作流一般是用fetch+rebase (相比pull+merge工作流更干净，不容易出错)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/git-xiang-guan-cao-zuo.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="git相关操作 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git相关操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-02 22:40:20" itemprop="dateCreated datePublished" datetime="2017-08-02T22:40:20+08:00">2017-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="一-git关联本地与远程分支"><a href="#一-git关联本地与远程分支" class="headerlink" title="一. git关联本地与远程分支"></a>一. git关联本地与远程分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --set-upstream-to=origin/dev2.2 master</span><br><span class="line">Branch master set up to track remote branch dev2.2 from origin.</span><br></pre></td></tr></table></figure>
+<p>远程分支在前，本地分支在后。<br>关联之后就可以正常的pull代码了。</p>
+<h3 id="二-查看所有分支（本地、远程）"><a href="#二-查看所有分支（本地、远程）" class="headerlink" title="二.查看所有分支（本地、远程）"></a>二.查看所有分支（本地、远程）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -a</span><br><span class="line">* master</span><br><span class="line">  remotes/origin/HEAD -&gt; origin/master</span><br><span class="line">  remotes/origin/dev</span><br><span class="line">  remotes/origin/dev2.2</span><br><span class="line">  remotes/origin/master</span><br></pre></td></tr></table></figure>
+
+<h3 id="三-当前关联的远程分支"><a href="#三-当前关联的远程分支" class="headerlink" title="三.当前关联的远程分支"></a>三.当前关联的远程分支</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -vv</span><br><span class="line">* master beb7725 [origin/dev2.2: behind 1] 首页本地记录上次关闭之前的状态</span><br></pre></td></tr></table></figure>
+
+<h3 id="四-git-merge-和-git-merge-–no-ff"><a href="#四-git-merge-和-git-merge-–no-ff" class="headerlink" title="四.git merge 和 git merge –no-ff"></a>四.git merge 和 git merge –no-ff</h3><p><img src="http://img.blog.csdn.net/20150811134840627" alt="Alt text" title="Optional title"><br>根据这张图片可以看出<br>Git merge –no-ff 可以保存你之前的分支历史。能够更好的查看 merge历史，以及branch 状态。<br>git merge 则不会显示 feature，只保留单条分支记录。</p>
+<h3 id="五-merge-与-rebase-的区别"><a href="#五-merge-与-rebase-的区别" class="headerlink" title="五.merge 与 rebase 的区别"></a>五.merge 与 rebase 的区别</h3><p>1.Git merge 会生成一个新得合并节点，而rebase不会<br>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      D---E test</span><br><span class="line">     /</span><br><span class="line">A---B---C---F master</span><br></pre></td></tr></table></figure>
+<p>使用merge合并, 为分支合并自动识别出最佳的同源合并点： git merge master</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      D--------E</span><br><span class="line">     /          \</span><br><span class="line">A---B---C---F----G   test, master</span><br></pre></td></tr></table></figure>
+<p>操作会舍弃 master 分支上提取的 commit，同时不会像 merge 一样生成一个合并修改内容的 commit，相当于把 master 分支（当前所在分支）上的修改在 deve 分支（目标分支）上原样复制了一遍:git rebase test</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A---B---D---E---C&#x27;---F&#x27;   test, master</span><br></pre></td></tr></table></figure>
+<p>使用git pull时默认是merge， 加 –rebase参数使其使用rebase方式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase  </span><br></pre></td></tr></table></figure>
+<p>2.rebase和merge的不同适用场景</p>
+<p><strong>rebase场景：</strong>如果修改了某个公用代码的BUG，这个时候就应该是把所有的OEM版本分支rebase到这个修复BUG的分支上来，在rebase过程中，Git会要你手动解决代码上的冲突，你需要做的就是把修复BUG的代码放到目标分支代码里面去。rebase的结果是：所有的分支依然存在</p>
+<p><strong>merge场景：</strong>因为成员的代码开发工作已经完成了，也不需要再保留这个分支了，所以我们可以把这个成员分支merge到主分支上，当然冲突在所难免，手工解决的工作肯定逃不掉，但是利大于弊不是吗。merge以后，分支就不存在了，但是在git的所有分支历史中还能看到身影。</p>
+<p><strong>一般我们把别的分支合并到master时用merge，而把master合并到别的分支时会用到rebase的原因，这是因为master分支一般commit会比较频繁。</strong></p>
+<p>所以每次下拉代码fetch之后用rebase的原因就是：<br>本地commit之后，fetch远端代码，此时，远端代码可能会被若干人修改会有若干个commit，而本地就一个commit，然后git rebase的时候，是默认rebase 远端代码，此时会将本地commit应用到远端代码，也就只需要解决一次冲突，并且rebase之后没有新的commit，很友好。但是，如果使用merge，则会产生新的commit。</p>
+<h3 id="六-网上推荐的工作流一般是用fetch-rebase-相比pull-merge工作流更干净，不容易出错"><a href="#六-网上推荐的工作流一般是用fetch-rebase-相比pull-merge工作流更干净，不容易出错" class="headerlink" title="六.网上推荐的工作流一般是用fetch+rebase (相比pull+merge工作流更干净，不容易出错)"></a>六.网上推荐的工作流一般是用fetch+rebase (相比pull+merge工作流更干净，不容易出错)</h3><p><strong>比如dev是你的公共开发分支*</strong></p>
+<p>git checkout dev  # 本地切到公共分支 </p>
+<p>git pull              # 将本地的dev更新</p>
+<p>git checkout -b bug_101026  # 新建一个主题分支（一个bug，一个功能什么的）<br>… # 改动.. commit.. 测试…</p>
+<p>git fetch origin      # 更新upstream</p>
+<p>git rebase origin/dev  # 将你的commits移到的末尾</p>
+<p>git checkout dev  # 切换到公共分支</p>
+<p>git pull              # 更新公共分支</p>
+<p>git rebase bug_101026  # 将你的主题分支加到公共分支的末尾</p>
+<p>git push               # 推送</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/java-zhong-fang-fa-diao-yong-can-shu-chuan-di-de-fang-shi-shi-chuan-zhi-you-qie-zhi-you-chuan-zhi.html" rel="prev" title="Java中方法调用参数传递的方式是传值，有且只有传值">
+                  <i class="fa fa-angle-left"></i> Java中方法调用参数传递的方式是传值，有且只有传值
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/suan-fa-mian-shi-zhun-bei.html" rel="next" title="算法面试准备">
+                  算法面试准备 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

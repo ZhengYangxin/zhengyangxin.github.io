@@ -1,37 +1,406 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="导读本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Android系统的启动流程我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习，可以关注我，收藏文章进一步沟通学习！  说说Android系统的启动流程面对这道面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟我学：Android高级面试之说说Android系统的启动流程">
+<meta property="og:url" content="https://yancy.website/gen-wo-xue-android-gao-ji-mian-shi-zhi-shuo-shuo-android-xi-tong-de-qi-dong-liu-cheng.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="导读本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Android系统的启动流程我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习，可以关注我，收藏文章进一步沟通学习！  说说Android系统的启动流程面对这道面试">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://p1.pstatp.com/large/pgc-image/09c554f2e27f45639de7b22005dc7389">
+<meta property="article:published_time" content="2020-04-02T22:31:29.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.531Z">
+<meta property="article:author" content="Yangcy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://p1.pstatp.com/large/pgc-image/09c554f2e27f45639de7b22005dc7389">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/gen-wo-xue-android-gao-ji-mian-shi-zhi-shuo-shuo-android-xi-tong-de-qi-dong-liu-cheng.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/gen-wo-xue-android-gao-ji-mian-shi-zhi-shuo-shuo-android-xi-tong-de-qi-dong-liu-cheng.html","path":"gen-wo-xue-android-gao-ji-mian-shi-zhi-shuo-shuo-android-xi-tong-de-qi-dong-liu-cheng.html","title":"跟我学：Android高级面试之说说Android系统的启动流程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>跟我学：Android高级面试之说说Android系统的启动流程 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4Android%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">说说Android系统的启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">系统进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zygote%E7%9A%84%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">Zygote的启动流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SystemServer%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="nav-number">5.</span> <span class="nav-text">SystemServer的启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%90%AF%E5%8A%A8"><span class="nav-number">6.</span> <span class="nav-text">系统服务的启动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%A6%82%E4%BD%95%E6%88%BF%E8%A1%A5%EF%BC%8C%E8%AE%A9%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E5%8F%AF%E8%A7%81"><span class="nav-number">6.1.</span> <span class="nav-text">系统服务如何房补，让应用程序可见</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E8%BF%90%E8%A1%8C%E5%9C%A8%E4%BB%80%E4%B9%88%E7%BA%BF%E7%A8%8B%E4%B8%AD%EF%BC%9F"><span class="nav-number">6.2.</span> <span class="nav-text">系统服务运行在什么线程中？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E7%9A%84%E7%9B%B8%E4%BA%92%E4%BE%9D%E8%B5%96"><span class="nav-number">7.</span> <span class="nav-text">如何解决系统服务启动的相互依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E5%90%AF%E5%8A%A8"><span class="nav-number">8.</span> <span class="nav-text">桌面启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">9.</span> <span class="nav-text">最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/gen-wo-xue-android-gao-ji-mian-shi-zhi-shuo-shuo-android-xi-tong-de-qi-dong-liu-cheng.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="跟我学：Android高级面试之说说Android系统的启动流程 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          跟我学：Android高级面试之说说Android系统的启动流程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-03 06:31:29" itemprop="dateCreated datePublished" datetime="2020-04-03T06:31:29+08:00">2020-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>本人从事Android客户端开发，最近在在深入Framwork学习，希望我的学习分享能帮到你。首先我们看一下关于Android系统的启动流程我们应该如何去分析，这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里。以便随时通过该大纲去复习，可以关注我，收藏文章进一步沟通学习！</p>
+<p><img src="http://p1.pstatp.com/large/pgc-image/09c554f2e27f45639de7b22005dc7389" alt="跟我学：Android高级面试之说说Android系统的启动流程"></p>
+<h3 id="说说Android系统的启动流程"><a href="#说说Android系统的启动流程" class="headerlink" title="说说Android系统的启动流程"></a>说说Android系统的启动流程</h3><p>面对这道面试题，面试官试想考察什么呢？</p>
+<ul>
+<li>Android中有哪些主要的系统进程</li>
+<li>这些系统进程是怎么启动的</li>
+<li>进程启动之后主要做了什么事</li>
+</ul>
+<h3 id="系统进程"><a href="#系统进程" class="headerlink" title="系统进程"></a>系统进程</h3><p>Android中有哪些系统进程，具体我们可以在init.rc的配置找到相应的启动代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start zygote</span><br><span class="line">start servicemanager</span><br><span class="line">start surfaceflinger</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+
+<p>上面几个熟悉的服务进程都是通过init单独创建启动的，还有 一个我们熟悉的SystemServer，这个服务进程是通过Zygote进程创建而不是init进程。</p>
+<h3 id="Zygote的启动流程"><a href="#Zygote的启动流程" class="headerlink" title="Zygote的启动流程"></a>Zygote的启动流程</h3><p>关于Zygote的的相关知识可以参考<a href="https://www.toutiao.com/i6810136009775251975/?group_id=6810136009775251975">跟我学：Android面试之深入Android Framework谈谈对Zygot的理解</a></p>
+<p>它的启动流程是</p>
+<ol>
+<li>init进程fork出zygote进程</li>
+<li>zygote创建虚拟机，注册jni函数</li>
+<li>预加载系统资源</li>
+<li>启动SystemServer</li>
+<li>进入 Socket LOOP循环（工作原理）</li>
+</ol>
+<h3 id="SystemServer的启动"><a href="#SystemServer的启动" class="headerlink" title="SystemServer的启动"></a>SystemServer的启动</h3><p>在ZygoteInit.java的代码逻辑中，可以看到启动的关键代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int pid = Zygote.forkSystemServer(...) // 通过Zygote创建子线程</span><br><span class="line">handleSystemServerProcess(...)  // 然后初始化SystemServer</span><br><span class="line">ZygoteInit.zygoteInit(...)</span><br><span class="line">ZygoteInit.nativeZygoteInit(...); // 这里面会启动启动binder机制，创建了Binder线程</span><br><span class="line">RuntimeInit.applicationInit(...) // 调用SystemServer.java类的入口函数main。内部基于反射实现</span><br><span class="line">       </span><br><span class="line">// SystemServer的main方法</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">        new SystemServer().run();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">run方法中主要以下几件事</span><br><span class="line">1. Looper.prepareMainLooper(); // 为主线程创建loop</span><br><span class="line">2. System.loadLibrary(&quot;android_servers&quot;); // 加载android的共享库，native层的代码</span><br><span class="line">3. createSystemContext(); // 创建系统上下文</span><br><span class="line">4. 分批启动服务startBootstrapServices();startCoreServices();startOtherServices();</span><br><span class="line">5. Looper.loop(); // 进入loop循环，主线程不会退出</span><br></pre></td></tr></table></figure>
+
+<h3 id="系统服务的启动"><a href="#系统服务的启动" class="headerlink" title="系统服务的启动"></a>系统服务的启动</h3><p>系统服务的启动指startBootstrapServices();startCoreServices();startOtherServices();内部的服务启动。启动startBootstrapServices()中包括了熟悉的AMS，PMS，StartPowerManager等等。startCoreServices()包含了BatteryService，UsageStatsService，WebViewUpdateService等等。以及startOtherServices()中的其他服务。</p>
+<h4 id="系统服务如何房补，让应用程序可见"><a href="#系统服务如何房补，让应用程序可见" class="headerlink" title="系统服务如何房补，让应用程序可见"></a>系统服务如何房补，让应用程序可见</h4><p>通过源码的阅读，我们可以发现最终服务是通过ServiceManager.addService(…) 将服务进行注册，然后才可以可被其他进程可见和使用</p>
+<h4 id="系统服务运行在什么线程中？"><a href="#系统服务运行在什么线程中？" class="headerlink" title="系统服务运行在什么线程中？"></a>系统服务运行在什么线程中？</h4><p>主线程：并没有找到哪个系统服务是在主线程的中的</p>
+<p>工作线程： AMS，PMS运行在自己的工作线程，或者在公用的工作线程DisplayThread，FgThread, IoThread, UiThread。</p>
+<p>Binder线程：应用在跨进程调用时肯定是在binder线程里的，然后再去切换线程</p>
+<h3 id="如何解决系统服务启动的相互依赖"><a href="#如何解决系统服务启动的相互依赖" class="headerlink" title="如何解决系统服务启动的相互依赖"></a>如何解决系统服务启动的相互依赖</h3><p>从上小结的startBootstrapServices();startCoreServices();startOtherServices();我们可以看出解决方式为</p>
+<ul>
+<li>分批启动：先启动AMS，PMS等，因为很多其他service都需要依赖他们</li>
+<li>分阶段启动：在每个阶段去启动相应需要的服务</li>
+</ul>
+<h3 id="桌面启动"><a href="#桌面启动" class="headerlink" title="桌面启动"></a>桌面启动</h3><p>当AMS等其他服务都启动完毕，会调用mActivityManagerService.systemReady(()，在这里面会通过startHomeActivityLocked(currentUserId, “systemReady”);启动桌面应用的activity， Launcher.java。启动后会通过PMS查找所有的已安装的应用，然后显示在界面上</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>看到最后，我相信你一定对Android系统的启动流程有一定了解了吧。回头看看第一部分的考查内容讲讲呗，对于每一个点的重点我都细心的为你做了高亮。还有纸上得来终觉浅，绝知此事要躬行。本文参考了Android api28的源码，希望你也去踩着点过一遍源码，肯定能加深理解！</p>
+<p>我是Yangcy，该吃吃该喝喝，该学还得学，我们一起加油！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/gen-wo-xue-leetcode-shua-ti-zhi-3-wu-chong-fu-zi-fu-de-zui-chang-zi-chuan.html" rel="prev" title="跟我学：LeetCode刷题之3. 无重复字符的最长子串">
+                  <i class="fa fa-angle-left"></i> 跟我学：LeetCode刷题之3. 无重复字符的最长子串
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/gen-wo-xue-she-ji-mo-shi-zhi-mian-xiang-dui-xiang-de-liu-da-yuan-ze.html" rel="next" title="跟我学：设计模式之谈谈对面向对象的六大原则的理解">
+                  跟我学：设计模式之谈谈对面向对象的六大原则的理解 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

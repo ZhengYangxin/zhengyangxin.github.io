@@ -1,23 +1,1041 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
+<link rel="stylesheet" href="/css/main.css">
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Fighting！">
+<meta property="og:url" content="https://yancy.website/page/8/index.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Yangcy">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yancy.website/page/8/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/8/index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Fighting！</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/8-yue-3-ri.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/8-yue-3-ri.html" class="post-title-link" itemprop="url">8月3日</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-03 09:20:18" itemprop="dateCreated datePublished" datetime="2019-08-03T09:20:18+08:00">2019-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">日记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Https的用途和工作模式"><a href="#Https的用途和工作模式" class="headerlink" title="Https的用途和工作模式"></a>Https的用途和工作模式</h3><p>用Http协议看新闻没什么问题，但换到严肃的场景中就存在安全风向了，如支付，使用普通的Http协议就会被黑客盯上。通过拦截请求假装自己是服务器，让你输入密码等。解决这种问题的思路是对数据加密，加密方式分两种：</p>
+<h4 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h4><p>在对称加密中，加密解密都使用相同的秘钥，因此秘钥的保密工作需要做好，只能给使用的人知道,存在问题</p>
+<ul>
+<li>秘钥的约定时机，秘钥通过互联网传输一样会被黑客截获</li>
+</ul>
+<h4 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h4><p>加密和解密使用的秘钥不相同。分公钥和私钥，且公钥加密只能私钥解密，反之亦然。对称加密会存在秘钥约定十几的问题，所以需要非对称加密介入。将非对称加密的公钥公开，私钥自己保留。同样存在问题</p>
+<ul>
+<li>服务器的回复数据，黑客可以通过公钥解密，且黑客也可以模拟发送请求，所以一对公钥私钥不够，客户端同样需要有自己的公钥和私钥，并且客户端的公钥给服务端
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/8-yue-3-ri.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/gradle-xue-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/gradle-xue-xi.html" class="post-title-link" itemprop="url">Gradle学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-02 09:23:14" itemprop="dateCreated datePublished" datetime="2019-08-02T09:23:14+08:00">2019-08-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="什么是Gradle"><a href="#什么是Gradle" class="headerlink" title="什么是Gradle"></a>什么是Gradle</h4><p>Gradle是一个开源的，非常灵活的自动化构建工具，具有以下几大特点：</p>
+<ol>
+<li>高性能:只执行定义的任务，可以复用任务的输入输出，避免不必要的执行</li>
+<li>基于JVM:可以利用java，Kotlin,Groovy等编译器支持的语言</li>
+<li>定制了基础框架，便于构建</li>
+<li>扩展性：可以自定义任务</li>
+<li>编辑器的支持</li>
+</ol>
+<h4 id="设计Gradle插件"><a href="#设计Gradle插件" class="headerlink" title="设计Gradle插件"></a>设计Gradle插件</h4><h5 id="1-总体架构"><a href="#1-总体架构" class="headerlink" title="1. 总体架构"></a>1. 总体架构</h5><ol>
+<li>提取可用的逻辑编写成二进制插件</li>
+<li>插件对性能的影响</li>
+<li>定制规范，减少配置</li>
+<li>将功能与规范隔离</li>
+</ol>
+<h5 id="2-技术"><a href="#2-技术" class="headerlink" title="2. 技术"></a>2. 技术</h5><ol>
+<li>使用静态语言编写插件</li>
+<li>尽量通过Gradle内部的ApI实现插件</li>
+<li>3 减少外部依赖</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/okhttp.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/okhttp.html" class="post-title-link" itemprop="url">OkHttp</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-20 23:02:01" itemprop="dateCreated datePublished" datetime="2019-05-20T23:02:01+08:00">2019-05-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="一-曾经的网络框架"><a href="#一-曾经的网络框架" class="headerlink" title="一. 曾经的网络框架"></a>一. 曾经的网络框架</h4><h5 id="Android的网络框架有四种"><a href="#Android的网络框架有四种" class="headerlink" title="Android的网络框架有四种"></a>Android的网络框架有四种</h5><ol>
+<li>HttpClient ： 2.2版本以下存在bug，所以2.3之后建议使用HttpUrlConnection</li>
+<li>HttpUrlConnection 2.3+， 官方推荐</li>
+<li>Volley，谷歌开发，简单的网络任务框架，底层兼容2.3以前版本使用了HttpClient，2.3+使用的是HttpUrlConnection，功能拓展性弱</li>
+<li>Okhttp，从Android4.4开始HttpURLConnection的底层实现采用的是okHttp.</li>
+</ol>
+<h5 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h5><p><img src="/image/compare.png" alt=""><br>通过上面的比较，在Android发展的每个阶段，他们有各自存在的意义，只是时过境迁，被种种原因被替换或者废弃。<br>这个过程是一个框架发展的过程，从重量级繁杂且难以维护，到轻量级易扩展，到过度版本新老版本的兼容，最后取长补短完善自己的网络框架。<br>化繁为简，然后又能包容万象的过程</p>
+<h5 id="网络框架应该有的功能"><a href="#网络框架应该有的功能" class="headerlink" title="网络框架应该有的功能"></a>网络框架应该有的功能</h5><ol>
+<li>自定义请求的Header</li>
+<li>GET，POST</li>
+<li>支持文件上传下载</li>
+<li>图片加载</li>
+<li>支持多任务网络请求操作</li>
+<li>支持缓存</li>
+<li>支持回调</li>
+<li>支持session</li>
+<li>…..</li>
+</ol>
+<h4 id="二-OkHttp简介"><a href="#二-OkHttp简介" class="headerlink" title="二. OkHttp简介"></a>二. OkHttp简介</h4><p>一张图了解OkHttp的整个过程<br><img src="/images/OkHttp.jpg" alt=""><br>在OkHttp中真正核心的东西是Interceptor，他不仅负责拦截请求进行额外的处理(入cookie)，实际上他还会把实际的网络请求，缓存，透明压缩等功能都统一起来，每一个功能都只是一个Interceptor，它们在连接成一个Interceptor.Chain,环环相扣最终完成一次网络请求，从getResponseWithInterceptorChain函数中我们可以看到Interceptor.Chain的分布情况依次是：</p>
+<ol>
+<li>在配置OkHttpClinet时设置的interceptors</li>
+<li>负责失败重试和重定向的RetryAndFollowUpInterceptor</li>
+<li>负责把用户构造的请求转化为发送到服务器的请求，把服务器返回的响应转化为用户友好的响应BridgeInterceptor</li>
+<li>负责读取缓存直接返回，更新缓存的CacheInterceptor</li>
+<li>负责和服务器建立连接的ConnectInterceptor</li>
+<li>配置OkHttpClient时设置的NetworkInterceptor</li>
+<li>负责向服务器发送请求数据，从服务器读取响应数据的CallServerInterceptor</li>
+</ol>
+<p>在这里位置决定了功能，最后一个一定是CallServerInterceptor，其他的在这之前。责任链模式在Interceptor中得到了很好的实践。对于request变成response对象，每个interceptor都能完成这件事，也由各自的inteceptor决定是否要交给下个interceptor。</p>
+<h4 id="三-Interceptor分析"><a href="#三-Interceptor分析" class="headerlink" title="三. Interceptor分析"></a>三. Interceptor分析</h4><p>首先看分析ConnectInterceptor和CallServerInterceptor，这两个interceptor实现了和服务器进行通信的核心</p>
+<h5 id="1-ConnectInterceptor建立连接"><a href="#1-ConnectInterceptor建立连接" class="headerlink" title="1. ConnectInterceptor建立连接"></a>1. ConnectInterceptor建立连接</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/** Opens a connection to the target server and proceeds to the next interceptor. */</span><br><span class="line"></span><br><span class="line">  @Override </span><br><span class="line">  public Response intercept(Chain chain) throws IOException &#123;</span><br><span class="line">    RealInterceptorChain realChain = (RealInterceptorChain) chain;</span><br><span class="line">    Request request = realChain.request();</span><br><span class="line">    Transmitter transmitter = realChain.transmitter();</span><br><span class="line"></span><br><span class="line">    // We need the network to satisfy this request. Possibly for validating a conditional GET.</span><br><span class="line">    boolean doExtensiveHealthChecks = !request.method().equals(&quot;GET&quot;);</span><br><span class="line">    Exchange exchange = transmitter.newExchange(chain, doExtensiveHealthChecks);</span><br><span class="line"></span><br><span class="line">    return realChain.proceed(request, transmitter, exchange);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>通过创建一个Exchange对象，他将在后面使用。他的内部是对http，https请求的实现，内部都是利用Okio对Socket的读写操作进行了封装.在内部是对java.io和java.nio进行了封装，内部创建了一个主要的RealConnectionn对象，利用RealConnectionn进行读写</p>
+<h5 id="2-CallServerInterceptor-发送和接受数据"><a href="#2-CallServerInterceptor-发送和接受数据" class="headerlink" title="2. CallServerInterceptor 发送和接受数据"></a>2. CallServerInterceptor 发送和接受数据</h5><p>主要过程：</p>
+<ol>
+<li>向服务器发送request header</li>
+<li>如果有request body,就向服务器发送</li>
+<li>读取response header, 构造response 对象</li>
+<li>如果有response body,则创建一个带body的response对象</li>
+</ol>
+<h5 id="3-CacheIntercepter-缓存"><a href="#3-CacheIntercepter-缓存" class="headerlink" title="3. CacheIntercepter 缓存"></a>3. CacheIntercepter 缓存</h5><p>在建立连接，和服务器通讯之前就是CacheIntercepter，我们需要检查响应是否已经本地缓存了，如果缓存了则直接返回，否则进行后面的流程，并把返回的数据写入缓存</p>
+<ol>
+<li>获取本地缓存cacheCandidate</li>
+<li>如果本地缓存可用则直接返回CacheCandidate，从而打断interceptor链</li>
+<li>走剩下的interceptor获取nnetworkResponse</li>
+<li>networkResponse、cacheResponse构造新的response</li>
+<li>根据新的response里的header定制缓存策略，存入缓存中（method 为get）</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>创建一个单例的OkHttpClient，创建请求对象request，初始化请求方式，请求url，请求header，请求body，然后通过client的newcall（request）构建真正的请求对象realcall。有realcall的execute方法和qnqueue方法区分是同步请求还是异步请求，异步请求依赖线程池dispatcher，最终会调用getResponseWithInterceptorsChain方法返回返回response。内部通过这种拦截器对request请求数据和response响应数据进行处理，每个拦截器直接通过realinterceptchain对象的process连接起来（责任链模式）</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/er-wei-huo-huo-chong-pei-xun.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/er-wei-huo-huo-chong-pei-xun.html" class="post-title-link" itemprop="url">二维火火种培训</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-21 19:51:43" itemprop="dateCreated datePublished" datetime="2018-06-21T19:51:43+08:00">2018-06-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%8C%E7%BB%B4%E7%81%AB/" itemprop="url" rel="index"><span itemprop="name">二维火</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>毕业在即，我也在二维火实习了近半年时间，随着对产品和公司的了解我决定将继续留在公司学习，想在未来的某一天看着自己参与或者做的项目投入市场，得到大家的认可。</p>
+<h3 id="火种培训"><a href="#火种培训" class="headerlink" title="火种培训"></a>火种培训</h3><p>火种：二维火的种子（实习生），年轻，活力。星星之火可以燎原。</p>
+<h3 id="第一天-2018-6-20"><a href="#第一天-2018-6-20" class="headerlink" title="第一天 2018/6/20"></a>第一天 2018/6/20</h3><ul>
+<li>红烧肉：产品研发负责人《开篇介绍》<br>给我们介绍了公司的使命，愿景，价值观等。聊了聊公司的发展历程以及在公司多年来的经历，给了我们一些切身的建议：每个月看书，写日记 todolist等</li>
+<li>人参果：产品委员会主席《公司产品介绍》<br>细致的讲述了公司的价值观：正直善良，敬畏之心，天道酬情！<br>讲述了公司在10几年间，产品的迭代更替以及公司的主要产品线（排队，扫码点餐，厨房KDS，收银，供应链，掌柜等等）
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/er-wei-huo-huo-chong-pei-xun.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-ipc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/android-ipc.html" class="post-title-link" itemprop="url">Android IPC</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-31 10:39:30" itemprop="dateCreated datePublished" datetime="2018-03-31T10:39:30+08:00">2018-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Android跨进程通讯的几种方式"><a href="#Android跨进程通讯的几种方式" class="headerlink" title="Android跨进程通讯的几种方式"></a>Android跨进程通讯的几种方式</h3><h4 id="Bundle"><a href="#Bundle" class="headerlink" title="Bundle"></a>Bundle</h4><p>  Bundle实现了Parcelable，方便在进程中传输数据。主要在activity、service、receiver中Intent中应用，</p>
+<h4 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h4><p>Android基于Linux，对文件的读写没有限制。存在的问题就是并发读写的问题<br>sp存在缓存策略，内存中存在备份，导致多进程不可靠</p>
+<h4 id="使用messenger信使"><a href="#使用messenger信使" class="headerlink" title="使用messenger信使"></a>使用messenger信使</h4><ol>
+<li>Messenger可以在不同的进程中传递Message对象，轻松实现数据的跨进程通讯。</li>
+<li>它的底层实现是AIDl，内部一次只做一次处理，因此服务端不用考虑线程同步的问题</li>
+<li>缺点是只能用来简单的信息传递，并发请求不大合适且无法不支持跨进程的方法的调用<br><img src="http://opd2n5pxb.bkt.clouddn.com/Messenger%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%9B%BE.png" alt="Alt text" title="Messenger 工作原理图"></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/rxjava-de-shi-yong-ji-yuan-ma-fen-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/rxjava-de-shi-yong-ji-yuan-ma-fen-xi.html" class="post-title-link" itemprop="url">RxJava的使用及源码分析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-18 15:25:44" itemprop="dateCreated datePublished" datetime="2018-03-18T15:25:44+08:00">2018-03-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="基于Rxjava-2-1-10版本源码分析"><a href="#基于Rxjava-2-1-10版本源码分析" class="headerlink" title="基于Rxjava-2.1.10版本源码分析"></a>基于Rxjava-2.1.10版本源码分析</h3><p>从开源文档范例开始分析</p>
+<h4 id="范例一-Flowable-just输出HelloWord"><a href="#范例一-Flowable-just输出HelloWord" class="headerlink" title="范例一.Flowable.just输出HelloWord"></a>范例一.Flowable.just输出HelloWord</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Flowable.just(&quot;Hello world&quot;).subscribe(new Consumer&lt;String&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void accept(String s) throws Exception &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>1.从just方法开始,首先可以看到三个注解方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@CheckReturnValue  //检查返回值</span><br><span class="line">@BackpressureSupport(BackpressureKind.FULL)  //支持的背压方式</span><br><span class="line">@SchedulerSupport(SchedulerSupport.NONE) //调度方式,即处理事件的方式IO数据流，新开一个线程等。</span><br><span class="line">public static &lt;T&gt; Flowable&lt;T&gt; just(T item) &#123; //方法参数是个泛型，</span><br><span class="line">    ObjectHelper.requireNonNull(item, &quot;item is null&quot;);</span><br><span class="line">    //返回值是个Flowable对象</span><br><span class="line">    return RxJavaPlugins.onAssembly(new FlowableJust&lt;T&gt;(item)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/rxjava-de-shi-yong-ji-yuan-ma-fen-xi.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/java-fan-she-na-xie-shi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/java-fan-she-na-xie-shi.html" class="post-title-link" itemprop="url">Java反射那些事</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-29 11:05:10" itemprop="dateCreated datePublished" datetime="2018-01-29T11:05:10+08:00">2018-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="反射机制的定义"><a href="#反射机制的定义" class="headerlink" title="反射机制的定义"></a>反射机制的定义</h2><p>在运行状态期间，能过动态的知道一个类的属性和方法，能够动态的调用一个对象的属性和方法的功能。</p>
+<h2 id="反射机制的功能"><a href="#反射机制的功能" class="headerlink" title="反射机制的功能"></a>反射机制的功能</h2><p>在运行期间</p>
+<ol>
+<li>判断任意一个对象所属的类</li>
+<li>构建任意一个类的对象</li>
+<li>判断任意一个类的属性和方法</li>
+<li>调用任意一个对象的方法</li>
+<li>生成动态代理
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/java-fan-she-na-xie-shi.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/fan-xing-na-xie-shi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/fan-xing-na-xie-shi.html" class="post-title-link" itemprop="url">Java泛型那些事</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-29 10:06:54" itemprop="dateCreated datePublished" datetime="2018-01-29T10:06:54+08:00">2018-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E2%80%9CJAVA%E2%80%9D/" itemprop="url" rel="index"><span itemprop="name">“JAVA”</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="泛型的目的"><a href="#泛型的目的" class="headerlink" title="泛型的目的"></a>泛型的目的</h2><p>语法糖即糖衣语法，这种语法对语言并没有影响，只是方便了程序员的使用。主要包括：泛型，变长参数，条件编译，自动拆装箱，内部类等。虚拟机并不支持这种语法，在编译期就会被还原为基础语法结构，这个过程被称为解语法糖。<br>泛型的目的：通过泛型使得在编译期间完成类型转换工作，避免运行时强制类型转换而出现ClassCastException，类型转换异常</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/fan-xing-na-xie-shi.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

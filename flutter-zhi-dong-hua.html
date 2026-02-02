@@ -1,37 +1,454 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="基本概念 Animation：Flutter动画库中的核心类，插入用于指导动画的值 AnimationController:管理Animation CurvedAnimation:定义动画的曲线 Tween:为动画对象插入一个范围值  Animation 提供了每一帧动画变化的监听事件和移除事件，VoidCallback addListener removeListener   提供了动画状态的监">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter之动画">
+<meta property="og:url" content="https://yancy.website/flutter-zhi-dong-hua.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="基本概念 Animation：Flutter动画库中的核心类，插入用于指导动画的值 AnimationController:管理Animation CurvedAnimation:定义动画的曲线 Tween:为动画对象插入一个范围值  Animation 提供了每一帧动画变化的监听事件和移除事件，VoidCallback addListener removeListener   提供了动画状态的监">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-23T13:53:59.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.522Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/flutter-zhi-dong-hua.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/flutter-zhi-dong-hua.html","path":"flutter-zhi-dong-hua.html","title":"flutter之动画"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>flutter之动画 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Animation"><span class="nav-number">2.</span> <span class="nav-text">Animation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AnimationController"><span class="nav-number">3.</span> <span class="nav-text">AnimationController</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CurvedAnimation"><span class="nav-number">4.</span> <span class="nav-text">CurvedAnimation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tween"><span class="nav-number">5.</span> <span class="nav-text">Tween</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AnimatedBuilder"><span class="nav-number">6.</span> <span class="nav-text">AnimatedBuilder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E5%8A%A8%E7%94%BB"><span class="nav-number">7.</span> <span class="nav-text">路由切换动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hero%E5%8A%A8%E7%94%BB"><span class="nav-number">8.</span> <span class="nav-text">Hero动画</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E7%BB%87%E5%8A%A8%E7%94%BB"><span class="nav-number">9.</span> <span class="nav-text">交织动画</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/flutter-zhi-dong-hua.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="flutter之动画 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          flutter之动画
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-23 21:53:59" itemprop="dateCreated datePublished" datetime="2020-01-23T21:53:59+08:00">2020-01-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>Animation：Flutter动画库中的核心类，插入用于指导动画的值</li>
+<li>AnimationController:管理Animation</li>
+<li>CurvedAnimation:定义动画的曲线</li>
+<li>Tween:为动画对象插入一个范围值</li>
+</ul>
+<h4 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h4><ul>
+<li>提供了每一帧动画变化的监听事件和移除事件，VoidCallback<ul>
+<li>addListener</li>
+<li>removeListener</li>
+</ul>
+</li>
+<li>提供了动画状态的监听和移除事件，AnimationStatusListener<ul>
+<li>addStatusListener</li>
+<li>removeStatusListener</li>
+</ul>
+</li>
+<li>动画的四种状态<ul>
+<li>dismiss，在动画开始时停止</li>
+<li>forward，动画从开始向结束运行</li>
+<li>reverse，动画从结束向开始运行</li>
+<li>completed，动画在结束时运行完成</li>
+</ul>
+</li>
+<li>获取动画的状态</li>
+<li>泛型参数为范围值，一般是double类型</li>
+</ul>
+<h4 id="AnimationController"><a href="#AnimationController" class="headerlink" title="AnimationController"></a>AnimationController</h4><ul>
+<li>继承自Animation，是一个特殊的Animation，当硬件准备新帧时，它都会生成一个新值</li>
+<li>需要一个vsync参数，vsync的存在防止后台动画消耗不必要的资源<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AnimationController(&#123;</span><br><span class="line">    double value,</span><br><span class="line">    this.duration, // 动画时长</span><br><span class="line">    this.reverseDuration,</span><br><span class="line">    this.debugLabel, </span><br><span class="line">    this.lowerBound = 0.0,  // 最小值</span><br><span class="line">    this.upperBound = 1.0, // 最大值</span><br><span class="line">    this.animationBehavior = AnimationBehavior.normal,</span><br><span class="line">    @required TickerProvider vsync,  // 每一帧同步时的回调</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="CurvedAnimation"><a href="#CurvedAnimation" class="headerlink" title="CurvedAnimation"></a>CurvedAnimation</h4><p>怎么运动，运动的过程，动画运行的曲线，可以继承Curve,重写transformInternal</p>
+<ul>
+<li>Curve曲线分类<ul>
+<li>linear:匀速的</li>
+<li>decelerate：匀减速</li>
+<li>ease：开始加速后面减速</li>
+<li>easeIn：开始慢后面快</li>
+<li>easeOut：开始快，后面慢</li>
+<li>easeInOut：开始慢，先加速，后减速</li>
+</ul>
+</li>
+</ul>
+<h4 id="Tween"><a href="#Tween" class="headerlink" title="Tween"></a>Tween</h4><p>可以自定义移动的类型，如移动像素等</p>
+<ul>
+<li>配置动画插入不同的范围和数据类型</li>
+</ul>
+<h4 id="AnimatedBuilder"><a href="#AnimatedBuilder" class="headerlink" title="AnimatedBuilder"></a>AnimatedBuilder</h4><p>动画的构建器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const AnimatedBuilder(&#123;</span><br><span class="line">    Key key,</span><br><span class="line">    @required Listenable animation, // 具体动画</span><br><span class="line">    @required this.builder, // 实现动画的对象</span><br><span class="line">    this.child,</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="路由切换动画"><a href="#路由切换动画" class="headerlink" title="路由切换动画"></a>路由切换动画</h4><ul>
+<li>Android提供默认的MaterialPageRoute</li>
+<li>IOS提供默认的CupertionPageRoute</li>
+<li>自定义实现采用PageRouteBuilder<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Navigator.push(context, PageRouteBuilder(pageBuilder: (context, animation, econdaryAnimation)&#123;</span><br><span class="line">  return FadeTransition(opacity: animation, child: SyncAnim(),);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="Hero动画"><a href="#Hero动画" class="headerlink" title="Hero动画"></a>Hero动画</h4><p>指在页面之间飞行的Widget，相当于转场动画，Hero在动画切换的时候，有一个共享的Widget可以在新旧路由之间切换</p>
+<ul>
+<li>InkWell:水波纹效果的widget</li>
+<li>将需要共享的元素放入Hero Widget中</li>
+<li>需要指定相同的tag<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">InkWell(</span><br><span class="line">            child: Hero(tag: &quot;avator&quot;, child: ClipOval(</span><br><span class="line">              child: Image.network(&quot;http://yangxin.online/images/head.jpeg&quot;, width: 50, height: 50 , ),</span><br><span class="line">            )),</span><br><span class="line">            onTap: ()&#123;</span><br><span class="line">              Navigator.of(context).push(MaterialPageRoute(builder: (context)&#123;</span><br><span class="line">                return Scaffold(</span><br><span class="line">                  body: Center(</span><br><span class="line">                    child: Hero(tag: &quot;avator&quot;, child: Image.network(&quot;http://yangxin.online/images/head.jpeg&quot;, width: 300, height: 300 , ),</span><br><span class="line">                  ),</span><br><span class="line">                ));</span><br><span class="line">              &#125;));</span><br><span class="line">            &#125;,</span><br><span class="line">          )</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="交织动画"><a href="#交织动画" class="headerlink" title="交织动画"></a>交织动画</h4><p>设计复杂动画，动画序列，重叠动画</p>
+<ul>
+<li>使用多个动画对象</li>
+<li>一个AnimationControl控制所有的动画</li>
+<li>每个动画对象指定间隔时间<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">class Stagger extends StatelessWidget &#123;</span><br><span class="line">  final AnimationController controller;</span><br><span class="line"></span><br><span class="line">  final Animation&lt;double&gt; opacity, width, height;</span><br><span class="line"></span><br><span class="line">  final Animation&lt;EdgeInsets&gt; padding;</span><br><span class="line"></span><br><span class="line">  final Animation&lt;BorderRadius&gt; borderRadius;</span><br><span class="line"></span><br><span class="line">  final Animation&lt;Color&gt; color;</span><br><span class="line"></span><br><span class="line">  Stagger(&#123;Key key, this.controller&#125;)</span><br><span class="line">      : opacity = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(</span><br><span class="line">            parent: controller,</span><br><span class="line">            curve: Interval(0.0, 0.1000, curve: Curves.linear))),</span><br><span class="line">        width = Tween(begin: 50.0, end: 150.0).animate(CurvedAnimation(</span><br><span class="line">            parent: controller,</span><br><span class="line">            curve: Interval(0.125, 0.250, curve: Curves.linear))),</span><br><span class="line">        height = Tween(begin: 50.0, end: 150.0).animate(CurvedAnimation(</span><br><span class="line">            parent: controller,</span><br><span class="line">            curve: Interval(0.250, 0.375, curve: Curves.linear))),</span><br><span class="line">        padding = EdgeInsetsTween(</span><br><span class="line">                begin: EdgeInsets.only(bottom: 10),</span><br><span class="line">                end: EdgeInsets.only(bottom: 50))</span><br><span class="line">            .animate(CurvedAnimation(</span><br><span class="line">                parent: controller,</span><br><span class="line">                curve: Interval(0.250, 0.375, curve: Curves.linear))),</span><br><span class="line">        borderRadius = BorderRadiusTween(</span><br><span class="line">                begin: BorderRadius.circular(5), end: BorderRadius.circular(15))</span><br><span class="line">            .animate(CurvedAnimation(</span><br><span class="line">                parent: controller,</span><br><span class="line">                curve: Interval(0.375, 0.500, curve: Curves.linear))),</span><br><span class="line">        color = ColorTween(begin: Colors.blue, end: Colors.red).animate(</span><br><span class="line">            CurvedAnimation(</span><br><span class="line">                parent: controller,</span><br><span class="line">                curve: Interval(0.500, 0.750, curve: Curves.linear))),</span><br><span class="line">        super(key: key);</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return AnimatedBuilder(</span><br><span class="line">      animation: controller,</span><br><span class="line">      builder: (context, child) &#123;</span><br><span class="line">        return Container(</span><br><span class="line">          padding: padding.value,</span><br><span class="line">          alignment: Alignment.bottomCenter,</span><br><span class="line">          child: Opacity(</span><br><span class="line">            opacity: opacity.value,</span><br><span class="line">            child: Container(</span><br><span class="line">              width: width.value,</span><br><span class="line">              height: height.value,</span><br><span class="line">              decoration: BoxDecoration(</span><br><span class="line">                  color: color.value,</span><br><span class="line">                  border: Border.all(color: Colors.blue, width: 3),</span><br><span class="line">                  borderRadius: borderRadius.value),</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class StaggerF extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  State&lt;StatefulWidget&gt; createState() &#123;</span><br><span class="line">    // TODO: implement createState</span><br><span class="line">    return StaggerS();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class StaggerS extends State&lt;StaggerF&gt; with TickerProviderStateMixin &#123;</span><br><span class="line">  AnimationController _controller;</span><br><span class="line"></span><br><span class="line">  _play() async &#123;</span><br><span class="line">    await _controller.forward().orCancel;</span><br><span class="line">    await _controller.reverse().orCancel;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void initState() &#123;</span><br><span class="line">    super.initState();</span><br><span class="line">    _controller =</span><br><span class="line">        AnimationController(duration: Duration(seconds: 10), vsync: this);</span><br><span class="line">    _controller.addStatusListener((status) &#123;</span><br><span class="line">      switch (status) &#123;</span><br><span class="line">        case AnimationStatus.dismissed:</span><br><span class="line">          _controller.forward();</span><br><span class="line">          break;</span><br><span class="line">        case AnimationStatus.completed:</span><br><span class="line">          _controller.reverse();</span><br><span class="line">          break;</span><br><span class="line">        case AnimationStatus.forward:</span><br><span class="line">        case AnimationStatus.reverse:</span><br><span class="line">          break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    // TODO: implement build</span><br><span class="line">    return Scaffold(</span><br><span class="line">      body: GestureDetector(</span><br><span class="line">        onTap: () &#123;</span><br><span class="line">          _play();</span><br><span class="line">        &#125;,</span><br><span class="line">        child: Center(</span><br><span class="line">          child: Container(</span><br><span class="line">            width: 300,</span><br><span class="line">            height: 300,</span><br><span class="line">            color: Colors.yellow,</span><br><span class="line">            child: Stagger(</span><br><span class="line">              controller: _controller,</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"><i class="fa fa-tag"></i> Flutter</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/flutter-zhi-lu-you.html" rel="prev" title="flutter之路由">
+                  <i class="fa fa-angle-left"></i> flutter之路由
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/flutter-zhi-shou-shi.html" rel="next" title="flutter之手势">
+                  flutter之手势 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

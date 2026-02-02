@@ -1,37 +1,441 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="导读本题是LeetCode第二题，难度标记为中等。此题为链表题，不出意外遇到链表题都是画图解题，因为链表题的核心是在符合条件下的链表next指针的变化，除了链表的增删改查之外，如何反转链表的代码，我墙裂建议你先理解背诵，刷链表题基础必备代码，如下 1234567891011pubic ListNode reverse(ListNode head) &#123;    ListNode pre &#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跟我学：LeetCode刷题之2.两数相加">
+<meta property="og:url" content="https://yancy.website/gen-wo-xue-leetcode-shua-ti-zhi-2-liang-shu-xiang-jia.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="导读本题是LeetCode第二题，难度标记为中等。此题为链表题，不出意外遇到链表题都是画图解题，因为链表题的核心是在符合条件下的链表next指针的变化，除了链表的增删改查之外，如何反转链表的代码，我墙裂建议你先理解背诵，刷链表题基础必备代码，如下 1234567891011pubic ListNode reverse(ListNode head) &#123;    ListNode pre &#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://p1.pstatp.com/large/pgc-image/f6834647753d4094b9ac461b3ba45cc6">
+<meta property="og:image" content="https://yancy.website/images/follow_end_blog.jpg">
+<meta property="article:published_time" content="2020-04-02T22:23:47.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.531Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="Leetcode，两数相加">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://p1.pstatp.com/large/pgc-image/f6834647753d4094b9ac461b3ba45cc6">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/gen-wo-xue-leetcode-shua-ti-zhi-2-liang-shu-xiang-jia.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/gen-wo-xue-leetcode-shua-ti-zhi-2-liang-shu-xiang-jia.html","path":"gen-wo-xue-leetcode-shua-ti-zhi-2-liang-shu-xiang-jia.html","title":"跟我学：LeetCode刷题之2.两数相加"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>跟我学：LeetCode刷题之2.两数相加 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">导读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9C%8B%E9%A2%98%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">看题总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A7%A3%E6%B3%95%E5%8F%8A%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">多解法及复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%B8%80%EF%BC%9A%E9%9D%9E%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.1.</span> <span class="nav-text">解法一：非递归实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%B3%95%E4%BA%8C%EF%BC%9A%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.2.</span> <span class="nav-text">解法二：递归实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E7%B1%BB%E5%9E%8B%E9%A2%98%E7%9B%B8%E5%85%B3"><span class="nav-number">4.</span> <span class="nav-text">同类型题相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%BF%83%E5%BE%97"><span class="nav-number">5.</span> <span class="nav-text">技巧与心得</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E6%9C%80%E5%90%8E"><span class="nav-number">6.</span> <span class="nav-text">最后的最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/gen-wo-xue-leetcode-shua-ti-zhi-2-liang-shu-xiang-jia.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="跟我学：LeetCode刷题之2.两数相加 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          跟我学：LeetCode刷题之2.两数相加
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-03 06:23:47" itemprop="dateCreated datePublished" datetime="2020-04-03T06:23:47+08:00">2020-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h3><p>本题是LeetCode第二题，难度标记为中等。此题为链表题，不出意外遇到链表题都是画图解题，因为链表题的核心是在符合条件下的链表next指针的变化，除了链表的增删改查之外，如何<strong>反转链表的代码，</strong>我<strong>墙裂建议你先</strong>理解背诵，刷链表题基础必备代码，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pubic ListNode reverse(ListNode head) &#123;</span><br><span class="line">    ListNode pre = null;</span><br><span class="line">    ListNode cur = head;</span><br><span class="line"></span><br><span class="line">    while(cur != null)&#123;</span><br><span class="line">        ListNode next = cur.next;</span><br><span class="line">        cur.next = pre;</span><br><span class="line">        pre = cur;</span><br><span class="line">        cur = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里通过一张思维导图帮助大家整理思路。思维导图一方面罗列了本文的大纲，另一方面也是希望读者朋友可以保存图片至自己的复习资料里，以便随时通过该大纲去复习。</p>
+<p><img src="http://p1.pstatp.com/large/pgc-image/f6834647753d4094b9ac461b3ba45cc6" alt="跟我学：LeetCode刷题之2.两数相加"></p>
+<h3 id="看题总结"><a href="#看题总结" class="headerlink" title="看题总结"></a>看题总结</h3><p>给出<strong>两个 非空 的链表</strong>用来表示<strong>两个非负的整数</strong>。其中，它们各自的位数是按照 <strong>逆序 的方式存储的</strong>，并且它们的每个节点只能存储 <strong>一位</strong> 数字。</p>
+<p>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<p>您可以假设除了数字 0 之外，<strong>这两个数都不会以 0 开头</strong>。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">输出：7 -&gt; 0 -&gt; 8</span><br><span class="line">原因：342 + 465 = 807</span><br></pre></td></tr></table></figure>
+
+<p>Related Topics</p>
+<p>链表</p>
+<p>数学</p>
+<p>通过对题目的阅读，我们可以得出以下几个结论</p>
+<ul>
+<li>题目类型为链表</li>
+<li>用两个链表表示两个整数，整数在链表中的存储方式是逆序的，通过链表实现两整数的相加操作，返回值也是用逆序的链表存储的整数。</li>
+<li>非空链表，非负数整数，除了0之外整数不会以0开头，输入是合法的</li>
+</ul>
+<h3 id="多解法及复杂度分析"><a href="#多解法及复杂度分析" class="headerlink" title="多解法及复杂度分析"></a>多解法及复杂度分析</h3><h4 id="解法一：非递归实现"><a href="#解法一：非递归实现" class="headerlink" title="解法一：非递归实现"></a>解法一：非递归实现</h4><ol>
+<li>定义一个哑结点dummy（可以避免对头结点的处理），指向当前节点cur，然后定义一个保存进位数值的 carry（因为两数相加可能会产生进位，便用 carry 来保存）</li>
+<li>当 l1 或 l2 不为空时进行遍历，即二者都为空时才退出循环，</li>
+<li>通过设置默认值为 0 的 x和 y，使得当二者中有一个为空时，使用 0 来与另一位相加</li>
+<li>得到 sum 后，将 sum 的个位数连接到链表中，并将十位数赋给 carry,</li>
+<li>移动 cur 使其一直指向链表的尾部</li>
+</ol>
+<p>最后要判断 carry 是否大于 0，因为例如 (1 -&gt; 2 -&gt; 3) + (7 -&gt; 8 -&gt; 9) 会得到结果 8 -&gt; 0 -&gt; 3 -&gt; 1，所以在最后判断 l1 和 l2 都已经为空了，但是此时 carry 大于 0，所以要将这最后一位数加入到链表尾部</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        ListNode dummy = new ListNode(0);</span><br><span class="line">        ListNode curr = dummy;</span><br><span class="line">        int carry = 0; // 保存进位数值的 carry</span><br><span class="line">        while (l1 != null || l2 != null) &#123;</span><br><span class="line">          	// 用0补齐，链表长度</span><br><span class="line">            int x = l1 != null ? l1.val : 0;</span><br><span class="line">            int y = l2 != null ? l2.val : 0;</span><br><span class="line">            int sum = x + y + carry;</span><br><span class="line">            carry = sum / 10;</span><br><span class="line">            ListNode newNode = new ListNode(sum % 10);</span><br><span class="line"></span><br><span class="line">            curr.next = newNode;</span><br><span class="line">            l1 = l1 != null ? l1.next : null;</span><br><span class="line">            l2 = l2 != null ? l2.next : null;</span><br><span class="line">        &#125;</span><br><span class="line">  </span><br><span class="line">  			// 存在两链表长度相等，且最高位计算和大于10，需进位创建新节点</span><br><span class="line">        if (carry &gt; 0) &#123;</span><br><span class="line">            curr.next = new ListNode(carry);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return dummy.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h4 id="解法二：递归实现"><a href="#解法二：递归实现" class="headerlink" title="解法二：递归实现"></a>解法二：递归实现</h4><p>首先我们需要理解递归，<strong>墙裂建议背诵默写</strong>递归的模板代码，递归解法的套路如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public void recur(int level, Param param) &#123;</span><br><span class="line">  	// 递归终止条件</span><br><span class="line">    if (level &gt; MAX_VALUE) &#123;</span><br><span class="line">        //process result</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 当前层处理处理</span><br><span class="line">    process(param);</span><br><span class="line"></span><br><span class="line">    // 进入下一层递归</span><br><span class="line">    recur(level, newParam);</span><br><span class="line"></span><br><span class="line">    // 非必要的数据恢复</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这题使用递归很好理解，两链表的节点从左往右进行相加，进位，直到两链表都到达尾部。</p>
+<ol>
+<li>递归终止条件：两链表都到达尾部</li>
+<li>当前层处理：链表节点相加计算和，得到余数，及carry进位</li>
+<li>进入下一次递归：传入新节点及进位值。</li>
+</ol>
+<p>最后代码如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        return add(l1, l2, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private ListNode add(ListNode a, ListNode b, int carry) &#123;</span><br><span class="line">        // terminator 终止条件</span><br><span class="line">        if (a == null &amp;&amp; b == null) &#123;</span><br><span class="line">            return carry &gt; 0 ? new ListNode(1) : null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // current logic  当前层逻辑处理</span><br><span class="line">        // 如果当前节点a,b其中一个为null，则赋值为ListNode(0)，方便计算</span><br><span class="line">        a = a == null ? new ListNode(0) : a;</span><br><span class="line">        b = b == null ? new ListNode(0) : b;</span><br><span class="line"></span><br><span class="line">        // 当前两链表节点的和</span><br><span class="line">        int sum = a.val + b.val + carry;</span><br><span class="line">        carry = sum / 10;</span><br><span class="line">        // 将取模结果保存在第一个链表中</span><br><span class="line">        a.val = sum % 10;</span><br><span class="line">        // driil down   进入下一层递归</span><br><span class="line">        a.next = add(a.next, b.next, carry);</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="同类型题相关"><a href="#同类型题相关" class="headerlink" title="同类型题相关"></a>同类型题相关</h3><p>若你反复AC，且充分理解了本题的两种题解，我敢保证下面这题解出来只是时间长短问题。</p>
+<p>在这里还是提醒刷题的朋友，多看几次本文<a href="https://www.toutiao.com/i6809940499399442956/?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956">跟我学：LeetCode刷题大法</a></p>
+<p>LeetCode 445. 两数相加 II</p>
+<h3 id="技巧与心得"><a href="#技巧与心得" class="headerlink" title="技巧与心得"></a>技巧与心得</h3><ol>
+<li>开一个github仓库用来记录各种题解</li>
+<li>在idea或者vscode中都提供了leecode的插件刷题，方便调试断走流程</li>
+<li>遇到不会的题不要慌，稳住心态直接看题解</li>
+<li>文字类的表述不如视图类的直观，图文并茂精选图解优先或者参考leetcode国际站的大牛题解</li>
+<li>图解依旧看着吃力也无妨，可以在哔哩哔哩或者YouTube上，通过leecode + 题号，搜索高收视率的视频观看</li>
+<li>多看几次本文<a href="https://www.toutiao.com/i6809940499399442956/?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956?group_id=6809940499399442956">跟我学：LeetCode刷题大法</a>，相信我你肯定能越刷越自信</li>
+</ol>
+<h3 id="最后的最后"><a href="#最后的最后" class="headerlink" title="最后的最后"></a>最后的最后</h3><p>看到最后，我相信你对本题应该有不一样的感受了吧！在此若有不对之处或建议等，留言告诉我；若有疑惑或者不一样的看法，也请告诉我，我们可以一起探讨学习！</p>
+<p>我是Yangcy，该吃吃该喝喝，该学还得学，我们一起加油！</p>
+<img src="/images/follow_end_blog.jpg" style="zoom:30%;" />
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Leetcode%EF%BC%8C%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" rel="tag"><i class="fa fa-tag"></i> Leetcode，两数相加</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/gen-wo-xue-leetcode-shua-ti-da-fa.html" rel="prev" title="跟我学：LeetCode刷题大法">
+                  <i class="fa fa-angle-left"></i> 跟我学：LeetCode刷题大法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/gen-wo-xue-leetcode-shua-ti-zhi-3-wu-chong-fu-zi-fu-de-zui-chang-zi-chuan.html" rel="next" title="跟我学：LeetCode刷题之3. 无重复字符的最长子串">
+                  跟我学：LeetCode刷题之3. 无重复字符的最长子串 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

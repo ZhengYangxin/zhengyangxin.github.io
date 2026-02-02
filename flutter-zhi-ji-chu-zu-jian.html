@@ -1,37 +1,476 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Widget什么是widget一切皆是widget，是flutter应用用户界面的基本构建单元，每个widget都与最终的用户界面有密切相关  抽象类继承了可诊断树(DiagnosticableTree) 一个常量构造函数，可选参数key 抽象方法createElement 静态方法canUpdate，通过runtimeType和key判断  一个widget的定义如下 一个结构元素(按钮，菜单)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="flutter之基础组件">
+<meta property="og:url" content="https://yancy.website/flutter-zhi-ji-chu-zu-jian.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="Widget什么是widget一切皆是widget，是flutter应用用户界面的基本构建单元，每个widget都与最终的用户界面有密切相关  抽象类继承了可诊断树(DiagnosticableTree) 一个常量构造函数，可选参数key 抽象方法createElement 静态方法canUpdate，通过runtimeType和key判断  一个widget的定义如下 一个结构元素(按钮，菜单)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-22T10:47:41.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.522Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/flutter-zhi-ji-chu-zu-jian.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/flutter-zhi-ji-chu-zu-jian.html","path":"flutter-zhi-ji-chu-zu-jian.html","title":"flutter之基础组件"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>flutter之基础组件 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Widget"><span class="nav-number">1.</span> <span class="nav-text">Widget</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFwidget"><span class="nav-number">1.1.</span> <span class="nav-text">什么是widget</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AAwidget%E7%9A%84%E5%AE%9A%E4%B9%89%E5%A6%82%E4%B8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">一个widget的定义如下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#widget%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">widget的分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StatelessWidget"><span class="nav-number">1.4.</span> <span class="nav-text">StatelessWidget</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StatefulWidget"><span class="nav-number">1.5.</span> <span class="nav-text">StatefulWidget</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#State"><span class="nav-number">1.6.</span> <span class="nav-text">State</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element"><span class="nav-number">1.7.</span> <span class="nav-text">Element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%91-Widget-Tree-Element-Tree-RenderObject-Tree"><span class="nav-number">1.8.</span> <span class="nav-text">树 Widget Tree, Element Tree ,RenderObject Tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#key"><span class="nav-number">1.9.</span> <span class="nav-text">key</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MaterialApp"><span class="nav-number">2.</span> <span class="nav-text">MaterialApp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scaffold%EF%BC%88%E8%84%9A%E6%89%8B%E6%9E%B6%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">Scaffold（脚手架）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Text"><span class="nav-number">2.2.</span> <span class="nav-text">Text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TextField"><span class="nav-number">2.3.</span> <span class="nav-text">TextField</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Image"><span class="nav-number">2.4.</span> <span class="nav-text">Image</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BoxFit"><span class="nav-number">2.5.</span> <span class="nav-text">BoxFit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Icon"><span class="nav-number">2.6.</span> <span class="nav-text">Icon</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/flutter-zhi-ji-chu-zu-jian.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="flutter之基础组件 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          flutter之基础组件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-22 18:47:41" itemprop="dateCreated datePublished" datetime="2020-01-22T18:47:41+08:00">2020-01-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Flutter/" itemprop="url" rel="index"><span itemprop="name">Flutter</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="Widget"><a href="#Widget" class="headerlink" title="Widget"></a>Widget</h3><h4 id="什么是widget"><a href="#什么是widget" class="headerlink" title="什么是widget"></a>什么是widget</h4><p>一切皆是widget，是flutter应用用户界面的基本构建单元，每个widget都与最终的用户界面有密切相关</p>
+<ul>
+<li>抽象类继承了可诊断树(DiagnosticableTree)</li>
+<li>一个常量构造函数，可选参数key</li>
+<li>抽象方法createElement</li>
+<li>静态方法canUpdate，通过runtimeType和key判断</li>
+</ul>
+<h4 id="一个widget的定义如下"><a href="#一个widget的定义如下" class="headerlink" title="一个widget的定义如下"></a>一个widget的定义如下</h4><ul>
+<li>一个结构元素(按钮，菜单)</li>
+<li>一个风格元素(字体，配色方案等)</li>
+<li>布局(padding)</li>
+<li>等等</li>
+</ul>
+<h4 id="widget的分类"><a href="#widget的分类" class="headerlink" title="widget的分类"></a>widget的分类</h4><p>主要需要了解的是StatelessWidget和StatefullWidget</p>
+<ul>
+<li>StatelessWidget:无状态的，AssetImage,Text…</li>
+<li>StatefulWidget:有状态的，Scrollable,Animatable..</li>
+<li>Widget的介绍<ul>
+<li>用于描述Element的配置</li>
+<li>Widge他作为用户界面的一部分是不会改变的，被加载进Element(控制底层的渲染树)</li>
+<li>Widget本身不包含状态或者可变数据，通过StatefulWidget.createState可以关联一个State</li>
+<li>一个Widget可以被多次插入视图树中，并被加载进Element中</li>
+<li>变量key和runtimeType用来判断Widget是否改变，是则重新加载</li>
+</ul>
+</li>
+<li>构建 widget 的过程并不耗费资源，因为 Wiget 只是用来保存属性的容器。</li>
+<li>无法获取Widget在屏幕上的位置和大小，因为Widget就是一张蓝图，他只是描述了底层渲染对象应该具有的属性</li>
+</ul>
+<h4 id="StatelessWidget"><a href="#StatelessWidget" class="headerlink" title="StatelessWidget"></a>StatelessWidget</h4><ul>
+<li>继承自Widget的抽象类</li>
+<li>重写了createElement方法名创建了StatelessElement对象</li>
+<li>一个build方法，创建一个Widget</li>
+<li>内部没有保存状态，UI界面创建后不会发生改变</li>
+</ul>
+<h4 id="StatefulWidget"><a href="#StatefulWidget" class="headerlink" title="StatefulWidget"></a>StatefulWidget</h4><ul>
+<li>继承自Widget的抽象类</li>
+<li>重写了createElement方法名创建了StatefulElement对象</li>
+<li>一个createState方法，创建一个State</li>
+<li>内部保存状态，调用setState方法，变更UI</li>
+</ul>
+<h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><ul>
+<li>泛型抽象类 T extend StatefulWidget</li>
+<li>State的流程<ul>
+<li>launch-&gt;initState-&gt;didChangeDependencies-&gt;build-&gt;deactive-&gt;dispose-&gt;destroy</li>
+<li>didUpdateWidget-&gt;build</li>
+<li>initState：被插入到Widget树中被调用一次</li>
+<li>didChangeDependencies:当state的依赖对象发生变化时调用</li>
+<li>build:构建Widget时调用</li>
+<li>didUpdateWidget:Widget重新构建时调用</li>
+<li>deactive:当state对象被从树中移除调用</li>
+<li>dispose:当state对象从树中被永久移除时调用，一般在此回调时释放资源</li>
+</ul>
+</li>
+</ul>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><ul>
+<li>Element是控件树上的实例</li>
+<li>Element 通过 mount 方法插入到 Element Tree 中，创建了RenderObject对象</li>
+<li></li>
+</ul>
+<h4 id="树-Widget-Tree-Element-Tree-RenderObject-Tree"><a href="#树-Widget-Tree-Element-Tree-RenderObject-Tree" class="headerlink" title="树 Widget Tree, Element Tree ,RenderObject Tree"></a>树 Widget Tree, Element Tree ,RenderObject Tree</h4><ul>
+<li>Widget Tree -(createElement)&gt; Element Tree -(createRenderObject)&gt; RenderObject Tree</li>
+<li>Widget是为了描述Element需要的配置，负责创建Element,决定Element是否需要被更新</li>
+<li>Element表示Widget配置树的特定位置的一个实例，同时持有Widget和RenderObject，负责管理Widget的配置和RenderObject的渲染。Widget发生改变，didUpdateWidget-&gt;build不会重建E，Element，只会更新</li>
+<li>RenderObject表示渲染树的一个对象，负责真正的渲染工作，比如测量大小，位置绘制等都是由RendeObject完成</li>
+</ul>
+<h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><ul>
+<li>使用Key可以控制框架在Widget重建时与哪些其他Widget进行匹配</li>
+<li>包含有LocalKey和globalKey<ul>
+<li>LocalKey：ObjectKey，UniqueKey，ValueKey(PageStrageKey)</li>
+<li>GlobalKey:LabeledGlobalKey,GlobalObjectKey</li>
+</ul>
+</li>
+</ul>
+<h3 id="MaterialApp"><a href="#MaterialApp" class="headerlink" title="MaterialApp"></a>MaterialApp</h3><p>Material应用是以MaterialApp Widget开始，主要封装了应用程序实现Material Design所需要的配置</p>
+<ul>
+<li>构造函数<ul>
+<li>路由</li>
+<li>主题</li>
+<li>本地化</li>
+<li>性能监控，调试</li>
+</ul>
+</li>
+</ul>
+<h4 id="Scaffold（脚手架）"><a href="#Scaffold（脚手架）" class="headerlink" title="Scaffold（脚手架）"></a>Scaffold（脚手架）</h4><p>在构造函数中，可以看出有App头布局，body内容,抽屉栏等元素控件，与原生Android有相似</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const Scaffold(&#123;</span><br><span class="line">    Key key,</span><br><span class="line">    this.appBar,</span><br><span class="line">    this.body,</span><br><span class="line">    this.floatingActionButton,</span><br><span class="line">    this.floatingActionButtonLocation,</span><br><span class="line">    this.floatingActionButtonAnimator,</span><br><span class="line">    this.persistentFooterButtons,</span><br><span class="line">    this.drawer,</span><br><span class="line">    this.endDrawer,</span><br><span class="line">    this.bottomNavigationBar,</span><br><span class="line">    this.bottomSheet,</span><br><span class="line">    this.backgroundColor,</span><br><span class="line">    this.resizeToAvoidBottomPadding,</span><br><span class="line">    this.resizeToAvoidBottomInset,</span><br><span class="line">    this.primary = true,</span><br><span class="line">    this.drawerDragStartBehavior = DragStartBehavior.start,</span><br><span class="line">    this.extendBody = false,</span><br><span class="line">    this.extendBodyBehindAppBar = false,</span><br><span class="line">    this.drawerScrimColor,</span><br><span class="line">    this.drawerEdgeDragWidth,</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const Text(</span><br><span class="line">    this.data, &#123; // 必要参数</span><br><span class="line">    Key key,</span><br><span class="line">    this.style,  // 文字样式</span><br><span class="line">    this.strutStyle,</span><br><span class="line">    this.textAlign, // 文字居中</span><br><span class="line">    this.textDirection,</span><br><span class="line">    this.locale,</span><br><span class="line">    this.softWrap,</span><br><span class="line">    this.overflow,</span><br><span class="line">    this.textScaleFactor,</span><br><span class="line">    this.maxLines,  // 最初</span><br><span class="line">    this.semanticsLabel,</span><br><span class="line">    this.textWidthBasis,</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="TextField"><a href="#TextField" class="headerlink" title="TextField"></a>TextField</h4><p>表单操作，输入用户名密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">const TextField(&#123;</span><br><span class="line">    Key key,</span><br><span class="line">    this.controller,</span><br><span class="line">    this.focusNode,  // 焦点</span><br><span class="line">    this.decoration = const InputDecoration(), // 设置输入样式</span><br><span class="line">    TextInputType keyboardType,</span><br><span class="line">    this.textInputAction,</span><br><span class="line">    this.textCapitalization = TextCapitalization.none,</span><br><span class="line">    this.style,</span><br><span class="line">    this.strutStyle,</span><br><span class="line">    this.textAlign = TextAlign.start,</span><br><span class="line">    this.textAlignVertical,</span><br><span class="line">    this.textDirection,</span><br><span class="line">    this.readOnly = false,</span><br><span class="line">    ToolbarOptions toolbarOptions,</span><br><span class="line">    this.showCursor,</span><br><span class="line">    this.autofocus = false,</span><br><span class="line">    this.obscureText = false,  // 密码输入</span><br><span class="line">    this.autocorrect = true,</span><br><span class="line">    this.enableSuggestions = true,</span><br><span class="line">    this.maxLines = 1,</span><br><span class="line">    this.minLines,</span><br><span class="line">    this.expands = false,</span><br><span class="line">    this.maxLength,</span><br><span class="line">    this.maxLengthEnforced = true,</span><br><span class="line">    this.onChanged,</span><br><span class="line">    this.onEditingComplete,</span><br><span class="line">    this.onSubmitted,</span><br><span class="line">    this.inputFormatters,  // 输入限制，手机号，数字 11位等</span><br><span class="line">    this.enabled,</span><br><span class="line">    this.cursorWidth = 2.0,</span><br><span class="line">    this.cursorRadius,</span><br><span class="line">    this.cursorColor,</span><br><span class="line">    this.keyboardAppearance,</span><br><span class="line">    this.scrollPadding = const EdgeInsets.all(20.0),</span><br><span class="line">    this.dragStartBehavior = DragStartBehavior.start,</span><br><span class="line">    this.enableInteractiveSelection = true,</span><br><span class="line">    this.onTap,</span><br><span class="line">    this.buildCounter,</span><br><span class="line">    this.scrollController,</span><br><span class="line">    this.scrollPhysics,</span><br><span class="line">  &#125;) </span><br></pre></td></tr></table></figure>
+
+<h4 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h4><ul>
+<li>AssetsImage:需要配置pubspec.yaml</li>
+</ul>
+<h4 id="BoxFit"><a href="#BoxFit" class="headerlink" title="BoxFit"></a>BoxFit</h4><p>图片的拉伸，填充控制</p>
+<h4 id="Icon"><a href="#Icon" class="headerlink" title="Icon"></a>Icon</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const Icon(</span><br><span class="line">  this.icon, &#123;  // 设置Icons.add 系统提供</span><br><span class="line">  Key key,</span><br><span class="line">  this.size,</span><br><span class="line">  this.color,</span><br><span class="line">  this.semanticLabel,</span><br><span class="line">  this.textDirection,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Flutter/" rel="tag"><i class="fa fa-tag"></i> Flutter</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/dart-ji-ben-yu-fa.html" rel="prev" title="dart基本语法">
+                  <i class="fa fa-angle-left"></i> dart基本语法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/flutter-zhi-bu-ju-zu-jian.html" rel="next" title="flutter之布局组件">
+                  flutter之布局组件 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

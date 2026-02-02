@@ -1,37 +1,418 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="源码分析事件分发的类型down，move， up，cancel 事件分发序列down -&gt; updown -&gt; move -&gt; up 事件分发的对象Activity  ViewGroup  View 事件分发的方法dispatchTouchEvent()onInterceptTouchEvent()onTouchEvent() Activity的事件分发 dispatchTouc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android事件分发源码分析">
+<meta property="og:url" content="https://yancy.website/android-shi-jian-fen-fa-yuan-ma-fen-xi.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="源码分析事件分发的类型down，move， up，cancel 事件分发序列down -&gt; updown -&gt; move -&gt; up 事件分发的对象Activity  ViewGroup  View 事件分发的方法dispatchTouchEvent()onInterceptTouchEvent()onTouchEvent() Activity的事件分发 dispatchTouc">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-29T05:18:15.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.513Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="源码分析及架构">
+<meta name="twitter:card" content="summary">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/android-shi-jian-fen-fa-yuan-ma-fen-xi.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/android-shi-jian-fen-fa-yuan-ma-fen-xi.html","path":"android-shi-jian-fen-fa-yuan-ma-fen-xi.html","title":"Android事件分发源码分析"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android事件分发源码分析 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text">事件分发的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E5%BA%8F%E5%88%97"><span class="nav-number">1.2.</span> <span class="nav-text">事件分发序列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.3.</span> <span class="nav-text">事件分发的对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">事件分发的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91"><span class="nav-number">1.5.</span> <span class="nav-text">Activity的事件分发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ViewGroup%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91"><span class="nav-number">1.6.</span> <span class="nav-text">ViewGroup的事件分发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">View中的事件处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3"><span class="nav-number">2.</span> <span class="nav-text">设计思想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E7%9A%84%E9%9C%80%E6%B1%82%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">架构设计思想的需求点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%89%80%E6%9C%89%E7%9A%84%E6%8E%A7%E4%BB%B6%E9%83%BD%E7%BB%A7%E6%89%BF%E5%AD%97View"><span class="nav-number">2.1.1.</span> <span class="nav-text">为什么所有的控件都继承字View</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83"><span class="nav-number">2.2.</span> <span class="nav-text">事件分发的思考</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E6%9F%A5%E6%89%BE%E8%83%BD%E5%93%8D%E5%BA%94%E7%9A%84%E6%8E%A7%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">如何快速查找能响应的控件</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-shi-jian-fen-fa-yuan-ma-fen-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android事件分发源码分析 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android事件分发源码分析
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-09-29 13:18:15" itemprop="dateCreated datePublished" datetime="2019-09-29T13:18:15+08:00">2019-09-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><h4 id="事件分发的类型"><a href="#事件分发的类型" class="headerlink" title="事件分发的类型"></a>事件分发的类型</h4><p>down，move， up，cancel</p>
+<h4 id="事件分发序列"><a href="#事件分发序列" class="headerlink" title="事件分发序列"></a>事件分发序列</h4><p>down -&gt; up<br>down -&gt; move -&gt; up</p>
+<h4 id="事件分发的对象"><a href="#事件分发的对象" class="headerlink" title="事件分发的对象"></a>事件分发的对象</h4><p>Activity  ViewGroup  View</p>
+<h4 id="事件分发的方法"><a href="#事件分发的方法" class="headerlink" title="事件分发的方法"></a>事件分发的方法</h4><p>dispatchTouchEvent()<br>onInterceptTouchEvent()<br>onTouchEvent()</p>
+<h4 id="Activity的事件分发"><a href="#Activity的事件分发" class="headerlink" title="Activity的事件分发"></a>Activity的事件分发</h4><ol>
+<li>dispatchTouchEvent</li>
+<li>PhoneWindow.superDispatchTouchEvent()</li>
+<li>DecorView.superDispatchTouchEvent</li>
+<li>ViewGroup.dispatchTouchEvent<br>事件由Activity到了ViewGroup，如果View没有消费掉，会调用Activity的onTouchEvent</li>
+</ol>
+<h4 id="ViewGroup的事件分发"><a href="#ViewGroup的事件分发" class="headerlink" title="ViewGroup的事件分发"></a>ViewGroup的事件分发</h4><ol>
+<li>事件从Down开始，接收到Down事件时会做取消并清除touch事件，置空mFistTouchTarget对象，清空Touch标记位</li>
+<li>是否拦截判断(除Down时间以外），通过onIntercept，子类可以通过修改requestDisallowInteceptTouchEvent使父容器不拦截事件.默认都会走onInterceptTouchEvent方法，默认返回false</li>
+<li>会调用dispatchTranseformdTouchEvent方法,内部会调用子类的dispatchTouchEvent方法或者父类的dispatchTouchEvent的方法</li>
+</ol>
+<h4 id="View中的事件处理"><a href="#View中的事件处理" class="headerlink" title="View中的事件处理"></a>View中的事件处理</h4><ol>
+<li>事件传递到中，会先发判断TouchListener,如果设置了TouchListener,根据回调方法onTouch方法的返回值，做响应处理，若返回true则进行第二步，否则第三步</li>
+<li>onTouch中返回true，则意味着事件被消费，onTouchEvent的方法将不再执行，事件结束</li>
+<li>onTouch中返回false,则意味着事件没有消费，将继续执行onTouchEvent方法</li>
+<li>onTouchEvent会更具事件类型执行不同的逻辑</li>
+<li>当事件时down时，会判断是否设置了longClick事件，设置了则会更具到up的时长和longClick方法的返回值去决定是否执行onClickListener方法，修改OnLongClickListener方法的返回值可以使两个方法都执行</li>
+</ol>
+<h3 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h3><h4 id="架构设计思想的需求点"><a href="#架构设计思想的需求点" class="headerlink" title="架构设计思想的需求点"></a>架构设计思想的需求点</h4><ol>
+<li>每个界面上的元素都需要有事件响应，那意味着事件的核心处理类不能太多</li>
+<li>事件传递的工作不能丢给开发者，只暴露接口</li>
+<li>每个控件都可以接受事件和消费事件，如果控件消费了，你那后续事件就交给这个事件了</li>
+<li>如何查找会消费事件的控件</li>
+<li>如何更具坐标查找该控件的范围</li>
+<li>每次发生事件，都需要遍历每个子元素吗？</li>
+</ol>
+<h5 id="为什么所有的控件都继承字View"><a href="#为什么所有的控件都继承字View" class="headerlink" title="为什么所有的控件都继承字View"></a>为什么所有的控件都继承字View</h5><p>View是事件处理和传递的抽象类，还包括绘制，测量其他代码</p>
+<h4 id="事件分发的思考"><a href="#事件分发的思考" class="headerlink" title="事件分发的思考"></a>事件分发的思考</h4><ol>
+<li>容器包含很多子控件</li>
+<li>子控件和容器都能消费事件</li>
+<li>子控件不能进行分发给其他子控件</li>
+<li>分发功能只能由容器分发给子控件</li>
+</ol>
+<h4 id="如何快速查找能响应的控件"><a href="#如何快速查找能响应的控件" class="headerlink" title="如何快速查找能响应的控件"></a>如何快速查找能响应的控件</h4><p>TouchTarget消费对象的缓存队列的设计，利用链表及缓存池，通过链表操作达到复用的效果<br>obtain()方法，内部操作加锁，判断静态变量recycleBin缓存对象TouchTarget是否为空，不为空则取出第一个，否则new出一个TouchTarget.当一系列事件消费完后 ，释放这个对象加入缓存</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E5%8F%8A%E6%9E%B6%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 源码分析及架构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/zi-ding-yi-ui-zhi-canvas.html" rel="prev" title="自定义UI之Canvas">
+                  <i class="fa fa-angle-left"></i> 自定义UI之Canvas
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/shu-xing-dong-hua.html" rel="next" title="属性动画">
+                  属性动画 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

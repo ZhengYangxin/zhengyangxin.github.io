@@ -1,37 +1,564 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="学习目标 什么是AOP（WHAT） AOP的使用 (HOW) 比较主流AOP方案的优缺点 (WHY) 基于AOP实现的业务开源库 (WHERE)  AOP的概念什么是AOP AOP与OOP一样，是一种程序设计的思想：面向切面编程(Aspect Oritented Programming)，而非技术手段。思想的实现方式是一种技术，即通过预编译方式和运行期动态代理的方式实现程序功能的统一维护 AOP是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 面向切面编程详解">
+<meta property="og:url" content="https://yancy.website/android-mian-xiang-qie-mian-bian-cheng-xiang-jie.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="学习目标 什么是AOP（WHAT） AOP的使用 (HOW) 比较主流AOP方案的优缺点 (WHY) 基于AOP实现的业务开源库 (WHERE)  AOP的概念什么是AOP AOP与OOP一样，是一种程序设计的思想：面向切面编程(Aspect Oritented Programming)，而非技术手段。思想的实现方式是一种技术，即通过预编译方式和运行期动态代理的方式实现程序功能的统一维护 AOP是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yancy.website/images/20171016213933903.png">
+<meta property="og:image" content="https://yancy.website/images/169dd37cf73b8b6c.png">
+<meta property="article:published_time" content="2019-12-27T13:38:50.000Z">
+<meta property="article:modified_time" content="2026-02-02T06:51:10.513Z">
+<meta property="article:author" content="Yangcy">
+<meta property="article:tag" content="AOP">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yancy.website/images/20171016213933903.png">
 
 
-{% block content %}
+<link rel="canonical" href="https://yancy.website/android-mian-xiang-qie-mian-bian-cheng-xiang-jie.html">
 
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
 
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/android-mian-xiang-qie-mian-bian-cheng-xiang-jie.html","path":"android-mian-xiang-qie-mian-bian-cheng-xiang-jie.html","title":"Android 面向切面编程详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Android 面向切面编程详解 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
-{% endblock %}
+  <div class="site-meta">
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">学习目标</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">AOP的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFAOP"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是AOP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFOOP"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是OOP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP%E5%92%8COOP%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.1.3.</span> <span class="nav-text">AOP和OOP的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.4.</span> <span class="nav-text">使用的业务场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94"><span class="nav-number">1.1.5.</span> <span class="nav-text">对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">实现方式及使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#APT%EF%BC%88Annotation-Processing-Tool%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">APT（Annotation Processing Tool）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E4%BD%BF%E7%94%A8APT%E4%B9%8B%E5%89%8D%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E4%BB%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">在使用APT之前我们需要了解他的一些相关知识</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AspectJ"><span class="nav-number">1.2.3.</span> <span class="nav-text">AspectJ</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Aspect%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9C%AF%E8%AF%AD"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Aspect的一些术语</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yangcy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yangcy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-mian-xiang-qie-mian-bian-cheng-xiang-jie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yangcy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Android 面向切面编程详解 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android 面向切面编程详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-12-27 21:38:50" itemprop="dateCreated datePublished" datetime="2019-12-27T21:38:50+08:00">2019-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-02 14:51:10" itemprop="dateModified" datetime="2026-02-02T14:51:10+08:00">2026-02-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ol>
+<li>什么是AOP（WHAT）</li>
+<li>AOP的使用 (HOW)</li>
+<li>比较主流AOP方案的优缺点 (WHY)</li>
+<li>基于AOP实现的业务开源库 (WHERE)</li>
+</ol>
+<h3 id="AOP的概念"><a href="#AOP的概念" class="headerlink" title="AOP的概念"></a>AOP的概念</h3><h4 id="什么是AOP"><a href="#什么是AOP" class="headerlink" title="什么是AOP"></a>什么是AOP</h4><ul>
+<li>AOP与OOP一样，是一种程序设计的思想：面向切面编程(Aspect Oritented Programming)，而非技术手段。思想的实现方式是一种技术，即通过预编译方式和运行期动态代理的方式实现程序功能的统一维护</li>
+<li>AOP是OOP的延续，是软件开发中的热点。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各个部分之间的耦合度降低，提高程序的可重用性，提高开发效率。</li>
+</ul>
+<h4 id="什么是OOP"><a href="#什么是OOP" class="headerlink" title="什么是OOP"></a>什么是OOP</h4><ul>
+<li>OOP机面向对象编程(Object Oriented Programming)，被理解为是一种将程序分解为封装数据及相关操作的对象的编程思想。它有三大特性：多态，继承，封装。其中封装指：隐藏对象的属性和实现细节，仅对外公开访问方法，控制在程序中属性的读和写的级别，以获得更加清晰高效的逻辑单元划分。这个程序的六大设计原则中的单一职责原则一致：一个类只负责一件事。</li>
+<li>因此针对上面的封装特性，他存在一个问题：当存在关注点聚焦的场景时，他无法很好的解决，因为一个关注点是面向所有而不是一个单一的类，不受类的边界的约束,因此它只能分散到各个类,方法中去。这样的好处是降低了类的复杂性，提高了程序的可维护性，但同时他也使代码变得啰嗦了，例如添加方法的调用日志，那就必须为所有的需要日志的方法添加调用日志的方法。</li>
+</ul>
+<h4 id="AOP和OOP的关系"><a href="#AOP和OOP的关系" class="headerlink" title="AOP和OOP的关系"></a>AOP和OOP的关系</h4><ul>
+<li>面对上述聚焦某个点的问题，AOP可以理解为是针对业务处理过程中的切面进行提取，它所面对的是处理过程中的某个步骤或者阶段，以获得逻辑过程中各个部分之间低耦合性隔离效果。这两种思想在目标上有本质上的差异，但两者不是对立的，AOP是为了弥补OOP的不足。</li>
+<li>OOP解决了竖向的问题，AOP则解决了横向的问题，有了AOP对程序的监控将更加简单清晰</li>
+</ul>
+<h4 id="使用的业务场景"><a href="#使用的业务场景" class="headerlink" title="使用的业务场景"></a>使用的业务场景</h4><p>日志记录，性能统计，安全控制，事务处理，异常处理等等</p>
+<h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><p><img src="/images/20171016213933903.png" alt=""></p>
+<span id="more"></span>
+<p>现在实现上图的业务，1.为所有的方法做参数校验，2.添加前置日志，后置日志。</p>
+<ul>
+<li><p>按照传统OOP实现，我们会定义一个参数校验的类Preconditions，及参数校验方法checkNotEmpty</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public final class Preconditions &#123;</span><br><span class="line">    public static &lt;T&gt; T checkNotEmpty(T instance, String name) &#123;</span><br><span class="line">        if (isEmpty(instance)) &#123;</span><br><span class="line">            throw new NullPointerException(name + &quot;不能为空&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static boolean isEmpty(Object obj) &#123;</span><br><span class="line">        if (obj == null) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        if (obj instanceof String &amp;&amp; obj.toString().length() == 0) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        //  .......</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  同样我们会定义日志记录的工具类LogDAO及写入日志方法addOpLog。这时候我们就需要找出需要需要校验参数和添加日志的方法进行一一添加。</p>
+</li>
+<li><p>而按照AOP的实现方式，是把这些横跨并嵌入众多模块的类方法集中起来，放到一个统一的地方来控制和管理，而我们只需要在这个唯一的地方进行参数的校验和日志的添加即可。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>OOP</th>
+<th>AOP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方法参数校验</td>
+<td>所有功能模块单独添加</td>
+<td>能够将同一个关注点聚焦在一处解决</td>
+</tr>
+<tr>
+<td>增加日志</td>
+<td>所有功能模块单独添加</td>
+<td>能够将同一个关注点聚焦在一处解决</td>
+</tr>
+<tr>
+<td>修改日志</td>
+<td>功能代码分散，不方便调试</td>
+<td>能够实现一处修改，处处生效</td>
+</tr>
+</tbody></table>
+<h3 id="实现方式及使用"><a href="#实现方式及使用" class="headerlink" title="实现方式及使用"></a>实现方式及使用</h3><h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><h4 id="APT（Annotation-Processing-Tool）"><a href="#APT（Annotation-Processing-Tool）" class="headerlink" title="APT（Annotation Processing Tool）"></a>APT（Annotation Processing Tool）</h4><p>是一种编译器注解技术。他通过定义注解和处理器来实现编译期生成代码的功能，并且将生成的代码和源代码一起编译成.class文件。通过APT技术我们可以将横切关注点封装到注解处理器中，从而实现横向切面和业务主体的分离。</p>
+<h5 id="在使用APT之前我们需要了解他的一些相关知识"><a href="#在使用APT之前我们需要了解他的一些相关知识" class="headerlink" title="在使用APT之前我们需要了解他的一些相关知识"></a>在使用APT之前我们需要了解他的一些相关知识</h5><ol>
+<li><p>Element<br>Element是一种在编译期间描述.java文件静态结构的一种类型，它可能表示一个package，一个class，一个filed，一个method。Element的比较应该使用equals，因为编译器间同一个Element可能会用两个对象表示.<br><img src="/images/169dd37cf73b8b6c.png" alt=""><br>我们通过Element便可以获取所有需要的类结构中的所有信息，十分有用的方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public interface Element extends AnnotatedConstruct &#123;</span><br><span class="line">    //获取父Element</span><br><span class="line">    Element getEnclosingElement();</span><br><span class="line">    //获取子Element的集合</span><br><span class="line">    List&lt;? extends Element&gt; getEnclosedElements();</span><br><span class="line">    // 获取语言定义的类型</span><br><span class="line">    TypeMirror asType()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>TypeMirror<br>Element中有个asType()方法用来返回TypeMirror。TypeMirror表示java编程语言中的类型，这些类型包括基本类型，声明类型(类、接口)，数组类型，类型变量和null类型。还可以表示通配符类型参数，executable的签名和返回类型，以及对应于包和关键字的void的伪类型。我们一般用TypeMirror于类型判断。如下Activity的类型判断：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public interface TypeMirror extends javax.lang.model.AnnotatedConstruct &#123;</span><br><span class="line">    // 可获取获取类型，如boolean， byte，short，int等等</span><br><span class="line">    TypeKind getKind();</span><br><span class="line">&#125;s</span><br><span class="line">/**</span><br><span class="line"> * 类型相关工具类</span><br><span class="line"> */</span><br><span class="line">private Types typeUtils;</span><br><span class="line">/**</span><br><span class="line"> * 元素相关的工具类</span><br><span class="line"> */</span><br><span class="line">private Elements elementUtils;</span><br><span class="line">private static final String ACTIVITY_TYPE = &quot;android.app.Activity&quot;;</span><br><span class="line">private boolean isSubActivity(Element element)&#123;</span><br><span class="line">    //获取当前元素的TypeMirror</span><br><span class="line">    TypeMirror elementTypeMirror = element.asType();</span><br><span class="line">    //通过工具类Elements获取Activity的Element，并转换为TypeMirror</span><br><span class="line">    TypeMirror viewTypeMirror = elementUtils.getTypeElement(ACTIVITY_TYPE).asType();</span><br><span class="line">    //用工具类typeUtils判断两者间的关系</span><br><span class="line">    return typeUtils.isSubtype(elementTypeMirror,viewTypeMirror)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Types, typeUtil是类型相关的工具类，主要用于与TypeMirror结合使用，常用方法有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public interface Types &#123;</span><br><span class="line">    // 将类型转化为对应的程序元素</span><br><span class="line">    Element asElement(TypeMirror t);</span><br><span class="line">    // 比较类型是否相同</span><br><span class="line">    boolean isSameType(TypeMirror t1, TypeMirror t2);</span><br><span class="line">    // t1是否是t2子类型</span><br><span class="line">    boolean isSubtype(TypeMirror t1, TypeMirror t2);</span><br><span class="line">    // t1是否是t2的父类型</span><br><span class="line">    boolean isAssignable(TypeMirror t1, TypeMirror t2);</span><br><span class="line">    // t1是否包含t的类型，，如t1是一个类元素的typeMirror,他的内部元素包含属性，方法等</span><br><span class="line">    boolean contains(TypeMirror t1, TypeMirror t2);</span><br><span class="line">    // .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Elements, elementUtil是元素相关的工具类，常用方法有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public interface Elements &#123;</span><br><span class="line">    // 通过全限定名，获取包元素</span><br><span class="line">    PackageElement getPackageElement(CharSequence name);</span><br><span class="line"></span><br><span class="line">    // 通过全限定名，获取类元素</span><br><span class="line">    TypeElement getTypeElement(CharSequence name);</span><br><span class="line"></span><br><span class="line">    //  获取包元素</span><br><span class="line">    PackageElement getPackageOf(Element type);</span><br><span class="line"></span><br><span class="line">    // 获取类元素的所有成员元素</span><br><span class="line">    List&lt;? extends Element&gt; getAllMembers(TypeElement type);</span><br><span class="line"></span><br><span class="line">    // ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>具体实战可以参考ButterKnife、Dagger、ARouter、EventBus3、DataBinding、AndroidAnnotation，框架的实现方式可以分几步</p>
+<ul>
+<li>自己定义代码结构</li>
+<li>通过apt生成代码</li>
+<li>定义Manager管理器进行初始化，传入目标对象进行逻辑代码的初始化</li>
+</ul>
+</li>
+<li><p>demo参考,其中代码生的比较繁琐，基于字符拼接容易错，推荐使用Square的<a href="https://github.com/square/javapoet">javapoet</a>库，提供了非常友好的api</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">自动生成xxx$$Proxy.java文件</span><br><span class="line">public class MainActivity$$Proxy &#123;</span><br><span class="line">    public static Class&lt;?&gt; findTargetClass(String path) &#123;</span><br><span class="line">        if (path.equals(&quot;ddasdas&quot;)) &#123;</span><br><span class="line">            return MainActivity.class;</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//代码生成器</span><br><span class="line">public class ParamaterCheckApt extends AbstractProcessor &#123;</span><br><span class="line"></span><br><span class="line">    // 操作Element工具类 (类、函数、属性都是Element)</span><br><span class="line">    private Elements elementUtils;</span><br><span class="line"></span><br><span class="line">    // type(类信息)工具类，包含用于操作TypeMirror的工具方法</span><br><span class="line">    private Types typeUtils;</span><br><span class="line"></span><br><span class="line">    // Messager用来报告错误，警告和其他提示信息</span><br><span class="line">    private Messager messager;</span><br><span class="line"></span><br><span class="line">    // 文件生成器 类/资源，Filter用来创建新的源文件，class文件以及辅助文件</span><br><span class="line">    private Filer filer;</span><br><span class="line"></span><br><span class="line">    // 该方法主要用于一些初始化的操作，通过该方法的参数ProcessingEnvironment可以获取一些列有用的工具类</span><br><span class="line">    @Override</span><br><span class="line">    public synchronized void init(ProcessingEnvironment processingEnvironment) &#123;</span><br><span class="line">        super.init(processingEnvironment);</span><br><span class="line">        S// ....</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 相当于main函数，开始处理注解</span><br><span class="line">     * 注解处理器的核心方法，处理具体的注解，生成Java文件</span><br><span class="line">     * @param annotations 使用了支持处理注解的节点集合</span><br><span class="line">     * @param roundEnv 当前或是之前的运行环境,可以通过该对象查找找到的注解。</span><br><span class="line">     * @return true 表示后续处理器不会再处理（已经处理完成）</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public boolean process(Set&lt;? extends TypeElement&gt; annotations, RoundEnvironment roundEnv) &#123;</span><br><span class="line">        if (annotations.isEmpty()) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        Set&lt;? extends Element&gt; elements = roundEnv.getElementsAnnotatedWith(Arouter.class);</span><br><span class="line">        for (Element element : elements) &#123;</span><br><span class="line">            // 通过类节点获取包节点</span><br><span class="line">            String packageName = elementUtils.getPackageOf(element).getQualifiedName().toString();</span><br><span class="line">            // 获取简单类名</span><br><span class="line">            String className = element.getSimpleName().toString();</span><br><span class="line">            messager.printMessage(Diagnostic.Kind.NOTE, &quot;被注解的类有：&quot; + className);</span><br><span class="line">            String finalClassName = className + &quot;$$Proxy&quot;;</span><br><span class="line">            try &#123;</span><br><span class="line">                JavaFileObject sourceFile = filer.createSourceFile(packageName + &quot;.&quot; + finalClassName);</span><br><span class="line">                // 定义Writer对象，开启写入</span><br><span class="line">                Writer writer = sourceFile.openWriter();</span><br><span class="line">                // 设置包名</span><br><span class="line">                writer.write(&quot;package &quot; + packageName + &quot;;\n&quot;);</span><br><span class="line"></span><br><span class="line">                writer.write(&quot;public class &quot; + finalClassName + &quot; &#123;\n&quot;);</span><br><span class="line"></span><br><span class="line">                writer.write(&quot;public static Class&lt;?&gt; findTargetClass(String path) &#123;\n&quot;);</span><br><span class="line"></span><br><span class="line">                // 获取类之上@ARouter注解的path值</span><br><span class="line">                Arouter aRouter = element.getAnnotation(Arouter.class);</span><br><span class="line"></span><br><span class="line">                writer.write(&quot;if (path.equals(\&quot;&quot; + aRouter.path() + &quot;\&quot;)) &#123;\n&quot;);</span><br><span class="line"></span><br><span class="line">                writer.write(&quot;return &quot; + className + &quot;.class;\n&#125;\n&quot;);</span><br><span class="line"></span><br><span class="line">                writer.write(&quot;return null;\n&quot;);</span><br><span class="line"></span><br><span class="line">                writer.write(&quot;&#125;\n&#125;&quot;);</span><br><span class="line"></span><br><span class="line">                // 最后结束别忘了</span><br><span class="line">                writer.close();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成的代码可以在project/项目(app)/build/generated/source/apt/ 下面可以找到</p>
+</li>
+</ol>
+<h4 id="AspectJ"><a href="#AspectJ" class="headerlink" title="AspectJ"></a>AspectJ</h4><ul>
+<li>是一种编译器，它在Java编译器的基础上增加了关键字的识别和编译方法，因此AspectJ可以织入Java代码。他还提供了AspectJ程序，在编译期间将开发者编写的AspectJ程序织入到目标程序中。它的核心是ajc(aspectjtools编译器)和weaver(织入器aspectjweaver)。</li>
+<li>aspectjtools编译器是基于java编译器之上的，可以编译.aj文件，在java编译器之上加了关键字和方法，因此也可以编译java代码</li>
+<li>weaver织入器：为了在java编译器上使用AspectJ而不依赖于AJC编译器，AspectJ5出现了@AspectJ，使用注解的方式去编写AspectJ代码，可以在任何java编译器上使用。在代码编译期间扫描目标程序，根据切点(PointCut)匹配，将开发者编写的Aspect程序编织到目标程序的.class文件中，对目标程序作了重构（重构的单位是JoinPoint），目的就是建立目标程序的与Aspect程序的连接（获取执行对象，方法，参数等上下文），从而达到Aop的目的</li>
+</ul>
+<h5 id="Aspect的一些术语"><a href="#Aspect的一些术语" class="headerlink" title="Aspect的一些术语"></a>Aspect的一些术语</h5><ol>
+<li><p>切面(Aspectj): 即一个关注点的模块化，这个关注点可能横跨多个对象，其实就是公共功能的实现。如日志切面，权限切面，事物切面等。</p>
+</li>
+<li><p>通知（Advice）：是切面的具体实现。以目标方法为参照点，根据放置的位置不同，可以分为：</p>
+<ul>
+<li>前置通知(before)</li>
+<li>后置通知(after)</li>
+<li>异常通知(AfterThrowing)</li>
+<li>最终通知(AfterReturning)</li>
+<li>环绕通知(Around)</li>
+</ul>
+</li>
+<li><p>在实际应用中通常是切面类中的一个方法，具体哪个则取决于配置。</p>
+<ul>
+<li>切入点（PointCut）： 用于定义通知应该切入到那些连接点上。不同的通知通常需要切入到不同的连接点上，这种精准的匹配依赖于切入点的正则表达式定义。连接点JointPoint：就是程序在运行过程中能够切入到切面的地点。列如： 方法调用，异常抛出修改字段等。</li>
+<li>目标对象（Target Object）：包含连接点的对象，也被称作被通知或者被代理的对象，这些对象只剩下干干净净的核心业务逻辑代码，所有共有功能的代码等则是等待Aop的切入</li>
+<li>AOP代理（AOP Proxy）：将通知应用到目标对象之后动态的创建对象。代理对象的功能等于目标对象的核心业务逻辑功能加上共有功能</li>
+<li>织入(Weaving): 将切面应用到目标对象从而创建一个新的代理对象的过程，这个过程可以发生在编译期，类装载期及运行期，不同的时期有着不同的条件。如AspectJ则需要一种支持AOP的特殊编译器；发生在类装载期，就要求有一个支持AOP实现的特殊类装载器；发生在运行期，则可直接通过java语言的反射机制与动态代理机制来实现</li>
+</ul>
+</li>
+<li><p>AspectJ中的Join Point</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Join Points</th>
+<th>说明</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>method call</td>
+<td>函数调用</td>
+<td>比如Log.e()调用的地方是一个joinPoint</td>
+</tr>
+<tr>
+<td>method execution</td>
+<td>函数执行</td>
+<td>比如Log.e()的内部执行，是一出joinPoint</td>
+</tr>
+<tr>
+<td>constructor call</td>
+<td>构造函数的调用</td>
+<td>s 和method call 类似</td>
+</tr>
+<tr>
+<td>constructor execution</td>
+<td>构造函数的执行</td>
+<td>和method execution类似</td>
+</tr>
+<tr>
+<td>field get</td>
+<td>获取某个变量</td>
+<td>比如读取DemoActivity.debug成员</td>
+</tr>
+<tr>
+<td>field set</td>
+<td>设置某变量</td>
+<td>比如设置DemoActivity.debug变量</td>
+</tr>
+<tr>
+<td>preinitialization</td>
+<td>Object 在构造函数中做一些工作</td>
+<td>很少使用</td>
+</tr>
+<tr>
+<td>initialization</td>
+<td>Object在构造函数中做得工作</td>
+<td>很少使用</td>
+</tr>
+<tr>
+<td>static initialization</td>
+<td>类初始化</td>
+<td>比如类的static{}</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>异常处理</td>
+<td>比如try catch（xxx）中，对应catch内的执行</td>
+</tr>
+<tr>
+<td>advice execution</td>
+<td>AspectJ的内容</td>
+<td>…</td>
+</tr>
+</tbody></table>
+<ol start="5">
+<li>PointCut基于正则表达式@注解 访问权限 返回值的类型 包名.函数名(参数),call(public  *  <em>.println(..))<br>是匹配一个方法，第一个</em>表示方法的返回值，第二个*表示方法的包名，(..)表示方法的参数的样子，..代表任意个数，任意类型的参数</li>
+</ol>
+<ul>
+<li>*表示任何数量的字符，除了(.)</li>
+<li>..表示任何数量的字符包括任何数量的(.)</li>
+<li>+描述指定类型的任何子类或者子接口</li>
+<li>同java一样，提供了一元和二元的条件表达操作符。<br>s一元操作符：!<br>二元操作符：||和&amp;&amp;</li>
+<li>参考<a href="https://blog.csdn.net/innost/article/details/49387395">深入理解Android之Aop</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AOP/" rel="tag"><i class="fa fa-tag"></i> AOP</a>
+              <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/shu-ju-ku-xue-xi.html" rel="prev" title="数据库学习">
+                  <i class="fa fa-angle-left"></i> 数据库学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/chong-xue-java.html" rel="next" title="Java系列">
+                  Java系列 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yangcy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
