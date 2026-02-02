@@ -1,6 +1,8 @@
 ---
-title: friends
+title: 友情链接
 date: 2020-01-05 00:44:48
-type: "friends"
-layout: "friends"
 ---
+
+## 友情链接
+
+欢迎交换友链，请在评论区留言。

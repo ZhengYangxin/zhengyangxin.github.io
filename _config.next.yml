@@ -1,0 +1,172 @@
+# NexT 主题配置文件
+# 文档: https://theme-next.js.org/docs/
+
+# ---------------------------------------------------------------
+# 主题风格设置
+# ---------------------------------------------------------------
+
+# 可选风格: Muse | Mist | Pisces | Gemini
+scheme: Gemini
+
+# 深色模式
+darkmode: true
+
+# ---------------------------------------------------------------
+# 站点信息设置
+# ---------------------------------------------------------------
+
+favicon:
+  small: /images/favicon-16x16-next.png
+  medium: /images/favicon-32x32-next.png
+  apple_touch_icon: /images/apple-touch-icon-next.png
+
+# ---------------------------------------------------------------
+# 菜单设置
+# ---------------------------------------------------------------
+
+menu:
+  home: / || fa fa-home
+  about: /about/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+
+menu_settings:
+  icons: true
+  badges: true
+
+# ---------------------------------------------------------------
+# 侧边栏设置
+# ---------------------------------------------------------------
+
+sidebar:
+  position: left
+  display: post
+
+# 头像
+avatar:
+  url: /images/head.jpeg
+  rounded: true
+  rotated: false
+
+# 站点状态
+site_state: true
+
+# 社交链接
+social:
+  GitHub: https://github.com/ZhengYangxin || fab fa-github
+  E-Mail: mailto:ZhengSunStar@gmail.com || fa fa-envelope
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: true
+
+# 目录
+toc:
+  enable: true
+  number: true
+  wrap: false
+  expand_all: false
+  max_depth: 6
+
+# ---------------------------------------------------------------
+# 页脚设置
+# ---------------------------------------------------------------
+
+footer:
+  since: 2017
+  icon:
+    name: fa fa-heart
+    animated: true
+    color: "#ff0000"
+  powered: true
+
+# ---------------------------------------------------------------
+# 文章设置
+# ---------------------------------------------------------------
+
+excerpt_description: true
+read_more_btn: true
+
+post_meta:
+  item_text: true
+  created_at: true
+  updated_at:
+    enable: true
+    another_day: true
+  categories: true
+
+tag_icon: true
+
+# 文章导航
+post_navigation: left
+
+# ---------------------------------------------------------------
+# 代码块设置
+# ---------------------------------------------------------------
+
+codeblock:
+  theme:
+    light: default
+    dark: stackoverflow-dark
+  copy_button:
+    enable: true
+    style: flat
+  fold:
+    enable: false
+    height: 500
+  language: true
+
+# 返回顶部
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: true
+
+# 阅读进度条
+reading_progress:
+  enable: true
+  start_at: left
+  position: top
+  reversed: false
+  color: "#37c6c0"
+  height: 3px
+
+# ---------------------------------------------------------------
+# 动画设置
+# ---------------------------------------------------------------
+
+motion:
+  enable: true
+  async: false
+  transition:
+    menu_item: fadeInDown
+    post_block: fadeIn
+    post_header: fadeInDown
+    post_body: fadeInDown
+    coll_header: fadeInLeft
+    sidebar: fadeInUp
+
+# ---------------------------------------------------------------
+# 搜索服务
+# ---------------------------------------------------------------
+
+local_search:
+  enable: true
+  top_n_per_article: 3
+  unescape: false
+  preload: true
+
+# ---------------------------------------------------------------
+# 访问统计
+# ---------------------------------------------------------------
+
+busuanzi_count:
+  enable: true
+  total_visitors: true
+  total_visitors_icon: fa fa-user
+  total_views: true
+  total_views_icon: fa fa-eye
+  post_views: true
+  post_views_icon: far fa-eye
