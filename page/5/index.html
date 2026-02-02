@@ -105,7 +105,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -170,18 +170,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-count">73</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -206,6 +206,343 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/zu-jian-hua-zong-jie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yancy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/zu-jian-hua-zong-jie.html" class="post-title-link" itemprop="url">组件化总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-10-22 21:37:59" itemprop="dateCreated datePublished" datetime="2019-10-22T21:37:59+08:00">2019-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="library和phone的区别"><a href="#library和phone的区别" class="headerlink" title="library和phone的区别"></a>library和phone的区别</h4><ol>
+<li>library 是集成化，phone是组件化</li>
+<li>library中是apply plugin: ‘com.android.android’，且没有applicationId，phone是apply plugin: ‘com.android.application’，有applicationId</li>
+<li>library不能单独运行和单独打包，phone可以</li>
+</ol>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><ol>
+<li>定义config.gradle,统一配置信息及，定义是否为isRelease开关(是否为发布版本)</li>
+<li>在每个模块里做isRelease判断，是否是library，修改组件和集成库的区别</li>
+<li>组件时debug代码的配置</li>
+</ol>
+<h4 id="组件化开发规范"><a href="#组件化开发规范" class="headerlink" title="组件化开发规范"></a>组件化开发规范</h4><p>组件前缀</p>
+<h4 id="module之间的交互"><a href="#module之间的交互" class="headerlink" title="module之间的交互"></a>module之间的交互</h4><ol>
+<li>EventBus 必须一对一，若一对多将混乱不堪难以维护</li>
+<li>反射  维护成本高，容易出现高版本@hide限制</li>
+<li>隐式意图，需要维护manifest</li>
+<li>BroadcastReceiver ，7.0后需要动态注册，需求方发送广播</li>
+<li>类加载，需要准确的全类名，维护成本高容易出错</li>
+</ol>
+<h4 id="注解处理器的APT的应用"><a href="#注解处理器的APT的应用" class="headerlink" title="注解处理器的APT的应用"></a>注解处理器的APT的应用</h4><ol>
+<li>简单来说是一种按一定规则，自动生成代码的工具</li>
+<li>需要了解他的程序元素Element包括：PackageElement包元素，TypeElement类或接口元素，VariableElement属性字段参数元素，ExecutableElement方法(包括构造，静态方法)元素</li>
+<li>Android studio 及 gradle的 版本兼容 1.as3.3.2 gradle 4.10.1(临界版本)  2. as3.4.1 gradle5.1.1(向下兼容)</li>
+<li>定义需扫描的注解类</li>
+<li>创建注解处理器@AutoService(Processor.class)，指定支持的注解，编译的java版本及注解处理器接受内容的参数</li>
+<li>通过获取节点，定义包名及新的class名称，通过filter创建一个JavaFileObject对象</li>
+<li>获取JavaFileObject的Write对象，进行一行一行的写入文件</li>
+</ol>
+<h4 id="JavaPoet的应用"><a href="#JavaPoet的应用" class="headerlink" title="JavaPoet的应用"></a>JavaPoet的应用</h4><p>JavaPoet是square推出的开源的java代码自动生成框架，提供javaApi生成Java文件</p>
+<ol>
+<li>MethodSpec生成方法</li>
+<li>TypeSpec生成类或者接口class</li>
+<li>JavaFile创建java文件</li>
+<li>Element的子类，包括TypeElement, PackageElement等等表示程序可操作的元素，包括类，方法，属性，包等</li>
+<li>TypeMirror,获取类的所有信息，可以判断子类关系</li>
+</ol>
+<h4 id="Arouter的源碼分析"><a href="#Arouter的源碼分析" class="headerlink" title="Arouter的源碼分析"></a>Arouter的源碼分析</h4><h5 id="1-初始化過程ARouter-init-gt-Arouter-init-gt-LogisticsCenter-init"><a href="#1-初始化過程ARouter-init-gt-Arouter-init-gt-LogisticsCenter-init" class="headerlink" title="1. 初始化過程ARouter.init -&gt; Arouter.init -&gt; LogisticsCenter.init()"></a>1. 初始化過程ARouter.init -&gt; <em>Arouter.init -&gt; LogisticsCenter.init()</em></h5><pre><code>* 在该方法中会进行APT生成文件的dex文件的扫码，加载所有的class文件，保存到routerMap对像并保存到sp中（第一次启动比较慢），同时开启了线程池每个dex的加载都会创建一个线程，最后放入缓存对象Warehouse的map中
+* 在 LogisticsCenter.init() -&gt; _Arouter.afterInit()内部会创建拦截器对象interceptorService</code></pre><h4 id="路由的设计及应用"><a href="#路由的设计及应用" class="headerlink" title="路由的设计及应用"></a>路由的设计及应用</h4><p>参考Arouter</p>
+<ol>
+<li>组件间的跳转</li>
+<li>组件间的值传递</li>
+<li>获取其他组件的资源及实习方法</li>
+<li>对未安装组件的拦截</li>
+</ol>
+<h4 id="项目实践"><a href="#项目实践" class="headerlink" title="项目实践"></a>项目实践</h4><p>存在问题</p>
+<ol>
+<li>各模块的service耦合度高</li>
+<li>模块间的跳转都类名</li>
+<li>数据的传输是调用方法的</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/binder-de-xue-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yancy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/binder-de-xue-xi.html" class="post-title-link" itemprop="url">Binder的学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-10-20 00:02:11" itemprop="dateCreated datePublished" datetime="2019-10-20T00:02:11+08:00">2019-10-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="进程通讯的方式"><a href="#进程通讯的方式" class="headerlink" title="进程通讯的方式"></a>进程通讯的方式</h3><ol>
+<li>管道，耗性能</li>
+<li>共享内存，多进程访问，管理混乱</li>
+<li>Socket适用于网络通讯，进程通讯不适用</li>
+</ol>
+<h3 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h3><ol>
+<li>binder机制为每个进程都分配了UID和PID来作为鉴别身份的标识，安全性</li>
+<li>对数据只进行了一次拷贝，通过驱动的内核空间拷贝数据，不需要额外的同步处理</li>
+<li>使用简单C/S架构，实现面向对象的调用方式即在使用binder时，就和调用1个本地对象实例一样</li>
+</ol>
+<h4 id="Binder的四个重要角色"><a href="#Binder的四个重要角色" class="headerlink" title="Binder的四个重要角色"></a>Binder的四个重要角色</h4><ol>
+<li>server</li>
+<li>Client</li>
+<li>ServiceMannager</li>
+<li>Binder驱动(存在线程池 16个)，具体实现通过内存映射，内部调用了mmap()函数<br>前三者在用户空间，Binder驱动在内核空间</li>
+</ol>
+<h4 id="AIDL接口定义语言"><a href="#AIDL接口定义语言" class="headerlink" title="AIDL接口定义语言"></a>AIDL接口定义语言</h4><p>是对Binder通讯的封装<br>IBinder代表有能力进行快进程的能力<br>IIterface 拥有了Binder机制的能力，只有一个asBinder的方法<br>Binder<br>Stub 本地对象</p>
+<h4 id="Binder的源码分析"><a href="#Binder的源码分析" class="headerlink" title="Binder的源码分析"></a>Binder的源码分析</h4><ol>
+<li>打开binder设备<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frameworks /native /cmds /servicemanager /service_manager.c</span><br><span class="line">driver = &quot;/dev/binder&quot;;  //返回文件描述符</span><br></pre></td></tr></table></figure></li>
+<li>buffer的创建(用于进程间数据传递)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bs = binder_open(driver, 128*1024); binder，创建128k的那内存映射</span><br></pre></td></tr></table></figure></li>
+<li>开辟内存呢映射128k<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">frameworks /native /cmds /servicemanager /binder.c</span><br><span class="line">bs-&gt;mapped = mmap(NULL, mapsize, PROT_READ, MAP_PRIVATE, bs-&gt;fd, 0);</span><br><span class="line">mmap()命令</span><br><span class="line">device /google /cuttlefish_kernel /4.4-x86_64 /System.map</span><br><span class="line">在系统启动的时候开辟了内存映射</span><br></pre></td></tr></table></figure></li>
+<li>serviceManager的启动<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">system /core /rootdir /init.rc</span><br><span class="line">start servicemanager</span><br><span class="line">在系统启动的时候做了启动服务</span><br></pre></td></tr></table></figure></li>
+<li>打包Parcel,数据写入binder驱动，copy_from_user<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">打包Parcel</span><br><span class="line">frameworks native libs binder IServiceManager.cpp</span><br><span class="line">addService</span><br><span class="line"></span><br><span class="line">数据写入binder驱动</span><br><span class="line">frameworks native libs binder IPCThreadState.cpp</span><br><span class="line">writeTransactionData</span><br></pre></td></tr></table></figure></li>
+<li>服务注册，添加到链表SVClist中</li>
+<li>定义主线程中的线程池</li>
+<li>循环从mIn和mOut中读和写数据请求，发到binder设备中</li>
+</ol>
+<h3 id="三方登录实例"><a href="#三方登录实例" class="headerlink" title="三方登录实例"></a>三方登录实例</h3><p>A应用client端，B应用为Server端。A调用B进行登录。两应用aidl文件的包名必须一致</p>
+<h4 id="A应用"><a href="#A应用" class="headerlink" title="A应用"></a>A应用</h4><ol>
+<li>创建ILoginInterface.aidl<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// ILoginInterface.aidl</span><br><span class="line">package com.netease.binder;</span><br><span class="line"></span><br><span class="line">// Declare any non-default types here with import statements</span><br><span class="line"></span><br><span class="line">interface ILoginInterface &#123;</span><br><span class="line"></span><br><span class="line">    // 登录</span><br><span class="line">    void login();</span><br><span class="line"></span><br><span class="line">    // 登录返回</span><br><span class="line">    void loginCallback(boolean loginStatus, String loginUser);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在A应用中建立Binder连接,记得销毁<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public void initBindService() &#123;</span><br><span class="line">        Intent intent = new Intent();</span><br><span class="line">        // 设置Server应用Action</span><br><span class="line">        intent.setAction(&quot;BinderB_Action&quot;);</span><br><span class="line">        // 设置Server应用包名（5.1+要求）</span><br><span class="line">        intent.setPackage(&quot;com.netease.binder.b&quot;);</span><br><span class="line">        // 开始绑定服务</span><br><span class="line">        bindService(intent, conn, BIND_AUTO_CREATE);</span><br><span class="line">        // 标识跨进程绑定</span><br><span class="line">        isStartRemote = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 服务连接</span><br><span class="line">    private ServiceConnection conn = new ServiceConnection() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">            iLogin = ILoginInterface.Stub.asInterface(service);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>因为需要接受B进程返回的数据，需要同样创建一个服务，<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package com.netease.binder.a.service;</span><br><span class="line"></span><br><span class="line">import android.app.Service;</span><br><span class="line">import android.content.Intent;</span><br><span class="line">import android.os.IBinder;</span><br><span class="line">import android.os.RemoteException;</span><br><span class="line">import android.util.Log;</span><br><span class="line"></span><br><span class="line">import com.netease.binder.ILoginInterface;</span><br><span class="line"></span><br><span class="line">public class MyService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line"></span><br><span class="line">        return new ILoginInterface.Stub() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void login() throws RemoteException &#123;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void loginCallback(boolean loginStatus, String loginUser) throws RemoteException &#123;</span><br><span class="line">                Log.e(&quot;netease &gt;&gt;&gt; &quot;, &quot;loginStatus: &quot; + loginStatus + &quot; / loginUser: &quot; + loginUser);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="B应用"><a href="#B应用" class="headerlink" title="B应用"></a>B应用</h4></li>
+<li>创建ILoginInterface.aidl</li>
+<li>创建对应的service服务<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class MyService extends Service &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IBinder onBind(Intent intent) &#123;</span><br><span class="line"></span><br><span class="line">        return new ILoginInterface.Stub() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void login() throws RemoteException &#123;</span><br><span class="line">                Log.e(&quot;netease &gt;&gt;&gt; &quot;, &quot;BinderB_MyService&quot;);</span><br><span class="line">                // 单项通信有问题，真实项目双向通信，双服务绑定</span><br><span class="line">                serviceStartActivity();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void loginCallback(boolean loginStatus, String loginUser) throws RemoteException &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 在Service启动Activity，需要配置：.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">     */</span><br><span class="line">    private void serviceStartActivity() &#123;</span><br><span class="line">        Intent intent = new Intent(this, MainActivity.class);</span><br><span class="line">        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在AndroidManifest配置文件中注册服务<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">                 代表在应用程序里，当需要该service时，会自动创建新的进程。</span><br><span class="line">                 android:process=&quot;:remote&quot;</span><br><span class="line"></span><br><span class="line">                 是否可以被系统实例化</span><br><span class="line">                 android:enabled=&quot;true&quot;</span><br><span class="line"></span><br><span class="line">                 代表是否能被其他应用隐式调用</span><br><span class="line">                 android:exported=&quot;true&quot;</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;service</span><br><span class="line">            android:name=&quot;.service.MyService&quot;</span><br><span class="line">            android:enabled=&quot;true&quot;</span><br><span class="line">            android:exported=&quot;true&quot;</span><br><span class="line">            android:process=&quot;:remote_service&quot;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;intent-filter&gt;</span><br><span class="line">                &lt;!-- 激活 MyService 唯一name，不能重名--&gt;</span><br><span class="line">                &lt;action android:name=&quot;BinderB_Action&quot; /&gt;</span><br><span class="line">            &lt;/intent-filter&gt;</span><br><span class="line">        &lt;/service&gt;</span><br></pre></td></tr></table></figure></li>
+<li>当A请求登录时，会唤起B应用打开登录界面，当输入完登录信息后需要将登录结果返回给A应用，因此同样需要A应用有一个跨进程服务接受B进程的登录结果，所以同样在B中创建Ade服务连接<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public void initBindService() &#123;</span><br><span class="line">        Intent intent = new Intent();</span><br><span class="line">        // 设置Server应用Action</span><br><span class="line">        intent.setAction(&quot;BinderA_Action&quot;);</span><br><span class="line">        // 设置Server应用包名（5.1+要求）</span><br><span class="line">        intent.setPackage(&quot;com.netease.binder.a&quot;);</span><br><span class="line">        // 开始绑定服务</span><br><span class="line">        bindService(intent, conn, BIND_AUTO_CREATE);</span><br><span class="line">        // 标识跨进程绑定</span><br><span class="line">        isStartRemote = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 服务连接</span><br><span class="line">    private ServiceConnection conn = new ServiceConnection() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceConnected(ComponentName name, IBinder service) &#123;</span><br><span class="line">            iLogin = ILoginInterface.Stub.asInterface(service);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void onServiceDisconnected(ComponentName name) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/handler-jie-xi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yancy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/handler-jie-xi.html" class="post-title-link" itemprop="url">Handler解析</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-10-19 21:27:32" itemprop="dateCreated datePublished" datetime="2019-10-19T21:27:32+08:00">2019-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h4 id="Handler的几个问题"><a href="#Handler的几个问题" class="headerlink" title="Handler的几个问题"></a>Handler的几个问题</h4><ol>
+<li>Handler内存泄漏的测试<br>在消息未发送之前，将activity销毁，需要remove消息及将handler赋值为null</li>
+<li>为什么不能在子线程创建Handler<br>在子线程中直接new Handler，会获取当前线程的Looper，但我们并没有穿件Looper</li>
+<li>textView.setText()只能在主线程执行？<br>是的，因为setText()会刷新界面，调用requestLayout及invalidate，内部会做是否为主线程的检查</li>
+<li>new Handler()两种写法有什么区别？<br>直接new Handler 重写他的handlerMessage()方法不推荐，通过new Handler(new Handler.CallBack)是推荐做法 CallBack接口的handlerMessage方法应返回为true</li>
+<li>ThreadLocal用法和原理<br>ThreadLocal 内部是一个Map对象，保存着key和value，可以为当前的线程，value为线程保存的值</li>
+</ol>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><ol>
+<li>从应用的创建：ActivityThread.main() -&gt; Looper.preMainLooper-&gt; 这时候ThreadLocal.get() = null -&gt;会创建主线程的Looper对象及唯一关联的MessageQueue</li>
+<li>当在主线程中new Handler()时 -&gt; 内部回调Looper.myLooper获取到主线程的Looper-&gt; 将looper的messagequeue赋值给Handler的变量 -&gt; 当handler调用sendMessage -&gt; queue.enqueueMessage()</li>
+<li>在ActivityThread.main() -&gt; 会调用Looper.loop()方法 -&gt; 从消息队列中获取消息 -&gt;</li>
+<li>调用message.target.dispachMessage -&gt; target即Handler，则会调用handler中的dispatch方法 -&gt; 最终掉用handler的handlerMessage方法</li>
+</ol>
+<h4 id="解决几个问题"><a href="#解决几个问题" class="headerlink" title="解决几个问题"></a>解决几个问题</h4><ol>
+<li>为什么主线程用Looper死循环不会引发ANR异常<br>因为Looper.next开启死循环的时候，一旦需要等待时或者还没有执行到执行的时候，会调用NDK里的JNI方法，释放当前的时间片，这样就不会引发ANR异常</li>
+<li>为什么Handler构造方法里面的Looper不是直接new？<br>因为直接new出来不一定能保证唯一，只有用Looper.prepare才能保证唯一性</li>
+<li>MessageQueue为什么要放在Looper的私有构造方法里初始化<br>因为一个线程只能由一个Looper，所以在构造方法里初始化也就能保证MessageQueue的唯一性</li>
+<li>主线程里的Looper.prepare/Looper.loop,是一直在无限循环里面的吗<br>是的</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -714,324 +1051,6 @@
 <li>通过自定义设置一个透明的statusBarView，用于定义statusBar的颜色</li>
 <li></li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yancy.website/shu-xing-dong-hua.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpeg">
-      <meta itemprop="name" content="Yancy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Fighting！">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/shu-xing-dong-hua.html" class="post-title-link" itemprop="url">属性动画</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-09-29 22:51:12" itemprop="dateCreated datePublished" datetime="2019-09-29T22:51:12+08:00">2019-09-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="动画的种类"><a href="#动画的种类" class="headerlink" title="动画的种类"></a>动画的种类</h4><ol>
-<li>平移</li>
-<li>透明</li>
-<li>旋转</li>
-<li>缩放</li>
-<li>帧动画</li>
-</ol>
-<h4 id="动画的设计考虑"><a href="#动画的设计考虑" class="headerlink" title="动画的设计考虑"></a>动画的设计考虑</h4><ol>
-<li>面向用户为开发者，因此API尽量简单</li>
-<li>一个View有多个动画，但同时只能由一个运行</li>
-<li>动画执行不能依赖于自身for循环</li>
-<li>如何让动画动起来</li>
-</ol>
-<h4 id="动画任务"><a href="#动画任务" class="headerlink" title="动画任务"></a>动画任务</h4><ol>
-<li>控件</li>
-<li>时长</li>
-<li>起始值</li>
-<li>差值器  </li>
-</ol>
-<h4 id="在属性动画初始化的的过程中"><a href="#在属性动画初始化的的过程中" class="headerlink" title="在属性动画初始化的的过程中"></a>在属性动画初始化的的过程中</h4><ol>
-<li>创建ObjectAnimator对象，保存控件及属性名，</li>
-<li>设置关键帧的值，创建PropertyValueHolder, 通过KeyframeSet的ofInt方法将动画分解成不同的关键帧</li>
-<li>创建关键帧，Keyframe保存了关键帧的mFraction比例，值没Value及值类型mValueType</li>
-<li>估值器的设置，是用来计算关键帧之间具体的值，</li>
-<li>差值器的设置是修改某个时间点动画的百分比</li>
-</ol>
-<h4 id="自定义控件开发思路"><a href="#自定义控件开发思路" class="headerlink" title="自定义控件开发思路"></a>自定义控件开发思路</h4><ol>
-<li>观察有哪些动画</li>
-<li>哪些元素比较特别，后面有没有可能变更需求</li>
-<li>看是否有事件交互</li>
-<li>如何设置自定义控件较为合理</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-shi-jian-fen-fa-yuan-ma-fen-xi.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpeg">
-      <meta itemprop="name" content="Yancy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Fighting！">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/android-shi-jian-fen-fa-yuan-ma-fen-xi.html" class="post-title-link" itemprop="url">Android事件分发源码分析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-09-29 13:18:15" itemprop="dateCreated datePublished" datetime="2019-09-29T13:18:15+08:00">2019-09-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><h4 id="事件分发的类型"><a href="#事件分发的类型" class="headerlink" title="事件分发的类型"></a>事件分发的类型</h4><p>down，move， up，cancel</p>
-<h4 id="事件分发序列"><a href="#事件分发序列" class="headerlink" title="事件分发序列"></a>事件分发序列</h4><p>down -&gt; up<br>down -&gt; move -&gt; up</p>
-<h4 id="事件分发的对象"><a href="#事件分发的对象" class="headerlink" title="事件分发的对象"></a>事件分发的对象</h4><p>Activity  ViewGroup  View</p>
-<h4 id="事件分发的方法"><a href="#事件分发的方法" class="headerlink" title="事件分发的方法"></a>事件分发的方法</h4><p>dispatchTouchEvent()<br>onInterceptTouchEvent()<br>onTouchEvent()</p>
-<h4 id="Activity的事件分发"><a href="#Activity的事件分发" class="headerlink" title="Activity的事件分发"></a>Activity的事件分发</h4><ol>
-<li>dispatchTouchEvent</li>
-<li>PhoneWindow.superDispatchTouchEvent()</li>
-<li>DecorView.superDispatchTouchEvent</li>
-<li>ViewGroup.dispatchTouchEvent<br>事件由Activity到了ViewGroup，如果View没有消费掉，会调用Activity的onTouchEvent</li>
-</ol>
-<h4 id="ViewGroup的事件分发"><a href="#ViewGroup的事件分发" class="headerlink" title="ViewGroup的事件分发"></a>ViewGroup的事件分发</h4><ol>
-<li>事件从Down开始，接收到Down事件时会做取消并清除touch事件，置空mFistTouchTarget对象，清空Touch标记位</li>
-<li>是否拦截判断(除Down时间以外），通过onIntercept，子类可以通过修改requestDisallowInteceptTouchEvent使父容器不拦截事件.默认都会走onInterceptTouchEvent方法，默认返回false</li>
-<li>会调用dispatchTranseformdTouchEvent方法,内部会调用子类的dispatchTouchEvent方法或者父类的dispatchTouchEvent的方法</li>
-</ol>
-<h4 id="View中的事件处理"><a href="#View中的事件处理" class="headerlink" title="View中的事件处理"></a>View中的事件处理</h4><ol>
-<li>事件传递到中，会先发判断TouchListener,如果设置了TouchListener,根据回调方法onTouch方法的返回值，做响应处理，若返回true则进行第二步，否则第三步</li>
-<li>onTouch中返回true，则意味着事件被消费，onTouchEvent的方法将不再执行，事件结束</li>
-<li>onTouch中返回false,则意味着事件没有消费，将继续执行onTouchEvent方法</li>
-<li>onTouchEvent会更具事件类型执行不同的逻辑</li>
-<li>当事件时down时，会判断是否设置了longClick事件，设置了则会更具到up的时长和longClick方法的返回值去决定是否执行onClickListener方法，修改OnLongClickListener方法的返回值可以使两个方法都执行</li>
-</ol>
-<h3 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h3><h4 id="架构设计思想的需求点"><a href="#架构设计思想的需求点" class="headerlink" title="架构设计思想的需求点"></a>架构设计思想的需求点</h4><ol>
-<li>每个界面上的元素都需要有事件响应，那意味着事件的核心处理类不能太多</li>
-<li>事件传递的工作不能丢给开发者，只暴露接口</li>
-<li>每个控件都可以接受事件和消费事件，如果控件消费了，你那后续事件就交给这个事件了</li>
-<li>如何查找会消费事件的控件</li>
-<li>如何更具坐标查找该控件的范围</li>
-<li>每次发生事件，都需要遍历每个子元素吗？</li>
-</ol>
-<h5 id="为什么所有的控件都继承字View"><a href="#为什么所有的控件都继承字View" class="headerlink" title="为什么所有的控件都继承字View"></a>为什么所有的控件都继承字View</h5><p>View是事件处理和传递的抽象类，还包括绘制，测量其他代码</p>
-<h4 id="事件分发的思考"><a href="#事件分发的思考" class="headerlink" title="事件分发的思考"></a>事件分发的思考</h4><ol>
-<li>容器包含很多子控件</li>
-<li>子控件和容器都能消费事件</li>
-<li>子控件不能进行分发给其他子控件</li>
-<li>分发功能只能由容器分发给子控件</li>
-</ol>
-<h4 id="如何快速查找能响应的控件"><a href="#如何快速查找能响应的控件" class="headerlink" title="如何快速查找能响应的控件"></a>如何快速查找能响应的控件</h4><p>TouchTarget消费对象的缓存队列的设计，利用链表及缓存池，通过链表操作达到复用的效果<br>obtain()方法，内部操作加锁，判断静态变量recycleBin缓存对象TouchTarget是否为空，不为空则取出第一个，否则new出一个TouchTarget.当一系列事件消费完后 ，释放这个对象加入缓存</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yancy.website/zi-ding-yi-ui-zhi-canvas.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/head.jpeg">
-      <meta itemprop="name" content="Yancy">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Fighting！">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | Fighting！">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/zi-ding-yi-ui-zhi-canvas.html" class="post-title-link" itemprop="url">自定义UI之Canvas</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-09-27 12:12:26" itemprop="dateCreated datePublished" datetime="2019-09-27T12:12:26+08:00">2019-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="Canvas绘制几何图形，文本，位图等"><a href="#Canvas绘制几何图形，文本，位图等" class="headerlink" title="Canvas绘制几何图形，文本，位图等"></a>Canvas绘制几何图形，文本，位图等</h4><ol>
-<li>drawBitmap() 在指定坐标绘制位图</li>
-<li>drawLine()根据起始点绘制连线</li>
-<li>drawPath()根据给定的路径，绘制连线</li>
-<li>drawPoint()根据给定的坐标，绘制点</li>
-<li>drawText()根据给定的坐标和文本绘制文字<br>…..</li>
-</ol>
-<h4 id="位置，形状变化等"><a href="#位置，形状变化等" class="headerlink" title="位置，形状变化等"></a>位置，形状变化等</h4><ol>
-<li>void translate(float x, float y) 平移操作</li>
-<li>void scale() 缩放</li>
-<li>void rotate() 旋转</li>
-<li>void skew() 倾斜</li>
-<li>void clipXXX()剪切</li>
-<li>void clipOutXXX()反向剪切</li>
-<li>setMatrix(Matrix matrix) 通过matrix实现以上效果</li>
-</ol>
-<h4 id="Canvas的状态保存"><a href="#Canvas的状态保存" class="headerlink" title="Canvas的状态保存"></a>Canvas的状态保存</h4><p>Canvas内部维护着状态栈，通过save和restore保存恢复<br>离屏绘制saveLayer</p>
 
       
     </div>

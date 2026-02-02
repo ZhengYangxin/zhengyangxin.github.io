@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="前言在后端开发中，SQL优化是一个非常重要的技能。一条慢SQL可能会导致整个系统的性能瓶颈，甚至引发线上故障。本文是SQL优化系列的第一篇，主要介绍如何发现SQL中的问题以及EXPLAIN命令的详细使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL优化系列（一）：如何发现SQL问题与EXPLAIN详解">
+<meta property="og:url" content="https://yancy.website/sql-you-hua-xi-lie-yi-ru-he-fa-xian-sql-wen-ti-yu-explain-xiang-jie.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="前言在后端开发中，SQL优化是一个非常重要的技能。一条慢SQL可能会导致整个系统的性能瓶颈，甚至引发线上故障。本文是SQL优化系列的第一篇，主要介绍如何发现SQL中的问题以及EXPLAIN命令的详细使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-02T02:30:00.000Z">
+<meta property="article:modified_time" content="2026-02-02T08:36:06.767Z">
+<meta property="article:author" content="Yancy">
+<meta property="article:tag" content="EXPLAIN">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="SQL优化">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yancy.website/sql-you-hua-xi-lie-yi-ru-he-fa-xian-sql-wen-ti-yu-explain-xiang-jie.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/sql-you-hua-xi-lie-yi-ru-he-fa-xian-sql-wen-ti-yu-explain-xiang-jie.html","path":"sql-you-hua-xi-lie-yi-ru-he-fa-xian-sql-wen-ti-yu-explain-xiang-jie.html","title":"SQL优化系列（一）：如何发现SQL问题与EXPLAIN详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SQL优化系列（一）：如何发现SQL问题与EXPLAIN详解 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8CSQL%E4%BC%98%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">为什么要进行SQL优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%8F%91%E7%8E%B0SQL%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">如何发现SQL问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97"><span class="nav-number">3.1.</span> <span class="nav-text">1. 慢查询日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-SHOW-PROCESSLIST"><span class="nav-number">3.2.</span> <span class="nav-text">2. SHOW PROCESSLIST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7"><span class="nav-number">3.3.</span> <span class="nav-text">3. 性能监控工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPLAIN%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">EXPLAIN命令详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EXPLAIN%E8%BE%93%E5%87%BA%E5%AD%97%E6%AE%B5%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.2.</span> <span class="nav-text">EXPLAIN输出字段详解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-id"><span class="nav-number">4.2.1.</span> <span class="nav-text">1. id</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-select-type"><span class="nav-number">4.2.2.</span> <span class="nav-text">2. select_type</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-table"><span class="nav-number">4.2.3.</span> <span class="nav-text">3. table</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-partitions"><span class="nav-number">4.2.4.</span> <span class="nav-text">4. partitions</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-type%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="nav-number">4.2.5.</span> <span class="nav-text">5. type（重要）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-possible-keys"><span class="nav-number">4.2.6.</span> <span class="nav-text">6. possible_keys</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-key"><span class="nav-number">4.2.7.</span> <span class="nav-text">7. key</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-key-len"><span class="nav-number">4.2.8.</span> <span class="nav-text">8. key_len</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-ref"><span class="nav-number">4.2.9.</span> <span class="nav-text">9. ref</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-rows"><span class="nav-number">4.2.10.</span> <span class="nav-text">10. rows</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-filtered"><span class="nav-number">4.2.11.</span> <span class="nav-text">11. filtered</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-Extra%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="nav-number">4.2.12.</span> <span class="nav-text">12. Extra（重要）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXPLAIN%E5%AE%9E%E6%88%98%E7%A4%BA%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">EXPLAIN实战示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B1%EF%BC%9A%E5%85%A8%E8%A1%A8%E6%89%AB%E6%8F%8F"><span class="nav-number">5.1.</span> <span class="nav-text">示例1：全表扫描</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B2%EF%BC%9A%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="nav-number">5.2.</span> <span class="nav-text">示例2：使用索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B3%EF%BC%9A%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="nav-number">5.3.</span> <span class="nav-text">示例3：覆盖索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yancy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yancy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/sql-you-hua-xi-lie-yi-ru-he-fa-xian-sql-wen-ti-yu-explain-xiang-jie.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yancy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SQL优化系列（一）：如何发现SQL问题与EXPLAIN详解 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL优化系列（一）：如何发现SQL问题与EXPLAIN详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-02 10:30:00" itemprop="dateCreated datePublished" datetime="2020-05-02T10:30:00+08:00">2020-05-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在后端开发中，SQL优化是一个非常重要的技能。一条慢SQL可能会导致整个系统的性能瓶颈，甚至引发线上故障。本文是SQL优化系列的第一篇，主要介绍如何发现SQL中的问题以及EXPLAIN命令的详细使用。</p>
+<span id="more"></span>
+
+<h3 id="为什么要进行SQL优化"><a href="#为什么要进行SQL优化" class="headerlink" title="为什么要进行SQL优化"></a>为什么要进行SQL优化</h3><p>在实际开发中，我们经常会遇到以下场景：</p>
+<ul>
+<li>页面加载缓慢，用户体验差</li>
+<li>数据库CPU飙高，系统响应变慢</li>
+<li>某些接口超时，影响业务正常运行</li>
+</ul>
+<p>这些问题很多时候都是由慢SQL引起的。因此，掌握SQL优化技能对于后端工程师来说至关重要。</p>
+<h3 id="如何发现SQL问题"><a href="#如何发现SQL问题" class="headerlink" title="如何发现SQL问题"></a>如何发现SQL问题</h3><h4 id="1-慢查询日志"><a href="#1-慢查询日志" class="headerlink" title="1. 慢查询日志"></a>1. 慢查询日志</h4><p>MySQL提供了慢查询日志功能，可以记录执行时间超过指定阈值的SQL语句。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查看慢查询日志是否开启</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;slow_query_log&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 开启慢查询日志</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> slow_query_log <span class="operator">=</span> <span class="string">&#x27;ON&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 设置慢查询阈值（单位：秒）</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> long_query_time <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查看慢查询日志文件位置</span></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;slow_query_log_file&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-SHOW-PROCESSLIST"><a href="#2-SHOW-PROCESSLIST" class="headerlink" title="2. SHOW PROCESSLIST"></a>2. SHOW PROCESSLIST</h4><p>通过<code>SHOW PROCESSLIST</code>命令可以查看当前正在执行的SQL语句，找出执行时间较长的查询。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> PROCESSLIST;</span><br><span class="line"><span class="comment">-- 或者查看完整SQL</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">FULL</span> PROCESSLIST;</span><br></pre></td></tr></table></figure>
+
+<p>重点关注以下字段：</p>
+<ul>
+<li><strong>Time</strong>: 执行时间，单位秒</li>
+<li><strong>State</strong>: 当前状态</li>
+<li><strong>Info</strong>: 正在执行的SQL语句</li>
+</ul>
+<h4 id="3-性能监控工具"><a href="#3-性能监控工具" class="headerlink" title="3. 性能监控工具"></a>3. 性能监控工具</h4><ul>
+<li><strong>MySQL自带工具</strong>: performance_schema</li>
+<li><strong>第三方工具</strong>: pt-query-digest、MySQLTuner等</li>
+</ul>
+<h3 id="EXPLAIN命令详解"><a href="#EXPLAIN命令详解" class="headerlink" title="EXPLAIN命令详解"></a>EXPLAIN命令详解</h3><p>EXPLAIN是分析SQL执行计划的核心工具，通过它可以了解MySQL如何执行一条SQL语句。</p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="EXPLAIN输出字段详解"><a href="#EXPLAIN输出字段详解" class="headerlink" title="EXPLAIN输出字段详解"></a>EXPLAIN输出字段详解</h4><h5 id="1-id"><a href="#1-id" class="headerlink" title="1. id"></a>1. id</h5><p>查询的序列号，表示查询中执行SELECT子句或操作表的顺序。</p>
+<ul>
+<li><strong>id相同</strong>: 执行顺序从上到下</li>
+<li><strong>id不同</strong>: id值越大，优先级越高，越先执行</li>
+<li><strong>id为NULL</strong>: 表示这是一个结果集，不需要使用它来进行查询</li>
+</ul>
+<h5 id="2-select-type"><a href="#2-select-type" class="headerlink" title="2. select_type"></a>2. select_type</h5><p>查询的类型，主要用于区分普通查询、联合查询、子查询等。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SIMPLE</td>
+<td>简单查询，不包含子查询或UNION</td>
+</tr>
+<tr>
+<td>PRIMARY</td>
+<td>查询中包含子查询，最外层查询标记为PRIMARY</td>
+</tr>
+<tr>
+<td>SUBQUERY</td>
+<td>SELECT或WHERE中包含的子查询</td>
+</tr>
+<tr>
+<td>DERIVED</td>
+<td>FROM子句中的子查询，MySQL会递归执行并将结果放入临时表</td>
+</tr>
+<tr>
+<td>UNION</td>
+<td>UNION中的第二个或后面的SELECT语句</td>
+</tr>
+<tr>
+<td>UNION RESULT</td>
+<td>UNION的结果</td>
+</tr>
+</tbody></table>
+<h5 id="3-table"><a href="#3-table" class="headerlink" title="3. table"></a>3. table</h5><p>显示这一行的数据是关于哪张表的。</p>
+<h5 id="4-partitions"><a href="#4-partitions" class="headerlink" title="4. partitions"></a>4. partitions</h5><p>查询涉及到的分区。</p>
+<h5 id="5-type（重要）"><a href="#5-type（重要）" class="headerlink" title="5. type（重要）"></a>5. type（重要）</h5><p>访问类型，表示MySQL如何查找表中的行。<strong>性能从好到差依次为</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; ALL</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>system</td>
+<td>表只有一行记录，这是const类型的特例</td>
+</tr>
+<tr>
+<td>const</td>
+<td>通过索引一次就找到了，用于比较PRIMARY KEY或UNIQUE索引</td>
+</tr>
+<tr>
+<td>eq_ref</td>
+<td>唯一性索引扫描，对于每个索引键，表中只有一条记录与之匹配</td>
+</tr>
+<tr>
+<td>ref</td>
+<td>非唯一性索引扫描，返回匹配某个单独值的所有行</td>
+</tr>
+<tr>
+<td>range</td>
+<td>只检索给定范围的行，使用一个索引来选择行</td>
+</tr>
+<tr>
+<td>index</td>
+<td>全索引扫描，遍历索引树</td>
+</tr>
+<tr>
+<td>ALL</td>
+<td>全表扫描，性能最差</td>
+</tr>
+</tbody></table>
+<p><strong>优化目标</strong>: 至少达到range级别，最好能达到ref级别。</p>
+<h5 id="6-possible-keys"><a href="#6-possible-keys" class="headerlink" title="6. possible_keys"></a>6. possible_keys</h5><p>显示可能应用在这张表上的索引，但不一定被实际使用。</p>
+<h5 id="7-key"><a href="#7-key" class="headerlink" title="7. key"></a>7. key</h5><p>实际使用的索引。如果为NULL，则没有使用索引。</p>
+<h5 id="8-key-len"><a href="#8-key-len" class="headerlink" title="8. key_len"></a>8. key_len</h5><p>表示索引中使用的字节数，可以通过该值计算查询中使用的索引长度。在不损失精确性的情况下，长度越短越好。</p>
+<h5 id="9-ref"><a href="#9-ref" class="headerlink" title="9. ref"></a>9. ref</h5><p>显示索引的哪一列被使用了，如果可能的话，是一个常数。</p>
+<h5 id="10-rows"><a href="#10-rows" class="headerlink" title="10. rows"></a>10. rows</h5><p>MySQL认为必须检查的行数，用于估算查询需要扫描的行数。</p>
+<h5 id="11-filtered"><a href="#11-filtered" class="headerlink" title="11. filtered"></a>11. filtered</h5><p>表示返回结果的行数占需读取行数的百分比，值越大越好。</p>
+<h5 id="12-Extra（重要）"><a href="#12-Extra（重要）" class="headerlink" title="12. Extra（重要）"></a>12. Extra（重要）</h5><p>包含不适合在其他列中显示但十分重要的额外信息。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Using filesort</td>
+<td>MySQL需要额外的排序操作，无法利用索引完成排序，<strong>需要优化</strong></td>
+</tr>
+<tr>
+<td>Using temporary</td>
+<td>使用了临时表保存中间结果，常见于ORDER BY和GROUP BY，<strong>需要优化</strong></td>
+</tr>
+<tr>
+<td>Using index</td>
+<td>表示使用了覆盖索引，避免了访问表的数据行，效率较高</td>
+</tr>
+<tr>
+<td>Using where</td>
+<td>使用了WHERE过滤条件</td>
+</tr>
+<tr>
+<td>Using index condition</td>
+<td>使用了索引下推优化</td>
+</tr>
+</tbody></table>
+<h3 id="EXPLAIN实战示例"><a href="#EXPLAIN实战示例" class="headerlink" title="EXPLAIN实战示例"></a>EXPLAIN实战示例</h3><p>假设有一张用户表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> users (</span><br><span class="line">    id <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span> AUTO_INCREMENT,</span><br><span class="line">    name <span class="type">VARCHAR</span>(<span class="number">50</span>),</span><br><span class="line">    email <span class="type">VARCHAR</span>(<span class="number">100</span>),</span><br><span class="line">    age <span class="type">INT</span>,</span><br><span class="line">    created_at DATETIME,</span><br><span class="line">    INDEX idx_name (name),</span><br><span class="line">    INDEX idx_age (age)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例1：全表扫描"><a href="#示例1：全表扫描" class="headerlink" title="示例1：全表扫描"></a>示例1：全表扫描</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> email <span class="operator">=</span> <span class="string">&#x27;test@example.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果email字段没有索引，type会显示为ALL，表示全表扫描。</p>
+<h4 id="示例2：使用索引"><a href="#示例2：使用索引" class="headerlink" title="示例2：使用索引"></a>示例2：使用索引</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>由于name字段有索引，type会显示为ref。</p>
+<h4 id="示例3：覆盖索引"><a href="#示例3：覆盖索引" class="headerlink" title="示例3：覆盖索引"></a>示例3：覆盖索引</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPLAIN <span class="keyword">SELECT</span> name <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Extra会显示Using index，表示使用了覆盖索引。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文介绍了发现SQL问题的几种方法以及EXPLAIN命令的详细用法。掌握EXPLAIN是SQL优化的基础，通过分析执行计划，我们可以：</p>
+<ol>
+<li>了解SQL的执行过程</li>
+<li>发现潜在的性能问题</li>
+<li>为优化提供方向</li>
+</ol>
+<p>下一篇文章将介绍索引优化的原则和常见的索引失效场景，敬请期待。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>MySQL官方文档</li>
+<li>《高性能MySQL》</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SQL%E4%BC%98%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> SQL优化</a>
+              <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+              <a href="/tags/EXPLAIN/" rel="tag"><i class="fa fa-tag"></i> EXPLAIN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/jin-da-han-de-mian-shi-de-zong-jie.html" rel="prev" title="进大厂的面试的总结">
+                  <i class="fa fa-angle-left"></i> 进大厂的面试的总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/sql-you-hua-xi-lie-er-suo-yin-you-hua-yuan-ze-yu-shi-xiao-chang-jing.html" rel="next" title="SQL优化系列（二）：索引优化原则与失效场景">
+                  SQL优化系列（二）：索引优化原则与失效场景 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yancy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

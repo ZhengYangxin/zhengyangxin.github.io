@@ -105,7 +105,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">70</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">99</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -170,18 +170,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">70</span>
+        <span class="site-state-item-count">73</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -215,7 +215,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://yancy.website/netty-xiang-mu-shi-jian-yi.html">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/teach-you-to-recognize-mvcmvpmvvm.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpeg">
@@ -233,7 +233,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/netty-xiang-mu-shi-jian-yi.html" class="post-title-link" itemprop="url">Netty项目实践（一）</a>
+          <a href="/teach-you-to-recognize-mvcmvpmvvm.html" class="post-title-link" itemprop="url">Teach you to recognize MVC, MVP and MVVM</a>
         </h2>
 
         <div class="post-meta-container">
@@ -244,7 +244,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2017-03-19 22:14:45" itemprop="dateCreated datePublished" datetime="2017-03-19T22:14:45+08:00">2017-03-19</time>
+      <time title="创建时间：2017-03-26 16:12:29" itemprop="dateCreated datePublished" datetime="2017-03-26T16:12:29+08:00">2017-03-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,7 +252,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%90%8E%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">后端</span></a>
+          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
         </span>
     </span>
 
@@ -266,43 +266,210 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="为什么要学"><a href="#为什么要学" class="headerlink" title="为什么要学"></a>为什么要学</h3><p>需要要做一个中间件，接受由硬件通过wifi和手机反复传递过来的数据（温湿度），然后再通过中间件将数据写入数据库。由于数据是时时接收的，所以用普通的http请求难以完全实现，所以考虑建立长链接实现功能。</br></p>
-<h4 id="Netty的使用场景非常吻合："><a href="#Netty的使用场景非常吻合：" class="headerlink" title="Netty的使用场景非常吻合："></a>Netty的使用场景非常吻合：</h4><ul>
-<li>构建高性能、低时延的各种Java中间件，例如MQ、分布式服务框架、ESB消息总线等，Netty主要作为基础通信框架提供高性能、低时延的通信服务；</li>
-<li>公有或者私有协议栈的基础通信框架，例如可以基于Netty构建异步、高性能的WebSocket协议栈；</li>
-<li>各领域应用，例如大数据、游戏等，Netty作为高性能的通信框架用于内部各模块的数据分发、传输和汇总等，实现模块之间高性能通信。<h4 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h4><a href="https://www.zhihu.com/question/24322387">通俗地讲，Netty 能做什么？</a><br><a href="http://www.kuqin.com/shuoit/20150709/346994.html">Netty那些不得不说的事</a>;<br><a href="http://www.infoq.com/cn/articles/netty-high-performance/">Netty系列之Netty高性能之道</a><h3 id="学习过程"><a href="#学习过程" class="headerlink" title="学习过程"></a>学习过程</h3></li>
-</ul>
-<ol>
-<li><p>创建Maven 项目BabyNetty</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">   &lt;groupId&gt;com.zyx.baby&lt;/groupId&gt;</span><br><span class="line">   &lt;artifactId&gt;BabyNetty&lt;/artifactId&gt;</span><br><span class="line">   &lt;packaging&gt;pom&lt;/packaging&gt;</span><br><span class="line">   &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;</span><br></pre></td></tr></table></figure>
-<p>GroupID:是项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。<br>ArtifactID:就是项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。</p>
-</li>
-<li><p>创建两个模块JavaClient，NettyCore<br>JavaClient:打算用于对服务器的一些数据请求<br>NettyCore：数据接收，分发处理</p>
-</li>
-<li><p>依赖jar和插件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--“打包“这个词听起来比较土，比较正式的说法应该是”构建项目软件包“，具体说就是将项目中的各种文件，</span><br><span class="line">比如源代码、编译生成的字节码、配置文件、文档，按照规范的格式生成归档，最常见的当然就是JAR包和WAR包了，--&gt;</span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;</span><br><span class="line">                &lt;configuration&gt;</span><br><span class="line">                    &lt;archive&gt;</span><br><span class="line">                        &lt;manifest&gt;</span><br><span class="line">                            &lt;addClasspath&gt;true&lt;/addClasspath&gt;</span><br><span class="line">                            &lt;classpathPrefix&gt;lib/&lt;/classpathPrefix&gt;</span><br><span class="line">                            &lt;mainClass&gt;org.origin.netty.Start&lt;/mainClass&gt;</span><br><span class="line">                        &lt;/manifest&gt;</span><br><span class="line">                    &lt;/archive&gt;</span><br><span class="line">                &lt;/configuration&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;</span><br><span class="line">                &lt;executions&gt;</span><br><span class="line">                    &lt;execution&gt;</span><br><span class="line">                        &lt;id&gt;copy&lt;/id&gt;</span><br><span class="line">                        &lt;phase&gt;package&lt;/phase&gt;</span><br><span class="line">                        &lt;goals&gt;</span><br><span class="line">                            &lt;goal&gt;copy-dependencies&lt;/goal&gt;</span><br><span class="line">                        &lt;/goals&gt;</span><br><span class="line">                        &lt;configuration&gt;</span><br><span class="line">                            &lt;outputDirectory&gt;$&#123;project.build.directory&#125;/lib&lt;/outputDirectory&gt;</span><br><span class="line">                        &lt;/configuration&gt;</span><br><span class="line">                    &lt;/execution&gt;</span><br><span class="line">                &lt;/executions&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">        &lt;/plugins&gt;</span><br><span class="line">    &lt;/build&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">        &lt;!--是一个能够将Java bean/map/collection/Java array/xml转换成JSON并且反过来将JSON转换成java对象的类库--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;net.sf.json-lib&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;json-lib&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;2.4&lt;/version&gt;</span><br><span class="line">            &lt;classifier&gt;jdk15&lt;/classifier&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;!--Netty包--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;io.netty&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;netty-all&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;5.0.0.Alpha2&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;!--Apache的开源项目log4j是一个功能强大的日志组件,提供方便的日志记录--&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;log4j&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;log4j&lt;/artifactId&gt;</span><br><span class="line">            &lt;version&gt;1.2.17&lt;/version&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure></li>
-<li><p>配置Log4j日志组件<br>日志是应用软件中不可缺少的部分，Apache的开源项目log4j是一个功能强大的日志组件,提供方便的日志记录。在apache网站：jakarta.apache.org/log4j 可以免费下载到Log4j最新版本的软件包。<br>参考：<a href="http://www.codeceo.com/article/log4j-usage.html">最详细的Log4j使用教程</a></p>
-</li>
-<li><p>核心NettyCore编写</p>
-<ul>
-<li>常量数据集定义<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zyx.baby.domain;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by 三金Sir on 2017/3/19.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Constant</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String ENCODING=<span class="string">&quot;UTF-8&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CLIENT_SERVER=<span class="string">&quot;JAVASERVER&quot;</span>;</span><br><span class="line">    <span class="comment">//not used</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">CLIENT_IOS_SECRET</span> <span class="operator">=</span><span class="string">&quot;BABY_IOS&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">CLIENT_ANDROID_SECRET</span> <span class="operator">=</span><span class="string">&quot;BABY_ANDROID&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String CLIENT_HARDWARE=<span class="string">&quot;BABY_HARDWARE&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> <span class="title class_">Type</span>&#123;</span><br><span class="line">        SERVER_CONNECT(<span class="number">1000</span>), <span class="comment">//Java client connect</span></span><br><span class="line">        LOGIN(<span class="number">2000</span>),</span><br><span class="line">        LOGINOUT(<span class="number">2001</span>),</span><br><span class="line">        RECONNECT(<span class="number">1020</span>), <span class="comment">// app client reconnect</span></span><br><span class="line">        SUCCESS_AWARE(<span class="number">4000</span>), <span class="comment">// notify client the operation is apply successful.</span></span><br><span class="line">        INTERNAL_ERROR(<span class="number">4001</span>), <span class="comment">// middleware error</span></span><br><span class="line">        DATA_ERROR(<span class="number">4002</span>); <span class="comment">// json data parse error</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="type">int</span> value;</span><br><span class="line"></span><br><span class="line">        Type(<span class="type">int</span> value)&#123;</span><br><span class="line">            <span class="built_in">this</span>.value = value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">value</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> Type <span class="title function_">parse</span><span class="params">(<span class="type">int</span> value)</span>&#123;</span><br><span class="line">            <span class="keyword">switch</span> (value)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1000</span>:</span><br><span class="line">                    <span class="keyword">return</span> SERVER_CONNECT;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2000</span>:</span><br><span class="line">                    <span class="keyword">return</span> LOGIN;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2001</span>:</span><br><span class="line">                    <span class="keyword">return</span> LOGINOUT;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">4000</span>:</span><br><span class="line">                    <span class="keyword">return</span> SUCCESS_AWARE;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">4001</span>:</span><br><span class="line">                    <span class="keyword">return</span> INTERNAL_ERROR;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1020</span>:</span><br><span class="line">                    <span class="keyword">return</span> RECONNECT;</span><br><span class="line">                <span class="keyword">default</span>:</span><br><span class="line">                    <span class="keyword">return</span> DATA_ERROR;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-知识点 Java 枚举enum<ul>
-<li>在实际编程中，往往存在着这样的“数据集”，它们的数值在程序中是稳定的，而且“数据集”中的元素是有限的。</li>
-<li>例如星期一到星期日七个数据元素组成了一周的“数据集”，春夏秋冬四个数据元素组成了四季的“数据集”。</li>
-<li>在Java中如何更好的使用这些“数据集”呢？因此枚举便派上了用场，以下代码详细介绍了枚举的用法。<h4 id="参考-："><a href="#参考-：" class="headerlink" title="参考 ："></a>参考 ：</h4><a href="http://blog.csdn.net/zcback1/article/details/51014229?locationNum=4&fps=1">Java 枚举enum 使用详解</a>.</br><a href="http://blog.csdn.net/zhushuai1221/article/details/51775811?locationNum=7&fps=1">java enum(枚举)使用详解 + 总结</a>.</li>
-</ul>
-</li>
-</ul>
-</li>
+          <h3 id="Teach-you-to-recognize-MVC-MVP-AND-MVVM"><a href="#Teach-you-to-recognize-MVC-MVP-AND-MVVM" class="headerlink" title="Teach you to recognize MVC, MVP AND MVVM"></a>Teach you to recognize MVC, MVP AND MVVM</h3><p>I believe we are no stranger to MVC, MVP and MVVM, as the three most familiar Android framework. Their applications can be very extensive, but for some novice, it can be difficult to distinguish between them three.</p>
+<h3 id="Article-focus"><a href="#Article-focus" class="headerlink" title="Article focus:"></a>Article focus:</h3><ol>
+<li>Learn and distinguish between MVC, MVP and MVVM.</li>
+<li>Know how these three models in the use of Android.</li>
+<li>Out of the DataBinding errors.</li>
+<li>Understand the development model of MVP data binding.</li>
 </ol>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC means Model View Controller, is the most common framework in the software architecture, simply through the control of controller to operate the modle layer of data, and return to view layer display.</p>
+<p><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvc.png" alt="Alt text" title="Optional title"></p>
+<p>Use the traditional MVC, which View, corresponding to a variety of layout files, but these layout files are not as powerful as the Web Side, can do very limited. Controller correspods to the Activity, but Activity has the function of operating UI. We in the actual project will hava a lot of UI operations, and also do a lot of View should be dong in the layer</p>
+<p>MVC there is an important flaw, we look at the picture above, view layer and the model layer is mutual konw, which means that there is coupling between the two layers. The Coupling is very fatal for large program, beacuse it means that development, testing, maintenance need to spend a lot of energy.</p>
+<h3 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h3><p>MVP as MVC evolution, to solve a lot of MVC shortcommings. For Android, MVP model layer relative to the MVC is the same, but activity and fragment is no longer the controller layer, but the pure view layer.And all fordwarding of user events is handled by the presenter layer.<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvp.png" alt="Alt text" title="Optional title"></p>
+<p>It can be seen from the figure that the most obvious difference is that the view and model layer are no longer mutual konw and complete descoupling. Instead of the precenter layer acts as bridge, the events used to manipulate the view layer are passed to the presenter layer, the presenter layer to mainpulate the model layer, and the data is returned to the view layer. the view layer and the model layer are completely unconnected throughout the process.</p>
+<h3 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h3><p>MVVM最早是由微软提出的<br><img src="http://zjutkz.net/images/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC-MVP%E5%92%8CMVVM/mvvm.png" alt="Alt text" title="Optional title"></p>
+<p>From the figure to see that it is similiar to MVP, but the presenter layer<br>be replaced by ViewModel layer. And the view layer and the viewmodel are bound to each other, the means that when you update the data of the viewmodel layer, the view layer changes accordingly ui. </p>
+<h3 id="Last-MVP-Databinding"><a href="#Last-MVP-Databinding" class="headerlink" title="Last: MVP + Databinding"></a>Last: MVP + Databinding</h3><p>We use the data binding framework to save similar findViewById and data binding time, and the use of presenter to separate the business logic and view layer.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/xing-neng-you-hua-zhi-bu-ju.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yancy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/xing-neng-you-hua-zhi-bu-ju.html" class="post-title-link" itemprop="url">性能优化之布局</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-21 23:34:46" itemprop="dateCreated datePublished" datetime="2017-03-21T23:34:46+08:00">2017-03-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li>性能优化之布局<br></include>重用<br></merger>减少视图层级<br></ViewStub>需要时加载，懒加载布局<br>使用工具：Hierarchy View</li>
+<li>Android 性能优化方法<br>使用Dalvik提供的 dalvik.system.VMRuntime类来设置最小堆内存为例:</li>
+<li>bitmap 设置图片尺寸<br>避免 内存溢出 OutOfMemoryError的优化方法<br>options.inSampleSize = 2;//图片宽高都为原来的二分之一，即图片为原来的四分之一</li>
+<li>Android 还有一些性能优化的方法：<br>首先内存方面，可以参考 Android堆内存也可自己定义大小 和 优化Dalvik虚拟机的堆内存分配<br>基础类型上，因为Java没有实际的指针，在敏感运算方面还是要借助NDK来完成。这点比较有意思的是Google 推出NDK可能是帮助游戏开发人员，比如OpenGL ES的支持有明显的改观，本地代码操作图形界面是很必要的。<br>图形对象优化，这里要说的是Android上的Bitmap对象销毁，可以借助recycle()方法显示让GC回收一个Bitmap对象，通常对一个不用的Bitmap可以使用下面的方式。</li>
+<li><a href="http://mobile.51cto.com/abased-410791.htm">从代码角度进行优化</a><br>静态变量引起内存泄露<br>使用Application的Context<br>及时关闭资源<br>使用Bitmap及时调用recycle()<br>对Adapter进行优化<br>代码“微优化”</li>
+<li><a href="http://mobile.51cto.com/abased-410795.htm">使用软引用和弱引用</a></li>
+<li><a href="http://www.cnblogs.com/kest/p/5141817.html">Android 中的Activity、Window、View之间的关系</a><br>Activity在onCreate时调用attach方法，在attach方法中会创建window对象。window对象创建时并没有创建 DocerView 对象。用户在Activity中调用setContentView,然后调用window的setContentView，这时会检查DecorView是否存在，如果不存在则创建DecorView对象，然后把用户自己的 View  添加到 DecorView 中。</li>
+<li><a href="http://www.tuicool.com/articles/iIf6BbV">Activity的几种LaunchMode及使用场景</a><br><a href="http://blog.csdn.net/linmiansheng/article/details/24297375">Android关于Task的一些实践</a></li>
+<li><a href="http://www.cnblogs.com/liqw/p/4175325.html">Android 设计模式之MVC模式</a><br>MVC模式下，系统框架的类库被划分为3种：模型（Model）、视图（View）、控制器（Controller）。模型对象负责建立数据结构和相应的行为操作处理。视图对象负责在屏幕上渲染出相应的图形信息展示给用户看。控制器对象负责截获用户的按键和屏幕触摸等事件，协调Model对象和View对象。<br>　　用户与视图交互，视图接收并反馈用户的动作；视图把用户的请求传给相应的控制器，由控制器决定调用哪个模型，然后由模型调用相应的业务逻辑对用户请求进行加工处理，如果需要返回数据，模型会把相应的数据返回给控制器，由控制器调用相应的视图，最终由视图格式化和渲染返回的数据，对于返回的数据完全可以增加用户体验效果展现给用户。</li>
+<li><a href="http://zjutkz.net/2016/04/13/%E9%80%89%E6%8B%A9%E6%81%90%E6%83%A7%E7%97%87%E7%9A%84%E7%A6%8F%E9%9F%B3%EF%BC%81%E6%95%99%E4%BD%A0%E8%AE%A4%E6%B8%85MVC%EF%BC%8CMVP%E5%92%8CMVVM/">教你认清MVC，MVP和MVVM</a><br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0301/4018.html">如何设计MVP中的Presentation层</a><br><a href="http://www.jianshu.com/p/ce1b447efc4f">google 官方mvp实例的实践之mvp-databinding-Rxjava（一）</a></li>
+<li><a href="https://jiangchunyu.github.io/2016/08/28/Netty-4-0%E5%9C%A8Android-%E4%B8%8A%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%8C%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%96%AD%E7%BA%BF%E8%87%AA%E5%8A%A8%E9%87%8D%E8%BF%9E/">Netty 4.0在Android 上的使用，长连接断线自动重连</a></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/android-xi-tong-jia-gou-yi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yancy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/android-xi-tong-jia-gou-yi.html" class="post-title-link" itemprop="url">android系统架构(一)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-20 18:59:49" itemprop="dateCreated datePublished" datetime="2017-03-20T18:59:49+08:00">2017-03-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="出发点"><a href="#出发点" class="headerlink" title="出发点"></a>出发点</h3><p>&emsp;&emsp;由于在学习Android的时候并没有很系统地进行学习，知识点比较零碎，所以需要将自己的知识点进行系统的整理，那么首要的我需要将android的系统架构搞清楚，这样才能分清楚我所了解的知识点附属于哪个层面，是内核还是应用层，可以进行怎样的扩展，在哪些场景去运用。</p>
+<h3 id="Android架构解析"><a href="#Android架构解析" class="headerlink" title="Android架构解析"></a>Android架构解析</h3><p><a href="http://mobile.51cto.com/android-235496.htm">Google工程师多图详解Android系统架构</a><br><a href="https://my.oschina.net/fhd/blog/349830">Android基础之Android系统架构</a><br><a href="https://zh.wikipedia.org/wiki/Android#Linux.E6.A0.B8.E5.BF.83">Android维基百科</a><br><a href="http://tech.it168.com/a2011/0805/1228/000001228471.shtml">Android对Linux内核的增强</a><br><a href="http://www.tuicool.com/articles/EN7nuiN">Android系统架构详解(2)–Android Runtime</a></p>
+<p>以上是我在这个课题下的一些参考博客或者网页链接。里面有对于android架构的一些较好的分析理解，接下来是阅读后自己的一些整理。</p>
+<p>Android采用层次化系统架构，官方公布的标准架构如下图所示。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Android-System-Architecture.svg/1000px-Android-System-Architecture.svg.png" alt="Alt text" title="Optional title"></p>
+<p>Android由底层往上分为4个主要功能层，分别是Linux内核层（Linux Kernel），系统运行时库层（Libraries和Android Runtime），应用程序架构层（Application Framework）和应用程序层（Applications）。</p>
+<p>接下来对这几个层面进行逐个分析：</p>
+<h4 id="Linux内核层"><a href="#Linux内核层" class="headerlink" title="Linux内核层"></a>Linux内核层</h4><p>&emsp;&emsp;Android以Linux操作系统内核为基础，借助Linux内核服务实现硬件设备驱动，进程和内存管理，网络协议栈，电源管理，无线通信等核心功能。Android4.0版本之前基于Linux2.6系列内核，4.0及之后的版本使用更新的Linux3.X内核，并且两个开源项目开始有了互通。Linux3.3内核中正式包括一些Android代码，可以直接引导进入Android。Linux3.4增添了电源管理等更多功能，以增加与Android的硬件兼容性，使Android在更多设备上得到支持。直到现在最新的android6.0仍然继续延用着linux3.4.0，而linux最新的版本已经到了4.3系列，那么为什么android没有继续去更新Linuxkernel的版本也是一个值得探讨的课题。 </p>
+<p>&emsp;&emsp;Android内核 对Linux内核进行了增强，增加了一些面向移动计算的特有功能。例如，低内存管理器LMK（Low Memory Keller），匿名共享内存（Ashmem）,以及轻量级的进程间通信Binder机制等。这些内核的增强使Android在继承Linux内核安全机制的同时，进一步提升了内存管理，进程间通信等方面的安全性。</p>
+<h4 id="硬件抽象层"><a href="#硬件抽象层" class="headerlink" title="硬件抽象层"></a>硬件抽象层</h4><p>&emsp;&emsp;内核驱动和用户软件之间还存在所谓的硬件抽象层（Hardware Abstract Layer,HAL），它是对硬件设备的具体实现加以抽象。HAL没有在Android官方系统架构图中标明，下图标出了硬件抽象层在android系统中的位置：</p>
+<p><img src="http://static.oschina.net/uploads/space/2014/1128/125552_hnZu_168814.jpg" alt="Alt text" title="Optional title"></p>
+<p>&emsp;&emsp;鉴于许多硬件设备厂商不希望公开其设备驱动的源代码，如果能将android的应用框架层与linux系统内核的设备驱动隔离，使应用程序框架的开发尽量独立于具体的驱动程序，则android将减少对Linux内核的依赖。HAL由此而生，它是对Linux内核驱动程序进行的封装，将硬件抽象化，屏蔽掉了底层的实现细节。HAL规定了一套应用层对硬件层读写和配置的统一接口，本质上就是将硬件的驱动分为用户空间和内核空间两个层面；Linux内核驱动程序运行于内核空间，硬件抽象层运行于用户空间。</p>
+<h4 id="系统运行库层"><a href="#系统运行库层" class="headerlink" title="系统运行库层"></a>系统运行库层</h4><p>&emsp;&emsp;官方的系统架构图中，位于Linux内核层之上的系统运行库层是应用程序框架的支撑，为Android系统中的各个组件提供服务。系统运行库层由系统类库和Android运行时构成。</p>
 <ul>
-<li>数据格式定义<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zyx.baby.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> io.netty.buffer.ByteBuf;</span><br><span class="line"><span class="keyword">import</span> net.sf.json.JSONObject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by 三金Sir on 2017/3/19.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DataPacket</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Constant.Type type;</span><br><span class="line">    <span class="comment">// SERVER、BLUETOOTH、WIFI</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">from</span> <span class="operator">=</span> <span class="string">&quot;SERVER&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String to=<span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DataPacket</span><span class="params">(Constant.Type type,String data)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.type = type;</span><br><span class="line">        <span class="built_in">this</span>.from = <span class="string">&quot;SERVER&quot;</span>;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DataPacket</span><span class="params">(String to)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.type = Constant.Type.SUCCESS_AWARE;</span><br><span class="line">        <span class="built_in">this</span>.from = <span class="string">&quot;SERVER&quot;</span>;</span><br><span class="line">        <span class="built_in">this</span>.to = to;</span><br><span class="line">        <span class="built_in">this</span>.data = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DataPacket</span><span class="params">(Constant.Type type,  String to, String data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.type = type;</span><br><span class="line">        <span class="built_in">this</span>.to = to;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">DataPacket</span><span class="params">(Constant.Type type, String from, String to, String data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.type = type;</span><br><span class="line">        <span class="built_in">this</span>.from = from;</span><br><span class="line">        <span class="built_in">this</span>.to = to;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Getter&amp;Setter begin</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Constant.Type <span class="title function_">getType</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setType</span><span class="params">(Constant.Type type)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.type = type;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getFrom</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> from;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFrom</span><span class="params">(String from)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.from = from;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getTo</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> to;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setTo</span><span class="params">(String to)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.to = to;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getData</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setData</span><span class="params">(String data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Getter&amp;Setter end</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> DataPacket <span class="title function_">parse</span><span class="params">(Object object)</span>&#123;</span><br><span class="line">        <span class="type">ByteBuf</span> <span class="variable">receive</span> <span class="operator">=</span> (ByteBuf)object;</span><br><span class="line">        JSONObject json=JSONObject.fromObject(receive.toString(Charset.forName(Constant.ENCODING)));</span><br><span class="line">        receive.release();</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataPacket</span>(Constant.Type.parse(json.getInt(<span class="string">&quot;type&quot;</span>)),json.getString(<span class="string">&quot;from&quot;</span>),json.getString(<span class="string">&quot;to&quot;</span>),json.getString(<span class="string">&quot;data&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;\&quot;type\&quot;:&quot;</span> + type.value() +</span><br><span class="line">                <span class="string">&quot;, \&quot;from\&quot;:\&quot;&quot;</span> + from + <span class="string">&#x27;&quot;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, \&quot;to\&quot;:\&quot;&quot;</span> + to + <span class="string">&#x27;&quot;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, \&quot;data\&quot;:\&quot;&quot;</span> + data + <span class="string">&#x27;&quot;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-知识点：netty中ByteBuf部分<br><a href="http://www.tuicool.com/articles/FFb6Zr">netty中ByteBuf部分的分析</a><br><a href="http://blog.csdn.net/alex_bean/article/details/51251015?locationNum=1&fps=1">Netty之ByteBuf</a><br>[ Netty中的ByteBuf原理分析]<a href="http://blog.csdn.net/u012832964/article/details/50899511">http://blog.csdn.net/u012832964/article/details/50899511</a></li>
-<li>配置拦截器，连接设备身份认证<br>  过程：<pre><code>- verify = 设备标识字段+时间戳
-- MD5加密后与客户端发送code匹配
-- 成功,返回标识字段;否则null,Access denied</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zyx.baby.interceptor;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zyx.baby.domain.Constant;</span><br><span class="line"><span class="keyword">import</span> com.zyx.baby.domain.DataPacket;</span><br><span class="line"><span class="keyword">import</span> com.zyx.baby.utils.Util;</span><br><span class="line"><span class="keyword">import</span> io.netty.channel.ChannelHandlerContext;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.apache.log4j.Logger.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 连接设备拦截器</span></span><br><span class="line"><span class="comment"> * Created by 三金Sir on 2017/3/19.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Interceptor</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> org.apache.log4j.<span class="type">Logger</span> <span class="variable">log</span> <span class="operator">=</span> getLogger(Interceptor.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">authIntercept</span><span class="params">(DataPacket pkt, ChannelHandlerContext ctx)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">secret</span> <span class="operator">=</span> Constant.CLIENT_SERVER;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            String[] data = pkt.getData().split(<span class="string">&quot;&amp;&quot;</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">code</span> <span class="operator">=</span> data[<span class="number">0</span>];</span><br><span class="line">            <span class="type">String</span> <span class="variable">timestamp</span> <span class="operator">=</span> data[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            String verify;</span><br><span class="line">            <span class="keyword">if</span>(pkt.getType() == Constant.Type.SERVER_CONNECT)</span><br><span class="line">                verify = Constant.CLIENT_SERVER + timestamp;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                verify = Constant.CLIENT_HARDWARE + timestamp;</span><br><span class="line"></span><br><span class="line">            <span class="type">String</span> <span class="variable">validateCode</span> <span class="operator">=</span> Util.md5(verify);</span><br><span class="line"></span><br><span class="line">            <span class="type">boolean</span> <span class="variable">isLogin</span> <span class="operator">=</span> pkt.getType() == Constant.Type.LOGIN || pkt.getType() == Constant.Type.RECONNECT;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(isLogin &amp;&amp; !code.equals(validateCode))&#123;</span><br><span class="line">                verify = Constant.CLIENT_HARDWARE + timestamp;</span><br><span class="line">                validateCode = Util.md5(verify);</span><br><span class="line">                secret = Constant.CLIENT_HARDWARE;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(isLogin &amp;&amp; !code.equals(validateCode))&#123;</span><br><span class="line">                verify = Constant.CLIENT_ANDROID_SECRET + timestamp;</span><br><span class="line">                validateCode = Util.md5(verify);</span><br><span class="line">                secret = Constant.CLIENT_ANDROID_SECRET;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(isLogin &amp;&amp; !code.equals(validateCode))&#123;</span><br><span class="line">                verify = Constant.CLIENT_IOS_SECRET + timestamp;</span><br><span class="line">                validateCode = Util.md5(verify);</span><br><span class="line">                secret = Constant.CLIENT_IOS_SECRET;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!code.equals(validateCode)) &#123;</span><br><span class="line"><span class="comment">//                SystemService.sendMessage(new DataPacket(Constant.Type.DATA_ERROR, &quot;Access denied.&quot;), ctx);</span></span><br><span class="line">                ctx.close();</span><br><span class="line">                log.warn(<span class="string">&quot;[ socket interceptor ] Access denied.&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> secret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-未完待续<del>~</del></li>
+<li>系统类库<br>系统类库大部分由C/C++编写，所提供的功能通过Android应用程序框架为开发者所使用。例如SQlite,WebKit,SSL都在会在日常开发中有用到</li>
 </ul>
+<p><img src="http://images.51cto.com/files/uploadimg/20101129/1011272.png" alt="Alt text" title="Optional title"></p>
+<ul>
+<li>运行时<br>Android运行时包含核心库和Dalvik虚拟机两部分。<ul>
+<li>核心库：核心库提供了Java5 se API的多数功能，并提供Android的核心API，如android.os，android.net，android.media等。</li>
+<li>Dalvik虚拟机：Dalvik虚拟机是基于apache的java虚拟机，并被改进以适应低内存，低处理器速度的移动设备环境。Dalvik虚拟机依赖于Linux内核，实现进程隔离与线程调试管理，安全和异常管理，垃圾回收等重要功能。</li>
+</ul>
+</li>
+</ul>
+<p>Dalvik和标准Java虚拟机有以下主要区别：</p>
+<ul>
+<li>Dalvik基于寄存器，而JVM基于栈。一般认为，基于寄存器的实现虽然更多依赖于具体的CPU结构，硬件通用性稍差，但其使用等长指令，在效率速度上较传统JVM更有优势。</li>
+<li>Dalvik经过优化，允许在有限的内存中同时高效地运行多个虚拟机的实例，并且每一个Dalvik应用作为一个独立的Linux进程执行，都拥有一个独立的Dalvik虚拟机实例。Android这种基于Linux的进程“沙箱”机制，是整个安全设计的基础之一。</li>
+<li>Dalvik虚拟机从DEX（Dalvik Executable）格式的文件中读取指令与数据，进行解释运行。DEX文件由传统的，编译产生的CLASS文件，经dx工具软件处理后生成。</li>
+<li>Dalvik的DEX文件还可以进一步优化，提高运行性能。通常，OEM的应用程序可以在系统编译后，直接生成优化文件（.ODEX）； 第三方的应用程序则可在运行时在缓存中优化与保存，优化后的格式为DEY（.dey文件）。</li>
+</ul>
+<p>&emsp;&emsp;这部分内容，即从android4.4开始就出现了ART（android runtime），但是这个ART并不是指这一节的主题，而是一种用来代替Dalvik的新型运行环境。当然在4.4的正式环境中用的还是Dalvik，真正开始用ART取代Dalvik是从android5.0开始的。（todo:针对这个改动，楼主会专门另开一个篇幅的文章去探究ART和Dalvik之间的区别）</p>
+<p>另外这一节中有提到NDK,相信对于开发者而言SDK和NDK都是必要要接触和了解的东西，那么先从下图来看看sdk和ndk的关系。</p>
+<p><img src="http://img.blog.csdn.net/20160107235017221" alt="Alt text" title="Optional title"></p>
+<p>&emsp;&emsp;很显然地，ndk可以通过native code跨过使用dalvik runtime,直接调用到android内核资源，而sdk则需要在dalvik runtime环境下才能调用到内核资源。然而两者并不是各司其职，各不相关。android提供了JNI(Java native interface)使两者可以进行相互调用和通信。</p>
+<h4 id="应用程序框架层"><a href="#应用程序框架层" class="headerlink" title="应用程序框架层"></a>应用程序框架层</h4><p>&emsp;&emsp;应用程序框架层提供开发Android应用程序所需的一系列类库，使开发人员可以进行快速的应用程序开发，方便重用组件，也可以通过继承实现个性化的扩展。</p>
+<p><img src="http://images.51cto.com/files/uploadimg/20101129/1011271.png" alt="Alt text" title="Optional title"></p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>&emsp;&emsp;Android平台的应用层上包括各类与用户直接交互的应用程序，或由java语言编写的运行于后台的服务程序。例如，智能手机上实现的常见基本功能 程序，诸如SMS短信，电话拨号，图片浏览器，日历，游戏，地图，web浏览器等程序，以及开发人员开发的其他应用程序。</p>
+<p>&emsp;&emsp;将android的基本架构进行了一个总体的分析和罗列，我们可以发现，平时开发中最常接触和用到的一定是application层，但是我们也不难发现，一些application层应用到的东西都能在系统层找到对应的踪迹，例如sqlite,webkit,甚至alarm。他们是怎么从底层到达application层供我们日常开发所用，这个也是需要去了解和研究的。本篇文章的目的在开篇已经阐述过，是为了能更好地将自己的知识对号入座，并且去补充一些自己在某些层面上缺乏的知识，最终可以将自己的知识形成一个整体的体系结构。</p>
 
       
     </div>

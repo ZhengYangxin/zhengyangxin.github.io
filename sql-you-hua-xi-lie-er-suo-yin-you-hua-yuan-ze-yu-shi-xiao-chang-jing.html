@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yancy.website","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="前言上一篇文章介绍了如何发现SQL问题以及EXPLAIN命令的使用。本文将深入讲解索引优化的原则以及常见的索引失效场景，帮助大家写出高效的SQL语句。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL优化系列（二）：索引优化原则与失效场景">
+<meta property="og:url" content="https://yancy.website/sql-you-hua-xi-lie-er-suo-yin-you-hua-yuan-ze-yu-shi-xiao-chang-jing.html">
+<meta property="og:site_name" content="Fighting！">
+<meta property="og:description" content="前言上一篇文章介绍了如何发现SQL问题以及EXPLAIN命令的使用。本文将深入讲解索引优化的原则以及常见的索引失效场景，帮助大家写出高效的SQL语句。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-07T02:30:00.000Z">
+<meta property="article:modified_time" content="2026-02-02T08:36:50.305Z">
+<meta property="article:author" content="Yancy">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="SQL优化">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="索引">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://yancy.website/sql-you-hua-xi-lie-er-suo-yin-you-hua-yuan-ze-yu-shi-xiao-chang-jing.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://yancy.website/sql-you-hua-xi-lie-er-suo-yin-you-hua-yuan-ze-yu-shi-xiao-chang-jing.html","path":"sql-you-hua-xi-lie-er-suo-yin-you-hua-yuan-ze-yu-shi-xiao-chang-jing.html","title":"SQL优化系列（二）：索引优化原则与失效场景"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SQL优化系列（二）：索引优化原则与失效场景 | Fighting！</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Fighting！" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Fighting！</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">潜行者的沉默</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">73</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">101</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.</span> <span class="nav-text">索引基础回顾</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95"><span class="nav-number">2.1.</span> <span class="nav-text">什么是索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MySQL%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">MySQL索引类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E4%BC%98%E5%8C%96%E5%8E%9F%E5%88%99"><span class="nav-number">3.</span> <span class="nav-text">索引优化原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9C%80%E5%B7%A6%E5%89%8D%E7%BC%80%E5%8E%9F%E5%88%99"><span class="nav-number">3.1.</span> <span class="nav-text">1. 最左前缀原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%A6%86%E7%9B%96%E7%B4%A2%E5%BC%95"><span class="nav-number">3.2.</span> <span class="nav-text">2. 覆盖索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%B4%A2%E5%BC%95%E9%80%89%E6%8B%A9%E6%80%A7"><span class="nav-number">3.3.</span> <span class="nav-text">3. 索引选择性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%89%8D%E7%BC%80%E7%B4%A2%E5%BC%95"><span class="nav-number">3.4.</span> <span class="nav-text">4. 前缀索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E5%B8%B8%E8%A7%81%E5%9C%BA%E6%99%AF"><span class="nav-number">4.</span> <span class="nav-text">索引失效的常见场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AF%B9%E7%B4%A2%E5%BC%95%E5%88%97%E8%BF%9B%E8%A1%8C%E8%BF%90%E7%AE%97%E6%88%96%E5%87%BD%E6%95%B0%E6%93%8D%E4%BD%9C"><span class="nav-number">4.1.</span> <span class="nav-text">1. 对索引列进行运算或函数操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8%E4%B8%8D%E7%AD%89%E4%BA%8E%EF%BC%88-%E6%88%96-lt-gt-%EF%BC%89"><span class="nav-number">4.2.</span> <span class="nav-text">2. 使用不等于（!&#x3D; 或 &lt;&gt;）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-IS-NULL-%E5%92%8C-IS-NOT-NULL"><span class="nav-number">4.3.</span> <span class="nav-text">3. IS NULL 和 IS NOT NULL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-LIKE%E4%BB%A5%E9%80%9A%E9%85%8D%E7%AC%A6%E5%BC%80%E5%A4%B4"><span class="nav-number">4.4.</span> <span class="nav-text">4. LIKE以通配符开头</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8D%E5%8A%A0%E5%BC%95%E5%8F%B7"><span class="nav-number">4.5.</span> <span class="nav-text">5. 字符串不加引号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-OR%E6%9D%A1%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="nav-number">4.6.</span> <span class="nav-text">6. OR条件连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E8%8C%83%E5%9B%B4%E6%9F%A5%E8%AF%A2%E5%90%8E%E7%9A%84%E5%88%97%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E7%B4%A2%E5%BC%95"><span class="nav-number">4.7.</span> <span class="nav-text">7. 范围查询后的列无法使用索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E8%AE%BE%E8%AE%A1%E5%BB%BA%E8%AE%AE"><span class="nav-number">5.</span> <span class="nav-text">索引设计建议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%80%82%E5%90%88%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="nav-number">5.1.</span> <span class="nav-text">1. 适合建索引的场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%B8%8D%E9%80%82%E5%90%88%E5%BB%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="nav-number">5.2.</span> <span class="nav-text">2. 不适合建索引的场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%A4%8D%E5%90%88%E7%B4%A2%E5%BC%95%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">5.3.</span> <span class="nav-text">3. 复合索引设计原则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">实战案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yancy"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Yancy</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">73</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/ZhengYangxin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;ZhengYangxin" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhengSunStar@gmail.com" title="E-Mail → mailto:ZhengSunStar@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://yancy.website/sql-you-hua-xi-lie-er-suo-yin-you-hua-yuan-ze-yu-shi-xiao-chang-jing.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Yancy">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SQL优化系列（二）：索引优化原则与失效场景 | Fighting！">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL优化系列（二）：索引优化原则与失效场景
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-07 10:30:00" itemprop="dateCreated datePublished" datetime="2020-05-07T10:30:00+08:00">2020-05-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>上一篇文章介绍了如何发现SQL问题以及EXPLAIN命令的使用。本文将深入讲解索引优化的原则以及常见的索引失效场景，帮助大家写出高效的SQL语句。</p>
+<span id="more"></span>
+
+<h3 id="索引基础回顾"><a href="#索引基础回顾" class="headerlink" title="索引基础回顾"></a>索引基础回顾</h3><h4 id="什么是索引"><a href="#什么是索引" class="headerlink" title="什么是索引"></a>什么是索引</h4><p>索引是帮助MySQL高效获取数据的数据结构。可以简单理解为”排好序的快速查找数据结构”。</p>
+<h4 id="MySQL索引类型"><a href="#MySQL索引类型" class="headerlink" title="MySQL索引类型"></a>MySQL索引类型</h4><ul>
+<li><strong>B+Tree索引</strong>: 最常用的索引类型，适用于全键值、键值范围和键前缀查找</li>
+<li><strong>Hash索引</strong>: 只支持等值查询，不支持范围查询</li>
+<li><strong>全文索引</strong>: 用于全文搜索</li>
+<li><strong>R-Tree索引</strong>: 用于地理空间数据</li>
+</ul>
+<h3 id="索引优化原则"><a href="#索引优化原则" class="headerlink" title="索引优化原则"></a>索引优化原则</h3><h4 id="1-最左前缀原则"><a href="#1-最左前缀原则" class="headerlink" title="1. 最左前缀原则"></a>1. 最左前缀原则</h4><p>对于复合索引，MySQL会从最左边的列开始匹配。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 假设有复合索引 INDEX idx_abc (a, b, c)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 能使用索引</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> a <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> a <span class="operator">=</span> <span class="number">1</span> <span class="keyword">AND</span> b <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> a <span class="operator">=</span> <span class="number">1</span> <span class="keyword">AND</span> b <span class="operator">=</span> <span class="number">2</span> <span class="keyword">AND</span> c <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 不能使用索引</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> b <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> c <span class="operator">=</span> <span class="number">3</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> t <span class="keyword">WHERE</span> b <span class="operator">=</span> <span class="number">2</span> <span class="keyword">AND</span> c <span class="operator">=</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-覆盖索引"><a href="#2-覆盖索引" class="headerlink" title="2. 覆盖索引"></a>2. 覆盖索引</h4><p>如果查询的列都在索引中，MySQL可以直接从索引获取数据，无需回表查询。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 假设有索引 INDEX idx_name_age (name, age)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用覆盖索引，Extra显示Using index</span></span><br><span class="line"><span class="keyword">SELECT</span> name, age <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 需要回表查询</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>优化建议</strong>: 尽量使用覆盖索引，减少SELECT *的使用。</p>
+<h4 id="3-索引选择性"><a href="#3-索引选择性" class="headerlink" title="3. 索引选择性"></a>3. 索引选择性</h4><p>索引选择性 = 不重复的索引值数量 / 表的总记录数</p>
+<p>选择性越高，索引效率越高。例如：</p>
+<ul>
+<li>主键的选择性为1，是最高的</li>
+<li>性别字段只有男/女两个值，选择性很低，不适合建索引</li>
+</ul>
+<h4 id="4-前缀索引"><a href="#4-前缀索引" class="headerlink" title="4. 前缀索引"></a>4. 前缀索引</h4><p>对于长字符串，可以只索引前面部分字符，节省索引空间。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 对email字段的前10个字符建立索引</span></span><br><span class="line"><span class="keyword">ALTER TABLE</span> users <span class="keyword">ADD</span> INDEX idx_email (email(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>: 前缀索引无法用于ORDER BY和GROUP BY，也无法使用覆盖索引。</p>
+<h3 id="索引失效的常见场景"><a href="#索引失效的常见场景" class="headerlink" title="索引失效的常见场景"></a>索引失效的常见场景</h3><h4 id="1-对索引列进行运算或函数操作"><a href="#1-对索引列进行运算或函数操作" class="headerlink" title="1. 对索引列进行运算或函数操作"></a>1. 对索引列进行运算或函数操作</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 索引失效</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> <span class="keyword">YEAR</span>(created_at) <span class="operator">=</span> <span class="number">2020</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> age <span class="operator">+</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 优化后，可以使用索引</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> created_at <span class="operator">&gt;=</span> <span class="string">&#x27;2020-01-01&#x27;</span> <span class="keyword">AND</span> created_at <span class="operator">&lt;</span> <span class="string">&#x27;2021-01-01&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> age <span class="operator">=</span> <span class="number">19</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-使用不等于（-或-lt-gt-）"><a href="#2-使用不等于（-或-lt-gt-）" class="headerlink" title="2. 使用不等于（!= 或 &lt;&gt;）"></a>2. 使用不等于（!= 或 &lt;&gt;）</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 索引可能失效</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> status <span class="operator">!=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 优化：如果status只有几个值，可以改写为</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> status <span class="keyword">IN</span> (<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-IS-NULL-和-IS-NOT-NULL"><a href="#3-IS-NULL-和-IS-NOT-NULL" class="headerlink" title="3. IS NULL 和 IS NOT NULL"></a>3. IS NULL 和 IS NOT NULL</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 可能导致索引失效</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="keyword">IS</span> <span class="keyword">NOT NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>建议</strong>: 设计表时尽量避免NULL值，使用默认值代替。</p>
+<h4 id="4-LIKE以通配符开头"><a href="#4-LIKE以通配符开头" class="headerlink" title="4. LIKE以通配符开头"></a>4. LIKE以通配符开头</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 索引失效</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;%张&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;%张%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 可以使用索引</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;张%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-字符串不加引号"><a href="#5-字符串不加引号" class="headerlink" title="5. 字符串不加引号"></a>5. 字符串不加引号</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 假设phone字段是VARCHAR类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 索引失效（发生隐式类型转换）</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> phone <span class="operator">=</span> <span class="number">13800138000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 可以使用索引</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> phone <span class="operator">=</span> <span class="string">&#x27;13800138000&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-OR条件连接"><a href="#6-OR条件连接" class="headerlink" title="6. OR条件连接"></a>6. OR条件连接</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 如果or两边的列不都有索引，则索引失效</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span> <span class="keyword">OR</span> email <span class="operator">=</span> <span class="string">&#x27;test@example.com&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 优化：确保OR两边的列都有索引，或改写为UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;张三&#x27;</span></span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> email <span class="operator">=</span> <span class="string">&#x27;test@example.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-范围查询后的列无法使用索引"><a href="#7-范围查询后的列无法使用索引" class="headerlink" title="7. 范围查询后的列无法使用索引"></a>7. 范围查询后的列无法使用索引</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 假设有复合索引 INDEX idx_abc (a, b, c)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- b使用了范围查询，c无法使用索引</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> a <span class="operator">=</span> <span class="number">1</span> <span class="keyword">AND</span> b <span class="operator">&gt;</span> <span class="number">10</span> <span class="keyword">AND</span> c <span class="operator">=</span> <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="索引设计建议"><a href="#索引设计建议" class="headerlink" title="索引设计建议"></a>索引设计建议</h3><h4 id="1-适合建索引的场景"><a href="#1-适合建索引的场景" class="headerlink" title="1. 适合建索引的场景"></a>1. 适合建索引的场景</h4><ul>
+<li>WHERE子句中经常使用的列</li>
+<li>ORDER BY子句中的列</li>
+<li>GROUP BY子句中的列</li>
+<li>多表JOIN的关联列</li>
+<li>选择性高的列</li>
+</ul>
+<h4 id="2-不适合建索引的场景"><a href="#2-不适合建索引的场景" class="headerlink" title="2. 不适合建索引的场景"></a>2. 不适合建索引的场景</h4><ul>
+<li>数据量很小的表</li>
+<li>频繁更新的列</li>
+<li>选择性很低的列（如性别、状态）</li>
+<li>很少用于查询的列</li>
+</ul>
+<h4 id="3-复合索引设计原则"><a href="#3-复合索引设计原则" class="headerlink" title="3. 复合索引设计原则"></a>3. 复合索引设计原则</h4><ul>
+<li>将选择性高的列放在前面</li>
+<li>将等值查询的列放在范围查询的列前面</li>
+<li>考虑覆盖索引，将常用查询列加入索引</li>
+</ul>
+<h3 id="实战案例"><a href="#实战案例" class="headerlink" title="实战案例"></a>实战案例</h3><p>假设有订单表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> orders (</span><br><span class="line">    id <span class="type">BIGINT</span> <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    user_id <span class="type">BIGINT</span>,</span><br><span class="line">    status TINYINT,</span><br><span class="line">    amount <span class="type">DECIMAL</span>(<span class="number">10</span>,<span class="number">2</span>),</span><br><span class="line">    created_at DATETIME</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>常见查询场景：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 查询某用户的订单</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> user_id <span class="operator">=</span> <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询某用户某状态的订单</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> user_id <span class="operator">=</span> <span class="number">123</span> <span class="keyword">AND</span> status <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 查询某用户某时间段的订单</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> user_id <span class="operator">=</span> <span class="number">123</span> <span class="keyword">AND</span> created_at <span class="operator">&gt;=</span> <span class="string">&#x27;2020-01-01&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>推荐索引设计</strong>:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 复合索引，满足多种查询场景</span></span><br><span class="line"><span class="keyword">ALTER TABLE</span> orders <span class="keyword">ADD</span> INDEX idx_user_status_created (user_id, status, created_at);</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本文介绍了索引优化的核心原则和常见的索引失效场景：</p>
+<ol>
+<li><strong>最左前缀原则</strong>: 复合索引从左到右匹配</li>
+<li><strong>覆盖索引</strong>: 减少回表查询</li>
+<li><strong>索引失效场景</strong>: 函数操作、隐式转换、LIKE通配符开头等</li>
+<li><strong>索引设计</strong>: 根据查询场景合理设计复合索引</li>
+</ol>
+<p>下一篇文章将通过实际案例，演示SQL优化的完整过程，敬请期待。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li>MySQL官方文档</li>
+<li>《高性能MySQL》</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SQL%E4%BC%98%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> SQL优化</a>
+              <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+              <a href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag"><i class="fa fa-tag"></i> 索引</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/sql-you-hua-xi-lie-yi-ru-he-fa-xian-sql-wen-ti-yu-explain-xiang-jie.html" rel="prev" title="SQL优化系列（一）：如何发现SQL问题与EXPLAIN详解">
+                  <i class="fa fa-angle-left"></i> SQL优化系列（一）：如何发现SQL问题与EXPLAIN详解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/sql-you-hua-xi-lie-san-shi-zhan-an-li-yu-you-hua-ji-qiao.html" rel="next" title="SQL优化系列（三）：实战案例与优化技巧">
+                  SQL优化系列（三）：实战案例与优化技巧 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Yancy</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
